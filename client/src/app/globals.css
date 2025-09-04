@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* this site is created by https://rufataliyev.com */
+@layer base {
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .place-card {
+    display: none !important;
+  }
+  /* scroll behavior smooth */
+
+  /* *,
+  body,
+  html {
+    scroll-behavior: smooth !important;
+  } */
+}
+
+.nprogress {
+}

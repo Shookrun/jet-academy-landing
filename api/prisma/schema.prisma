@@ -1,0 +1,315 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  email     String    @unique
+  password  String
+  role      Role      @default(USER)
+  profile   Profile?
+  sessions  Session[]
+  posts     Post[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Profile {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String   @unique @db.ObjectId
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  bio         String?
+  avatarUrl   String?
+  location    String?
+  profession  String?
+  socialLinks Json?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Session {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  sessionToken String   @unique
+  userId       String   @db.ObjectId
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Request {
+  id             String        @id @default(auto()) @map("_id") @db.ObjectId
+  name           String
+  surname        String
+  number         String
+  childAge       Int
+  childLanguage  Language      @default(AZ)
+  message        String?
+  additionalInfo Json?
+  createdAt      DateTime      @default(now())
+  status         RequestStatus @default(PENDING)
+  viewedBy       String?
+  viewedAt       DateTime?
+}
+
+model Post {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     Json
+  content   Json
+  slug      SlugI18n
+  published Boolean  @default(false)
+  imageUrl  String?
+  tags      Json[]
+  authorId  String   @db.ObjectId
+  author    User     @relation(fields: [authorId], references: [id])
+  postType  PostType @default(BLOG)
+
+  eventDate   DateTime?
+  eventStatus EventStatus?
+
+  offerStartDate DateTime?
+  offerEndDate   DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([slug], name: "uniqueMultilingualSlug")
+  @@index([authorId])
+  @@index([postType])
+  @@index([eventStatus])
+}
+
+model StudentProjectsCategory {
+  id        String            @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+  projects  StudentProjects[]
+}
+
+model StudentProjects {
+  id          String                  @id @default(auto()) @map("_id") @db.ObjectId
+  title       Json?
+  description Json?
+  imageUrl    String
+  link        String
+  createdAt   DateTime                @default(now())
+  updatedAt   DateTime                @updatedAt
+  categoryId  String                  @db.ObjectId
+  category    StudentProjectsCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  order       Int
+
+  @@index([categoryId])
+}
+
+model Team {
+  id              String            @id @default(auto()) @map("_id") @db.ObjectId
+  name            String
+  surname         String
+  fullName        String
+  imageUrl        String
+  createdAt       DateTime          @default(now())
+  bio             Json?
+  order           Int
+  isActive        Boolean           @default(true)
+  coursesTeaching CourseToTeacher[]
+}
+
+
+
+model Gallery {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  imageUrl  String
+  title     Json?
+  createdAt DateTime @default(now())
+  order     Int      @default(0)
+}
+
+model ContactInfo {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  email        String
+  address      Json?
+  address2     Json?
+  whatsapp     Json?
+  phone        Json?
+  workingHours Json?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Course {
+  id              String                @id @default(auto()) @map("_id") @db.ObjectId
+  title           Json
+  description     Json
+  shortDescription Json?               
+  slug            SlugI18n
+  icon            String                @default("FaStar")
+  duration        Int
+  level           Json
+  published       Boolean               @default(false)
+  modules         CourseToModule[]
+  teachers        CourseToTeacher[]
+  eligibility     CourseToEligibility[]
+  tag             String[]
+  newTags         Json?
+  imageUrl        String?
+  ageRange        String?
+  backgroundColor String?               @default("#FEF3C7")
+  borderColor     String?               @default("#F59E0B") 
+  textColor       String?               @default("#1F2937")
+  createdAt       DateTime              @default(now())
+  updatedAt       DateTime              @updatedAt
+
+  @@unique([slug], name: "uniqueMultilingualCourseSlug")
+}
+
+model CourseModule {
+  id          String           @id @default(auto()) @map("_id") @db.ObjectId
+  title       Json
+  description Json?
+  content     Json
+  courses     CourseToModule[]
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+}
+
+model CourseToModule {
+  id        String       @id @default(auto()) @map("_id") @db.ObjectId
+  courseId  String       @db.ObjectId
+  course    Course       @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  moduleId  String       @db.ObjectId
+  module    CourseModule @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+  order     Int
+  createdAt DateTime     @default(now())
+
+  @@unique([courseId, moduleId])
+  @@index([courseId])
+  @@index([moduleId])
+}
+
+model CourseTeacher {
+  id          String            @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description Json?
+  courses     CourseToTeacher[]
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+}
+
+model CourseToTeacher {
+  id              String        @id @default(auto()) @map("_id") @db.ObjectId
+  position        String?
+  courseId        String        @db.ObjectId
+  course          Course        @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  teacherId       String        @db.ObjectId
+  teacher         Team          @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+  courseTeacherId String        @db.ObjectId
+  courseTeacher   CourseTeacher @relation(fields: [courseTeacherId], references: [id], onDelete: Cascade)
+  createdAt       DateTime      @default(now())
+
+  @@unique([courseId, teacherId, courseTeacherId])
+  @@index([courseId])
+  @@index([teacherId])
+  @@index([courseTeacherId])
+}
+
+model CourseEligibility {
+  id          String                @id @default(auto()) @map("_id") @db.ObjectId
+  title       Json
+  description Json
+  icon        String
+  courses     CourseToEligibility[]
+  createdAt   DateTime              @default(now())
+  updatedAt   DateTime              @updatedAt
+}
+
+model CourseToEligibility {
+  id            String            @id @default(auto()) @map("_id") @db.ObjectId
+  courseId      String            @db.ObjectId
+  course        Course            @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  eligibilityId String            @db.ObjectId
+  eligibility   CourseEligibility @relation(fields: [eligibilityId], references: [id], onDelete: Cascade)
+  createdAt     DateTime          @default(now())
+
+  @@unique([courseId, eligibilityId])
+  @@index([courseId])
+  @@index([eligibilityId])
+}
+
+enum Language {
+  AZ
+  RU
+}
+
+enum Role {
+  USER
+  AUTHOR
+  CRMOPERATOR
+  CONTENTMANAGER
+  COORDINATOR
+  STAFF
+  ADMIN
+}
+
+enum RequestStatus {
+  VIEWED
+  PENDING
+}
+
+enum PostType {
+  BLOG
+  NEWS
+  EVENT
+  OFFERS
+}
+
+enum EventStatus {
+  ONGOING
+  UPCOMING
+  PAST
+}
+
+type SlugI18n {
+  az String
+  ru String
+}
+
+model Glossary {
+  id           String            @id @default(auto()) @map("_id") @db.ObjectId
+  term         MultilingualText
+  definition   MultilingualText
+  slug         SlugI18n
+  category     GlossaryCategory? @relation(fields: [categoryId], references: [id])
+  categoryId   String?           @db.ObjectId
+  published    Boolean           @default(false)
+  relatedTerms String[]          @db.ObjectId
+  tags         String[]
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+
+  @@unique([slug], name: "uniqueMultilingualGlossarySlug")
+  @@index([categoryId])
+  @@index([tags])
+}
+
+model GlossaryCategory {
+  id            String            @id @default(auto()) @map("_id") @db.ObjectId
+  name          MultilingualText
+  description   MultilingualText?
+  slug          SlugI18n
+  glossaryTerms Glossary[]
+  order         Int               @default(0)
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+
+  @@unique([slug], name: "uniqueMultilingualGlossaryCategorySlug")
+}
+
+type MultilingualText {
+  az String
+  ru String
+}

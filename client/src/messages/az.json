@@ -1,0 +1,447 @@
+{
+  "navbar": {
+    "home": "Ana Səhifə",
+    "courses": "Kurslarımız",
+    "media": "Layihələr",
+    "about": "Haqqımızda",
+    "gallery": "Qalereya",
+    "useful": "Faydalı",
+    "offers": "Kampaniyalar",
+    "blog": "Bloq",
+    "news": "Xəbərlər",
+    "differences": "Fərqimiz",
+    "glossary": "Texnoloji Lüğət",
+    "contact": "Əlaqə",
+    "contactus": "Zəng sifarişi"
+  },
+  "hero": {
+    "welcome": "Xoş gəlmisiniz",
+    "toJetSchool": "JET School-a",
+    "getConsult": "Zəng sifariş et!",
+    "description": "JET School, 9-15 yaş arası uşaqlar üçün IT kursları, proqramlaşdırma dərsləri, veb dizayn və kibertəhlükəsizlik təlimləri təqdim edən müasir təhsil mərkəzidir.\n\nBurada uşaqlar Python proqramlaşdırma dili, Scratch ilə oyun hazırlama, HTML və CSS ilə veb sayt qurma və kibertəhlükəsizlik əsaslarını öyrənərək texnologiyaya maraqlarını inkişaf etdirirlər. Tədris prosesi uşaqların həm nəzəri biliklər, həm də praktiki bacarıqlar əldə etməsini təmin edir."
+  },
+  "courseInfo": {
+    "title": "Uşaqlar üçün IT və Proqramlaşdırma kursları!",
+    "description": "Kurslarımızda müxtəlif növ və istiqamət üçün texnologiyalar tədris olunur"
+  },
+  "courseInfoCP": {
+    "title": "Bizim digər kurslarımız"
+  },
+  
+
+  "about": {
+    "title": "Fərqimiz Nədir?",
+    "description": "Bizi digər kurslardan fərqləndirən əsas məqamlar ilə tanış ola bilərsiniz",
+    "points": {
+      "interactive": {
+        "title": "İnteraktiv Öyrənmə",
+        "description": "Uşaqların marağını artıran interaktiv dərslərimiz, praktiki layihələr və oyunlar vasitəsilə öyrənmə prosesini əyləncəli və dinamik hala gətirir, bilikləri əyləncə ilə birləşdirir."
+      },
+      "experienced": {
+        "title": "Təcrübəli Müəllimlər",
+        "description": "Müxtəlif sahələrdə geniş təcrübəyə malik peşəkar müəllimlərimiz, uşaqlara müasir texnologiyalarla tanış olma imkanı təqdim edərək, öyrənmələrini daha dərin və faydalı edir."
+      },
+      "individual": {
+        "title": "Fərdi Yanaşma",
+        "description": "Hər bir uşağın öyrənmə sürətinə uyğun fərdi yanaşma tətbiq edərək, onların unikal bacarıq və maraqlarını inkişaf etdirmək üçün xüsusi proqramlar hazırlayırıq."
+      },
+      "future": {
+        "title": "Gələcək Uğurlar",
+        "description": "Proqramlarımız, uşaqların problem həll etmə, əməkdaşlıq və yaradıcılıq bacarıqlarını artıraraq, gələcək karyeraları üçün güclü bir təməl yaradır və onlara uğur qazanmaq üçün lazım olan resursları təqdim edir."
+      }
+    }
+  },
+  "courses": {
+    "starter": {
+      "title": "Starter Modulu",
+      "modules": {
+        "intro": {
+          "title": "Kompüter mühəndisliyinə giriş",
+          "description": "Kompüterlərin gündəlik həyatımızdakı rolu və əhəmiyyətini öyrənin. CPU, RAM, GPU kimi əsas komponentləri tanıyın.",
+          "duration": "1 ay",
+          "level": "Başlanğıc"
+        },
+        "algorithms": {
+          "title": "Alqoritmlər və qərar qəbuletmə",
+          "description": "Proqramlaşdırmanın təməlini təşkil edən alqoritmləri öyrənin. Real həyat problemlərini həll etmək üçün alqoritmik düşüncə.",
+          "duration": "1 ay",
+          "level": "Başlanğıc"
+        },
+        "scratch": {
+          "title": "Scratch ilə proqramlaşdırma",
+          "description": "Blok əsaslı proqramlaşdırma ilə kodlamanın əsaslarını öyrənin. Dəyişənlər və dövrlər ilə oyunlar yaradın.",
+          "duration": "1 ay",
+          "level": "Başlanğıc"
+        },
+        "games": {
+          "title": "Oyun hazırlama və dizayn",
+          "description": "Scratch ilə oyunlar yaradın və Figma ilə müasir dizayn prinsiplərini mənimsəyin. 3D modelləşdirməyə giriş.",
+          "duration": "1 ay",
+          "level": "Başlanğıc-Orta"
+        }
+      }
+    },
+    "programmer": {
+      "title": "Proqramçı Modulu",
+      "modules": {
+        "webIntro": {
+          "title": "Veb proqramlaşdırmaya giriş",
+          "description": "HTML-in əsaslarını öyrənin. Veb səhifələrin strukturunu yaratmaq üçün lazım olan teqləri mənimsəyin.",
+          "duration": "1 ay",
+          "level": "Orta"
+        },
+        "webDev": {
+          "title": "HTML və CSS ilə veb səhifələr",
+          "description": "CSS layouts və Flexbox ilə müasir veb səhifələr yaradın. Animasiyalar və responsiv dizaynı mənimsəyin.",
+          "duration": "1 ay",
+          "level": "Orta"
+        },
+        "JS": {
+          "title": "JavaScript Əsasları",
+          "description": "JavaScript proqramlaşdırma dilinin təməllərini öyrənin. Dəyişənlər, operatorlar, funksiyalar və OOP konsepsiyaları ilə tanış olun. Praktiki tapşırıqlar vasitəsilə mənimsənilən biliklər real layihələrdə tətbiq ediləcək.",
+          "duration": "1 ay",
+          "level": "Başlanğıc"
+        },
+        "JsDom": {
+          "title": "JavaScript DOM və Layihələr",
+          "description": "DOM manipulyasiyası, hadisə dinləyiciləri və Timer funksiyaları ilə tanış olun. To-Do tətbiqi, sayğac və rəqəmsal saat kimi real layihələr yaradın. Bootstrap 5 istifadə edərək istifadəçi interfeysi hazırlayın.",
+          "duration": "1 ay",
+          "level": "Orta"
+        }
+      }
+    },
+    "hacker": {
+      "title": "Etik Haker Modulu",
+      "modules": {
+        "python": {
+          "title": "Python və Kibertəhlükəsizlik",
+          "description": "Python-u kibertəhlükəsizlik kontekstində öyrənin. Təhlükəsizlik skriptləri və alətləri yaradın.",
+          "duration": "1 ay",
+          "level": "İrəli"
+        },
+        "network": {
+          "title": "Şəbəkə təhlükəsizliyi",
+          "description": "TCP/IP, UDP protokolları və şəbəkə təhlükəsizliyi əsaslarını öyrənin. Port skaneri alətləri yaradın.",
+          "duration": "1 ay",
+          "level": "İrəli"
+        }
+      }
+    }
+  },
+  "footer": {
+    "address": "Bakı ş., Olimpiya küçəsi 6A (Gənclik metro stansiyası, İdman Nazirliyi yaxınlığında)",
+    "address2": "Bakı ş., Süleyman Vəzirov 17a (Xətai metro stansiyasının yaxınlığında)",
+    "workingHours": {
+      "title": "Bazar ertəsi - Şənbə Günü",
+      "hours": "09:30 - 22:00",
+      "title7": "Bazar Günü",
+      "hours7": "10:00 - 22:00"
+    },
+    "links": {
+      "courses": "Kurslarımız",
+      "contact": "Əlaqə",
+      "media": "Media"
+    },
+    "copyright": "Bütün hüquqlar qorunur.",
+    "tagline": "Daha parlaq gələcək üçün ilham verən təhsil",
+    "explore": "Kəşf et",
+    "resources": "Resurslar",
+    "legal": "Hüquqi məlumat",
+
+    "home": "Ana səhifə",
+    "about": "Haqqımızda",
+    "courses": "Kurslar",
+    "gallery": "Qalereya",
+    "blog": "Bloq",
+    "glossary": "Lüğət",
+    "news": "Xəbərlər",
+    "projects": "Layihələr",
+    "faq": "Tez-tez verilən suallar",
+    "contact": "Əlaqə",
+
+    "privacy": "Məxfilik siyasəti",
+    "terms": "İstifadə şərtləri",
+    "cookies": "Kukilər siyasəti",
+
+    "newsletter": "Xəbər bülletenimizə abunə olun",
+    "newsletterDesc": "Ən son xəbərlər və təkliflərimizdən xəbərdar olun",
+    "emailPlaceholder": "E-poçt ünvanınız",
+    "subscribe": "Abunə ol"
+  },
+  "contactForm": {
+    "contactInfo": "Əlaqə məlumatları",
+    "send": "Göndər",
+    "name": "Ad",
+    "email": "E-poçt",
+    "surname": "Soyad",
+    "number": "Nömrə",
+    "message": "Mesaj",
+    "sending": "Göndərilir...",
+    "messageSent": "Mesajınız uğurla göndərildi",
+    "sendError": "Mesaj göndərilə bilmədi",
+    "unexpectedError": "Gözlənilməz xəta baş verdi",
+    "nameRequired": "Ad tələb olunur",
+    "nameOnlyLetters": "Ad yalnız hərflərdən ibarət olmalıdır",
+    "surnameRequired": "Soyad tələb olunur",
+    "surnameOnlyLetters": "Soyad yalnız hərflərdən ibarət olmalıdır",
+    "emailRequired": "Email tələb olunur",
+    "invalidEmail": "Email formatı düzgün deyil",
+    "numberRequired": "Nömrə tələb olunur",
+    "invalidNumber": "Nömrə formatı düzgün deyil",
+    "messageRequired": "Mesaj tələb olunur"
+  },
+  "projects": {
+    "title": "Tələbələrimizin layihələri",
+    "seeAll": "Hamısına bax",
+    "description": "JET School-da uşaqlar yaradıcılıq və problem həll etmə bacarıqlarını inkişaf etdirmək üçün müxtəlif layihələr üzərində çalışırlar. \n Aşağıda bu layihələr ilə tanış ola bilərsiniz."
+  },
+  "gallery": {
+    "title": "Dərslərimizdən görüntülər",
+    "seeAll": "Hamısına bax",
+    "description": "JET School-da uşaqlar üçün keçirilən IT və proqramlaşdırma dərslərindən görüntülər"
+  },
+  "blogs": {
+    "title": "Bloq və media",
+    "seeAll": "Hamısına bax",
+    "description": "JET School-da keçirilən kurslar, tədbirlər və layihələr haqqında ən son xəbərlər və məqalələr."
+  },
+  "aboutPage": {
+    "introduction": {
+      "title": "Haqqımızda",
+      "description1": "JET School olaraq, biz 2021-ci ildən etibarən uşaqlar və yeniyetmələr üçün texnologiya dünyasını əyləncəli və öyrədici hala gətirməyi qarşımıza məqsəd qoymuşuq. Bizim əsas prinsipimiz 'Əylənərək Öyrən' şüarını rəhbər tutaraq, uşaqlara təhsili sevdirərək, onları gələcəyin texnoloji dünyasına hazırlamaqdır.",
+      "description2": "JET School-da IT-nin əsasları, proqramlaşdırma, dizayn və kibertəhlükəsizlik kimi sahələrdə dərslər keçirilir."
+    },
+    "mission": {
+      "sectionTitle": "Missiyamız və Vizyonumuz",
+      "title": "Missiya",
+      "description": "JET School-un missiyası gənc nəsli texnologiyanın sonsuz imkanlarını kəşf etməyə həvəsləndirmək, onların yaradıcılıq, tənqidi düşüncə və problem həll etmə bacarıqlarını inkişaf etdirməkdir."
+    },
+    "vision": {
+      "title": "Vizyon",
+      "description": "JET School-un vizyonu uşaqları yalnız texnoloji biliklərlə deyil, həm də gələcəyin problemlərini həll etməyə hazır, təkcə istifadəçi deyil, texnologiyanın yaradıcısı ola biləcək liderlər kimi yetişdirməkdir."
+    },
+    "stats": {
+      "teachingArea":"Tədris sahəsi",
+      "graduatesLabel": "Məzun sayı",
+      "groupsLabel": "Aktiv qrup sayı",
+      "studentsLabel": "Tələbə sayı"
+    },
+    "team": {
+      "title": "Komandamızla Tanış Olun",
+      "description": "Müəllimlərimiz və mentorlarımız texnologiya sahəsində təcrübəli mütəxəssislərdir"
+    }
+  },
+  "contact": {
+    "sending": "Göndərilir...",
+    "messageSent": "Mesajınız uğurla göndərildi",
+    "sendError": "Mesaj göndərilə bilmədi",
+    "unexpectedError": "Gözlənilməz xəta baş verdi",
+    "hero": {
+      "title": "Bizimlə Əlaqə Saxlayın",
+      "description": "Suallarınız və ya təklifləriniz varsa, bizimlə əlaqə saxlamaqdan çəkinməyin."
+    },
+    "title": "Zəng üçün formu doldurun",
+    "description": "Formu doldurun və sizinlə ən qısa zamanda əlaqə saxlayacağıq.",
+    "form": {
+      "title": "Zəng üçün formu doldurun",
+      "contactTitle":"IT Kurslarımız haqqında məlumat almaq üçün qeydiyyatdan keçin",
+      "description": "Formu doldurun və sizinlə ən qısa zamanda əlaqə saxlayacağıq.",
+      "sending": "Göndərilir...",
+      "name": {
+        "label": "Ad",
+        "placeholder": "Adınızı daxil edin",
+        "required": "Ad tələb olunur",
+        "minLength": "Ad ən azı 2 simvol olmalıdır"
+      },
+      "surname": {
+        "label": "Soyad",
+        "placeholder": "Soyadınızı daxil edin",
+        "required": "Soyad tələb olunur",
+        "minLength": "Soyad ən azı 2 simvol olmalıdır"
+      },
+      "childAge": {
+        "label": "Övladınızın yaşı",
+        "placeholder": "Övladınızın yaşını seçin",
+        "required": "Yaş tələb olunur",
+        "description": "9-15 yaş arası"
+      },
+      "childLanguage": {
+        "label": "Tədris dili",
+        "placeholder": "Tədris dilini seçin",
+        "required": "Tədris dili tələb olunur",
+        "options": {
+          "az": "Azərbaycan dili",
+          "ru": "Rus dili"
+        }
+      },
+      "messageSent": "Sizin sorğunuzu qəbul etdik və ən qısa zamanda sizinlə əlaqə saxlayacağıq!",
+      "number": {
+        "label": "Telefon",
+        "placeholder": "Telefon nömrənizi daxil edin",
+        "required": "Telefon nömrəsi tələb olunur",
+        "invalid": "Düzgün telefon nömrəsi daxil edin"
+      },
+      "submit": "Göndər"
+    },
+    "info": {
+      "phone": "Telefon",
+      "email": "E-poçt",
+      "whatsapp": "WhatsApp",
+      "address1": "Ünvan",
+      "addressg": "Gənclik Filialı",
+      "addressx": "Xətai Filialı"
+    }
+  },
+  "singleCoursePage": {
+    "courseDescription": "Kurs Haqqında",
+    "courseModules": "Kurs Modulları",
+    "whoIsEligibleToEnroll": "Kursa kimlər qoşula bilər ?",
+    "teachers": "Kursun Müəllimləri",
+    "teachersDescription": "Peşəkar və təcrübəli müəllimlərimiz",
+    "enroll": "Qeydiyyatdan keç",
+    "contactFormTitle":"IT kurslarımız barədə məlumat almaq üçün qeydiyyatdan keçin"
+  },
+  "coursesPage": {
+    "title": "Tədris Proqramları",
+    "description": "Bütün yaş qrupları və bacarıq səviyyələri üçün hazırlanmış texnoloji təhsil proqramlarımız ilə tanış olun",
+    "metaTitle": "JET School - Kurslar",
+    "metaDescription": "JET School-un uşaqlar üçün texnologiya təhsili proqramlarını araşdırın. Dəstəkləyici mühitdə kodlaşdırma, robotika, veb inkişafı və daha çox şey öyrənin.",
+    "searchPlaceholder": "Kursları axtar...",
+    "filters": "Filtrlər",
+    "level": "Səviyyə",
+    "duration": "Müddət",
+    "tags": "Teqlər",
+    "resetFilters": "Filterləri sıfırla",
+    "noCoursesFound": "Axtarışınıza uyğun heç bir kurs tapılmadı.",
+    "changeCriteria": "Lütfən axtarış meyarlarınızı dəyişdirin və ya filterləri sıfırlayın."
+  },
+  "Metadata": {
+    "title": "JET School | Uşaqlar üçün IT kursları, Proqramlaşdırma kursları!",
+    "titleTemplate": "%s | JET School Uşaqlar üçün IT kursları, Proqramlaşdırma kursları!",
+    "description": "JET School - Azərbaycanda uşaqlar üçün IT kursları, proqramlaşdırma kursları. Usaqlar ucun it kurslari, proqramlasdirma kurslari, suni intellekt kurslari.",
+    "keywords": "uşaqlar üçün proqramlaşdırma, IT məktəbi, JET School, jet school, kompüter kursları, coding, robotexnika, süni intellekt, scratch, python, uşaqlar üçün IT təhsili, Bakı IT məktəbi",
+    "ogTitle": "JET School | Uşaqlar üçün IT və Kompüter Mühəndisliyi Məktəbi",
+    "ogDescription": "Uşağınızın gələcəyinə sərmayə qoyun - JET School ilə müasir texnologiyaları kəşf edin",
+    "ogImageAlt": "JET School - Uşaqlar üçün IT Məktəbi",
+    "aboutPageTitle": "Haqqımızda | JET School",
+    "contactPageTitle": "Əlaqə Məlumatları | JET School",
+    "galleryPageTitle": "Qalereya | JET School",
+    "projectsPageTitle": "Layihələr | JET School",
+    "projectsPageDescription": "Jet Schoolun tələbə layihələri, tələbələrimizin innovasiya və yaradıcılığı nümayiş etdirir",
+    "glossaryPageTitle": "Texnoloji Lüğət | JET School",
+    "glossaryTermsPageTitle": "Bütün Terminlər | JET School",
+    "glossaryTermsLetterPageTitle": "\"{letter}\" ilə başlayan terminlər | JET School",
+    "glossaryCategoryDescription": "JET School glossariy lüğətində {category} kateqoriyasına aid terminlər",
+    "glossaryTermDefaultDescription": "IT və proqramlaşdırma termini haqqında məlumat",
+    "glossarySearchDescription": "JET School glossariy lüğətində axtarış edin",
+    "glossarySearchResultsTitle": "\"{query}\" üçün axtarış nəticələri | JET School",
+    "glossarySearchPageTitle": "Axtarış | JET School"
+  },
+  "postsPage": {
+    "pageTitle": "Bütün xəbərlər",
+    "pageDescription": "Ən son məqalələrimiz, xəbərlərimiz və tədbirlərimizlə tanış olun.",
+    "allPosts": "Bütün xəbərlər",
+    "blog": "Bloq",
+    "news": "Xəbərlər",
+    "event": "Tədbirlər",
+    "eventMetaTitle":"Tədbirlər",
+    "newsMetaTitle":"Xəbərlər",
+    "offers": "Kampaniyalar",
+    "metaTitle": "Bütün xəbərlər",
+    "metaDescription": "JET School-da keçirilən kurslar, tədbirlər və layihələr haqqında ən son xəbərlər və məqalələr.",
+    "readMore": "Daha çox oxu",
+    "noPostsFound": "Post tapılmadı",
+    "tryDifferentFilters": "Amma olacaqlar!"
+  },
+  "blogPage": {
+    "pageTitle": "Bloq",
+    "pageDescription": "JET School müəllimləri tərəfindən yazılmış məqalələr ilə tanış olun.",
+    "allPosts": "Bütün xəbərlər",
+    "event": "Tədbirlər",
+    "news": "Xəbərlər",
+    "blog": "Bloq",
+    "offers": "Kampaniyalar",
+    "metaTitle": "Bloq",
+    "metaDescription": "JET School müəllimləri tərəfindən yazılmış məqalələr ilə tanış olun.",
+    "readMore": "Daha çox oxu",
+    "noPostsFound": "Post tapılmadı",
+    "tryDifferentFilters": "Amma olacaqlar!"
+  },
+  "singlePostPage": {
+    "postTypeLabel": "Post növü",
+    "postType": {
+      "blog": "Bloq",
+      "news": "Xəbər",
+      "event": "Tədbir",
+      "offers": "Kampaniya",
+      "default": "Post"
+    },
+    "dateLabel": "Tarix",
+    "eventDateLabel": "Tədbir tarixi",
+    "tagsLabel": "Teqlər",
+    "relatedPosts": "Digər Postlar"
+  },
+
+  "glossary": {
+    "whats": "nədir?",
+    "title": "Texnoloji Lüğət",
+    "subtitle": "IT və proqramlaşdırma terminləri lüğəti",
+    "searchPlaceholder": "Termin axtar...",
+    "allTermsText": "Bütün terminlərə bax",
+    "categoriesTitle": "Kateqoriyalar",
+    "termsText": "termin",
+    "emptyText": "Heç bir kateqoriya tapılmadı",
+    "terms": {
+      "title": "Bütün terminlər",
+      "categoryText": "Kateqoriya",
+      "emptyText": "Uyğun termin tapılmadı",
+      "searchPlaceholder": "Termin axtar...",
+      "allText": "Hamısı",
+      "description": "JET School texnoloji lüğətində bütün IT terminləri"
+    },
+    "term": {
+      "tagsText": "Teqlər",
+      "categoryText": "Kateqoriya",
+      "relatedTermsText": "Əlaqəli terminlər",
+      "ctaTitle": "Sizə tanış olmayan sözlə qarşılaşdınız?",
+      "ctaDescription": "IT sahəsini dərindən öyrənmək üçün kurslarımıza qoşulun. Ətraflı məlumat almaq üçün sorğu göndərin!"
+    },
+    "search": {
+      "title": "Axtarış",
+      "titleWithQuery": "\"{query}\" üçün axtarış nəticələri",
+      "categoryText": "Kateqoriya",
+      "emptyText": "Axtarışınıza uyğun termin tapılmadı",
+      "searchPlaceholder": "Termin axtar...",
+      "description": "JET School texnoloji lüğətində axtarış edin"
+    },
+    "category": {
+      "title": "{category} kateqoriyası",
+      "categoryText": "Kateqoriya",
+      "emptyText": "Bu kateqoriyada termin tapılmadı",
+      "searchPlaceholder": "Termin axtar..."
+    },
+    "pagination": {
+      "previous": "Əvvəlki",
+      "next": "Sonrakı"
+    }
+  },
+  
+  
+  "home": "Ana Səhifə",
+  "breadcrumbs": {
+  "course": "Kurs",
+  "courses": "Kurslar",
+  "about-us": "Haqqımızda",
+  "contact": "Əlaqə",
+  "contact-us": "Əlaqə",
+  "team": "Komanda",
+  "news":"Xəbərlər",
+  "category":"Kateqoriyalar",
+  "offers":"Kampaniyalar",
+  "event":"Tədbirlər",
+  "blog":"Bloq",
+  "glossary":"Texnoloji Lüğət",
+  "projects":"Layihələr",
+  "gallery":"Qalereya"
+}
+}

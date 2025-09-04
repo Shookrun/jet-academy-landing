@@ -1,0 +1,49 @@
+{
+  "name": "jet-school",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@auth/prisma-adapter": "^2.7.4",
+    "@grammyjs/ratelimiter": "^1.2.0",
+    "@next/third-parties": "^15.3.0",
+    "@nextui-org/react": "^2.4.8",
+    "@react-stately/data": "^3.12.0",
+    "axios": "^1.7.8",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.12.0",
+    "grammy": "^1.31.0",
+    "lenis": "^1.1.16",
+    "next": "14.2.17",
+    "next-auth": "^4.24.10",
+    "next-intl": "^3.24.0",
+    "next-nprogress-bar": "^2.4.7",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-hook-form": "^7.53.2",
+    "react-icons": "^5.3.0",
+    "react-quill": "^2.0.0",
+    "sharp": "^0.33.5",
+    "sonner": "^1.7.0",
+    "swiper": "^11.1.14",
+    "tailwind-merge": "^2.5.4",
+    "yet-another-react-lightbox": "^3.21.7",
+    "zustand": "^5.0.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.16",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "15.0.2",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}
