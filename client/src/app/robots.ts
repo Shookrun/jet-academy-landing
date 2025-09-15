@@ -4,8 +4,10 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
-      allow: ["/", "/az", "/ru"],
-      disallow: ["/dashboard/"],
+      // ishi bitirende ashagidakileri ac
+      // allow: ["/", "/az", "/ru"],
+      // disallow: ["/dashboard/"],
+      disallow: ["/*"],
     },
     sitemap: "https://jetschool.az/sitemap.xml",
   };

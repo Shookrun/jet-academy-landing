@@ -21,9 +21,14 @@ async function bootstrap() {
       const allowedOrigins = [
         'https://jetschool.az',
         'https://www.jetschool.az',
+        'https://new.jetacademy.az',
+        'https://www.new.jetacademy.az',
         'http://localhost:3000',
         'http://localhost:3001',
         'http://localhost:3002',
+        'http://localhost:3032',
+        'http://localhost:3030',
+        'http://localhost:3031',
       ];
 
       if (!origin || allowedOrigins.includes(origin)) {
