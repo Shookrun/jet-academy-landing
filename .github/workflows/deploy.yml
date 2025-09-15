@@ -35,7 +35,7 @@ jobs:
           echo "🔐 Creating environment file..."
           cat > .env <<EOL
           # Database
-          DATABASE_URL=mongodb://jetacad:jointome357@mongodb:27017/jetschooldb?authSource=admin&replicaSet=rs0
+          DATABASE_URL=mongodb://jetacad:jointome357@mongodb:27017/jetacad?authSource=admin&replicaSet=rs0
 
           # NextAuth
           NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}
