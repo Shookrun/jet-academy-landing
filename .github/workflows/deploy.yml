@@ -14,13 +14,13 @@ jobs:
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_jetacad
+          chmod 600 ~/.ssh/id_jetacad
           ssh-keyscan -H ${{ secrets.DROPLET_HOST }} >> ~/.ssh/known_hosts
 
       - name: Deploy Application
         run: |
-          ssh -i ~/.ssh/id_ed25519 ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_HOST }} <<'EOF'
+          ssh -i ~/.ssh/id_jetacad ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_HOST }} <<'EOF'
           set -e
 
           cd /root/jetacademy
@@ -131,7 +131,7 @@ jobs:
 
       - name: Verify Deployment
         run: |
-          ssh -i ~/.ssh/id_ed25519 ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_HOST }} <<'EOF'
+          ssh -i ~/.ssh/id_jetacad ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_HOST }} <<'EOF'
           cd /root/jetschool
 
           echo "🔍 Final verification..."
