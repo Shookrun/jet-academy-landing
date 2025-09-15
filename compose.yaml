@@ -14,7 +14,7 @@ services:
     container_name: next-app-acad
     restart: always
     ports:
-      - "3030:3000" # Map host port 3030 to container port 3000
+      - "3030:3000" # Map host port 3030 to container port 3000 xd
     env_file:
       - .env
     environment:
