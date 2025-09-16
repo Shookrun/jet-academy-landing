@@ -3,7 +3,7 @@ name: Deploy to Droplet
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy:
@@ -14,20 +14,20 @@ jobs:
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -H ${{ secrets.DROPLET_HOST }} >> ~/.ssh/known_hosts
 
       - name: Deploy Application
         run: |
-          ssh -i ~/.ssh/id_ed25519 ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_HOST }} <<'EOF'
+          ssh -i ~/.ssh/deploy_key ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_HOST }} <<'EOF'
           set -e
 
           cd /root/jetacademy
 
           echo "🔄 Pulling latest changes..."
-          git fetch origin master
-          git reset --hard origin/master
+          git fetch origin main
+          git reset --hard origin/main
 
           echo "📁 Ensuring uploads directory exists..."
           mkdir -p ~/uploads-acad
@@ -35,7 +35,7 @@ jobs:
           echo "🔐 Creating environment file..."
           cat > .env <<EOL
           # Database
-          DATABASE_URL=mongodb://jetacad:jointome357@mongodb:27017/jetschooldb?authSource=admin&replicaSet=rs0
+          DATABASE_URL=mongodb://jetacad:jointome357@mongodb:27017/jetacad?authSource=admin&replicaSet=rs0
 
           # NextAuth
           NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}
@@ -131,7 +131,7 @@ jobs:
 
       - name: Verify Deployment
         run: |
-          ssh -i ~/.ssh/id_ed25519 ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_HOST }} <<'EOF'
+          ssh -i ~/.ssh/deploy_key ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_HOST }} <<'EOF'
           cd /root/jetschool
 
           echo "🔍 Final verification..."
