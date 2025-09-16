@@ -15,14 +15,14 @@
     "contactus": "Zəng sifarişi"
   },
   "hero": {
-    "welcome": "Xoş gəlmisiniz",
-    "toJetSchool": "JET School-a",
+    "welcome": "Xoş Gəlmisiniz",
+    "toJetSchool": "JET Academy-ə",
     "getConsult": "Zəng sifariş et!",
-    "description": "JET School, 9-15 yaş arası uşaqlar üçün IT kursları, proqramlaşdırma dərsləri, veb dizayn və kibertəhlükəsizlik təlimləri təqdim edən müasir təhsil mərkəzidir.\n\nBurada uşaqlar Python proqramlaşdırma dili, Scratch ilə oyun hazırlama, HTML və CSS ilə veb sayt qurma və kibertəhlükəsizlik əsaslarını öyrənərək texnologiyaya maraqlarını inkişaf etdirirlər. Tədris prosesi uşaqların həm nəzəri biliklər, həm də praktiki bacarıqlar əldə etməsini təmin edir."
+    "description": "JET Academy, IT sahəsində peşəkar təlimlər təqdim edən müasir tədris mərkəzidir.\n\nBurada tələbələr qısa müddət ərzində real avadanlıqlar və real layihələr üzərində işləyərək bir çox müasir texnologiyaları öyrənir və əmək bazarında rəqabətədavamlı mütəxəssis olmağa doğru irəliləyirlər. Yüksək təcrübəli müəllim və mentor heyəti, fərdi yanaşma ilə dəstəklənən tədris prosesi praktiki bacarıqların formalaşdırılmasına, layihə əsaslı öyrənməyə və real iş dünyasına hazırlığa yönəlib."
   },
   "courseInfo": {
-    "title": "Uşaqlar üçün IT və Proqramlaşdırma kursları!",
-    "description": "Kurslarımızda müxtəlif növ və istiqamət üçün texnologiyalar tədris olunur"
+    "title": "Tədris sahələri",
+    "description": "Hansı sahə üzrə karyera qurmağı planlaşdırırsız? Klikləyin və kurs haqqında məlumat alın!"
   },
   "courseInfoCP": {
     "title": "Bizim digər kurslarımız"
@@ -34,20 +34,28 @@
     "description": "Bizi digər kurslardan fərqləndirən əsas məqamlar ilə tanış ola bilərsiniz",
     "points": {
       "interactive": {
-        "title": "İnteraktiv Öyrənmə",
-        "description": "Uşaqların marağını artıran interaktiv dərslərimiz, praktiki layihələr və oyunlar vasitəsilə öyrənmə prosesini əyləncəli və dinamik hala gətirir, bilikləri əyləncə ilə birləşdirir."
+        "title": "Müasir və Daim Yenilənən Tədris Proqramı",
+        "description": "Proqramlarımız əmək bazarının tələblərinə uyğun olaraq mütəmadi yenilənir və ən son texnologiyaları əhatə edir."
       },
       "experienced": {
-        "title": "Təcrübəli Müəllimlər",
-        "description": "Müxtəlif sahələrdə geniş təcrübəyə malik peşəkar müəllimlərimiz, uşaqlara müasir texnologiyalarla tanış olma imkanı təqdim edərək, öyrənmələrini daha dərin və faydalı edir."
+        "title": "Real Layihələr və Gündəlik Tapşırıqlar",
+        "description": "Hər bir kursumuz praktiki tapşırıqlar və real iş mühitində tələb olunan və ya işlənən layihələrlə zənginləşdirilmişdir."
       },
       "individual": {
-        "title": "Fərdi Yanaşma",
-        "description": "Hər bir uşağın öyrənmə sürətinə uyğun fərdi yanaşma tətbiq edərək, onların unikal bacarıq və maraqlarını inkişaf etdirmək üçün xüsusi proqramlar hazırlayırıq."
+        "title": "Yüksək Təcrübəli və Professional Təlimçilər",
+        "description": "Sektor təcrübəsinə malik mütəxəssislər biliklərini paylaşaraq tələbələrin karyera inkişafına dəstək olurlar."
       },
       "future": {
-        "title": "Gələcək Uğurlar",
-        "description": "Proqramlarımız, uşaqların problem həll etmə, əməkdaşlıq və yaradıcılıq bacarıqlarını artıraraq, gələcək karyeraları üçün güclü bir təməl yaradır və onlara uğur qazanmaq üçün lazım olan resursları təqdim edir."
+        "title": "Rahat Ofis Mühiti və Müasir Avadanlıqlarla Təminat",
+        "description": "Tədris prosesini daha səmərəli və məhsuldar edən rahat öyrənmə mühiti və texniki avadanlıqlar təqdim edirik."
+      },
+      "price":{
+        "title":"Sərfəli Qiymətə Yüksək Səviyyəli Tədris",
+        "description":"Keyfiyyətli tədrisi hər kəs üçün əlçatan etmək məqsədilə münasib qiymət siyasəti tətbiq edirik."
+      },
+      "comfort":{
+        "title":"Rahat Yerdə Yerləşən Ofis",
+        "description":"Şəhərin mərkəzində yerləşən ofisimiz nəqliyyat baxımından tələbələr üçün rahatlıq yaradır."
       }
     }
   },
@@ -193,32 +201,33 @@
   "projects": {
     "title": "Tələbələrimizin layihələri",
     "seeAll": "Hamısına bax",
-    "description": "JET School-da uşaqlar yaradıcılıq və problem həll etmə bacarıqlarını inkişaf etdirmək üçün müxtəlif layihələr üzərində çalışırlar. \n Aşağıda bu layihələr ilə tanış ola bilərsiniz."
+    "description": "JET Academy-da uşaqlar yaradıcılıq və problem həll etmə bacarıqlarını inkişaf etdirmək üçün müxtəlif layihələr üzərində çalışırlar. \n Aşağıda bu layihələr ilə tanış ola bilərsiniz."
   },
   "gallery": {
     "title": "Dərslərimizdən görüntülər",
     "seeAll": "Hamısına bax",
-    "description": "JET School-da uşaqlar üçün keçirilən IT və proqramlaşdırma dərslərindən görüntülər"
+    "description": "JET Academy-də keçirilən interaktiv və praktiki dərslərdən görüntülər."
   },
   "blogs": {
     "title": "Bloq və media",
     "seeAll": "Hamısına bax",
-    "description": "JET School-da keçirilən kurslar, tədbirlər və layihələr haqqında ən son xəbərlər və məqalələr."
+    "description": "JET Academy-da keçirilən kurslar, tədbirlər və layihələr haqqında ən son xəbərlər və məqalələr."
   },
   "aboutPage": {
     "introduction": {
       "title": "Haqqımızda",
-      "description1": "JET School olaraq, biz 2021-ci ildən etibarən uşaqlar və yeniyetmələr üçün texnologiya dünyasını əyləncəli və öyrədici hala gətirməyi qarşımıza məqsəd qoymuşuq. Bizim əsas prinsipimiz 'Əylənərək Öyrən' şüarını rəhbər tutaraq, uşaqlara təhsili sevdirərək, onları gələcəyin texnoloji dünyasına hazırlamaqdır.",
-      "description2": "JET School-da IT-nin əsasları, proqramlaşdırma, dizayn və kibertəhlükəsizlik kimi sahələrdə dərslər keçirilir."
+      "description1": "2021-ci ildən etibarən JET Academy olaraq ölkənin texnologiya sahəsində aparıcı tədris mərkəzlərindən biri kimi özümüzü sübut etmişik və yüzlərlə yüksək ixtisaslı, uğurlu IT mütəxəssisi yetişdirmişik.",
+      "description2": "Biz tələbələrə real avadanlıqlar və layihələr üzərində praktiki bacarıqlar qazandırır, təlimlərimizi qısa və effektiv kurslar şəklində təqdim edirik ki, bilikləri sürətlə iş dünyasında tətbiq edə bilsinlər.",
+      "description3":"Proqramlarımız müasir və tələbata uyğun sahələri əhatə edir və professional, yüksək təcrübəli təlimçilərimiz tərəfindən keçirilir. Hər bir proqramımız beynəlxalq standartlara uyğun metodologiya əsasında hazırlanıb və tələbələrimizin real dünya təcrübəsi qazanmasını təmin edir. Biz həmçinin məzunlarımızın karyera inkişafına dəstək olmaq üçün onları partnyor şirkətlərlə əlaqələndiririk."
     },
     "mission": {
       "sectionTitle": "Missiyamız və Vizyonumuz",
       "title": "Missiya",
-      "description": "JET School-un missiyası gənc nəsli texnologiyanın sonsuz imkanlarını kəşf etməyə həvəsləndirmək, onların yaradıcılıq, tənqidi düşüncə və problem həll etmə bacarıqlarını inkişaf etdirməkdir."
+      "description": "Biz tələbələrə real cihazlar üzərində praktiki bacarıqlar qazandırır, sürətli və effektiv kurslarla onları iş dünyasına hazırlayırıq. Professional və yüksək təcrübəli təlimçilərimiz rəhbərliyi ilə, beynəlxalq standartlara uyğun metodologiya əsasında müasir tədris təqdim edir, məzunlarımızın karyera inkişafına aktiv dəstək oluruq."
     },
     "vision": {
       "title": "Vizyon",
-      "description": "JET School-un vizyonu uşaqları yalnız texnoloji biliklərlə deyil, həm də gələcəyin problemlərini həll etməyə hazır, təkcə istifadəçi deyil, texnologiyanın yaradıcısı ola biləcək liderlər kimi yetişdirməkdir."
+      "description": "Vizyonumuz, texnologiya sahəsində peşəkar tədrisin aparıcı mərkəzi olmaq və tələbələrimizi gələcəyin rəqabətədavamlı IT mütəxəssisləri kimi yetişdirməkdir."
     },
     "stats": {
       "teachingArea":"Tədris sahəsi",
@@ -304,8 +313,8 @@
   "coursesPage": {
     "title": "Tədris Proqramları",
     "description": "Bütün yaş qrupları və bacarıq səviyyələri üçün hazırlanmış texnoloji təhsil proqramlarımız ilə tanış olun",
-    "metaTitle": "JET School - Kurslar",
-    "metaDescription": "JET School-un uşaqlar üçün texnologiya təhsili proqramlarını araşdırın. Dəstəkləyici mühitdə kodlaşdırma, robotika, veb inkişafı və daha çox şey öyrənin.",
+    "metaTitle": "JET Academy - Kurslar",
+    "metaDescription": "JET Academy-un uşaqlar üçün texnologiya təhsili proqramlarını araşdırın. Dəstəkləyici mühitdə kodlaşdırma, robotika, veb inkişafı və daha çox şey öyrənin.",
     "searchPlaceholder": "Kursları axtar...",
     "filters": "Filtrlər",
     "level": "Səviyyə",
@@ -316,26 +325,26 @@
     "changeCriteria": "Lütfən axtarış meyarlarınızı dəyişdirin və ya filterləri sıfırlayın."
   },
   "Metadata": {
-    "title": "JET School | Uşaqlar üçün IT kursları, Proqramlaşdırma kursları!",
-    "titleTemplate": "%s | JET School Uşaqlar üçün IT kursları, Proqramlaşdırma kursları!",
-    "description": "JET School - Azərbaycanda uşaqlar üçün IT kursları, proqramlaşdırma kursları. Usaqlar ucun it kurslari, proqramlasdirma kurslari, suni intellekt kurslari.",
-    "keywords": "uşaqlar üçün proqramlaşdırma, IT məktəbi, JET School, jet school, kompüter kursları, coding, robotexnika, süni intellekt, scratch, python, uşaqlar üçün IT təhsili, Bakı IT məktəbi",
-    "ogTitle": "JET School | Uşaqlar üçün IT və Kompüter Mühəndisliyi Məktəbi",
-    "ogDescription": "Uşağınızın gələcəyinə sərmayə qoyun - JET School ilə müasir texnologiyaları kəşf edin",
-    "ogImageAlt": "JET School - Uşaqlar üçün IT Məktəbi",
-    "aboutPageTitle": "Haqqımızda | JET School",
-    "contactPageTitle": "Əlaqə Məlumatları | JET School",
-    "galleryPageTitle": "Qalereya | JET School",
-    "projectsPageTitle": "Layihələr | JET School",
-    "projectsPageDescription": "Jet Schoolun tələbə layihələri, tələbələrimizin innovasiya və yaradıcılığı nümayiş etdirir",
-    "glossaryPageTitle": "Texnoloji Lüğət | JET School",
-    "glossaryTermsPageTitle": "Bütün Terminlər | JET School",
-    "glossaryTermsLetterPageTitle": "\"{letter}\" ilə başlayan terminlər | JET School",
-    "glossaryCategoryDescription": "JET School glossariy lüğətində {category} kateqoriyasına aid terminlər",
+    "title": "JET Academy | IT kursları, Proqramlaşdırma kursları!",
+    "titleTemplate": "%s | JET Academy IT kursları, Proqramlaşdırma kursları!",
+    "description": "JET Academy - Azərbaycanda uşaqlar üçün IT kursları, proqramlaşdırma kursları. Usaqlar ucun it kurslari, proqramlasdirma kurslari, suni intellekt kurslari.",
+    "keywords": "uşaqlar üçün proqramlaşdırma, IT məktəbi, JET Academy, JET Academy, kompüter kursları, coding, robotexnika, süni intellekt, scratch, python, uşaqlar üçün IT təhsili, Bakı IT məktəbi",
+    "ogTitle": "JET Academy | Uşaqlar üçün IT və Kompüter Mühəndisliyi Məktəbi",
+    "ogDescription": "Uşağınızın gələcəyinə sərmayə qoyun - JET Academy ilə müasir texnologiyaları kəşf edin",
+    "ogImageAlt": "JET Academy - Uşaqlar üçün IT Məktəbi",
+    "aboutPageTitle": "Haqqımızda | JET Academy",
+    "contactPageTitle": "Əlaqə Məlumatları | JET Academy",
+    "galleryPageTitle": "Qalereya | JET Academy",
+    "projectsPageTitle": "Layihələr | JET Academy",
+    "projectsPageDescription": "JET Academyun tələbə layihələri, tələbələrimizin innovasiya və yaradıcılığı nümayiş etdirir",
+    "glossaryPageTitle": "Texnoloji Lüğət | JET Academy",
+    "glossaryTermsPageTitle": "Bütün Terminlər | JET Academy",
+    "glossaryTermsLetterPageTitle": "\"{letter}\" ilə başlayan terminlər | JET Academy",
+    "glossaryCategoryDescription": "JET Academy glossariy lüğətində {category} kateqoriyasına aid terminlər",
     "glossaryTermDefaultDescription": "IT və proqramlaşdırma termini haqqında məlumat",
-    "glossarySearchDescription": "JET School glossariy lüğətində axtarış edin",
-    "glossarySearchResultsTitle": "\"{query}\" üçün axtarış nəticələri | JET School",
-    "glossarySearchPageTitle": "Axtarış | JET School"
+    "glossarySearchDescription": "JET Academy glossariy lüğətində axtarış edin",
+    "glossarySearchResultsTitle": "\"{query}\" üçün axtarış nəticələri | JET Academy",
+    "glossarySearchPageTitle": "Axtarış | JET Academy"
   },
   "postsPage": {
     "pageTitle": "Bütün xəbərlər",
@@ -348,21 +357,21 @@
     "newsMetaTitle":"Xəbərlər",
     "offers": "Kampaniyalar",
     "metaTitle": "Bütün xəbərlər",
-    "metaDescription": "JET School-da keçirilən kurslar, tədbirlər və layihələr haqqında ən son xəbərlər və məqalələr.",
+    "metaDescription": "JET Academy-da keçirilən kurslar, tədbirlər və layihələr haqqında ən son xəbərlər və məqalələr.",
     "readMore": "Daha çox oxu",
     "noPostsFound": "Post tapılmadı",
     "tryDifferentFilters": "Amma olacaqlar!"
   },
   "blogPage": {
     "pageTitle": "Bloq",
-    "pageDescription": "JET School müəllimləri tərəfindən yazılmış məqalələr ilə tanış olun.",
+    "pageDescription": "JET Academy müəllimləri tərəfindən yazılmış məqalələr ilə tanış olun.",
     "allPosts": "Bütün xəbərlər",
     "event": "Tədbirlər",
     "news": "Xəbərlər",
     "blog": "Bloq",
     "offers": "Kampaniyalar",
     "metaTitle": "Bloq",
-    "metaDescription": "JET School müəllimləri tərəfindən yazılmış məqalələr ilə tanış olun.",
+    "metaDescription": "JET Academy müəllimləri tərəfindən yazılmış məqalələr ilə tanış olun.",
     "readMore": "Daha çox oxu",
     "noPostsFound": "Post tapılmadı",
     "tryDifferentFilters": "Amma olacaqlar!"
@@ -397,7 +406,7 @@
       "emptyText": "Uyğun termin tapılmadı",
       "searchPlaceholder": "Termin axtar...",
       "allText": "Hamısı",
-      "description": "JET School texnoloji lüğətində bütün IT terminləri"
+      "description": "JET Academy texnoloji lüğətində bütün IT terminləri"
     },
     "term": {
       "tagsText": "Teqlər",
@@ -412,7 +421,7 @@
       "categoryText": "Kateqoriya",
       "emptyText": "Axtarışınıza uyğun termin tapılmadı",
       "searchPlaceholder": "Termin axtar...",
-      "description": "JET School texnoloji lüğətində axtarış edin"
+      "description": "JET Academy texnoloji lüğətində axtarış edin"
     },
     "category": {
       "title": "{category} kateqoriyası",

@@ -72,7 +72,7 @@ export async function generateMetadata({
       ],
       apple: [{ url: "/icon.png", sizes: "180x180", type: "image/png" }],
     },
-    authors: [{ name: "JET School" }],
+    authors: [{ name: "JET Academy" }],
     category: "education",
   };
 }

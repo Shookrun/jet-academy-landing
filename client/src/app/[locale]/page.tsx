@@ -1,4 +1,4 @@
-// src/app/[locale]/page.tsx
+
 import AboutUs from "@/components/views/landing/home/about-us";
 import Blogs from "@/components/views/landing/home/blogs";
 import CoursesSlider from "@/components/views/landing/home/courses";
@@ -8,6 +8,8 @@ import Projects from "@/components/views/landing/home/projects";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { Locale } from "@/i18n/request";
+
+import TeamSectionMap from "@/components/views/landing/team-section";
 
 const getCourses = async (locale: string) => {
   try {
@@ -65,6 +67,7 @@ export async function generateMetadata({
 export default async function Home({ params }: { params: { locale: string } }) {
   const courses = await getCourses(params.locale);
 
+
   return (
     <main className="bg-background">
       <div
@@ -79,6 +82,7 @@ export default async function Home({ params }: { params: { locale: string } }) {
         <Hero />
         <CoursesSlider courses={courses} locale={params.locale as Locale} />
         <AboutUs />
+       <TeamSectionMap/>
         <Projects />
         <Gallery />
         <Blogs />

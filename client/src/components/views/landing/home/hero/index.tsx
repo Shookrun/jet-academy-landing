@@ -30,7 +30,7 @@ export default async function Hero() {
       >
         <Button
           variant="secondary"
-          icon={<FaCompass size={20} color="#FCAE1E" className="[@media(min-width:3500px)]:!w-12 [@media(min-width:3500px)]:!h-12" />}
+          icon={<FaCompass size={20} color="#1560bd" className="[@media(min-width:3500px)]:!w-12 [@media(min-width:3500px)]:!h-12" />}
           text="#yaratmağabaşla"
           className="
             shadow-jsshadow
@@ -45,13 +45,14 @@ export default async function Hero() {
         <h1
           className="
             font-bold text-jsblack
-            text-4xl md:text-3xl lg:text-4xl xl:text-5xl
+           
+            text-3xl md:text-3xl lg:text-4xl xl:text-4xl
             leading-tight
             [@media(min-width:3500px)]:!text-6xl
           "
         >
           {t("toJetSchool")}{" "}
-          <span className="text-jsyellow [@media(min-width:3500px)]:!text-6xl">{t("welcome")}!</span>
+          <span className="text-jsyellow text-4xl [@media(min-width:3500px)]:!text-6xl">{t("welcome")}!</span>
         </h1>
 
         <p
