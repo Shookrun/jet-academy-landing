@@ -30,7 +30,7 @@ export default function MissionVisionSection({
         <Image
           width={600}
           height={400}
-          src="/qiz1x1.jpg"
+          src="/sayt2.JPG"
           quality={100}
           alt="Teachers and students"
           className="w-full h-full object-cover bg-top  rounded-[32px]"

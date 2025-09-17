@@ -39,7 +39,7 @@ export default function IntroSection({
         <Image
           width={600}
           height={400}
-          src="/rasim.png"
+          src="/sayt5.jpg"
           quality={100}
           alt="Students coding"
           className="w-full bg-top object-cover h-full  rounded-[32px]"
