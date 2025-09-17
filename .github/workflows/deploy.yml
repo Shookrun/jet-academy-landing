@@ -3,7 +3,7 @@ name: Deploy to Droplet
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   deploy:
@@ -26,30 +26,13 @@ jobs:
           cd /root/jetacademy
 
           echo "🔄 Pulling latest changes..."
-          git fetch origin main
-          git reset --hard origin/main
+          git fetch origin master
+          git reset --hard origin/master
 
           echo "📁 Ensuring uploads directory exists..."
           mkdir -p ~/uploads-acad
 
-          echo "🔐 Creating environment file..."
-          cat > .env <<EOL
-          # Database
-          DATABASE_URL=mongodb://jetacad:jointome357@mongodb:27017/jetacad?authSource=admin&replicaSet=rs0
-
-          # NextAuth
-          NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}
-          NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }}
-
-          # API Configuration
-          JWT_SECRET=AHvn3/vwDVS6IkAkvEhmIw+lAdy0maDLUya4pZ4b7Ic=
-          NODE_ENV=production
-
-          # Frontend URLs
-          NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}
-          NEXT_PUBLIC_CDN_URL=${{ secrets.NEXT_PUBLIC_CDN_URL }}
-          NEXT_PUBLIC_APP_URL=${{ secrets.NEXT_PUBLIC_APP_URL }}
-          EOL
+          cd /root/jetacademy
 
           echo "🔧 Optimizing system for deployment..."
           # Clear Docker cache to free up space
@@ -71,20 +54,15 @@ jobs:
             sudo swapon /swapfile || true
           fi
 
-
           echo "🔨 Building and starting backend API..."
           docker compose build --no-cache api
           docker compose up -d api
-
-          # Wait for API to be ready
-          echo "⏳ Waiting for API to be ready..."
-          sleep 15
 
           echo "📁 Verifying uploads are mounted..."
           echo "Uploads directory contents:"
           ls -la ~/uploads-acad/ || echo "Uploads directory is empty or doesn't exist"
           echo "Uploads in container:"
-          docker exec nest-app-acad ls -la /app/uploads-acad/ || echo "No uploads directory in container"
+          docker exec nest-app ls -la /app/uploads-acad/ || echo "No uploads directory in container"
 
           echo "🔨 Building and starting frontend..."
           # Set Docker BuildKit for optimized builds
@@ -94,63 +72,5 @@ jobs:
           docker compose build --no-cache client
           docker compose up -d client
 
-          # Wait for client to be ready
-          echo "⏳ Waiting for client to be ready..."
-          sleep 20
-
-          echo "🔍 Verifying deployment..."
-          echo "Container status:"
-          docker compose ps
-
-          echo "🔍 Testing containers..."
-          echo "API logs (last 15 lines):"
-          docker logs nest-app-acad --tail=15
-
-          echo "Client logs (last 15 lines):"
-          docker logs next-app-acad --tail=15
-
-          # Check what ports containers are actually using
-          echo "🔍 Container port information:"
-          docker port next-app-acad
-          docker port nest-app-acad
-
-          echo "🔍 Environment variables in client container:"
-          docker exec next-app-acad env | grep -E "(NEXT_PUBLIC|PORT)" || echo "No relevant environment variables found"
-
-          echo "🧹 Cleaning up build cache..."
-          docker builder prune -f || true
-
-          echo "💾 Final system status:"
-          free -h
-          df -h
-
           echo "✅ Deployment complete!"
-
-
-          EOF
-
-      - name: Verify Deployment
-        run: |
-          ssh -i ~/.ssh/deploy_key ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_HOST }} <<'EOF'
-          cd /root/jetschool
-
-          echo "🔍 Final verification..."
-          echo "All containers:"
-          docker compose ps
-
-          echo "🔍 Detailed container inspection:"
-          echo "Next.js container details:"
-          docker inspect next-app-acad --format='{{.NetworkSettings.Ports}}'
-
-          echo "NestJS container details:"
-          docker inspect nest-app-acad --format='{{.NetworkSettings.Ports}}'
-
-          echo "📁 Final uploads verification:"
-          echo "Host uploads directory:"
-          ls -la ~/uploads-acad/ | head -10
-          echo "Container uploads directory:"
-          docker exec nest-app-acad ls -la /app/uploads-acad/ | head -10 || echo "Container uploads not accessible"
-
-          echo "✅ Application deployment verification complete!"
-          echo "📝 Note: Configure nginx separately to enable external access"
           EOF
