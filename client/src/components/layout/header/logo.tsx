@@ -9,11 +9,12 @@ interface LogoProps {
 
 export default function Logo({ className = "" }: LogoProps) {
   return (
-    <div className={`relative z-[52] w-48 h-10 ${className}`}>
+    <div className={`relative z-[52]${className}`}>
       <Image
         alt="Logo of Jet School"
         src="/logos/jetlogo.png"
-        fill
+        width={300}
+        height={100}
         className="object-fill"
         priority
       />
