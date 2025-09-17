@@ -6,12 +6,14 @@ interface IntroSectionProps {
   title: string;
   description1: string;
   description2: string;
+  description3: string;
 }
 
 export default function IntroSection({
   title,
   description1,
   description2,
+  description3
 }: IntroSectionProps) {
   return (
     <section className="container grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -25,6 +27,7 @@ export default function IntroSection({
         <div className="flex flex-col gap-4">
           <p className="text-gray-600 text-xl [@media(min-width:2500px)]:!text-2xl [@media(min-width:3500px)]:!text-4xl">{description1}</p>
           <p className="text-gray-600 text-xl [@media(min-width:2500px)]:!text-2xl [@media(min-width:3500px)]:!text-4xl">{description2}</p>
+          <p className="text-gray-600 text-xl [@media(min-width:2500px)]:!text-2xl [@media(min-width:3500px)]:!text-4xl">{description3}</p>
         </div>
       </motion.div>
       <motion.div

@@ -33,5 +33,17 @@ export const getAboutPoints = (t: any) => {
       position: "sticky",
       top: "300",
     },
+    {
+      title: t("points.price.title"),
+      description: t("points.price.description"),
+      position: "sticky",
+      top: "300",
+    },
+     {
+      title: t("points.comfort.title"),
+      description: t("points.comfort.description"),
+      position: "sticky",
+      top: "300",
+    },
   ];
 };

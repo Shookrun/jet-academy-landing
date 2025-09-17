@@ -12,7 +12,7 @@ export default function Logo({ className = "" }: LogoProps) {
     <div className={`relative z-[52] w-48 h-10 ${className}`}>
       <Image
         alt="Logo of Jet School"
-        src="/logos/JET_School_Yellowww.png"
+        src="/logos/jetlogo.png"
         fill
         className="object-fill"
         priority

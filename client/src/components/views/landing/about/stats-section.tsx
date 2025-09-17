@@ -12,9 +12,9 @@ interface StatsProps {
 
 export default function StatsSection({ stats }: StatsProps) {
   const statsData = [
-    { value: "12+", label: stats.teachingArea },
-    { value: "500+", label: stats.graduatesLabel },
-    { value: "25+", label: stats.groupsLabel },
+    { value: "10+", label: stats.teachingArea },
+    { value: "1500+", label: stats.graduatesLabel },
+    { value: "20+", label: stats.groupsLabel },
     { value: "200+", label: stats.studentsLabel },
   ];
 

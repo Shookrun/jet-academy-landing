@@ -35,9 +35,9 @@ function ScrollItems() {
         )}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center justify-center h-12 w-12 rounded-full bg-[#FFC726] hover:bg-[#FFD147] shadow-lg transition-all"
+        className="flex items-center justify-center h-12 w-12 rounded-full bg-[#1560bd] hover:bg-[#1580cd] shadow-lg transition-all"
       >
-        <FaWhatsapp className="h-6 w-6 text-black" />
+        <FaWhatsapp className="h-6 w-6 text-white" />
       </Link>
 
       <div className="relative">
@@ -74,9 +74,9 @@ function ScrollItems() {
 
         <button
           onClick={scrollToTop}
-          className="flex items-center relative z-40 justify-center h-12 w-12 rounded-full bg-[#FFC726] hover:bg-[#FFD147] shadow-lg transition-all"
+          className="flex items-center relative z-40 justify-center h-12 w-12 rounded-full bg-[#1560bd] hover:bg-[#1580cd] shadow-lg transition-all"
         >
-          <FaArrowUp className="h-6 w-6 text-black" />
+          <FaArrowUp className="h-6 w-6 text-white" />
         </button>
       </div>
     </motion.div>

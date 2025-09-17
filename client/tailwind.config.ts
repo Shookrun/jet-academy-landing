@@ -16,7 +16,7 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        jsyellow: "#FCAE1E",
+        jsyellow: "#1560bd",
         jsblack: "#1C1C1C",
       },
       boxShadow: {

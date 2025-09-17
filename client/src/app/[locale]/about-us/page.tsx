@@ -91,6 +91,7 @@ export default async function AboutPage({
         title={t("introduction.title")}
         description1={t("introduction.description1")}
         description2={t("introduction.description2")}
+        description3={t("introduction.description3")}
       />
 
       <MissionVisionSection
