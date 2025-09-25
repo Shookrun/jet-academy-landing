@@ -7,7 +7,7 @@ import * as path from 'path';
 
 @Injectable()
 export class PostService {
-  private readonly uploadDir = 'uploads';
+  private readonly uploadDir = 'uploads-acad';
   private readonly teamImageDir = 'post';
 
   private getRelativeImagePath(filename: string | null): string | null {

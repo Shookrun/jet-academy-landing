@@ -52,7 +52,7 @@ async function bootstrap() {
 
   // Static files middleware
   app.use((req, res, next) => {
-    if (req.path.includes('/uploads/') || req.path.endsWith('.webp')) {
+    if (req.path.includes('/uploads-acad/') || req.path.endsWith('.webp')) {
       res.setHeader('X-Robots-Tag', 'noindex, nofollow');
       res.setHeader('Access-Control-Allow-Origin', '*');
     }
@@ -97,7 +97,7 @@ async function bootstrap() {
 
   app.use('/robots.txt', (req, res) => {
     res.type('text/plain');
-    res.send('User-agent: *\nDisallow: /uploads/\nDisallow: /*.webp$');
+    res.send('User-agent: *\nDisallow: /uploads-acad/\nDisallow: /*.webp$');
   });
 
   app.enableShutdownHooks();

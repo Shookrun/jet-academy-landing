@@ -15,7 +15,7 @@ export class SharpPipe
     const originalName = path.parse(image.originalname).name;
     const filename = `${originalName}-${Date.now()}.webp`;
     const folder = this.folder || '';
-    const uploadPath = path.join(process.cwd(), 'uploads', folder);
+    const uploadPath = path.join(process.cwd(), 'uploads-acad', folder);
     const outputPath = path.join(uploadPath, filename);
 
     try {

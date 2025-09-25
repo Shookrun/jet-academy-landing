@@ -8,7 +8,7 @@ import { UpdateGalleryDto } from './dto/update-gallery.dto';
 
 @Injectable()
 export class GalleryService {
-  private readonly uploadDir = 'uploads';
+  private readonly uploadDir = 'uploads-acad';
   private readonly galleryImageDir = 'gallery';
 
   constructor(private prisma: PrismaService) {}

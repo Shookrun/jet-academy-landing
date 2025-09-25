@@ -9,7 +9,7 @@ import { UpdateTeamDto } from './dto/update-team.dto';
 
 @Injectable()
 export class TeamService {
-  private readonly uploadDir = 'uploads';
+  private readonly uploadDir = 'uploads-acad';
   private readonly teamImageDir = 'team';
 
   constructor(private prisma: PrismaService) {}

@@ -33,22 +33,25 @@ import { GlossaryModule } from './glossary/glossary.module';
     TeamModule,
     // ServeStaticModule - CORS headers əlavə edilib
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'uploads'),
-      serveRoot: '/uploads',
+      rootPath: join(__dirname, '..', 'uploads-acad'),
+      serveRoot: '/uploads-acad',
       serveStaticOptions: {
         index: false,
         setHeaders: (res, path, stat) => {
           // CORS headers for static files
           res.set('Access-Control-Allow-Origin', '*');
           res.set('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
-          res.set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+          res.set(
+            'Access-Control-Allow-Headers',
+            'Origin, X-Requested-With, Content-Type, Accept',
+          );
           res.set('Cross-Origin-Resource-Policy', 'cross-origin');
-          
+
           // Cache control for images
           if (path.match(/\.(jpg|jpeg|png|gif|webp|svg|ico)$/)) {
             res.set('Cache-Control', 'public, max-age=31536000, immutable');
           }
-          
+
           // Security headers
           res.set('X-Content-Type-Options', 'nosniff');
           res.set('X-Frame-Options', 'DENY');

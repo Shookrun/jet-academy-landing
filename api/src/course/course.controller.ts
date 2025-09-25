@@ -32,7 +32,7 @@ export class CourseController {
 
   private generateImageUrl(filename: string, request: Request): string {
     const baseUrl = process.env.APP_URL || `${request.protocol}://${request.get('host')}`;
-    return `${baseUrl}/uploads/courses/${filename}`;
+    return `${baseUrl}/uploads-acad/courses/${filename}`;
   }
 
   @Post()
@@ -41,7 +41,7 @@ export class CourseController {
 @UseInterceptors(
   FileInterceptor('image', {
     storage: diskStorage({
-      destination: './uploads/courses',
+      destination: './uploads-acad/courses',
       filename: (req, file, cb) => {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
         cb(null, `course-${uniqueSuffix}${extname(file.originalname)}`);
@@ -133,7 +133,7 @@ export class CourseController {
 @UseInterceptors(
   FileInterceptor('image', {
     storage: diskStorage({
-      destination: './uploads/courses',
+      destination: './uploads-acad/courses',
       filename: (req, file, cb) => {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
         cb(null, `course-${uniqueSuffix}${extname(file.originalname)}`);
