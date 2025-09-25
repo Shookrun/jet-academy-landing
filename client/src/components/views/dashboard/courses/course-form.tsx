@@ -84,7 +84,7 @@ export default function CourseForm({
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string>("");
 
-  
+  console.log(selectedImage)
   useEffect(() => {
     if (mode === "edit" && initialValues) {
       const watchedDescAz = watch("description.az");
@@ -172,15 +172,7 @@ export default function CourseForm({
     }
   };
 
-const getImageUrl = (url?: string): string => {
-  console.log(url)
-  if (!url) return "/default-course-image.jpg";
 
-
-  if (url.startsWith("data:")) return url;
-
-  return `/${url}`;
-};
 
 
   const removeImage = () => {
