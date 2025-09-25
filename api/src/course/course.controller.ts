@@ -32,7 +32,7 @@ export class CourseController {
 
   private generateImageUrl(filename: string, request: Request): string {
     const baseUrl = process.env.APP_URL || `${request.protocol}://${request.get('host')}`;
-    return `${baseUrl}/uploads-acad/courses/${filename}`;
+    return `${baseUrl}/uploads/courses/${filename}`;
   }
 
   @Post()

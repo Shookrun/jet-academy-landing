@@ -179,10 +179,7 @@ const getImageUrl = (url?: string): string => {
   // Base64 və ya inline image
   if (url.startsWith("data:")) return url;
 
-  // HTTP-ni HTTPS-ə çevir (mixed content üçün)
-  if (url.startsWith("http://api.jetschool.az")) {
-    return url.replace("http://", "https://");
-  }
+  // Remove hardcoded HTTP to HTTPS conversion since backend now generates correct URLs
 
   // HTTPS və digər tam URL-lər
   if (url.startsWith("http")) {
@@ -194,7 +191,7 @@ const getImageUrl = (url?: string): string => {
     const cdnUrl =
       process.env.NEXT_PUBLIC_CDN_URL ||
       process.env.NEXT_PUBLIC_API_URL ||
-      "http://localhost:3001";
+      "https://api.new.jetacademy.az";
     return cdnUrl.replace(/\/uploads$/, "") + url;
   }
 

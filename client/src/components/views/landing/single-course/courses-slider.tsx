@@ -31,17 +31,6 @@ const CoursesSlider = ({ courses, locale = "az" }: ICoursesSlider) => {
 
   const getImageUrl = (imageUrl?: string) => {
     if (!imageUrl) return "/default-course-image.jpg"; 
-    
-    if (imageUrl.startsWith("http://api.new.jetacademy.az")) {
-      const httpsUrl = imageUrl.replace("http://", "https://");
-     
-      return httpsUrl;
-    }
-    
-    if (imageUrl.startsWith("https://")) {
-      return imageUrl;
-    }
-    
     if (imageUrl.startsWith("/uploads")) {
       const cdnUrl = process.env.NEXT_PUBLIC_CDN_URL || "https://api.new.jetacademy.az/uploads";
       return cdnUrl.replace("/uploads", "") + imageUrl;
@@ -218,6 +207,7 @@ const CoursesSlider = ({ courses, locale = "az" }: ICoursesSlider) => {
                       <div className="relative w-[180px] h-[180px]">
                         <Image
                           src={getImageUrl(course.imageUrl)}
+                          unoptimized
                           alt={course.title[normalizedLocale]}
                           fill
                           className="object-contain transition-transform duration-300 group-hover:scale-110"

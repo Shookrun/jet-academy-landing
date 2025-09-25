@@ -34,7 +34,7 @@ import { GlossaryModule } from './glossary/glossary.module';
     // ServeStaticModule - CORS headers əlavə edilib
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'uploads-acad'),
-      serveRoot: '/uploads-acad',
+      serveRoot: '/uploads',
       serveStaticOptions: {
         index: false,
         setHeaders: (res, path, stat) => {
