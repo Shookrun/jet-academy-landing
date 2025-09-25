@@ -29,17 +29,6 @@ const CoursesSlider = ({ courses, locale = "az" }: ICoursesSlider) => {
   const getImageUrl = (imageUrl?: string) => {
     if (!imageUrl) return "/default-course-image.jpg"; 
     
-    // Remove hardcoded HTTP to HTTPS conversion since backend now generates correct URLs
-    
-    if (imageUrl.startsWith("https://")) {
-      return imageUrl;
-    }
-    
-    if (imageUrl.startsWith("/uploads")) {
-      const cdnUrl = process.env.NEXT_PUBLIC_CDN_URL || process.env.NEXT_PUBLIC_API_URL || "https://api.new.jetacademy.az";
-      return cdnUrl.replace(/\/uploads$/, "") + imageUrl;
-    }
-    
     return imageUrl;
   };
 

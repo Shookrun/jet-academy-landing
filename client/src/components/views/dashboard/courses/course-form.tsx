@@ -81,7 +81,6 @@ export default function CourseForm({
   const [shortDescriptionAz, setShortDescriptionAz] = useState("");
   const [shortDescriptionRu, setShortDescriptionRu] = useState("");
   
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string>("");
 
@@ -174,28 +173,12 @@ export default function CourseForm({
   };
 
 const getImageUrl = (url?: string): string => {
+  console.log(url)
   if (!url) return "/default-course-image.jpg";
 
-  // Base64 və ya inline image
+
   if (url.startsWith("data:")) return url;
 
-  // Remove hardcoded HTTP to HTTPS conversion since backend now generates correct URLs
-
-  // HTTPS və digər tam URL-lər
-  if (url.startsWith("http")) {
-    return url;
-  }
-
-  // /uploads üçün CDN və ya API URL
-  if (url.startsWith("/uploads")) {
-    const cdnUrl =
-      process.env.NEXT_PUBLIC_CDN_URL ||
-      process.env.NEXT_PUBLIC_API_URL ||
-      "https://api.new.jetacademy.az";
-    return cdnUrl.replace(/\/uploads$/, "") + url;
-  }
-
-  // Əgər sadəcə relative path-dirsə
   return `/${url}`;
 };
 
@@ -410,11 +393,11 @@ const getImageUrl = (url?: string): string => {
                   <div className="relative">
                     <div className="relative w-[200px] h-48 rounded-lg overflow-hidden">
                       <Image
-                        src={getImageUrl(imagePreview)}
+                        src={imagePreview}
                         alt="Course preview"
                         fill
                         className="object-cover"
-                        unoptimized={imagePreview.startsWith("data:")}
+                        unoptimized={true}
                       />
                     </div>
                     <Button
