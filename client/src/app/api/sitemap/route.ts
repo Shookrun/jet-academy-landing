@@ -86,7 +86,7 @@ async function getGlossaryTerms(): Promise<GlossaryTerm[]> {
 }
 
 export async function GET() {
-  const languages = ["az", "ru"];
+  const languages = ["az", "en"];
   const baseUrl = "https://jetschool.az";
 
   const staticRoutes = [

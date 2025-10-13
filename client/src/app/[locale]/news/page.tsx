@@ -117,7 +117,7 @@ export default async function AllPostsPage({
       page,
       limit,
       postType: type,
-      includeBlogs: false,
+      includeBlogs: true,
     }),
     getTranslations({ locale, namespace: "postsPage" }),
   ]);

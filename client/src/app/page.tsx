@@ -7,8 +7,8 @@ export default function RootPage() {
 
   let locale = "az";
 
-  if (acceptLanguage.includes("ru")) {
-    locale = "ru";
+  if (acceptLanguage.includes("en")) {
+    locale = "en";
   } else if (acceptLanguage.includes("az")) {
     locale = "az";
   }

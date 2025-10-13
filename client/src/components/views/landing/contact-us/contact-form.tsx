@@ -11,9 +11,9 @@ import api from "@/utils/api/axios";
 import Select from "@/components/ui/select";
 import { MdClose, MdOutlineCheck } from "react-icons/md";
 
-const ageOptions = Array.from({ length: 7 }, (_, i) => ({
-  value: i + 9,
-  label: `${i + 9}`,
+const ageOptions = Array.from({ length: 30 }, (_, i) => ({
+  value: i + 17,
+  label: `${i + 17}`,
 }));
 
 const ContactForm = () => {

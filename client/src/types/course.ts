@@ -93,6 +93,7 @@ export interface CourseEligibility {
 }
 
 export interface Course {
+  [x: string]: any;
   id: string;
   title: MultilingualContent;
   description: MultilingualContent;

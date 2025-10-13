@@ -23,181 +23,165 @@ const CourseListingClient = ({ courses, locale = "az" }: ICoursesSlider) => {
 
   const normalizedLocale = locale.slice(0, 2) as "az" | "ru";
 
+  const getImageUrl = (imageUrl?: string) => {
+    if (!imageUrl) return "/default-course-image.jpg";
+    if (imageUrl.startsWith("https://")) return imageUrl;
 
-const getImageUrl = (imageUrl?: string) => {
-  if (!imageUrl) return "/default-course-image.jpg"; 
-  
-  // Remove hardcoded HTTP to HTTPS conversion since backend now generates correct URLs
-  
+    if (imageUrl.startsWith("/uploads")) {
+      const cdnUrl =
+        process.env.NEXT_PUBLIC_CDN_URL ||
+        process.env.NEXT_PUBLIC_API_URL ||
+        "https://api.jetschool.az";
+      return cdnUrl.replace(/\/uploads$/, "") + imageUrl;
+    }
 
-  if (imageUrl.startsWith("https://")) {
     return imageUrl;
-  }
-  
-
-  if (imageUrl.startsWith("/uploads")) {
-    const cdnUrl = process.env.NEXT_PUBLIC_CDN_URL || process.env.NEXT_PUBLIC_API_URL || "https://api.jetschool.az";
-    return cdnUrl.replace(/\/uploads$/, "") + imageUrl;
-  }
-  
-  return imageUrl;
-};
+  };
 
   return (
-    <div className="container mx-auto my-20 p-0">
+    <div className="container mx-auto my-20 px-0">
+      {/* Scroll animasiyası üçün style */}
+      <style jsx>{`
+        @keyframes scroll-tags {
+          0% {
+            transform: translateX(0%);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        .scrolling-tags {
+          animation: scroll-tags 15s linear infinite;
+        }
+        .scrolling-tags:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
 
       <div className="relative">
         {isClient ? (
           <div
             className="
-              grid grid-cols-1 md:grid-cols-2
-              gap-6 py-4
-              4xl:gap-8 4xl:py-6
-              [@media(min-width:2500px)]:grid-cols-4
+              grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4
+              gap-6 sm:gap-8 lg:gap-10 py-6
             "
           >
             {displayCourses.map((course: Course) => {
-              const tags =
-                course.newTags?.[normalizedLocale] ??
-                course.tag ??
-                [];
-
               const cardStyle = {
-                backgroundColor: course.backgroundColor || "#FEF3C7",
+                backgroundColor: course.backgroundColor || "#FFE082",
                 borderColor: course.borderColor || "#F59E0B",
-                color: course.textColor || "#1F2937",
+                textColor: course.textColor || "#1A1A1A",
               };
 
-              const shortDesc = course.shortDescription?.[normalizedLocale] || 
-                (normalizedLocale === "az" ? "Texnologiya dünyasına ilk addımını at!" : "Сделай первый шаг в мир технологий!");
+              const title =
+                course.title?.[normalizedLocale] || "Untitled Course";
+              const slogan =
+                course.slogan?.[normalizedLocale] ||
+                course.shortDescription?.[normalizedLocale] ||
+                (normalizedLocale === "az"
+                  ? "Texnologiya dünyasına ilk addımını at!"
+                  : "Сделай первый шаг в мир технологий!");
+              const tags =
+                course.newTags?.[normalizedLocale] ?? course.tag ?? [];
+              const level =
+                course.level?.[normalizedLocale] ||
+                (normalizedLocale === "az" ? "Başlanğıc" : "Начальный");
+              const age = course.ageRange || "9-15";
+              const duration = course.duration || "6";
 
               return (
                 <Link
                   key={course.id}
                   href={`/${normalizedLocale}/course/${course.slug[normalizedLocale]}`}
                   className="
-                    relative flex flex-col
-                    w-full border-2 
-                    rounded-[32px] overflow-hidden
-                    p-6 min-h-[340px]
-                    transition-all duration-300 hover:shadow-lg hover:scale-[1.02]
-                    group
+                    relative flex flex-col justify-between
+                    rounded-2xl overflow-hidden
+                    p-8 sm:p-10
+                    min-h-[320px] sm:min-h-[340px]
+                    transition-all duration-300
+                    hover:scale-[1.03] hover:shadow-xl
+                    cursor-pointer
                   "
                   style={{
                     backgroundColor: cardStyle.backgroundColor,
-                    borderColor: cardStyle.borderColor,
-                    color: cardStyle.color,
+                    color: cardStyle.textColor,
+                    border: `2px solid ${cardStyle.borderColor}`,
                   }}
                 >
+                  {/* Başlıq və slogan */}
+                  <div className="z-10">
+                    <h2 className="text-2xl sm:text-3xl font-bold mb-3 leading-tight text-gray-900">
+                      {title}
+                    </h2>
+                    <p className="text-base sm:text-lg opacity-80 font-medium">
+                      {slogan}
+                    </p>
+                  </div>
 
-                  <div 
-                    className="absolute -top-12 -right-12 w-32 h-32 rounded-full opacity-60" 
-                    style={{ backgroundColor: course.borderColor || "#F59E0B" }}
-                  />
-                  
-          
-                  <div className="relative z-20 flex flex-col gap-3 pb-4">
-                  
-                    <div>
-                      <h2 className="text-2xl font-bold leading-tight mb-1" style={{ color: course.borderColor || "#F59E0B" }}>
-                        {course.title[normalizedLocale]}
-                      </h2>
-                      <p className="text-base" style={{ color: course.textColor || "#1F2937" }}>
-                        {shortDesc}
-                      </p>
-                    </div>
+                  {/* Əlavə məlumatlar */}
+                  <div className="flex flex-col gap-1 text-sm sm:text-base mt-5 opacity-90">
+                    <p>
+                      <span className="font-semibold">
+                        {normalizedLocale === "az" ? "Yaş:" : "Возраст:"}
+                      </span>{" "}
+                      {age}
+                    </p>
+                    <p>
+                      <span className="font-semibold">
+                        {normalizedLocale === "az" ? "Səviyyə:" : "Уровень:"}
+                      </span>{" "}
+                      {level}
+                    </p>
+                    <p>
+                      <span className="font-semibold">
+                        {normalizedLocale === "az"
+                          ? "Müddət:"
+                          : "Длительность:"}
+                      </span>{" "}
+                      {duration} {normalizedLocale === "az" ? "ay" : "мес."}
+                    </p>
+                  </div>
 
-
-                    <div className="space-y-2 mt-3">
-                      {course.ageRange && (
-                        <div className="flex items-center gap-2">
-                          <div 
-                            className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
-                            style={{ backgroundColor: course.borderColor || "#F59E0B" }}
-                          >
-                            <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                            </svg>
-                          </div>
-                          <span className="text-base" style={{ color: course.textColor || "#1F2937" }}>
-                            <span className="font-semibold">{normalizedLocale === "az" ? "Yaş:" : "Возраст:"}</span> {course.ageRange}
-                          </span>
-                        </div>
-                      )}
-                      
-                      <div className="flex items-center gap-2">
-                        <div 
-                          className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
-                          style={{ backgroundColor: course.borderColor || "#F59E0B" }}
-                        >
-                          <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                          </svg>
-                        </div>
-                        <span className="text-base" style={{ color: course.textColor || "#1F2937" }}>
-                          <span className="font-semibold">{normalizedLocale === "az" ? "Səviyyə:" : "Уровень:"}</span> {course.level[normalizedLocale]}
-                        </span>
-                      </div>
-
-                      <div className="flex items-center gap-2">
-                        <div 
-                          className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
-                          style={{ backgroundColor: course.borderColor || "#F59E0B" }}
-                        >
-                          <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                          </svg>
-                        </div>
-                        <span className="text-base" style={{ color: course.textColor || "#1F2937" }}>
-                          <span className="font-semibold">{normalizedLocale === "az" ? "Müddət:" : "Длительность:"}</span> {course.duration} {normalizedLocale === "az" ? "ay" : "месяцев"}
-                        </span>
-                      </div>
-                    </div>
-
-
-                    {tags.length > 0 && (
-                      <div className="flex flex-wrap gap-2 mt-3">
-                        {tags.slice(0, 4).map((tag, i) => (
+                  {/* Slider kimi tag-lar */}
+                  {tags.length > 0 && (
+                    <div className="relative overflow-hidden mt-6 -mx-8 px-8">
+                      <div className="scrolling-tags flex gap-2 w-max">
+                        {[...tags, ...tags].map((tag, i) => (
                           <span
                             key={i}
                             className="
-                              text-sm bg-white
-                              px-3 py-1.5 rounded-full
-                              shadow-sm font-medium
+                              text-xs sm:text-sm px-3 py-1
+                              bg-white bg-opacity-80
+                              rounded-full font-medium
+                              shadow-sm whitespace-nowrap
                             "
-                            style={{ 
-                              color: course.textColor || "#1F2937",
-                              backgroundColor: "rgba(255, 255, 255, 0.9)"
+                            style={{
+                              color: cardStyle.textColor,
                             }}
                           >
                             {tag}
                           </span>
                         ))}
-                        {tags.length > 4 && (
-                          <span 
-                            className="text-sm px-3 py-1.5 bg-white/90 rounded-full"
-                            style={{ color: course.textColor || "#1F2937" }}
-                          >
-                            +{tags.length - 4} {normalizedLocale === "az" ? "daha" : "еще"}
-                          </span>
-                        )}
                       </div>
-                    )}
-                  </div>
-
-
-                  <div className="absolute bottom-0 right-0 z-40">
-                    <div className="relative w-[180px] h-[180px]">
-                      <Image
-                        src={getImageUrl(course.imageUrl)}
-                        alt={course.title[normalizedLocale]}
-                        fill
-                        className="object-contain transition-transform duration-300 group-hover:scale-110"
-                        sizes="180px"
-                        priority={false}
-                      />
                     </div>
+                  )}
+
+                  {/* Şəkil */}
+                  <div className="absolute bottom-5 right-5 sm:bottom-8 sm:right-8 w-[120px] h-[120px] sm:w-[160px] sm:h-[160px] drop-shadow-lg">
+                    <Image
+                      src={getImageUrl(course.imageUrl)}
+                      alt={title}
+                      fill
+                      className="object-contain transition-transform duration-300 group-hover:scale-110"
+                      sizes="150px"
+                    />
                   </div>
+
+                  {/* Dekorativ dairə */}
+                  <div
+                    className="absolute w-[160px] h-[160px] rounded-full opacity-30 -bottom-10 -right-10 blur-2xl"
+                    style={{ backgroundColor: cardStyle.borderColor }}
+                  ></div>
                 </Link>
               );
             })}

@@ -269,10 +269,10 @@
         "minLength": "Soyad ən azı 2 simvol olmalıdır"
       },
       "childAge": {
-        "label": "Övladınızın yaşı",
-        "placeholder": "Övladınızın yaşını seçin",
+        "label": "Yaşınız",
+        "placeholder": "Yaşınızı Seçin",
         "required": "Yaş tələb olunur",
-        "description": "9-15 yaş arası"
+        "description": "16+ Yaş "
       },
       "childLanguage": {
         "label": "Tədris dili",
