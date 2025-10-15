@@ -30,7 +30,7 @@ function ScrollItems() {
       style={{ opacity }}
     >
       <Link
-        href={`https://wa.me/+994709836699?text=${encodeURIComponent(
+        href={`https://wa.me/+994509836699?text=${encodeURIComponent(
           "Salam, uşaqlar üçün olan kurslar haqqında məlumat əldə etmək istəyirəm!"
         )}`}
         target="_blank"
