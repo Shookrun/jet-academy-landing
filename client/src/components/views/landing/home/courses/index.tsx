@@ -114,12 +114,7 @@ const CoursesSlider = ({ courses, locale = "az" }: ICoursesSlider) => {
 
                   {/* Əlavə məlumatlar */}
                   <div className="flex flex-col gap-1 text-sm sm:text-base mt-5 opacity-90">
-                    <p>
-                      <span className="font-semibold">
-                        {normalizedLocale === "az" ? "Yaş:" : "Возраст:"}
-                      </span>{" "}
-                      {age}
-                    </p>
+            
                     <p>
                       <span className="font-semibold">
                         {normalizedLocale === "az" ? "Səviyyə:" : "Уровень:"}

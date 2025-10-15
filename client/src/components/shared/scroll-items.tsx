@@ -31,7 +31,7 @@ function ScrollItems() {
     >
       <Link
         href={`https://wa.me/+994509836699?text=${encodeURIComponent(
-          "Salam, uşaqlar üçün olan kurslar haqqında məlumat əldə etmək istəyirəm!"
+          ""
         )}`}
         target="_blank"
         rel="noopener noreferrer"
