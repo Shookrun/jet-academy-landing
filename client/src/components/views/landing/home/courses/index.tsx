@@ -26,10 +26,16 @@ const CoursesSlider = ({ courses, locale = "az" }: ICoursesSlider) => {
 
   const normalizedLocale = locale.slice(0, 2) as "az" | "ru";
 
-  const getImageUrl = (imageUrl?: string) => {
-    if (!imageUrl) return "/default-course-image.jpg";
-    return imageUrl;
-  };
+const getImageUrl = (imageUrl?: string) => {
+  if (!imageUrl) return "/default-course-image.jpg";
+
+  return imageUrl
+    .replace("http://api.new.jetacademy.az", "https://api.jetacademy.az")
+    .replace("https://api.new.jetacademy.az", "https://api.jetacademy.az")
+    .replace("http://localhost:3001", "https://api.jetacademy.az");
+};
+
+
 
   return (
     <div className="container mx-auto my-12 sm:my-16 lg:my-20 px-0">
