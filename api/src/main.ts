@@ -21,8 +21,8 @@ async function bootstrap() {
       const allowedOrigins = [
         'https://jetschool.az',
         'https://www.jetschool.az',
-        'https://new.jetacademy.az',
-        'https://www.new.jetacademy.az',
+        'https://jetacademy.az',
+        'https://www.jetacademy.az',
         'http://localhost:3000',
         'http://localhost:3001',
         'http://localhost:3002',

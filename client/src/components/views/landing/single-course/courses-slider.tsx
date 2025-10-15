@@ -32,7 +32,7 @@ const CoursesSlider = ({ courses, locale = "az" }: ICoursesSlider) => {
   const getImageUrl = (imageUrl?: string) => {
     if (!imageUrl) return "/default-course-image.jpg"; 
     if (imageUrl.startsWith("/uploads")) {
-      const cdnUrl = process.env.NEXT_PUBLIC_CDN_URL || "https://api.new.jetacademy.az/uploads";
+      const cdnUrl = process.env.NEXT_PUBLIC_CDN_URL || "https://api.jetacademy.az/uploads";
       return cdnUrl.replace("/uploads", "") + imageUrl;
     }
     

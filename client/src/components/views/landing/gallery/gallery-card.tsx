@@ -19,12 +19,12 @@ const getImageUrl = (imageUrl?: string) => {
   }
   
   if (imageUrl.startsWith("/uploads")) {
-    const cdnUrl = process.env.NEXT_PUBLIC_CDN_URL || "https://api.new.jetacademy.az";
+    const cdnUrl = process.env.NEXT_PUBLIC_CDN_URL || "https://api.jetacademy.az";
     return cdnUrl + imageUrl;
   }
   
   // CDN URL varsa kullan
-  return `${process.env.NEXT_PUBLIC_CDN_URL || "https://api.new.jetacademy.az"}/${imageUrl}`;
+  return `${process.env.NEXT_PUBLIC_CDN_URL || "https://api.jetacademy.az"}/${imageUrl}`;
 };
 
 export default function GalleryCard({
