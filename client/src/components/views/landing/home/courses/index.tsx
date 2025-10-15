@@ -80,7 +80,6 @@ const CoursesSlider = ({ courses, locale = "az" }: ICoursesSlider) => {
               const level =
                 course.level?.[normalizedLocale] ||
                 (normalizedLocale === "az" ? "Başlanğıc" : "Начальный");
-              const age = course.ageRange || "9-15";
               const duration = course.duration || "6";
 
               return (
