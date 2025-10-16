@@ -35,9 +35,6 @@ export default async function GlossaryContact({
             address={
               contactData.address[locale as keyof typeof contactData.address]
             }
-            address2={
-              contactData.address2[locale as keyof typeof contactData.address2]
-            }
             whatsapp={contactData.whatsapp}
           />
         </div>
