@@ -61,12 +61,6 @@ const nextConfig = {
         port: "",
         pathname: "/**",
       },
-      {
-        protocol: "https",
-        hostname: "api.jetschool.az",
-        port: "",
-        pathname: "/**",
-      },
        {
         protocol: "https",
         hostname: "api.jetacademy.az",
