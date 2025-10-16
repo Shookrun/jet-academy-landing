@@ -372,6 +372,7 @@ export default function EditContactPage() {
                 {isSubmitting ? "Yenilənir..." : "Yenilə"}
               </Button>
             </div>
+            
           </form>
         </Card>
       </motion.div>
