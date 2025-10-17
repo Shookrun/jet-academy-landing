@@ -28,7 +28,6 @@ interface GalleryImage {
   id: string;
   title: {
     az: string;
-    en?: string;
     en: string;
   };
   imageUrl: string;

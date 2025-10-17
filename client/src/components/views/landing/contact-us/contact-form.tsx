@@ -37,7 +37,6 @@ const ContactForm = () => {
     reset,
     setValue,
     control,
-    watch,
   } = useForm<RequestForm>();
 
   console.log(isLoadingCourses)
