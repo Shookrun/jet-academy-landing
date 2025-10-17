@@ -18,9 +18,9 @@ export default function CreatePostPage() {
     formState: { errors, isSubmitting },
   } = useForm<PostFormInputs>({
     defaultValues: {
-      title: { az: "", ru: "" },
-      content: { az: "", ru: "" },
-      slug: { az: "", ru: "" },
+      title: { az: "", en: "" },
+      content: { az: "", en: "" },
+      slug: { az: "", en: "" },
       imageUrl: "",
       tags: [],
       postType: PostType.BLOG,
@@ -49,11 +49,11 @@ export default function CreatePostPage() {
       const formData = new FormData();
 
       formData.append("title[az]", data.title.az);
-      formData.append("title[ru]", data.title.ru);
+      formData.append("title[en]", data.title.en);
       formData.append("content[az]", data.content.az);
-      formData.append("content[ru]", data.content.ru);
+      formData.append("content[en]", data.content.en);
       formData.append("slug[az]", data.slug.az);
-      formData.append("slug[ru]", data.slug.ru);
+      formData.append("slug[en]", data.slug.en);
 
       formData.append("published", String(data.published));
       formData.append("postType", data.postType);

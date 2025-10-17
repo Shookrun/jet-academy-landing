@@ -12,7 +12,7 @@ interface TeachersSectionProps {
   data: {
     teachers: CourseTeacherAsMember[];
   };
-  locale: "az" | "ru";
+  locale: "az" | "en";
   title: string;
   description: string;
 }

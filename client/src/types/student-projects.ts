@@ -9,14 +9,14 @@ export interface Project {
   id: string;
   description: {
     az: string;
-    ru: string;
+    en: string;
   };
   imageUrl: string;
   link: string;
   author: string;
   title: {
     az: string;
-    ru: string;
+    en: string;
   };
   createdAt: Date;
   updatedAt: Date;

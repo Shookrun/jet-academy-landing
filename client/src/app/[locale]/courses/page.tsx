@@ -22,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
       canonical: canonicalUrl,
       languages: {
         az: `${baseUrl}/courses`,
-        ru: `${baseUrl}/ru/courses`,
+        en: `${baseUrl}/en/courses`,
       },
     },
     openGraph: {

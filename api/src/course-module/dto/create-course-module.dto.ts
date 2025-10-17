@@ -7,7 +7,7 @@ export class CreateCourseModuleDto {
   @ApiProperty({
     example: {
       az: 'JavaScript Basics',
-      ru: 'Основы JavaScript',
+      en: 'JavaScript Basics',
     },
   })
   title: Prisma.JsonValue;
@@ -18,7 +18,7 @@ export class CreateCourseModuleDto {
     required: false,
     example: {
       az: 'JavaScript fundamentals and core concepts',
-      ru: 'Основы JavaScript и основные концепции',
+      en: 'JavaScript fundamentals and core concepts',
     },
   })
   description?: Prisma.JsonValue;
@@ -27,7 +27,7 @@ export class CreateCourseModuleDto {
   @ApiProperty({
     example: {
       az: 'Learn about JavaScript variables and data types',
-      ru: 'Изучите переменные и типы данных JavaScript',
+      en: 'Learn about JavaScript variables and data types',
     },
   })
   content: Prisma.JsonValue;

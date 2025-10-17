@@ -30,7 +30,7 @@ export async function generateMetadata({
           locale === "az"
             ? `${baseUrl}/contact-us`
             : `${baseUrl}/az/contact-us`,
-        ru: `${baseUrl}/ru/contact-us`,
+        en: `${baseUrl}/en/contact-us`,
       },
     },
     openGraph: {

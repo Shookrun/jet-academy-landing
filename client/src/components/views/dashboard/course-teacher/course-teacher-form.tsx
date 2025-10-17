@@ -81,15 +81,15 @@ export default function CourseTeacherForm({
 
             <div className="space-y-2">
               <Textarea
-                label="Описание (RU)"
+                label="Описание (EN)"
                 variant="bordered"
                 startContent={<MdDescription className="text-gray-400" />}
                 isDisabled={isSubmitting}
-                {...register("description.ru", {
+                {...register("description.en", {
                   required: "Описание обязательно",
                 })}
-                isInvalid={!!errors.description?.ru}
-                errorMessage={errors.description?.ru?.message}
+                isInvalid={!!errors.description?.en}
+                errorMessage={errors.description?.en?.message}
                 classNames={{
                   input: "bg-transparent",
                   inputWrapper: [

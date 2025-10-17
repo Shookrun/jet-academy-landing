@@ -134,8 +134,8 @@ const middlewares = withAuth(
   async function middleware(request) {
     const pathname = request.nextUrl.pathname;
 
-    if (pathname.match(/^\/(az|ru)\/dashboard\/login/)) {
-      const newUrl = new URL(pathname.replace(/^\/(az|ru)/, ""), request.url);
+    if (pathname.match(/^\/(az|en)\/dashboard\/login/)) {
+      const newUrl = new URL(pathname.replace(/^\/(az|en)/, ""), request.url);
       return NextResponse.redirect(newUrl);
     }
 
@@ -191,6 +191,6 @@ export const config = {
     "/dashboard/:path*",
     "/((?!api|_next|public|_vercel|.*\\..*|favicon.ico).*)",
     "/",
-    "/(az|ru)/:path*",
+    "/(az|en)/:path*",
   ],
 };

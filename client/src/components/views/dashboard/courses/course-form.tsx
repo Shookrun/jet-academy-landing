@@ -71,7 +71,7 @@ export default function CourseForm({
     initialValues?.newTags?.az || []
   );
   const [tagsRu, setTagsRu] = useState<string[]>(
-    initialValues?.newTags?.ru || []
+    initialValues?.newTags?.en || []
   );
   const [tagInputAz, setTagInputAz] = useState("");
   const [tagInputRu, setTagInputRu] = useState("");
@@ -88,9 +88,9 @@ export default function CourseForm({
   useEffect(() => {
     if (mode === "edit" && initialValues) {
       const watchedDescAz = watch("description.az");
-      const watchedDescRu = watch("description.ru");
+      const watchedDescRu = watch("description.en");
       const watchedShortDescAz = watch("shortDescription.az");
-      const watchedShortDescRu = watch("shortDescription.ru");
+      const watchedShortDescRu = watch("shortDescription.en");
       
       if (watchedDescAz) setDescriptionAz(watchedDescAz);
       if (watchedDescRu) setDescriptionRu(watchedDescRu);
@@ -107,7 +107,7 @@ export default function CourseForm({
   useEffect(() => {
     if (initialValues) {
       if (initialValues.newTags?.az) setTagsAz(initialValues.newTags.az);
-      if (initialValues.newTags?.ru) setTagsRu(initialValues.newTags.ru);
+      if (initialValues.newTags?.en) setTagsRu(initialValues.newTags.en);
     }
   }, [initialValues]);
 
@@ -115,19 +115,19 @@ export default function CourseForm({
     {
       value: {
         az: "Başlanğıc",
-        ru: "Начинающий",
+        en: "Начинающий",
       },
     },
     {
       value: {
         az: "Orta",
-        ru: "Средний",
+        en: "Средний",
       },
     },
     {
       value: {
         az: "Qabaqcıl",
-        ru: "Продвинутый",
+        en: "Продвинутый",
       },
     },
   ];
@@ -211,7 +211,7 @@ export default function CourseForm({
     if (tagInputRu.trim() && !tagsRu.includes(tagInputRu.trim())) {
       const newTags = [...tagsRu, tagInputRu.trim()];
       setTagsRu(newTags);
-      setValue("newTags.ru", newTags);
+      setValue("newTags.en", newTags);
       setTagInputRu("");
     }
   };
@@ -225,7 +225,7 @@ export default function CourseForm({
   const handleRemoveTagRu = (tagToRemove: string) => {
     const newTags = tagsRu.filter((tag) => tag !== tagToRemove);
     setTagsRu(newTags);
-    setValue("newTags.ru", newTags);
+    setValue("newTags.en", newTags);
   };
 
   const handleKeyDownAz = (e: React.KeyboardEvent) => {
@@ -286,14 +286,14 @@ export default function CourseForm({
               <div className="space-y-2">
                 <label className="text-sm font-medium flex items-center gap-2">
                   <MdDescription className="text-gray-400" />
-                  Краткое описание (RU)
+                  Brief description (EN)
                 </label>
                 <Input
                   type="text"
                   variant="bordered"
-                  placeholder="Сделай первый шаг в мир технологий!"
+                  placeholder="Take your first step into the world of technology!"
                   value={shortDescriptionRu}
-                  onChange={(e) => handleShortDescriptionChange("ru", e.target.value)}
+                  onChange={(e) => handleShortDescriptionChange("en", e.target.value)}
                   isDisabled={isSubmitting}
                   classNames={{
                     input: "bg-transparent",
@@ -467,17 +467,17 @@ export default function CourseForm({
               <div className="space-y-2">
                 <Input
                   type="text"
-                  label="Заголовок (RU)"
+                  label="Heading (EN)"
                   variant="bordered"
                   startContent={<MdTitle className="text-gray-400" />}
                   isDisabled={isSubmitting}
-                  {...register("title.ru", {
-                    required: "Заголовок обязателен",
+                  {...register("title.en", {
+                    required: "Title is required",
                     onChange: (e: any) =>
-                      handleTitleChange("ru", e.target.value),
+                      handleTitleChange("en", e.target.value),
                   })}
-                  isInvalid={!!errors.title?.ru}
-                  errorMessage={errors.title?.ru?.message}
+                  isInvalid={!!errors.title?.en}
+                  errorMessage={errors.title?.en?.message}
                   classNames={{
                     input: "bg-transparent",
                     inputWrapper: [
@@ -488,11 +488,11 @@ export default function CourseForm({
 
                 <Input
                   type="text"
-                  label="Slug (RU)"
+                  label="Slug (EN)"
                   variant="bordered"
                   startContent={<MdLink className="text-gray-400" />}
                   isDisabled={true}
-                  {...register("slug.ru")}
+                  {...register("slug.en")}
                   classNames={{
                     input: "bg-transparent",
                     inputWrapper: ["bg-white border-2"],
@@ -529,22 +529,22 @@ export default function CourseForm({
               <div className="space-y-2">
                 <label className="text-sm font-medium flex items-center gap-2">
                   <MdDescription className="text-gray-400" />
-                  Описание (RU)
+                  Description (EN)
                 </label>
                 <div className="h-64">
                   <ReactQuill
                     theme="snow"
                     value={descriptionRu}
-                    onChange={(value) => handleDescriptionChange("ru", value)}
+                    onChange={(value) => handleDescriptionChange("en", value)}
                     modules={modules}
                     formats={formats}
                     className="h-48 bg-white"
                     readOnly={isSubmitting}
                   />
                 </div>
-                {errors.description?.ru && (
+                {errors.description?.en && (
                   <p className="text-danger text-sm">
-                    {errors.description.ru.message}
+                    {errors.description.en.message}
                   </p>
                 )}
               </div>
@@ -626,18 +626,18 @@ export default function CourseForm({
 
               <div className="space-y-2">
                 <Select
-                  label="Уровень (RU)"
+                  label="Level (EN)"
                   variant="bordered"
                   startContent={
                     <MdSignalCellular4Bar className="text-gray-400" />
                   }
                   isDisabled={isSubmitting}
-                  defaultSelectedKeys={[watch("level.ru") || "Начинающий"]}
-                  {...register("level.ru", {
-                    required: "Уровень обязателен",
+                  defaultSelectedKeys={[watch("level.en") || "Beginning"]}
+                  {...register("level.en", {
+                    required: "Level required",
                   })}
-                  isInvalid={!!errors.level?.ru}
-                  errorMessage={errors.level?.ru?.message}
+                  isInvalid={!!errors.level?.en}
+                  errorMessage={errors.level?.en?.message}
                   classNames={{
                     trigger:
                       "bg-white border-2 hover:border-primary focus:border-primary",
@@ -645,8 +645,8 @@ export default function CourseForm({
                   }}
                 >
                   {levels.map((level) => (
-                    <SelectItem key={level.value.ru} value={level.value.ru}>
-                      {level.value.ru}
+                    <SelectItem key={level.value.en} value={level.value.en}>
+                      {level.value.en}
                     </SelectItem>
                   ))}
                 </Select>
@@ -725,7 +725,7 @@ export default function CourseForm({
               <div className="flex flex-wrap items-center gap-2">
                 <Input
                   type="text"
-                  label="Добавить тег (RU)"
+                  label="Add a tag (EN)"
                   variant="bordered"
                   startContent={<MdTag className="text-gray-400" />}
                   value={tagInputRu}
@@ -745,7 +745,7 @@ export default function CourseForm({
                   className="bg-jsyellow text-white"
                   isDisabled={!tagInputRu.trim()}
                 >
-                  Добавить
+                  Add
                 </Button>
               </div>
 
@@ -762,7 +762,7 @@ export default function CourseForm({
                 ))}
                 {tagsRu.length === 0 && (
                   <span className="text-gray-400 text-sm">
-                    Добавьте теги (RU)
+                    Add tags (EN)
                   </span>
                 )}
               </div>

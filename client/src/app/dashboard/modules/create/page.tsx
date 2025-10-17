@@ -15,7 +15,7 @@ export default function CreateModulePage() {
     formState: { errors, isSubmitting },
   } = useForm({
     defaultValues: {
-      content: [{ az: "", ru: "", order: 1 }],
+      content: [{ az: "", en: "", order: 1 }],
     },
   });
 

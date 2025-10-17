@@ -56,7 +56,7 @@ export async function generateMetadata({
           locale === "az"
             ? `${baseUrl}/glossary/category/${slug}`
             : `${baseUrl}/az/glossary/category/${slug}`,
-        ru: `${baseUrl}/ru/glossary/category/${slug}`,
+        en: `${baseUrl}/en/glossary/category/${slug}`,
       },
     },
     openGraph: {
@@ -160,7 +160,7 @@ export default async function GlossaryCategoryPage({
       emptyText: "Bu kateqoriyada termin tapılmadı",
       searchPlaceholder: "Termin axtar...",
     },
-    ru: {
+    en: {
       title: `Категория ${category.name[language]}`,
       categoryText: "Категория",
       emptyText: "В этой категории терминов не найдено",

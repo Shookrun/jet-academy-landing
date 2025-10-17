@@ -16,12 +16,12 @@ const exams = [
     link: "https://docs.google.com/forms/d/e/1FAIpQLScWKC0sSPSVpUiqVrDn6rB4sB53fE317cAvV4814zdJmiZVmQ/viewform",
   },
   {
-    title: "JET New Exam 9-11 RU",
+    title: "JET New Exam 9-11 EN",
     description: "Экзамен для возрастной группы 9-11 лет",
     link: "https://docs.google.com/forms/d/e/1FAIpQLSe6fMq-kgeQqVNabpJc2ADYpouPh3ZFrTuZyysMA5CmmUWAlQ/viewform",
   },
   {
-    title: "JET New Exam 12-15 RU",
+    title: "JET New Exam 12-15 EN",
     description: "Экзамен для возрастной группы 12-15 лет",
     link: "https://docs.google.com/forms/d/e/1FAIpQLSeaueRURQdNvo61mrcGxmk-Q04_L3wEL8PW5FMLjsslB_PI0A/viewform",
   },

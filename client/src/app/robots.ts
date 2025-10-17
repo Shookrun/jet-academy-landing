@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       // ishi bitirende ashagidakileri ac
-      // allow: ["/", "/az", "/ru"],
+      // allow: ["/", "/az", "/en"],
       // disallow: ["/dashboard/"],
       disallow: ["/*"],
     },

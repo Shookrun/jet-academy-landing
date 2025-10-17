@@ -28,7 +28,7 @@ class MultilingualFieldUpdate {
   })
   @IsString()
   @IsOptional()
-  ru?: string;
+  en?: string;
 }
 
 export class UpdatePostDto {

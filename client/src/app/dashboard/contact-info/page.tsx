@@ -12,25 +12,57 @@ import { toast } from "sonner";
 interface ContactFormInputs {
   id?: string;
   email: string;
-  address: {
-    az: string;
-    ru: string;
-  };
-  address2: {
-    az: string;
-    ru: string;
-  };
+  address: { az: string; ru: string };
+  address2: { az: string; ru: string };
   whatsapp: string;
   phone: string;
   workingHours: {
-    az: {
-      weekdays: string;
-      sunday: string;
-    };
-    ru: {
-      weekdays: string;
-      sunday: string;
-    };
+    az: { weekdays: string; sunday: string };
+    ru: { weekdays: string; sunday: string };
+  };
+}
+
+/** API-dən gələn obyekt → form üçün yalnız lazım olan açarları çıxarır */
+function sanitizeFromApi(raw: any): ContactFormInputs {
+  return {
+    id: raw?.id ?? "",
+    email: raw?.email ?? "",
+    address: {
+      az: raw?.address?.az ?? "",
+      ru: raw?.address?.ru ?? "",
+    },
+    address2: {
+      az: raw?.address2?.az ?? "",
+      ru: raw?.address2?.ru ?? "",
+    },
+    whatsapp: typeof raw?.whatsapp === "string" ? raw.whatsapp : (raw?.whatsapp ?? ""),
+    phone: typeof raw?.phone === "string" ? raw.phone : (raw?.phone ?? ""),
+    workingHours: {
+      az: {
+        weekdays: raw?.workingHours?.az?.weekdays ?? "",
+        sunday: raw?.workingHours?.az?.sunday ?? "",
+      },
+      ru: {
+        weekdays: raw?.workingHours?.ru?.weekdays ?? "",
+        sunday: raw?.workingHours?.ru?.sunday ?? "",
+      },
+    },
+  };
+}
+
+/** Submit üçün payload: yalnız Prisma modelində update oluna bilən field-lar */
+function buildUpdatePayload(data: ContactFormInputs) {
+  const { email, address, address2, whatsapp, phone, workingHours } = data;
+
+  // DTO-nun type-ları object/string olduğu üçün stringify ETMİRİK.
+  // (Əgər backend-də string gözlənilsəydi burada JSON.stringify edərdik.)
+  return {
+    email,
+    address,
+    address2,
+    whatsapp,
+    phone,
+    workingHours,
   };
 }
 
@@ -38,6 +70,7 @@ export default function EditContactPage() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
   const [contactId, setContactId] = useState<string | null>(null);
+
   const {
     register,
     handleSubmit,
@@ -50,10 +83,14 @@ export default function EditContactPage() {
       try {
         const { data } = await api.get("/contact");
         const contactData = Array.isArray(data) ? data[0] : data;
-        setContactId(contactData.id);
-        reset(contactData);
+
+        const sanitized = sanitizeFromApi(contactData);
+        setContactId(sanitized.id || contactData?.id || null);
+        reset(sanitized);
+
+        console.log("📥 Loaded (sanitized) contact:", sanitized);
       } catch (error) {
-        console.error("Error fetching contact info:", error);
+        console.error("❌ Error fetching contact info:", error);
         toast.error("Əlaqə məlumatları yüklənmədi");
         router.push("/dashboard");
       } finally {
@@ -64,22 +101,29 @@ export default function EditContactPage() {
     fetchContactInfo();
   }, [reset, router]);
 
-  const onSubmit = async (data: ContactFormInputs) => {
-    const { ...rest } = data;
+  const onSubmit = async (formData: ContactFormInputs) => {
+    if (!contactId) {
+      toast.error("Kontakt ID tapılmadı");
+      return;
+    }
+
+    const payload = buildUpdatePayload(formData);
+    const url = `/contact/${contactId}`;
+
+    console.log("🚀 Sending PATCH to:", url);
+    console.log("📦 Payload:", JSON.stringify(payload, null, 2));
 
     try {
-      const response = await api.patch("/contact/" + contactId, rest);
+      const response = await api.patch(url, payload);
+      console.log("✅ Response:", response?.status, response?.data);
 
-      if (response.status === 200) {
-        toast.success("Əlaqə məlumatları yeniləndi");
-        router.push("/dashboard");
-        router.refresh();
-      }
+      toast.success("Əlaqə məlumatları yeniləndi");
+      router.push("/dashboard");
+      router.refresh();
     } catch (error: any) {
-      console.error("Update error:", error);
-      toast.error(
-        error.response?.data?.message || "Xəta baş verdi. Yenidən cəhd edin"
-      );
+      console.error("🔥 Update error:", error);
+      console.log("🧩 Backend error:", error?.response?.data);
+      toast.error(error?.response?.data?.message || "Xəta baş verdi. Yenidən cəhd edin");
     }
   };
 
@@ -120,232 +164,219 @@ export default function EditContactPage() {
           </div>
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            <div className="space-y-2">
-              <Input
-                type="email"
-                label="E-poçt"
-                variant="bordered"
-                startContent={<MdMail className="text-gray-400" />}
-                isDisabled={isSubmitting}
-                {...register("email", {
-                  required: "E-poçt tələb olunur",
-                  pattern: {
-                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: "Yanlış e-poçt ünvanı",
-                  },
-                })}
-                isInvalid={!!errors.email}
-                errorMessage={errors.email?.message}
-                classNames={{
-                  input: "bg-transparent",
-                  inputWrapper: [
-                    "bg-white border-2 hover:border-jsyellow focus:border-jsyellow",
-                  ],
-                }}
-              />
-            </div>
+            {/* E-poçt */}
+            <Input
+              type="email"
+              label="E-poçt"
+              variant="bordered"
+              startContent={<MdMail className="text-gray-400" />}
+              isDisabled={isSubmitting}
+              {...register("email", {
+                required: "E-poçt tələb olunur",
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: "Yanlış e-poçt ünvanı",
+                },
+              })}
+              isInvalid={!!errors.email}
+              errorMessage={errors.email?.message}
+              classNames={{
+                input: "bg-transparent",
+                inputWrapper: [
+                  "bg-white border-2 hover:border-jsyellow focus:border-jsyellow",
+                ],
+              }}
+            />
 
-            <div className="space-y-2">
-              <Input
-                type="text"
-                label="Ünvan 1 (AZ)"
-                variant="bordered"
-                startContent={<MdLocationOn className="text-gray-400" />}
-                isDisabled={isSubmitting}
-                {...register("address.az", { required: "Ünvan tələb olunur" })}
-                isInvalid={!!errors.address?.az}
-                errorMessage={errors.address?.az?.message}
-                classNames={{
-                  input: "bg-transparent",
-                  inputWrapper: [
-                    "bg-white border-2 hover:border-jsyellow focus:border-jsyellow",
-                  ],
-                }}
-              />
-            </div>
+            {/* Ünvan 1 (AZ) */}
+            <Input
+              type="text"
+              label="Ünvan 1 (AZ)"
+              variant="bordered"
+              startContent={<MdLocationOn className="text-gray-400" />}
+              isDisabled={isSubmitting}
+              {...register("address.az", { required: "Ünvan tələb olunur" })}
+              isInvalid={!!errors.address?.az}
+              errorMessage={errors.address?.az?.message}
+              classNames={{
+                input: "bg-transparent",
+                inputWrapper: [
+                  "bg-white border-2 hover:border-jsyellow focus:border-jsyellow",
+                ],
+              }}
+            />
 
-            <div className="space-y-2">
-              <Input
-                type="text"
-                label="Адрес 1 (RU)"
-                variant="bordered"
-                startContent={<MdLocationOn className="text-gray-400" />}
-                isDisabled={isSubmitting}
-                {...register("address.ru", { required: "Адрес обязателен" })}
-                isInvalid={!!errors.address?.ru}
-                errorMessage={errors.address?.ru?.message}
-                classNames={{
-                  input: "bg-transparent",
-                  inputWrapper: [
-                    "bg-white border-2 hover:border-jsyellow focus:border-jsyellow",
-                  ],
-                }}
-              />
-            </div>
+            {/* Ünvan 1 (RU) */}
+            <Input
+              type="text"
+              label="Адрес 1 (RU)"
+              variant="bordered"
+              startContent={<MdLocationOn className="text-gray-400" />}
+              isDisabled={isSubmitting}
+              {...register("address.ru", { required: "Адрес обязателен" })}
+              isInvalid={!!errors.address?.ru}
+              errorMessage={errors.address?.ru?.message}
+              classNames={{
+                input: "bg-transparent",
+                inputWrapper: [
+                  "bg-white border-2 hover:border-jsyellow focus:border-jsyellow",
+                ],
+              }}
+            />
 
-            <div className="space-y-2">
-              <Input
-                type="text"
-                label="Ünvan 2 (AZ)"
-                variant="bordered"
-                startContent={<MdLocationOn className="text-gray-400" />}
-                isDisabled={isSubmitting}
-                {...register("address2.az", { required: "Ünvan tələb olunur" })}
-                isInvalid={!!errors.address2?.az}
-                errorMessage={errors.address2?.az?.message}
-                classNames={{
-                  input: "bg-transparent",
-                  inputWrapper: [
-                    "bg-white border-2 hover:border-jsyellow focus:border-jsyellow",
-                  ],
-                }}
-              />
-            </div>
+            {/* Ünvan 2 (AZ) */}
+            <Input
+              type="text"
+              label="Ünvan 2 (AZ)"
+              variant="bordered"
+              startContent={<MdLocationOn className="text-gray-400" />}
+              isDisabled={isSubmitting}
+              {...register("address2.az", { required: "Ünvan tələb olunur" })}
+              isInvalid={!!errors.address2?.az}
+              errorMessage={errors.address2?.az?.message}
+              classNames={{
+                input: "bg-transparent",
+                inputWrapper: [
+                  "bg-white border-2 hover:border-jsyellow focus:border-jsyellow",
+                ],
+              }}
+            />
 
-            <div className="space-y-2">
-              <Input
-                type="text"
-                label="Адрес 2 (RU)"
-                variant="bordered"
-                startContent={<MdLocationOn className="text-gray-400" />}
-                isDisabled={isSubmitting}
-                {...register("address2.ru", { required: "Адрес обязателен" })}
-                isInvalid={!!errors.address2?.ru}
-                errorMessage={errors.address2?.ru?.message}
-                classNames={{
-                  input: "bg-transparent",
-                  inputWrapper: [
-                    "bg-white border-2 hover:border-jsyellow focus:border-jsyellow",
-                  ],
-                }}
-              />
-            </div>
+            {/* Ünvan 2 (RU) */}
+            <Input
+              type="text"
+              label="Адрес 2 (RU)"
+              variant="bordered"
+              startContent={<MdLocationOn className="text-gray-400" />}
+              isDisabled={isSubmitting}
+              {...register("address2.ru", { required: "Адрес обязателен" })}
+              isInvalid={!!errors.address2?.ru}
+              errorMessage={errors.address2?.ru?.message}
+              classNames={{
+                input: "bg-transparent",
+                inputWrapper: [
+                  "bg-white border-2 hover:border-jsyellow focus:border-jsyellow",
+                ],
+              }}
+            />
 
-            <div className="space-y-2">
-              <Input
-                type="tel"
-                label="WhatsApp"
-                variant="bordered"
-                startContent={<FaWhatsapp className="text-gray-400" />}
-                isDisabled={isSubmitting}
-                {...register("whatsapp", {
-                  required: "WhatsApp nömrəsi tələb olunur",
-                })}
-                isInvalid={!!errors.whatsapp}
-                errorMessage={errors.whatsapp?.message}
-                classNames={{
-                  input: "bg-transparent",
-                  inputWrapper: [
-                    "bg-white border-2 hover:border-jsyellow focus:border-jsyellow",
-                  ],
-                }}
-              />
-            </div>
+            {/* WhatsApp */}
+            <Input
+              type="tel"
+              label="WhatsApp"
+              variant="bordered"
+              startContent={<FaWhatsapp className="text-gray-400" />}
+              isDisabled={isSubmitting}
+              {...register("whatsapp", {
+                required: "WhatsApp nömrəsi tələb olunur",
+              })}
+              isInvalid={!!errors.whatsapp}
+              errorMessage={errors.whatsapp?.message}
+              classNames={{
+                input: "bg-transparent",
+                inputWrapper: [
+                  "bg-white border-2 hover:border-jsyellow focus:border-jsyellow",
+                ],
+              }}
+            />
 
-            <div className="space-y-2">
-              <Input
-                type="tel"
-                label="Telefon"
-                variant="bordered"
-                startContent={<MdPhone className="text-gray-400" />}
-                isDisabled={isSubmitting}
-                {...register("phone", {
-                  required: "Telefon nömrəsi tələb olunur",
-                })}
-                isInvalid={!!errors.phone}
-                errorMessage={errors.phone?.message}
-                classNames={{
-                  input: "bg-transparent",
-                  inputWrapper: [
-                    "bg-white border-2 hover:border-jsyellow focus:border-jsyellow",
-                  ],
-                }}
-              />
-            </div>
+            {/* Telefon */}
+            <Input
+              type="tel"
+              label="Telefon"
+              variant="bordered"
+              startContent={<MdPhone className="text-gray-400" />}
+              isDisabled={isSubmitting}
+              {...register("phone", {
+                required: "Telefon nömrəsi tələb olunur",
+              })}
+              isInvalid={!!errors.phone}
+              errorMessage={errors.phone?.message}
+              classNames={{
+                input: "bg-transparent",
+                inputWrapper: [
+                  "bg-white border-2 hover:border-jsyellow focus:border-jsyellow",
+                ],
+              }}
+            />
 
-            <div className="space-y-2">
-              <Input
-                type="text"
-                label="İş saatları - Həftəiçi (AZ)"
-                variant="bordered"
-                startContent={<MdAccessTime className="text-gray-400" />}
-                isDisabled={isSubmitting}
-                {...register("workingHours.az.weekdays", {
-                  required: "İş saatları tələb olunur",
-                })}
-                isInvalid={!!errors.workingHours?.az?.weekdays}
-                errorMessage={errors.workingHours?.az?.weekdays?.message}
-                classNames={{
-                  input: "bg-transparent",
-                  inputWrapper: [
-                    "bg-white border-2 hover:border-jsyellow focus:border-jsyellow",
-                  ],
-                }}
-              />
-            </div>
+            {/* İş saatları (AZ) */}
+            <Input
+              type="text"
+              label="İş saatları - Həftəiçi (AZ)"
+              variant="bordered"
+              startContent={<MdAccessTime className="text-gray-400" />}
+              isDisabled={isSubmitting}
+              {...register("workingHours.az.weekdays", {
+                required: "İş saatları tələb olunur",
+              })}
+              isInvalid={!!errors.workingHours?.az?.weekdays}
+              errorMessage={errors.workingHours?.az?.weekdays?.message}
+              classNames={{
+                input: "bg-transparent",
+                inputWrapper: [
+                  "bg-white border-2 hover:border-jsyellow focus:border-jsyellow",
+                ],
+              }}
+            />
 
-            <div className="space-y-2">
-              <Input
-                type="text"
-                label="Рабочие часы - Будни (RU)"
-                variant="bordered"
-                startContent={<MdAccessTime className="text-gray-400" />}
-                isDisabled={isSubmitting}
-                {...register("workingHours.ru.weekdays", {
-                  required: "Рабочие часы обязательны",
-                })}
-                isInvalid={!!errors.workingHours?.ru?.weekdays}
-                errorMessage={errors.workingHours?.ru?.weekdays?.message}
-                classNames={{
-                  input: "bg-transparent",
-                  inputWrapper: [
-                    "bg-white border-2 hover:border-jsyellow focus:border-jsyellow",
-                  ],
-                }}
-              />
-            </div>
+            <Input
+              type="text"
+              label="İş saatları - Bazar (AZ)"
+              variant="bordered"
+              startContent={<MdAccessTime className="text-gray-400" />}
+              isDisabled={isSubmitting}
+              {...register("workingHours.az.sunday", {
+                required: "İş saatları tələb olunur",
+              })}
+              isInvalid={!!errors.workingHours?.az?.sunday}
+              errorMessage={errors.workingHours?.az?.sunday?.message}
+              classNames={{
+                input: "bg-transparent",
+                inputWrapper: [
+                  "bg-white border-2 hover:border-jsyellow focus:border-jsyellow",
+                ],
+              }}
+            />
 
-            <div className="space-y-2">
-              <Input
-                type="text"
-                label="İş saatları - Bazar (AZ)"
-                variant="bordered"
-                startContent={<MdAccessTime className="text-gray-400" />}
-                isDisabled={isSubmitting}
-                {...register("workingHours.az.sunday", {
-                  required: "İş saatları tələb olunur",
-                })}
-                isInvalid={!!errors.workingHours?.az?.sunday}
-                errorMessage={errors.workingHours?.az?.sunday?.message}
-                classNames={{
-                  input: "bg-transparent",
-                  inputWrapper: [
-                    "bg-white border-2 hover:border-jsyellow focus:border-jsyellow",
-                  ],
-                }}
-              />
-            </div>
+            {/* İş saatları (RU) */}
+            <Input
+              type="text"
+              label="Рабочие часы - Будни (RU)"
+              variant="bordered"
+              startContent={<MdAccessTime className="text-gray-400" />}
+              isDisabled={isSubmitting}
+              {...register("workingHours.ru.weekdays", {
+                required: "Рабочие часы обязательны",
+              })}
+              isInvalid={!!errors.workingHours?.ru?.weekdays}
+              errorMessage={errors.workingHours?.ru?.weekdays?.message}
+              classNames={{
+                input: "bg-transparent",
+                inputWrapper: [
+                  "bg-white border-2 hover:border-jsyellow focus:border-jsyellow",
+                ],
+              }}
+            />
 
-            <div className="space-y-2">
-              <Input
-                type="text"
-                label="Рабочие часы - Воскресенье (RU)"
-                variant="bordered"
-                startContent={<MdAccessTime className="text-gray-400" />}
-                isDisabled={isSubmitting}
-                {...register("workingHours.ru.sunday", {
-                  required: "Рабочие часы обязательны",
-                })}
-                isInvalid={!!errors.workingHours?.ru?.sunday}
-                errorMessage={errors.workingHours?.ru?.sunday?.message}
-                classNames={{
-                  input: "bg-transparent",
-                  inputWrapper: [
-                    "bg-white border-2 hover:border-jsyellow focus:border-jsyellow",
-                  ],
-                }}
-              />
-            </div>
+            <Input
+              type="text"
+              label="Рабочие часы - Воскресенье (RU)"
+              variant="bordered"
+              startContent={<MdAccessTime className="text-gray-400" />}
+              isDisabled={isSubmitting}
+              {...register("workingHours.ru.sunday", {
+                required: "Рабочие часы обязательны",
+              })}
+              isInvalid={!!errors.workingHours?.ru?.sunday}
+              errorMessage={errors.workingHours?.ru?.sunday?.message}
+              classNames={{
+                input: "bg-transparent",
+                inputWrapper: [
+                  "bg-white border-2 hover:border-jsyellow focus:border-jsyellow",
+                ],
+              }}
+            />
 
             <div className="flex justify-end space-x-4">
               <Button

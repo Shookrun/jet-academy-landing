@@ -29,27 +29,19 @@ export class PostService {
     const result: any = {};
 
     multilingualFields.forEach((field) => {
-      if (dto[`${field}[az]`] || dto[`${field}[ru]`]) {
+      if (dto[`${field}[az]`] || dto[`${field}[en]`]) {
         result[field] = {
           az: dto[`${field}[az]`],
-          ru: dto[`${field}[ru]`],
+          en: dto[`${field}[en]`],
         };
         delete processedData[`${field}[az]`];
-        delete processedData[`${field}[ru]`];
+        delete processedData[`${field}[en]`];
       }
     });
 
     return { ...processedData, ...result };
   }
 
-  /**
-   * Determines the EventStatus based on the offer dates
-   * For offers, we consider:
-   * - No offerEndDate means it's ONGOING indefinitely
-   * - If offerEndDate is in the future, it's UPCOMING
-   * - If offerEndDate is today or later (and offerStartDate has passed or is today), it's ONGOING
-   * - If offerEndDate has passed, it's PAST
-   */
   private determineOfferStatus(
     offerStartDate?: Date | null,
     offerEndDate?: Date | null,
@@ -283,39 +275,20 @@ export class PostService {
     try {
       await this.updateOfferStatuses();
 
-      const post = await this.prisma.post.findFirst({
-        where: {
-          OR: [
-            {
-              slug: {
-                is: {
-                  az: {
-                    equals: slug,
-                  },
-                },
-              },
-            },
-            {
-              slug: {
-                is: {
-                  ru: {
-                    equals: slug,
-                  },
-                },
-              },
-            },
-          ],
-          published: true,
-        },
+      // MongoDB-də composite type üzrə alt sahə ilə filter işləmədiyi üçün:
+      // bütün postları çəkirik, sonra TypeScript səviyyəsində filterləyirik.
+      const posts = await this.prisma.post.findMany({
+        where: { published: true },
         include: {
           author: {
-            select: {
-              id: true,
-              name: true,
-            },
+            select: { id: true, name: true },
           },
         },
       });
+
+      const post = posts.find(
+        (p) => p.slug?.az === slug || p.slug?.en === slug,
+      );
 
       if (!post) {
         throw new NotFoundException(`Post with slug ${slug} not found`);
@@ -340,9 +313,6 @@ export class PostService {
     return this.findAll(page, limit, includeUnpublished, type);
   }
 
-  /**
-   * Updates the status of a specific offer post
-   */
   async updateOfferStatus(postId: string): Promise<void> {
     try {
       const post = await this.prisma.post.findUnique({
@@ -375,10 +345,6 @@ export class PostService {
     }
   }
 
-  /**
-   * Updates the status of all offer posts
-   * This is used when querying posts to ensure statuses are current
-   */
   async updateOfferStatuses(): Promise<void> {
     try {
       const offerPosts = await this.prisma.post.findMany({

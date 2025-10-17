@@ -1,0 +1,466 @@
+{
+  "navbar": {
+  "home": "Home",
+  "courses": "Courses",
+  "feedbacks": "Feedbacks",
+  "about": "About Us",
+  "gallery": "Gallery",
+  "useful": "Resources",
+  "offers": "Special Offers",
+  "blog": "Blog",
+  "news": "News",
+  "differences": "Our Difference",
+  "glossary": "Tech Glossary",
+  "contact": "Contact",
+  "contactus": "Request a Call"
+},
+ "hero": {
+  "welcome": "Welcome",
+  "toJetAcademy": "to JET Academy",
+  "getConsult": "Request a Call!",
+  "description": "JET Academy is an education center that prepares students for the real work environment through intensive and practice-oriented courses in modern technologies."
+},
+  "courseInfo": {
+  "title": "Course Fields",
+  "description": "Which field are you planning to build your career in? Click to learn more about the course!"
+},
+"courseInfoCP": {
+  "title": "Our Other Courses"
+},
+  
+
+ "about": {
+  "title": "What Makes Us Different?",
+  "description": "Discover the key factors that set us apart from other courses.",
+  "points": {
+    "interactive": {
+      "title": "Modern and Continuously Updated Curriculum",
+      "description": "Our programs are regularly updated to match the demands of the job market and cover the latest technologies."
+    },
+    "experienced": {
+      "title": "Real Projects and Daily Assignments",
+      "description": "Each of our courses is enriched with practical tasks and projects that reflect real-world work environments."
+    },
+    "individual": {
+      "title": "Highly Experienced and Professional Instructors",
+      "description": "Industry professionals share their knowledge and support students in building successful careers."
+    },
+    "future": {
+      "title": "Comfortable Learning Environment and Modern Equipment",
+      "description": "We provide a productive learning atmosphere equipped with modern technology to make the training process more effective."
+    },
+    "price": {
+      "title": "High-Quality Training at Affordable Prices",
+      "description": "Our pricing policy makes quality education accessible for everyone."
+    },
+    "comfort": {
+      "title": "Convenient Office Location",
+      "description": "Our office is located in the city center, making it easily accessible for students."
+    }
+  }
+},
+  "courses": {
+    "starter": {
+      "title": "Starter Modulu",
+      "modules": {
+        "intro": {
+          "title": "Kompüter mühəndisliyinə giriş",
+          "description": "Kompüterlərin gündəlik həyatımızdakı rolu və əhəmiyyətini öyrənin. CPU, RAM, GPU kimi əsas komponentləri tanıyın.",
+          "duration": "1 ay",
+          "level": "Başlanğıc"
+        },
+        "algorithms": {
+          "title": "Alqoritmlər və qərar qəbuletmə",
+          "description": "Proqramlaşdırmanın təməlini təşkil edən alqoritmləri öyrənin. Real həyat problemlərini həll etmək üçün alqoritmik düşüncə.",
+          "duration": "1 ay",
+          "level": "Başlanğıc"
+        },
+        "scratch": {
+          "title": "Scratch ilə proqramlaşdırma",
+          "description": "Blok əsaslı proqramlaşdırma ilə kodlamanın əsaslarını öyrənin. Dəyişənlər və dövrlər ilə oyunlar yaradın.",
+          "duration": "1 ay",
+          "level": "Başlanğıc"
+        },
+        "games": {
+          "title": "Oyun hazırlama və dizayn",
+          "description": "Scratch ilə oyunlar yaradın və Figma ilə müasir dizayn prinsiplərini mənimsəyin. 3D modelləşdirməyə giriş.",
+          "duration": "1 ay",
+          "level": "Başlanğıc-Orta"
+        }
+      }
+    },
+    "programmer": {
+      "title": "Proqramçı Modulu",
+      "modules": {
+        "webIntro": {
+          "title": "Veb proqramlaşdırmaya giriş",
+          "description": "HTML-in əsaslarını öyrənin. Veb səhifələrin strukturunu yaratmaq üçün lazım olan teqləri mənimsəyin.",
+          "duration": "1 ay",
+          "level": "Orta"
+        },
+        "webDev": {
+          "title": "HTML və CSS ilə veb səhifələr",
+          "description": "CSS layouts və Flexbox ilə müasir veb səhifələr yaradın. Animasiyalar və responsiv dizaynı mənimsəyin.",
+          "duration": "1 ay",
+          "level": "Orta"
+        },
+        "JS": {
+          "title": "JavaScript Əsasları",
+          "description": "JavaScript proqramlaşdırma dilinin təməllərini öyrənin. Dəyişənlər, operatorlar, funksiyalar və OOP konsepsiyaları ilə tanış olun. Praktiki tapşırıqlar vasitəsilə mənimsənilən biliklər real layihələrdə tətbiq ediləcək.",
+          "duration": "1 ay",
+          "level": "Başlanğıc"
+        },
+        "JsDom": {
+          "title": "JavaScript DOM və Layihələr",
+          "description": "DOM manipulyasiyası, hadisə dinləyiciləri və Timer funksiyaları ilə tanış olun. To-Do tətbiqi, sayğac və rəqəmsal saat kimi real layihələr yaradın. Bootstrap 5 istifadə edərək istifadəçi interfeysi hazırlayın.",
+          "duration": "1 ay",
+          "level": "Orta"
+        }
+      }
+    },
+    "hacker": {
+      "title": "Etik Haker Modulu",
+      "modules": {
+        "python": {
+          "title": "Python və Kibertəhlükəsizlik",
+          "description": "Python-u kibertəhlükəsizlik kontekstində öyrənin. Təhlükəsizlik skriptləri və alətləri yaradın.",
+          "duration": "1 ay",
+          "level": "İrəli"
+        },
+        "network": {
+          "title": "Şəbəkə təhlükəsizliyi",
+          "description": "TCP/IP, UDP protokolları və şəbəkə təhlükəsizliyi əsaslarını öyrənin. Port skaneri alətləri yaradın.",
+          "duration": "1 ay",
+          "level": "İrəli"
+        }
+      }
+    }
+  },
+ "footer": {
+  "address": "Baku, Olimpiya Street 6A (near Ganjlik metro station, close to the Ministry of Sports)",
+  "workingHours": {
+    "title": "Monday - Saturday",
+    "hours": "09:30 - 22:00",
+    "title7": "Sunday",
+    "hours7": "10:00 - 22:00"
+  },
+  "links": {
+    "courses": "Courses",
+    "contact": "Contact",
+    "media": "Media"
+  },
+  "copyright": "All rights reserved.",
+  "tagline": "Inspiring education for a brighter future",
+  "explore": "Explore",
+  "resources": "Resources",
+  "legal": "Legal",
+
+  "home": "Home",
+  "about": "About Us",
+  "courses": "Courses",
+  "gallery": "Gallery",
+  "blog": "Blog",
+  "glossary": "Glossary",
+  "news": "News",
+  "feedbacks": "Feedbacks",
+  "faq": "FAQ",
+  "contact": "Contact",
+
+  "privacy": "Privacy Policy",
+  "terms": "Terms of Use",
+  "cookies": "Cookies Policy",
+
+  "newsletter": "Subscribe to Our Newsletter",
+  "newsletterDesc": "Stay updated with our latest news and offers",
+  "emailPlaceholder": "Your email address",
+  "subscribe": "Subscribe"
+},
+"contactForm": {
+  "contactInfo": "Contact Information",
+  "send": "Send",
+  "name": "First Name",
+  "email": "Email",
+  "surname": "Last Name",
+  "number": "Phone Number",
+  "message": "Message",
+  "sending": "Sending...",
+  "messageSent": "Your message has been sent successfully",
+  "sendError": "Failed to send message",
+  "unexpectedError": "An unexpected error occurred",
+  "nameRequired": "First name is required",
+  "nameOnlyLetters": "First name must contain only letters",
+  "surnameRequired": "Last name is required",
+  "surnameOnlyLetters": "Last name must contain only letters",
+  "emailRequired": "Email is required",
+  "invalidEmail": "Invalid email format",
+  "numberRequired": "Phone number is required",
+  "invalidNumber": "Invalid phone number format",
+  "messageRequired": "Message is required"
+},
+ "feedbacks": {
+  "title": "Our Students' Reviews",
+  "seeAll": "See All",
+  "description": "Watch real stories shared by our students about the knowledge and skills they gained at JET Academy."
+},
+"gallery": {
+  "title": "Classroom Moments",
+  "seeAll": "See All",
+  "description": "Photos from interactive and hands-on lessons at JET Academy."
+},
+"blogs": {
+  "title": "Blog & Media",
+  "seeAll": "See All",
+  "description": "Follow the latest updates, useful blogs, campaigns, and news here."
+},
+"aboutPage": {
+  "introduction": {
+    "title": "About Us",
+    "description1": "Since 2021, JET Academy has established itself as one of the leading training centers in the country's technology sector, having trained hundreds of highly skilled and successful IT professionals.",
+    "description2": "We provide students with practical skills through real equipment and projects, offering short and effective courses so that knowledge can be quickly applied in the professional world.",
+    "description3": "Our programs cover modern and in-demand fields and are delivered by professional, highly experienced instructors. Each program is designed following international standards, ensuring students gain real-world experience. We also support our graduates' career growth by connecting them with partner companies."
+  },
+  "mission": {
+    "sectionTitle": "Our Mission & Vision",
+    "title": "Mission",
+    "description": "We equip students with practical skills on real devices and prepare them for the professional world through fast and effective courses. Guided by professional and highly experienced instructors, we deliver modern training following international standards and actively support our graduates' career development."
+  },
+  "vision": {
+    "title": "Vision",
+    "description": "Our vision is to become the leading center for professional IT education and to train our students as competitive IT specialists of the future."
+  },
+  "stats": {
+    "teachingArea": "Training Field",
+    "graduatesLabel": "Graduates",
+    "groupsLabel": "Active Groups",
+    "studentsLabel": "Students"
+  },
+  "team": {
+    "title": "Meet Our Team",
+    "description": "All instructors at JET Academy are highly experienced professionals in their field, distinguished by their pedagogical skills."
+  }
+},
+"contact": {
+  "sending": "Sending...",
+  "messageSent": "Your message has been sent successfully",
+  "sendError": "Failed to send message",
+  "unexpectedError": "An unexpected error occurred",
+  "hero": {
+    "title": "Get in Touch with Us",
+    "description": "If you have any questions or suggestions, don’t hesitate to contact us."
+  },
+  "title": "Fill Out the Call Request Form",
+  "description": "Fill out the form, and we will get back to you as soon as possible.",
+  "form": {
+    "title": "Fill Out the Call Request Form",
+    "contactTitle": "Register to learn more about our IT courses",
+    "description": "Fill out the form, and we will get back to you as soon as possible.",
+    "sending": "Sending...",
+    "name": {
+      "label": "First Name",
+      "placeholder": "Enter your first name",
+      "required": "First name is required",
+      "minLength": "First name must be at least 2 characters"
+    },
+    "surname": {
+      "label": "Last Name",
+      "placeholder": "Enter your last name",
+      "required": "Last name is required",
+      "minLength": "Last name must be at least 2 characters"
+    },
+    "phoneNumber": {
+      "label": "Phone Number",
+      "placeholder": "Enter your phone number",
+      "required": "Phone number is required"
+    },
+    "mailAddress": {
+      "label": "Email",
+      "placeholder": "Enter your email address",
+      "required": "Email is required"
+    },
+    "courseInterest": {
+      "label": "Select Your Area of Interest",
+      "placeholder": "Choose a field",
+      "required": "Please select a field",
+      "options": {
+        "frontend": "Front-End Developer",
+        "python": "Python Back-End Developer",
+        "java": "Java Back-End Developer",
+        "fullstack": "Full-Stack Developer",
+        "helpdesk": "IT Help Desk",
+        "cybersecurity": "Cybersecurity",
+        "office": "Office Programs",
+        "english": "English Language",
+         "notSure": " Not sure.."
+      }
+    },
+    "messageSent": "We have received your request and will contact you shortly!",
+    "number": {
+      "label": "Phone",
+      "placeholder": "Enter your phone number",
+      "required": "Phone number is required",
+      "invalid": "Please enter a valid phone number"
+    },
+    "submit": "Send"
+  },
+  "info": {
+    "phone": "Phone",
+    "email": "Email",
+    "whatsapp": "WhatsApp",
+    "address1": "Address",
+    "addressg": "Address"
+  }
+},
+ "singleCoursePage": {
+  "courseDescription": "About the Course",
+  "courseModules": "Course Modules",
+  "whoIsEligibleToEnroll": "Who Can Enroll?",
+  "teachers": "Course Instructors",
+  "teachersDescription": "Our professional and experienced instructors",
+  "enroll": "Enroll Now",
+  "contactFormTitle": "Register to Learn More About Our Courses"
+},
+"coursesPage": {
+  "title": "Our Courses",
+  "description": "Explore our courses in Front-End, Back-End, Full-Stack, Python, Java, Cybersecurity, IT Help Desk, Office Programs, English, and more.",
+  "metaTitle": "JET Academy - IT & Programming Courses",
+  "metaDescription": "Advance your career with JET Academy’s courses in Front-End, Back-End, Full-Stack, Python, Java, Cybersecurity, IT Help Desk, Office Programs, and English.",
+  "searchPlaceholder": "Search courses...",
+  "filters": "Filters",
+  "level": "Level",
+  "duration": "Duration",
+  "tags": "Tags",
+  "resetFilters": "Reset Filters",
+  "noCoursesFound": "No courses found matching your search.",
+  "changeCriteria": "Please reset the filters or change your search criteria."
+},
+  "Metadata": {
+  "title": "JET Academy | Programming & IT Courses",
+  "titleTemplate": "%s | JET Academy - Programming & IT Courses",
+  "description": "Programming and IT courses in Azerbaijan: Front-End, Back-End, Python, Data Analytics, Cybersecurity, and more. Start your career with practical lessons!",
+  "keywords": "IT courses, programming courses, Front-End course, Back-End course, Data Analytics course, Python course, Java course, JavaScript course, Next.js course, React course, Cybersecurity course, IT education, IT courses Baku",
+  "ogTitle": "JET Academy | Intensive Programming & IT Courses",
+  "ogDescription": "Start your career path with us – gain knowledge in programming and various IT fields through JET Academy’s practical courses.",
+  "ogImageAlt": "JET Academy - Professional Programming & IT Courses",
+  "aboutPageTitle": "About Us | JET Academy",
+  "contactPageTitle": "Contact | JET Academy",
+  "galleryPageTitle": "Gallery | JET Academy",
+  "feedbacksPageTitle": "Feedbacks | JET Academy",
+  "feedbacksPageDescription": "JET Academy Student Reviews",
+  "glossaryPageTitle": "Technology Glossary | JET Academy",
+  "glossaryTermsPageTitle": "All Terms | JET Academy",
+  "glossaryTermsLetterPageTitle": "Terms Starting with \"{letter}\" | JET Academy",
+  "glossaryCategoryDescription": "Terms related to the {category} category in the JET Academy technology glossary",
+  "glossaryTermDefaultDescription": "Information about technology terms",
+  "glossarySearchDescription": "Search the JET Academy technology glossary",
+  "glossarySearchResultsTitle": "Search results for \"{query}\" | JET Academy",
+  "glossarySearchPageTitle": "Search | JET Academy"
+},
+
+  "postsPage": {
+  "pageTitle": "All News",
+  "pageDescription": "Check out our latest articles, news, and events",
+  "allPosts": "All News",
+  "blog": "Blog",
+  "news": "News",
+  "event": "Events",
+  "eventMetaTitle": "Events",
+  "newsMetaTitle": "News",
+  "offers": "Promotions",
+  "metaTitle": "All News",
+  "metaDescription": "The latest news and articles about courses, events, and projects at JET Academy.",
+  "readMore": "Read More",
+  "noPostsFound": "No posts found",
+  "tryDifferentFilters": "Try different filters!"
+},
+"blogPage": {
+  "pageTitle": "Blog",
+  "pageDescription": "Interesting articles about technology and education",
+  "allPosts": "All News",
+  "event": "Events",
+  "news": "News",
+  "blog": "Blog",
+  "offers": "Promotions",
+  "metaTitle": "Blog",
+  "metaDescription": "Interesting articles about technology and education",
+  "readMore": "Read More",
+  "noPostsFound": "No posts found",
+  "tryDifferentFilters": "Try different filters!"
+},
+"singlePostPage": {
+  "postTypeLabel": "Post Type",
+  "postType": {
+    "blog": "Blog",
+    "news": "News",
+    "event": "Event",
+    "offers": "Promotion",
+    "default": "Post"
+  },
+  "dateLabel": "Date",
+  "eventDateLabel": "Event Date",
+  "tagsLabel": "Tags",
+  "relatedPosts": "Related Posts"
+},
+"glossary": {
+  "whats": "what is?",
+  "title": "Technology Glossary",
+  "subtitle": "Glossary of Technology Terms",
+  "searchPlaceholder": "Search term...",
+  "allTermsText": "View all terms",
+  "categoriesTitle": "Categories",
+  "termsText": "term",
+  "emptyText": "No categories found",
+  "terms": {
+    "title": "All Terms",
+    "categoryText": "Category",
+    "emptyText": "No matching terms found",
+    "searchPlaceholder": "Search term...",
+    "allText": "All",
+    "description": "All IT terms in the JET Academy technology glossary"
+  },
+  "term": {
+    "tagsText": "Tags",
+    "categoryText": "Category",
+    "relatedTermsText": "Related Terms",
+    "ctaTitle": "Encountered an unfamiliar term?",
+    "ctaDescription": "Join our courses to learn IT in depth. Submit a request for more information!"
+  },
+  "search": {
+    "title": "Search",
+    "titleWithQuery": "Search results for \"{query}\"",
+    "categoryText": "Category",
+    "emptyText": "No terms found matching your search",
+    "searchPlaceholder": "Search term...",
+    "description": "Search the JET Academy technology glossary"
+  },
+  "category": {
+    "title": "{category} Category",
+    "categoryText": "Category",
+    "emptyText": "No terms found in this category",
+    "searchPlaceholder": "Search term..."
+  },
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next"
+  }
+},
+  
+  
+"home": "Home",
+"breadcrumbs": {
+  "course": "Course",
+  "courses": "Courses",
+  "about-us": "About Us",
+  "contact": "Contact",
+  "contact-us": "Contact",
+  "team": "Team",
+  "news": "News",
+  "category": "Categories",
+  "offers": "Promotions",
+  "event": "Events",
+  "blog": "Blog",
+  "glossary": "Technology Glossary",
+  "feedbacks": "Feedbacks",
+  "gallery": "Gallery"
+}
+
+}

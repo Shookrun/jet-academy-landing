@@ -98,7 +98,7 @@ export default function ModulesPage() {
         return (
           <div className="flex flex-col">
             <p className="text-bold text-small">{module.title.az}</p>
-            <p className="text-tiny text-default-400">{module.title.ru}</p>
+            <p className="text-tiny text-default-400">{module.title.en}</p>
           </div>
         );
 

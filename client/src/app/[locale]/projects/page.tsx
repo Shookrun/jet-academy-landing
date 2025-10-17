@@ -25,7 +25,7 @@ export async function generateMetadata({
       canonical: canonicalUrl,
       languages: {
         az: `${baseUrl}/az/projects`,
-        ru: `${baseUrl}/ru/projects`,
+        en: `${baseUrl}/en/projects`,
       },
     },
     openGraph: {

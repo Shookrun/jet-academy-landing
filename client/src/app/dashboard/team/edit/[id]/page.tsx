@@ -53,7 +53,7 @@ export default function EditTeamMemberPage({
         "bio",
         JSON.stringify({
           az: data.bio.az,
-          ru: data.bio.ru,
+          en: data.bio.en,
         })
       );
 

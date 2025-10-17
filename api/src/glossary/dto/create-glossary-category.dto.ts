@@ -8,7 +8,7 @@ export class CreateGlossaryCategoryDto {
 
   @ApiProperty({ example: 'Веб' })
   @IsString()
-  'name[ru]': string;
+  'name[en]': string;
 
   @ApiProperty({
     example: 'Veb texnologiyaları və veb inkişafı ilə bağlı əsas anlayışlar',
@@ -24,7 +24,7 @@ export class CreateGlossaryCategoryDto {
   })
   @IsOptional()
   @IsString()
-  'description[ru]'?: string;
+  'description[en]'?: string;
 
   @ApiProperty({ example: 'veb' })
   @IsString()
@@ -32,7 +32,7 @@ export class CreateGlossaryCategoryDto {
 
   @ApiProperty({ example: 'veb' })
   @IsString()
-  'slug[ru]': string;
+  'slug[en]': string;
 
   @ApiProperty({ example: 1, required: false, default: 0 })
   @IsOptional()

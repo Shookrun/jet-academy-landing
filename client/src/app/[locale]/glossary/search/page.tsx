@@ -43,7 +43,7 @@ export async function generateMetadata({
           locale === "az"
             ? `${baseUrl}/glossary/search`
             : `${baseUrl}/az/glossary/search`,
-        ru: `${baseUrl}/ru/glossary/search`,
+        en: `${baseUrl}/en/glossary/search`,
       },
     },
     openGraph: {
@@ -124,7 +124,7 @@ export default async function GlossarySearchPage({
       emptyText: "Axtarışınıza uyğun termin tapılmadı",
       searchPlaceholder: "Termin axtar...",
     },
-    ru: {
+    en: {
       title: `Результаты поиска для "${query}"`,
       noQueryTitle: "Поиск",
       categoryText: "Категория",

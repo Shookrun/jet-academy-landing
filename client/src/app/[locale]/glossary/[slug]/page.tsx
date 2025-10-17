@@ -75,7 +75,7 @@ export default async function GlossaryTermPage({ params }: PageProps) {
       categoryText: "Kateqoriya",
       relatedTermsText: "Əlaqəli terminlər",
     },
-    ru: {
+    en: {
       tagsText: "Теги",
       categoryText: "Категория",
       relatedTermsText: "Связанные термины",

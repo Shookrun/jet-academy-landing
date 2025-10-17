@@ -82,14 +82,14 @@ export default function EditProjectPage({
 
     if (
       original.title?.az !== updated.title?.az ||
-      original.title?.ru !== updated.title?.ru
+      original.title?.en !== updated.title?.en
     ) {
       changes.title = { ...updated.title };
     }
 
     if (
       original.description?.az !== updated.description?.az ||
-      original.description?.ru !== updated.description?.ru
+      original.description?.en !== updated.description?.en
     ) {
       changes.description = { ...updated.description };
     }

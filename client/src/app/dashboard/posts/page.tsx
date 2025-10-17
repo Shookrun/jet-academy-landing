@@ -120,7 +120,7 @@ export default function PostsPage() {
         return (
           <div className="flex flex-col">
             <p className="text-bold text-small">{post.title.az}</p>
-            <p className="text-tiny text-default-400">{post.title.ru}</p>
+            <p className="text-tiny text-default-400">{post.title.en}</p>
           </div>
         );
 

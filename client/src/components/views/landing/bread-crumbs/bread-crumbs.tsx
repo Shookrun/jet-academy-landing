@@ -83,7 +83,7 @@ export default function Breadcrumbs({
       projects: "Layihələr",
       "contact-us": "Bizimlə əlaqə"
     },
-    ru: {
+    en: {
       home: "Главная",
       courses: "Курсы", 
       course: "Курс",
@@ -113,7 +113,7 @@ export default function Breadcrumbs({
       return finalDynamicTitle ?? singleTitle ?? "";
     }
 
-    const currentLang = locale as 'az' | 'ru';
+    const currentLang = locale as 'az' | 'en';
     const translation = translations[currentLang]?.[segment.toLowerCase()];
     
     if (translation) {
@@ -129,7 +129,7 @@ export default function Breadcrumbs({
         href="/"
         className="hover:text-jsyellow transition-colors [@media(min-width:3500px)]:text-2xl"
       >
-        {translations[locale as 'az' | 'ru']?.home || "Home"}
+        {translations[locale as 'az' | 'en']?.home || "Home"}
       </Link>
       
       {segments.map((segment, index) => {

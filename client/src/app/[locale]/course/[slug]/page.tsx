@@ -107,7 +107,7 @@ export async function generateMetadata({
         : `${baseUrl}/${locale}/course/${params.slug}`;
 
     const azSlug = data.slug?.az || params.slug;
-    const ruSlug = data.slug?.ru || params.slug;
+    const ruSlug = data.slug?.en || params.slug;
 
     return {
       title: data.title[locale],
@@ -119,7 +119,7 @@ export async function generateMetadata({
             locale === "az"
               ? `${baseUrl}/course/${azSlug}`
               : `${baseUrl}/az/course/${azSlug}`,
-          ru: `${baseUrl}/ru/course/${ruSlug}`,
+          en: `${baseUrl}/en/course/${ruSlug}`,
         },
       },
       openGraph: {

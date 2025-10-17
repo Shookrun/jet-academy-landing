@@ -36,7 +36,7 @@ export const getTextContent = (content: any, locale: string) => {
       textContent =
         locale === "az"
           ? content[locale]["content[az]"]
-          : content[locale]["content[ru]"];
+          : content[locale]["content[en]"];
     }
   } catch (error) {
     console.error("Error parsing content:", error);

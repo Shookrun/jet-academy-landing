@@ -86,19 +86,19 @@ export default function ProjectForm({
             <div className="space-y-2">
               <Input
                 type="text"
-                label="Заголовок (RU)"
+                label="Заголовок (EN)"
                 variant="bordered"
                 startContent={<MdTitle className="text-gray-400" />}
                 isDisabled={isSubmitting}
-                {...register("title.ru", {
+                {...register("title.en", {
                   required: "Заголовок обязателен",
                   minLength: {
                     value: 3,
                     message: "Минимум 3 символа",
                   },
                 })}
-                isInvalid={!!errors.title?.ru}
-                errorMessage={errors.title?.ru?.message}
+                isInvalid={!!errors.title?.en}
+                errorMessage={errors.title?.en?.message}
                 classNames={{
                   input: "bg-transparent",
                   inputWrapper: [
@@ -130,15 +130,15 @@ export default function ProjectForm({
 
             <div className="space-y-2">
               <Textarea
-                label="Описание (RU)"
+                label="Описание (EN)"
                 variant="bordered"
                 startContent={<MdDescription className="text-gray-400" />}
                 isDisabled={isSubmitting}
-                {...register("description.ru", {
+                {...register("description.en", {
                   required: "Описание обязательно",
                 })}
-                isInvalid={!!errors.description?.ru}
-                errorMessage={errors.description?.ru?.message}
+                isInvalid={!!errors.description?.en}
+                errorMessage={errors.description?.en?.message}
                 classNames={{
                   input: "bg-transparent",
                   inputWrapper: [

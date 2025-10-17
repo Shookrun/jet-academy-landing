@@ -7,7 +7,7 @@ export class CreateCourseEligibilityDto {
   @ApiProperty({
     example: {
       az: 'Riyaziyyat biliyi',
-      ru: 'Знание математики',
+      en: 'Knowledge of mathematics',
     },
   })
   title: Prisma.JsonValue;
@@ -16,7 +16,7 @@ export class CreateCourseEligibilityDto {
   @ApiProperty({
     example: {
       az: 'Orta məktəb riyaziyyat bilikləri',
-      ru: 'Знания математики средней школы',
+      en: 'Knowledge of high school mathematics',
     },
   })
   description: Prisma.JsonValue;

@@ -286,7 +286,7 @@
         "required": "Язык обучения обязателен",
         "options": {
           "az": "Азербайджанский",
-          "ru": "Русский"
+          "en": "Русский"
         }
       },
       "number": {
@@ -302,8 +302,8 @@
       "email": "Эл. почта",
       "whatsapp": "WhatsApp",
       "address": "Адрес",
-      "addressg": "Филиал Гянджлик",
-      "addressx": "Филиал Хатаи"
+      "addressg": "Ünvan",
+      "addressx": "Ünvan"
     }
   },
   "Metadata": {

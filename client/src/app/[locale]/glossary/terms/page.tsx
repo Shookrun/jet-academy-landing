@@ -46,7 +46,7 @@ export async function generateMetadata({
           locale === "az"
             ? `${baseUrl}/glossary/terms${queryString}`
             : `${baseUrl}/az/glossary/terms${queryString}`,
-        ru: `${baseUrl}/ru/glossary/terms${queryString}`,
+        en: `${baseUrl}/en/glossary/terms${queryString}`,
       },
     },
     openGraph: {

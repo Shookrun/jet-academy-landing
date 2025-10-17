@@ -65,7 +65,7 @@ export async function generateMetadata({
   const queryParam = type ? `?type=${type}` : "";
   const azPath =
     locale === "az" ? `/news${queryParam}` : `/az/news${queryParam}`;
-  const ruPath = `/ru/news${queryParam}`;
+  const ruPath = `/en/news${queryParam}`;
 
   return {
     title,
@@ -74,7 +74,7 @@ export async function generateMetadata({
       canonical: canonicalUrl,
       languages: {
         az: `${baseUrl}${azPath}`,
-        ru: `${baseUrl}${ruPath}`,
+        en: `${baseUrl}${ruPath}`,
       },
     },
     openGraph: {

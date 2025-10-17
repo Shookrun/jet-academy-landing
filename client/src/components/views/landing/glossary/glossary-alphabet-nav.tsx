@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
 interface GlossaryAlphabetNavProps {
-  language: string; // 'az' or 'ru'
+  language: string; // 'az' or 'en'
   allText: string;
 }
 
@@ -51,7 +51,7 @@ export default function GlossaryAlphabetNav({
         "Y",
         "Z",
       ];
-    } else if (language === "ru") {
+    } else if (language === "en") {
       return [
         "А",
         "Б",

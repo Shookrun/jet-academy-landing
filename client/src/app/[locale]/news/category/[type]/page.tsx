@@ -66,7 +66,7 @@ export async function generateMetadata({
   const pathWithoutLocale = `/${params.type || "news"}`;
   const azPath =
     locale === "az" ? pathWithoutLocale : `/az${pathWithoutLocale}`;
-  const ruPath = `/ru${pathWithoutLocale}`;
+  const ruPath = `/en${pathWithoutLocale}`;
 
   return {
     title,
@@ -75,7 +75,7 @@ export async function generateMetadata({
       canonical: canonicalUrl,
       languages: {
         az: `${baseUrl}${azPath}`,
-        ru: `${baseUrl}${ruPath}`,
+        en: `${baseUrl}${ruPath}`,
       },
     },
     openGraph: {

@@ -20,8 +20,8 @@ import api from "@/utils/api/axios";
 
 interface Course {
   id: string;
-  title: { az: string; ru: string };
-  slug: { az: string; ru: string };
+  title: { az: string; en: string };
+  slug: { az: string; en: string };
   createdAt: string;
 }
 interface CoursesResponse {
@@ -42,7 +42,7 @@ export default async function Footer() {
   try {
     const t = await getTranslations("footer");
     const localeRaw = await getLocale();
-    const lang = (localeRaw === "ru" ? "ru" : "az") as "az" | "ru";
+    const lang = (localeRaw === "en" ? "en" : "az") as "az" | "en";
     const contact: ContactData = await getContact();
     const coursesData = await fetchCourses();
     const currentYear = new Date().getFullYear();
@@ -300,7 +300,7 @@ export default async function Footer() {
                       href="/projects"
                       className="text-sm sm:text-base [@media(min-width:2500px)]:!text-xl [@media(min-width:3500px)]:!text-3xl hover:underline transition-all duration-200 hover:text-white/90 leading-relaxed [@media(min-width:3500px)]:leading-relaxed"
                     >
-                      {t("projects")}
+                      {t("feedbacks")}
                     </Link>
                   </li>
                   <li>
@@ -315,8 +315,6 @@ export default async function Footer() {
               </div>
             </div>
           </div>
-
-          {/* Copyright Section */}
           <div className="mt-8 sm:mt-10 lg:mt-12 [@media(min-width:2500px)]:mt-16 [@media(min-width:3500px)]:mt-20 pt-6 sm:pt-8 [@media(min-width:2500px)]:pt-10 [@media(min-width:3500px)]:pt-12 border-t border-white/20 text-center lg:text-left">
             <p className="text-sm sm:text-base [@media(min-width:2500px)]:!text-xl [@media(min-width:3500px)]:!text-3xl text-white/90 leading-relaxed [@media(min-width:3500px)]:leading-relaxed">
               © {currentYear} JET Academy. {t("copyright")}

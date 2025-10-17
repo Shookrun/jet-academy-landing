@@ -21,7 +21,7 @@ const CourseListingClient = ({ courses, locale = "az" }: ICoursesSlider) => {
   const displayCourses = courses.items;
   if (!displayCourses) return null;
 
-  const normalizedLocale = locale.slice(0, 2) as "az" | "ru";
+  const normalizedLocale = locale.slice(0, 2) as "az" | "en";
 
   const getImageUrl = (imageUrl?: string) => {
     if (!imageUrl) return "/default-course-image.jpg";

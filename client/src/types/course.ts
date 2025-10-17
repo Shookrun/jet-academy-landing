@@ -2,7 +2,7 @@ import { PaginatedResponse } from "./general";
 
 interface MultilingualContent {
   az: string;
-  ru: string;
+  en: string;
 }
 export interface CourseFormInputs {
   title: MultilingualContent;
@@ -22,7 +22,7 @@ export interface CourseFormInputs {
   textColor?: string;
   newTags?: {
     az: string[];
-    ru: string[];
+    en: string[];
   };
 }
 interface ModuleContent extends MultilingualContent {
@@ -48,17 +48,17 @@ export interface CourseModule {
 }
 export interface ContentInput {
   az: string;
-  ru: string;
+  en: string;
   order: number;
 }
 export interface ModuleFormInputs {
   title: {
     az: string;
-    ru: string;
+    en: string;
   };
   description: {
     az: string;
-    ru: string;
+    en: string;
   };
   content: ContentInput[];
 }
@@ -75,11 +75,11 @@ export interface Eligibility {
 export interface EligibilityFormInputs {
   title: {
     az: string;
-    ru: string;
+    en: string;
   };
   description: {
     az: string;
-    ru: string;
+    en: string;
   };
   icon: string;
 }
@@ -109,7 +109,7 @@ export interface Course {
   ageRange?: string;
   newTags?: {
     az: string[];
-    ru: string[];
+    en: string[];
   };
   imageUrl?: string;
   tag?: string[];

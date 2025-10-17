@@ -4,7 +4,7 @@ import { useState } from "react";
 
 interface CourseContentProps {
   modules: CourseModule[];
-  locale: "az" | "ru";
+  locale: "az" | "en";
   title: string;
 }
 

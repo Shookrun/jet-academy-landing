@@ -176,7 +176,7 @@ export default function CoursesPage() {
         return (
           <div className="flex flex-col">
             <p className="text-bold text-small">{course.title.az}</p>
-            <p className="text-tiny text-default-400">{course.title.ru}</p>
+            <p className="text-tiny text-default-400">{course.title.en}</p>
           </div>
         );
 

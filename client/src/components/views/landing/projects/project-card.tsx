@@ -10,11 +10,11 @@ interface ProjectCardProps {
   link: string;
   title: {
     az: string;
-    ru: string;
+    en: string;
   };
   description: {
     az: string;
-    ru: string;
+    en: string;
   };
   category: {
     id: string;
@@ -45,7 +45,7 @@ export default function ProjectCard({
         <Image
           src={imageUrl}
           unoptimized
-          alt={locale === "az" ? title.az : title.ru}
+          alt={locale === "az" ? title.az : title.en}
           fill
           className="object-cover rounded-3xl"
         />
@@ -72,14 +72,14 @@ export default function ProjectCard({
                      transition-all duration-300 delay-100
                      md:translate-y-5 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100"
         >
-          {locale === "az" ? title.az : title.ru}
+          {locale === "az" ? title.az : title.en}
         </h3>
         <p
           className="text-gray-200 text-sm line-clamp-2
                     transition-all duration-300 delay-150
                     md:translate-y-5 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100"
         >
-          {locale === "az" ? description.az : description.ru}
+          {locale === "az" ? description.az : description.en}
         </p>
       </div>
     </div>

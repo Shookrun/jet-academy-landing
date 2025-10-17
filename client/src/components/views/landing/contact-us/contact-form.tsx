@@ -1,29 +1,34 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Language, RequestFormInputs } from "@/types/request";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { SubmitHandler, useForm, Controller } from "react-hook-form";
 import { toast } from "sonner";
 import axios, { AxiosError } from "axios";
 import api from "@/utils/api/axios";
 import Select from "@/components/ui/select";
 import { MdClose, MdOutlineCheck } from "react-icons/md";
 
-const ageOptions = Array.from({ length: 30 }, (_, i) => ({
-  value: i + 17,
-  label: `${i + 17}`,
-}));
+type RequestForm = RequestFormInputs & {
+  additionalInfo?: {
+    courseId?: string;
+    courseTitle?: string;
+    type?: string;
+    note?: string;
+  };
+};
+
+type CourseOption = { value: string; label: string };
+
+const INFO_VALUE = "__INFO__";
 
 const ContactForm = () => {
   const t = useTranslations("contact.form");
   const [success, setSuccess] = useState(false);
-
-  const languageOptions = [
-    { value: Language.AZ, label: t("childLanguage.options.az") },
-    { value: Language.RU, label: t("childLanguage.options.ru") },
-  ];
+  const [courseOptions, setCourseOptions] = useState<CourseOption[]>([]);
+  const [isLoadingCourses, setIsLoadingCourses] = useState(false);
 
   const {
     register,
@@ -31,31 +36,96 @@ const ContactForm = () => {
     formState: { errors, isSubmitting },
     reset,
     setValue,
-  } = useForm<RequestFormInputs>();
+    control,
+    watch,
+  } = useForm<RequestForm>();
 
-const onSubmit: SubmitHandler<RequestFormInputs> = async (data) => {
-  try {
-    await api.post("/requests", data);
-    reset();
-    setSuccess(true);
-  } catch (err) {
-    console.error("Error sending message:", err);
-    if (axios.isAxiosError(err)) {
-      const error = err as AxiosError<any>;
-      toast.error(error.response?.data.message || t("sendError"));
-    } else {
-      toast.error(t("unexpectedError"));
+  console.log(isLoadingCourses)
+  // const selectedCourseId = watch("additionalInfo.courseId");
+
+  const infoOptionLabel = useMemo(
+    () => t("course.infoOption", { defaultValue: "Məlumat almaq istəyirəm" }),
+    [t]
+  );
+  const courseSelectLabel = useMemo(
+    () => t("course.label", { defaultValue: "Müraciət etdiyiniz kurs" }),
+    [t]
+  );
+  const courseSelectPlaceholder = useMemo(
+    () => t("course.placeholder", { defaultValue: "Kurs seçin" }),
+    [t]
+  );
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        setIsLoadingCourses(true);
+        const { data } = await api.get("/courses", {
+          params: { limit: 100, page: 1, published: true },
+        });
+
+        const items = Array.isArray(data?.items) ? data.items : data;
+        const mapped: CourseOption[] = (items ?? []).map((c: any) => {
+          const title =
+            c?.title?.az || c?.title?.en || c?.title?.ru || c?.name || "Kurs";
+          return { value: String(c?.id), label: String(title) };
+        });
+
+        setCourseOptions([
+          { value: INFO_VALUE, label: infoOptionLabel },
+          ...mapped,
+        ]);
+      } catch (e) {
+        console.error("Kurslar yüklənmədi:", e);
+        toast.error(
+          t("coursesLoadError", { defaultValue: "Kurslar yüklənmədi" })
+        );
+      } finally {
+        setIsLoadingCourses(false);
+      }
+    };
+
+    fetchCourses();
+  }, [t, infoOptionLabel]);
+
+  const onSubmit: SubmitHandler<RequestForm> = async (data) => {
+    try {
+      const isInfoOnly = data.additionalInfo?.courseId === INFO_VALUE;
+
+      const payload: RequestForm = {
+        name: data.name,
+        surname: data.surname,
+        number: data.number,
+        // Backend hələ required saxlayırsa problemsiz olsun deyə “səssiz” defaultlar:
+        childAge: (data as any).childAge ?? 0,
+        childLanguage: (data as any).childLanguage ?? Language.AZ,
+        additionalInfo: isInfoOnly
+          ? { type: "INFO_REQUEST", note: infoOptionLabel }
+          : {
+              courseId: data.additionalInfo?.courseId ?? "",
+              courseTitle: data.additionalInfo?.courseTitle ?? "",
+            },
+      };
+
+      if (!isInfoOnly && !payload.additionalInfo?.courseId) {
+        toast.error(
+          t("courseRequired", { defaultValue: "Zəhmət olmasa kurs seçin" })
+        );
+        return;
+      }
+
+      await api.post("/requests", payload);
+      reset();
+      setSuccess(true);
+    } catch (err) {
+      console.error("Error sending message:", err);
+      if (axios.isAxiosError(err)) {
+        const error = err as AxiosError<any>;
+        toast.error(error.response?.data?.message || t("sendError"));
+      } else {
+        toast.error(t("unexpectedError"));
+      }
     }
-  }
-};
-
-
-  const handleAgeChange = (value: string | number) => {
-    setValue("childAge", Number(value));
-  };
-
-  const handleLanguageChange = (value: string | number) => {
-    setValue("childLanguage", value as Language);
   };
 
   return (
@@ -67,19 +137,17 @@ const onSubmit: SubmitHandler<RequestFormInputs> = async (data) => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
       >
+        {/* Ad */}
         <div className="space-y-2">
           <input
             type="text"
             placeholder={t("name.placeholder")}
-            className="w-full p-4 rounded-[32px] border border-jsyellow bg-[#fef7eb] 
-              focus:outline-none focus:ring-2 focus:ring-jsyellow 
+            className="w-full p-4 rounded-[32px] border border-jsyellow bg-[#fef7eb]
+              focus:outline-none focus:ring-2 focus:ring-jsyellow
               shadow-sm transition-all duration-300 ease-in-out"
             {...register("name", {
               required: t("name.required"),
-              minLength: {
-                value: 2,
-                message: t("name.minLength"),
-              },
+              minLength: { value: 2, message: t("name.minLength") },
             })}
           />
           {errors.name && (
@@ -87,19 +155,17 @@ const onSubmit: SubmitHandler<RequestFormInputs> = async (data) => {
           )}
         </div>
 
+        {/* Soyad */}
         <div className="space-y-2">
           <input
             type="text"
             placeholder={t("surname.placeholder")}
-            className="w-full p-4 rounded-[32px] border border-jsyellow bg-[#fef7eb] 
-              focus:outline-none focus:ring-2 focus:ring-jsyellow 
+            className="w-full p-4 rounded-[32px] border border-jsyellow bg-[#fef7eb]
+              focus:outline-none focus:ring-2 focus:ring-jsyellow
               shadow-sm transition-all duration-300 ease-in-out"
             {...register("surname", {
               required: t("surname.required"),
-              minLength: {
-                value: 2,
-                message: t("surname.minLength"),
-              },
+              minLength: { value: 2, message: t("surname.minLength") },
             })}
           />
           {errors.surname && (
@@ -109,12 +175,13 @@ const onSubmit: SubmitHandler<RequestFormInputs> = async (data) => {
           )}
         </div>
 
+        {/* Nömrə */}
         <div className="space-y-2">
           <input
             type="tel"
             placeholder={t("number.placeholder")}
-            className="w-full p-4 rounded-[32px] border border-jsyellow bg-[#fef7eb] 
-              focus:outline-none focus:ring-2 focus:ring-jsyellow 
+            className="w-full p-4 rounded-[32px] border border-jsyellow bg-[#fef7eb]
+              focus:outline-none focus:ring-2 focus:ring-jsyellow
               shadow-sm transition-all duration-300 ease-in-out"
             {...register("number", {
               required: t("number.required"),
@@ -131,32 +198,40 @@ const onSubmit: SubmitHandler<RequestFormInputs> = async (data) => {
           )}
         </div>
 
-        <Select
-          label={t("childAge.label")}
-          options={ageOptions}
-          error={errors.childAge}
-          placeholder={t("childAge.placeholder")}
-          {...register("childAge", {
-            required: t("childAge.required"),
-          })}
-          onChange={handleAgeChange}
-        />
-
-        <Select
-          label={t("childLanguage.label")}
-          options={languageOptions}
-          error={errors.childLanguage}
-          placeholder={t("childLanguage.placeholder")}
-          {...register("childLanguage", {
-            required: t("childLanguage.required"),
-          })}
-          onChange={handleLanguageChange}
+        {/* Kurs seçimi — Controller ilə */}
+        <Controller
+          control={control}
+          name="additionalInfo.courseId"
+          rules={{
+            required: t("course.required", {
+              defaultValue: "Kurs seçimi vacibdir",
+            }) as string,
+          }}
+          render={({ field, fieldState }) => (
+            <Select
+              // Sənin Select komponentinin **qəbul etdiyi** prop-ları ver:
+              label={courseSelectLabel}
+              options={courseOptions}
+              // Əgər Select “value/ onChange” qəbul edirsə:
+              value={field.value ?? ""}
+              onChange={(val: string | number) => {
+                const strVal = String(val);
+                field.onChange(strVal);
+                const option = courseOptions.find((o) => o.value === strVal);
+                setValue("additionalInfo.courseTitle", option?.label ?? "");
+              }}
+              // “isLoading” sənin Select-də yox idisə, vermə:
+              // loading={isLoadingCourses}  // <-- əgər Select-də belə prop varsa bunu istifadə et
+              error={fieldState.error?.message as any}
+              placeholder={courseSelectPlaceholder}
+            />
+          )}
         />
 
         <motion.button
           type="submit"
-          className="w-full bg-jsyellow text-white font-semibold py-4 px-8 
-            rounded-[32px] hover:bg-jsyellow/90 disabled:opacity-50 
+          className="w-full bg-jsyellow text-white font-semibold py-4 px-8
+            rounded-[32px] hover:bg-jsyellow/90 disabled:opacity-50
             transition-all duration-300 ease-in-out shadow-md"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
@@ -166,6 +241,7 @@ const onSubmit: SubmitHandler<RequestFormInputs> = async (data) => {
         </motion.button>
       </motion.form>
 
+      {/* Success Modal */}
       <AnimatePresence>
         {success && (
           <motion.div

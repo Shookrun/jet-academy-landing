@@ -20,11 +20,11 @@ class MultilingualField {
   az: string;
 
   @ApiProperty({
-    description: 'Text in Russian',
-    example: 'Заголовок поста',
+    description: 'Text in English',
+    example: 'Post title',
   })
   @IsString()
-  ru: string;
+  en: string;
 }
 
 export class CreatePostDto {

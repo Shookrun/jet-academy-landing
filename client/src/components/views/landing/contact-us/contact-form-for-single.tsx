@@ -22,7 +22,7 @@ const ContactFormForSingle = () => {
 
   const languageOptions = [
     { value: Language.AZ, label: t("childLanguage.options.az") },
-    { value: Language.RU, label: t("childLanguage.options.ru") },
+    { value: Language.EN, label: t("childLanguage.options.en") },
   ];
 
   const {

@@ -19,7 +19,7 @@ interface ISinglePostPageProps {
 export async function generateStaticParams() {
   try {
     const { items } = await getAllPosts({ page: 1, limit: 1000 });
-    const locales: Locale[] = ["az", "ru"];
+    const locales: Locale[] = ["az", "en"];
 
 
 
@@ -148,7 +148,7 @@ export async function generateMetadata({
         : `${baseUrl}/${locale}/${postTypeUrl}/${params.slug}`;
 
     const azSlug = data.slug?.az || params.slug;
-    const ruSlug = data.slug?.ru || params.slug;
+    const ruSlug = data.slug?.en || params.slug;
 
     return {
       title: data.title[locale],
@@ -157,8 +157,8 @@ export async function generateMetadata({
         canonical: canonicalUrl,
         languages: {
           az: data.slug.az ? `${baseUrl}/${postTypeUrl}/${azSlug}` : undefined,
-          ru: data.slug.ru
-            ? `${baseUrl}/ru/${postTypeUrl}/${ruSlug}`
+          en: data.slug.en
+            ? `${baseUrl}/en/${postTypeUrl}/${ruSlug}`
             : undefined,
         },
       },
