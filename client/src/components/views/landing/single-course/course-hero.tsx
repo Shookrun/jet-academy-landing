@@ -76,10 +76,10 @@ export default async function CourseHero({
 
         <div className="w-full">
           <CourseContent
-            title={t("courseModules")}
-            locale={locale}
-            modules={data.modules}
-          />
+  title={t("courseModules")}
+  locale={(locale.slice(0,2) === "en" ? "en" : "az")}
+  modules={data.modules}
+/>
         </div>
       </div>
     </div>
