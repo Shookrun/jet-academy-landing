@@ -22,7 +22,6 @@ import {
   RequestResponse,
   statusColorMap,
   statusLabels,
-  languageLabels,
 } from "@/types/request";
 import { ViewModal } from "@/components/views/dashboard/requests/view-modal";
 import { DeleteModal } from "@/components/views/dashboard/requests/delete-modal";
@@ -35,6 +34,7 @@ export default function RequestsPage() {
   const [totalRequests, setTotalRequests] = useState(0);
   const [page, setPage] = useState(1);
   const [rowsPerPage] = useState(5);
+  
   const [loading, setLoading] = useState(true);
   const [selectedRequest, setSelectedRequest] = useState<Request | null>(null);
   const [viewRequest, setViewRequest] = useState<Request | null>(null);
