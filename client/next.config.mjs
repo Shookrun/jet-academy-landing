@@ -1,24 +1,22 @@
+// next.config.mjs
 import createNextIntlPlugin from "next-intl/plugin";
 
 const withNextIntl = createNextIntlPlugin();
+const isProd = process.env.NODE_ENV === "production";
 
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
   output: "standalone",
-  // Webpack configuration
-  webpack: (config, { dev, isServer }) => {
-    // Development optimizations
-    if (dev) {
-      // Enable fast refresh
-      config.optimization.moduleIds = "named";
 
-      // Optimize development builds
+  webpack: (config, { dev, isServer }) => {
+    // Dev build optimizasiyaları
+    if (dev) {
+      config.optimization.moduleIds = "named";
       config.optimization.removeAvailableModules = false;
       config.optimization.removeEmptyChunks = false;
       config.optimization.splitChunks = false;
     }
-
-    // Production optimizations
+    // Prod client bundle optimizasiyaları
     if (!dev && !isServer) {
       config.optimization.splitChunks = {
         chunks: "all",
@@ -42,7 +40,7 @@ const nextConfig = {
       };
     }
 
-    // Optimize module resolution
+    // Brauzer bundleda lazım olmayan node core modulları
     config.resolve.fallback = {
       ...config.resolve.fallback,
       fs: false,
@@ -54,64 +52,45 @@ const nextConfig = {
   },
 
   images: {
+    formats: ["image/avif", "image/webp"],
     remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "place-hold.it",
-        port: "",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "api.jetschool.az",
-        port: "",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "api.jetacademy.az",
-        port: "",
-        pathname: "/**",
-      },
-      {
-        protocol: "http",
-        hostname: "api.jetacademy.az",
-        port: "",
-        pathname: "/**",
-      },
-       {
-        protocol: "https",
-        hostname: "api.new.jetacademy.az",
-        port: "",
-        pathname: "/**",
-      },
-       {
-        protocol: "http",
-        hostname: "api.new.jetacademy.az",
-        port: "",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "img.youtube.com",
-        port: "",
-        pathname: "/**",
-      },
-      {
-        protocol: "http",
-        hostname: "localhost",
-        port: "3001",
-        pathname: "/**",
-      },
+      // Sənin domenlərin
+      { protocol: "https", hostname: "jetacademy.az", pathname: "/**" },
+      { protocol: "https", hostname: "www.jetacademy.az", pathname: "/**" },
+      { protocol: "https", hostname: "api.jetacademy.az", pathname: "/**" },
+      { protocol: "https", hostname: "api.jetschool.az", pathname: "/**" },
+
+      // Test/keçid domenin varsa
+      { protocol: "https", hostname: "api.new.jetacademy.az", pathname: "/**" },
+
+      // (İstifadə edirsənsə) CDN hostu — öz CDN domenini yaz
+      { protocol: "https", hostname: "cdn.jetacademy.az", pathname: "/**" },
+
+      // Üçüncü tərəf
+      { protocol: "https", hostname: "img.youtube.com", pathname: "/**" },
+      { protocol: "https", hostname: "place-hold.it", pathname: "/**" },
+
+      // DEV üçün localhost hostları
+      { protocol: "http", hostname: "localhost", port: "3000", pathname: "/**" },
+      { protocol: "http", hostname: "localhost", port: "3001", pathname: "/**" },
     ],
   },
+
   async rewrites() {
-    return [
-      {
-        source: "/sitemap.xml",
-        destination: "/api/sitemap",
-      },
+    // Prod-da /api rewrite ETMİRİK — Nginx artıq /api-ni backend-ə ötürür.
+    const routes = [
+      { source: "/sitemap.xml", destination: "/api/sitemap" },
     ];
+
+    // Dev zamanı Next dev serverindən local NestJS-ə rahat proxy
+    if (!isProd) {
+      routes.push({
+        source: "/api/:path*",
+        destination: "http://127.0.0.1:3031/:path*",
+      });
+    }
+
+    return routes;
   },
 };
 
