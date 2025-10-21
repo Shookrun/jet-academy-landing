@@ -58,7 +58,7 @@ export default async function RootLayout({
         <h1 className="hidden">JET School</h1>
         {children}
         <Toaster />
-        <GoogleAnalytics gaId="G-8PKPCDFDSF" />
+        <GoogleAnalytics gaId="G-Z9R55K1YB9" />
       </body>
     </html>
   );

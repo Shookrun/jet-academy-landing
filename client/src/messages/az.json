@@ -4,7 +4,7 @@
     "courses": "Tədris Sahələrimiz",
     "feedbacks": "Rəylər",
     "about": "Haqqımızda",
-    "gallery": "Qalereya",
+    "gallery": "Dərsdən Görüntülər",
     "useful": "Faydalı",
     "offers": "Kampaniyalar",
     "blog": "Bloq",
@@ -21,7 +21,7 @@
     "description": "JET Academy, müasir texnologiyalar üzrə intensiv və praktika yönümlü təlimlər vasitəsilə tələbələri real iş mühitinə uyğun şəkildə yetişdirən tədris mərkəzidir."
   },
   "courseInfo": {
-    "title": "Tədris sahələri",
+    "title": "Tədris Sahələri",
     "description": "Hansı sahə üzrə karyera qurmağı planlaşdırırsız? Klikləyin və kurs haqqında məlumat alın!"
   },
   "courseInfoCP": {
@@ -158,7 +158,7 @@
     "home": "Ana səhifə",
     "about": "Haqqımızda",
     "courses": "Kurslar",
-    "gallery": "Qalereya",
+    "gallery": "Dərsdən Görüntülər",
     "blog": "Bloq",
     "glossary": "Lüğət",
     "news": "Xəbərlər",
@@ -203,12 +203,12 @@
     "description": "Tələbələrimizin JET Academy-də qazandıqları bilik və bacarıqlar barədə paylaşdıqları real hekayələri izləyin"
   },
   "gallery": {
-    "title": "Dərslərimizdən görüntülər",
+    "title": "Dərslərimizdən Görüntülər",
     "seeAll": "Hamısına bax",
     "description": ""
   },
   "blogs": {
-    "title": "Bloq və media",
+    "title": "Bloq və Media",
     "seeAll": "Hamısına bax",
     "description": "Son yeniliklər, faydalı bloqlar, kampaniyalar və xəbərləri burada izləyin"
   },
@@ -256,7 +256,7 @@
       "description": "Formu doldurun və sizinlə ən qısa zamanda əlaqə saxlayacağıq.",
       "sending": "Göndərilir...",
       "course":{
-        "placeholder":"Kursu Seçin"
+        "placeholder":"Tədris sahəsini seçin"
       },
       "name": {
   "label": "Ad",
