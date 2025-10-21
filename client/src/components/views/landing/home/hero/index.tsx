@@ -51,7 +51,7 @@ export default async function Hero() {
             [@media(min-width:3500px)]:!text-6xl
           "
         >
-          {t("toJetSchool")}{" "}
+          {t("toJetAcademy")}{" "}
           <span className="text-jsyellow text-4xl [@media(min-width:3500px)]:!text-6xl">{t("welcome")}!</span>
         </h1>
 

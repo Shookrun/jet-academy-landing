@@ -1,8 +1,8 @@
 {
   "navbar": {
     "home": "Ana Səhifə",
-    "courses": "Kurslarımız",
-    "media": "Layihələr",
+    "courses": "Tədris Sahələrimiz",
+    "feedbacks": "Rəylər",
     "about": "Haqqımızda",
     "gallery": "Qalereya",
     "useful": "Faydalı",
@@ -16,9 +16,9 @@
   },
   "hero": {
     "welcome": "Xoş Gəlmisiniz",
-    "toJetSchool": "JET Academy-ə",
+    "toJetAcademy": "JET Academy-ə",
     "getConsult": "Zəng sifariş et!",
-    "description": "JET Academy, IT sahəsində peşəkar təlimlər təqdim edən müasir tədris mərkəzidir.\n\nBurada tələbələr qısa müddət ərzində real avadanlıqlar və real layihələr üzərində işləyərək bir çox müasir texnologiyaları öyrənir və əmək bazarında rəqabətədavamlı mütəxəssis olmağa doğru irəliləyirlər. Yüksək təcrübəli müəllim və mentor heyəti, fərdi yanaşma ilə dəstəklənən tədris prosesi praktiki bacarıqların formalaşdırılmasına, layihə əsaslı öyrənməyə və real iş dünyasına hazırlığa yönəlib."
+    "description": "JET Academy, müasir texnologiyalar üzrə intensiv və praktika yönümlü təlimlər vasitəsilə tələbələri real iş mühitinə uyğun şəkildə yetişdirən tədris mərkəzidir."
   },
   "courseInfo": {
     "title": "Tədris sahələri",
@@ -138,7 +138,6 @@
   },
   "footer": {
     "address": "Bakı ş., Olimpiya küçəsi 6A (Gənclik metro stansiyası, İdman Nazirliyi yaxınlığında)",
-    "address2": "Bakı ş., Süleyman Vəzirov 17a (Xətai metro stansiyasının yaxınlığında)",
     "workingHours": {
       "title": "Bazar ertəsi - Şənbə Günü",
       "hours": "09:30 - 22:00",
@@ -163,7 +162,7 @@
     "blog": "Bloq",
     "glossary": "Lüğət",
     "news": "Xəbərlər",
-    "projects": "Layihələr",
+    "feedbacks": "Rəylər",
     "faq": "Tez-tez verilən suallar",
     "contact": "Əlaqə",
 
@@ -198,20 +197,20 @@
     "invalidNumber": "Nömrə formatı düzgün deyil",
     "messageRequired": "Mesaj tələb olunur"
   },
-  "projects": {
-    "title": "Tələbələrimizin layihələri",
+  "feedbacks": {
+    "title": "Tələbələrimizin Rəyləri",
     "seeAll": "Hamısına bax",
-    "description": "JET Academy-da uşaqlar yaradıcılıq və problem həll etmə bacarıqlarını inkişaf etdirmək üçün müxtəlif layihələr üzərində çalışırlar. \n Aşağıda bu layihələr ilə tanış ola bilərsiniz."
+    "description": "Tələbələrimizin JET Academy-də qazandıqları bilik və bacarıqlar barədə paylaşdıqları real hekayələri izləyin"
   },
   "gallery": {
     "title": "Dərslərimizdən görüntülər",
     "seeAll": "Hamısına bax",
-    "description": "JET Academy-də keçirilən interaktiv və praktiki dərslərdən görüntülər."
+    "description": "JET Academy-də keçirilən interaktiv və praktiki dərslərdən görüntülər"
   },
   "blogs": {
     "title": "Bloq və media",
     "seeAll": "Hamısına bax",
-    "description": "JET Academy-da keçirilən kurslar, tədbirlər və layihələr haqqında ən son xəbərlər və məqalələr."
+    "description": "Son yeniliklər, faydalı bloqlar, kampaniyalar və xəbərləri burada izləyin"
   },
   "aboutPage": {
     "introduction": {
@@ -237,7 +236,7 @@
     },
     "team": {
       "title": "Komandamızla Tanış Olun",
-      "description": "Müəllimlərimiz və mentorlarımız texnologiya sahəsində təcrübəli mütəxəssislərdir"
+      "description": "JET Academy-nin bütün təlimçiləri öz sahəsində yüksək təcrübəyə malik, pedaqoji bacarıqları ilə seçilən peşəkar mütəxəssislərdir"
     }
   },
   "contact": {
@@ -257,31 +256,42 @@
       "description": "Formu doldurun və sizinlə ən qısa zamanda əlaqə saxlayacağıq.",
       "sending": "Göndərilir...",
       "name": {
-        "label": "Ad",
-        "placeholder": "Adınızı daxil edin",
-        "required": "Ad tələb olunur",
-        "minLength": "Ad ən azı 2 simvol olmalıdır"
-      },
-      "surname": {
-        "label": "Soyad",
-        "placeholder": "Soyadınızı daxil edin",
-        "required": "Soyad tələb olunur",
-        "minLength": "Soyad ən azı 2 simvol olmalıdır"
-      },
-      "childAge": {
-        "label": "Yaşınız",
-        "placeholder": "Yaşınızı Seçin",
-        "required": "Yaş tələb olunur",
-        "description": "16+ Yaş "
-      },
-      "childLanguage": {
-        "label": "Tədris dili",
-        "placeholder": "Tədris dilini seçin",
-        "required": "Tədris dili tələb olunur",
-        "options": {
-          "az": "Azərbaycan dili",
-          "ru": "Rus dili"
-        }
+  "label": "Ad",
+  "placeholder": "Adınızı daxil edin",
+  "required": "Ad tələb olunur",
+  "minLength": "Ad ən azı 2 simvol olmalıdır"
+},
+"surname": {
+  "label": "Soyad",
+  "placeholder": "Soyadınızı daxil edin",
+  "required": "Soyad tələb olunur",
+  "minLength": "Soyad ən azı 2 simvol olmalıdır"
+},
+"phoneNumber": {
+  "label": "Telefon nömrəsi",
+  "placeholder": "Telefon nömrənizi daxil edin",
+  "required": "Telefon nömrəsi tələb olunur"
+},
+"mailAddress": {
+  "label": "E-poçt ünvanı",
+  "placeholder": "E-poçt ünvanınızı daxil edin",
+  "required": "E-poçt ünvanı tələb olunur"
+},
+"courseInterest": {
+  "label": "Maraqlandığınız sahəni seçin",
+  "placeholder": "Bir sahə seçin",
+  "required": "Sahə seçimi tələb olunur",
+  "options": {
+    "frontend": "Front-End Developer",
+    "python": "Python Back-End Developer",
+    "java": "Java Back-End Developer",
+    "fullstack": "Full-Stack Developer",
+    "helpdesk": "IT Help Desk",
+    "cybersecurity": "Kibertəhlükəsizlik",
+    "office": "Ofis Proqramları",
+    "english": "İngilis dili",
+    "notSure": " Əmin deyiləm"
+  }
       },
       "messageSent": "Sizin sorğunuzu qəbul etdik və ən qısa zamanda sizinlə əlaqə saxlayacağıq!",
       "number": {
@@ -297,8 +307,7 @@
       "email": "E-poçt",
       "whatsapp": "WhatsApp",
       "address1": "Ünvan",
-      "addressg": "Gənclik Filialı",
-      "addressx": "Xətai Filialı"
+      "addressg": "Gənclik Filialı"
     }
   },
   "singleCoursePage": {
@@ -308,47 +317,48 @@
     "teachers": "Kursun Müəllimləri",
     "teachersDescription": "Peşəkar və təcrübəli müəllimlərimiz",
     "enroll": "Qeydiyyatdan keç",
-    "contactFormTitle":"IT kurslarımız barədə məlumat almaq üçün qeydiyyatdan keçin"
+    "contactFormTitle":"Kurslarımız barədə məlumat almaq üçün qeydiyyatdan keçin"
   },
-  "coursesPage": {
-    "title": "Tədris Proqramları",
-    "description": "Bütün yaş qrupları və bacarıq səviyyələri üçün hazırlanmış texnoloji təhsil proqramlarımız ilə tanış olun",
-    "metaTitle": "JET Academy - Kurslar",
-    "metaDescription": "JET Academy-un uşaqlar üçün texnologiya təhsili proqramlarını araşdırın. Dəstəkləyici mühitdə kodlaşdırma, robotika, veb inkişafı və daha çox şey öyrənin.",
-    "searchPlaceholder": "Kursları axtar...",
-    "filters": "Filtrlər",
-    "level": "Səviyyə",
-    "duration": "Müddət",
-    "tags": "Teqlər",
-    "resetFilters": "Filterləri sıfırla",
-    "noCoursesFound": "Axtarışınıza uyğun heç bir kurs tapılmadı.",
-    "changeCriteria": "Lütfən axtarış meyarlarınızı dəyişdirin və ya filterləri sıfırlayın."
-  },
+"coursesPage": {
+  "title": "Kurslarımız",
+  "description": "Front-End, Back-End, Full-Stack, Python, Java, Kibertəhlükəsizlik, IT Help Desk, Ofis Proqramları, İngilis dili və daha çox kursla tanış olun.",
+  "metaTitle": "JET Academy - IT və Proqramlaşdırma Kursları",
+  "metaDescription": "JET Academy-də Front-End, Back-End, Full-Stack, Python, Java, Kibertəhlükəsizlik, IT Help Desk, Ofis Proqramları və İngilis dili kursları ilə karyeranızı inkişaf etdirin.",
+  "searchPlaceholder": "Kurs axtarın...",
+  "filters": "Filterlər",
+  "level": "Səviyyə",
+  "duration": "Müddət",
+  "tags": "Teqlər",
+  "resetFilters": "Filterləri sıfırla",
+  "noCoursesFound": "Axtarışınıza uyğun kurs tapılmadı.",
+  "changeCriteria": "Zəhmət olmasa filterləri sıfırlayın və ya axtarış meyarlarını dəyişdirin."
+},
   "Metadata": {
-    "title": "JET Academy | IT kursları, Proqramlaşdırma kursları!",
-    "titleTemplate": "%s | JET Academy IT kursları, Proqramlaşdırma kursları!",
-    "description": "JET Academy - Azərbaycanda uşaqlar üçün IT kursları, proqramlaşdırma kursları. Usaqlar ucun it kurslari, proqramlasdirma kurslari, suni intellekt kurslari.",
-    "keywords": "uşaqlar üçün proqramlaşdırma, IT məktəbi, JET Academy, JET Academy, kompüter kursları, coding, robotexnika, süni intellekt, scratch, python, uşaqlar üçün IT təhsili, Bakı IT məktəbi",
-    "ogTitle": "JET Academy | Uşaqlar üçün IT və Kompüter Mühəndisliyi Məktəbi",
-    "ogDescription": "Uşağınızın gələcəyinə sərmayə qoyun - JET Academy ilə müasir texnologiyaları kəşf edin",
-    "ogImageAlt": "JET Academy - Uşaqlar üçün IT Məktəbi",
-    "aboutPageTitle": "Haqqımızda | JET Academy",
-    "contactPageTitle": "Əlaqə Məlumatları | JET Academy",
-    "galleryPageTitle": "Qalereya | JET Academy",
-    "projectsPageTitle": "Layihələr | JET Academy",
-    "projectsPageDescription": "JET Academyun tələbə layihələri, tələbələrimizin innovasiya və yaradıcılığı nümayiş etdirir",
-    "glossaryPageTitle": "Texnoloji Lüğət | JET Academy",
-    "glossaryTermsPageTitle": "Bütün Terminlər | JET Academy",
-    "glossaryTermsLetterPageTitle": "\"{letter}\" ilə başlayan terminlər | JET Academy",
-    "glossaryCategoryDescription": "JET Academy glossariy lüğətində {category} kateqoriyasına aid terminlər",
-    "glossaryTermDefaultDescription": "IT və proqramlaşdırma termini haqqında məlumat",
-    "glossarySearchDescription": "JET Academy glossariy lüğətində axtarış edin",
-    "glossarySearchResultsTitle": "\"{query}\" üçün axtarış nəticələri | JET Academy",
-    "glossarySearchPageTitle": "Axtarış | JET Academy"
-  },
+  "title": "JET Academy | Proqramlaşdırma və IT kursları",
+  "titleTemplate": "%s | JET Academy - Proqramlaşdırma və IT kursları",
+  "description": "Azərbaycanda proqramlaşdırma və IT kursları: Front-End, Back-End, Python, Data Analitika, Kibertəhlükəsizlik və daha çoxu. Praktiki dərslərlə karyerana başla!",
+  "keywords": "IT kursları, IT kursu, proqramlaşdırma kursları, proqramlaşdırma kursu, Front-End kursu, Back-End kursu, Data Analitika kursu, Python kursu, Java kursu, JavaScript kursu, Next js kursu, React kursu, kibertəhlükəsizlik kursu, IT təhsili, IT kursları Bakı",
+  "ogTitle": "JET Academy | İntensiv Proqramlaşdırma və IT Kursları",
+  "ogDescription": "Karyera yolunuza bizimlə başlayın - JET Academy-nin praktiki kursları ilə proqramlaşdırma və müxtəlif IT sahələrində biliklər qazanın.",
+  "ogImageAlt": "JET Academy - Peşəkar Proqramlaşdırma və IT kursları",
+  "aboutPageTitle": "Haqqımızda | JET Academy",
+  "contactPageTitle": "Əlaqə | JET Academy",
+  "galleryPageTitle": "Qalereya | JET Academy",
+  "feedbacksPageTitle": "Rəylər | JET Academy",
+  "feedbacksPageDescription": "JET Academy Tələbə Rəyləri",
+  "glossaryPageTitle": "Texnoloji Lüğət | JET Academy",
+  "glossaryTermsPageTitle": "Bütün Terminlər | JET Academy",
+  "glossaryTermsLetterPageTitle": "\"{letter}\" ilə başlayan terminlər | JET Academy",
+  "glossaryCategoryDescription": "JET Academy texnoloji lüğətində {category} kateqoriyasına aid terminlər",
+  "glossaryTermDefaultDescription": "Texnoloji terminlər haqqında məlumat",
+  "glossarySearchDescription": "JET Academy texnoloji lüğətində axtarış edin",
+  "glossarySearchResultsTitle": "\"{query}\" üçün axtarış nəticələri | JET Academy",
+  "glossarySearchPageTitle": "Axtarış | JET Academy"
+}
+,
   "postsPage": {
     "pageTitle": "Bütün xəbərlər",
-    "pageDescription": "Ən son məqalələrimiz, xəbərlərimiz və tədbirlərimizlə tanış olun.",
+    "pageDescription": "Ən son məqalələrimiz, xəbərlərimiz və tədbirlərimizlə tanış olun",
     "allPosts": "Bütün xəbərlər",
     "blog": "Bloq",
     "news": "Xəbərlər",
@@ -360,18 +370,18 @@
     "metaDescription": "JET Academy-da keçirilən kurslar, tədbirlər və layihələr haqqında ən son xəbərlər və məqalələr.",
     "readMore": "Daha çox oxu",
     "noPostsFound": "Post tapılmadı",
-    "tryDifferentFilters": "Amma olacaqlar!"
+    "tryDifferentFilters": "Amma olacaq!"
   },
   "blogPage": {
     "pageTitle": "Bloq",
-    "pageDescription": "JET Academy müəllimləri tərəfindən yazılmış məqalələr ilə tanış olun.",
+    "pageDescription": "Texnologiya və təhsil haqqında maraqlı məqalələr",
     "allPosts": "Bütün xəbərlər",
     "event": "Tədbirlər",
     "news": "Xəbərlər",
     "blog": "Bloq",
     "offers": "Kampaniyalar",
     "metaTitle": "Bloq",
-    "metaDescription": "JET Academy müəllimləri tərəfindən yazılmış məqalələr ilə tanış olun.",
+    "metaDescription": "Texnologiya və təhsil haqqında maraqlı məqalələr",
     "readMore": "Daha çox oxu",
     "noPostsFound": "Post tapılmadı",
     "tryDifferentFilters": "Amma olacaqlar!"
@@ -450,7 +460,7 @@
   "event":"Tədbirlər",
   "blog":"Bloq",
   "glossary":"Texnoloji Lüğət",
-  "projects":"Layihələr",
+  "feedbacks":"Rəylər",
   "gallery":"Qalereya"
 }
 }
