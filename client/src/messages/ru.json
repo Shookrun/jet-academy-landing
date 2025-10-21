@@ -2,7 +2,7 @@
   "navbar": {
     "home": "Главная",
     "courses": "Наши курсы",
-    "media": "Проекты",
+    "feedbacks": "Отзывы",
     "about": "О нас",
     "useful": "Полезное",
     "blog": "Блог",
@@ -211,7 +211,7 @@
   "gallery": {
     "title": "Кадры с занятий",
     "seeAll": "Посмотреть все кадры",
-    "description": "Кадры с занятий по IT и программированию для детей в JET School"
+    "description": ""
   },
   "blogs": {
     "title": "Блог и медиа",

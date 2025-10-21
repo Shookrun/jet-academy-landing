@@ -37,7 +37,7 @@ export const getNavLinks = (t: any) => {
           href: "/gallery",
         },
         {
-          title: t("media"),
+          title: t("feedbacks"),
           href: "/projects",
         },
         {

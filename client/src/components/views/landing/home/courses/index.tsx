@@ -103,7 +103,7 @@ const CoursesSlider = ({ courses, locale = "az" }: ICoursesSlider) => {
                 >
                   {/* Başlıq və slogan */}
                   <div className="z-10">
-                    <h2 className="text-2xl sm:text-3xl font-bold mb-3 leading-tight text-gray-900">
+                    <h2 className="text-2xl sm:text-2xl font-bold mb-3 leading-tight text-gray-900">
                       {title}
                     </h2>
                     <p className="text-base sm:text-lg opacity-80 font-medium">

@@ -28,8 +28,11 @@ export interface RequestFormInputs {
   name: string;
   surname: string;
   number: string;
+
   childAge: number;
   childLanguage: Language;
+
+  courseId?: string;
 }
 
 export type RequestResponse = PaginatedResponse<Request>;

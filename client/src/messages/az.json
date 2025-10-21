@@ -205,7 +205,7 @@
   "gallery": {
     "title": "Dərslərimizdən görüntülər",
     "seeAll": "Hamısına bax",
-    "description": "JET Academy-də keçirilən interaktiv və praktiki dərslərdən görüntülər"
+    "description": ""
   },
   "blogs": {
     "title": "Bloq və media",
@@ -235,7 +235,7 @@
       "studentsLabel": "Tələbə sayı"
     },
     "team": {
-      "title": "Komandamızla Tanış Olun",
+      "title": "Təlimçi Heyəti",
       "description": "JET Academy-nin bütün təlimçiləri öz sahəsində yüksək təcrübəyə malik, pedaqoji bacarıqları ilə seçilən peşəkar mütəxəssislərdir"
     }
   },
@@ -255,6 +255,9 @@
       "contactTitle":"IT Kurslarımız haqqında məlumat almaq üçün qeydiyyatdan keçin",
       "description": "Formu doldurun və sizinlə ən qısa zamanda əlaqə saxlayacağıq.",
       "sending": "Göndərilir...",
+      "course":{
+        "placeholder":"Kursu Seçin"
+      },
       "name": {
   "label": "Ad",
   "placeholder": "Adınızı daxil edin",

@@ -18,7 +18,7 @@ const fetchProjects = async () => {
 
 export default async function Projects() {
   try {
-    const t = await getTranslations("projects");
+    const t = await getTranslations("feedbacks");
     const projects = await fetchProjects();
     if (!projects) return null;
 

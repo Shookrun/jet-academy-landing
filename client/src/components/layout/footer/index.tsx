@@ -300,7 +300,7 @@ export default async function Footer() {
                       href="/projects"
                       className="text-sm sm:text-base [@media(min-width:2500px)]:!text-xl [@media(min-width:3500px)]:!text-3xl hover:underline transition-all duration-200 hover:text-white/90 leading-relaxed [@media(min-width:3500px)]:leading-relaxed"
                     >
-                      {t("projects")}
+                      {t("feedbacks")}
                     </Link>
                   </li>
                   <li>
