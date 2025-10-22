@@ -52,6 +52,7 @@ export default async function RootLayout({
           />
         </noscript>
       </head>
+      
       <body
         className={`${manrope.className} scroll-smooth antialiased overflow-x-hidden`}
       >
