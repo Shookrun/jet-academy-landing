@@ -7,7 +7,7 @@ import React from "react";
 
 export const metadata: Metadata = {
   title: "İdarə Paneli | JET School",
-  description: "JET School İdarə Paneli",
+  description: "JET Academy İdarə Paneli",
   robots: {
     index: false,
     follow: false,
