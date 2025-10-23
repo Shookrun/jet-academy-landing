@@ -16,7 +16,6 @@ export default function ContactInfo({
   phone,
   email,
   address,
-  address2,
   whatsapp,
 }: ContactInfoProps) {
   const t = useTranslations();
