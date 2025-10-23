@@ -1,7 +1,7 @@
 {
   "navbar": {
     "home": "Ana Səhifə",
-    "courses": "Tədris Sahələrimiz",
+    "courses": "Tədris Sahələri",
     "feedbacks": "Rəylər",
     "about": "Haqqımızda",
     "gallery": "Dərsdən Görüntülər",
@@ -22,7 +22,7 @@
   },
   "courseInfo": {
     "title": "Tədris Sahələri",
-    "description": "Hansı sahə üzrə karyera qurmağı planlaşdırırsız? Klikləyin və kurs haqqında məlumat alın!"
+    "description": "JET Academy-də tədris sahələri müasir əmək bazarının tələblərinə uyğun formalaşdırılıb. Hər bir sahə üzrə proqramlar praktiki biliklərə, real layihələrə və peşəkar inkişaf imkanlarına əsaslanır."
   },
   "courseInfoCP": {
     "title": "Bizim digər kurslarımız"
@@ -145,7 +145,7 @@
       "hours7": "10:00 - 22:00"
     },
     "links": {
-      "courses": "Kurslarımız",
+      "courses": "Tədris Sahələri",
       "contact": "Əlaqə",
       "media": "Media"
     },
@@ -157,7 +157,7 @@
 
     "home": "Ana səhifə",
     "about": "Haqqımızda",
-    "courses": "Kurslar",
+    "courses": "Tədris Sahələri",
     "gallery": "Dərsdən Görüntülər",
     "blog": "Bloq",
     "glossary": "Lüğət",
@@ -323,8 +323,8 @@
     "contactFormTitle":"Kurslarımız barədə məlumat almaq üçün qeydiyyatdan keçin"
   },
 "coursesPage": {
-  "title": "Kurslarımız",
-  "description": "Front-End, Back-End, Full-Stack, Python, Java, Kibertəhlükəsizlik, IT Help Desk, Ofis Proqramları, İngilis dili və daha çox kursla tanış olun.",
+  "title": "Tədris Sahələri",
+  "description": "JET Academy-də tədris sahələri müasir əmək bazarının tələblərinə uyğun formalaşdırılıb. Hər bir sahə üzrə proqramlar praktiki biliklərə, real layihələrə və peşəkar inkişaf imkanlarına əsaslanır.",
   "metaTitle": "JET Academy - IT və Proqramlaşdırma Kursları",
   "metaDescription": "JET Academy-də Front-End, Back-End, Full-Stack, Python, Java, Kibertəhlükəsizlik, IT Help Desk, Ofis Proqramları və İngilis dili kursları ilə karyeranızı inkişaf etdirin.",
   "searchPlaceholder": "Kurs axtarın...",
