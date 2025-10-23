@@ -1,60 +1,135 @@
 "use client";
 import { useContactModal } from "@/hooks/useContactModal";
-import { useTranslations } from "next-intl";
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useTranslations, useLocale } from "next-intl";
+import React, { useEffect, useMemo, useState } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { MdClose, MdOutlineCheck } from "react-icons/md";
 import { RequestFormInputs, Language } from "@/types/request";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import api from "@/utils/api/axios";
 import { toast } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
 import Select from "../ui/select";
+import { Locale } from "@/i18n/request";
+
+type CourseItem = { id: string; title?: Record<string, string> };
+type FormValues = RequestFormInputs & { courseId?: string };
+
+const ADVICE_VALUE = "__advice__";
 
 export default function ContactModal() {
   const t = useTranslations("contact.form");
+  const locale = useLocale() as Locale;
   const { isOpen, toggle } = useContactModal();
+
   const [success, setSuccess] = useState(false);
+  const [courseOptions, setCourseOptions] = useState<
+    { value: string; label: string }[]
+  >([]);
+
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
     setValue,
-  } = useForm<RequestFormInputs>();
+    watch,
+  } = useForm<FormValues>({
+    defaultValues: {
+      // Backend-in tələb etdiyi sahələri gizli saxlayırıq
+      childAge: 12,
+      childLanguage: Language.AZ,
+      // Default olaraq “Məsləhət almaq istəyirəm”
+      courseId: ADVICE_VALUE,
+    },
+  });
 
-  const ageOptions = Array.from({ length: 9 }, (_, i) => ({
-    value: i + 9,
-    label: `${i + 9}`,
-  }));
-  const languageOptions = [
-    { value: Language.AZ, label: t("childLanguage.options.az") },
-    { value: Language.RU, label: t("childLanguage.options.ru") },
-  ];
+  const selectedCourseId = watch("courseId");
 
-  const onSubmit = handleSubmit((data) =>
-    toast.promise(api.post("/requests", data), {
-      loading: t("sending"),
-      success: () => {
-        reset();
-        setSuccess(true);
-        return t("messageSent");
-      },
-      error: (err) => {
-        if (axios.isAxiosError(err) && err.response) {
-          return err.response.data.message || t("sendError");
-        }
-        return t("unexpectedError");
-      },
-      classNames: { icon: "text-jsyellow" },
-    })
-  );
+  // Kursları çək
+  useEffect(() => {
+    let active = true;
+    (async () => {
+      try {
+        const res = await api.get("/courses", { params: { page: 1, limit: 100 } });
+        const items: CourseItem[] = res.data?.items ?? res.data ?? [];
+        const opts = items.map((c) => ({
+          value: String(c.id),
+          label:
+            (c.title?.[locale] ||
+              c.title?.az ||
+              c.title?.en ||
+              c.title?.ru ||
+              "Adsız kurs") as string,
+        }));
+        const withAdvice = [
+          { value: ADVICE_VALUE, label: t("adviceOption") ?? "Məsləhət almaq istəyirəm" },
+          ...opts,
+        ];
+        if (active) setCourseOptions(withAdvice);
+      } catch (e) {
+        console.error("Kurs siyahısı alınmadı:", e);
+        if (active)
+          setCourseOptions([
+            { value: ADVICE_VALUE, label: t("adviceOption") ?? "Məsləhət almaq istəyirəm" },
+          ]);
+      }
+    })();
+    return () => {
+      active = false;
+    };
+  }, [locale, t]);
 
-  const handleAgeChange = (value: string | number) => {
-    setValue("childAge", Number(value));
+  const selectedCourseTitle = useMemo(() => {
+    const hit = courseOptions.find((o) => o.value === selectedCourseId);
+    return hit?.label;
+  }, [courseOptions, selectedCourseId]);
+
+  const handleCourseChange = (value: string | number) => {
+    setValue("courseId", String(value), { shouldValidate: true });
   };
-  const handleLanguageChange = (value: string | number) => {
-    setValue("childLanguage", value as Language);
+
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    try {
+      const isAdvice = !data.courseId || data.courseId === ADVICE_VALUE;
+
+      const payload = {
+        name: data.name?.trim(),
+        surname: data.surname?.trim(),
+        number: data.number?.trim(),
+        // Backend DTO məcburilər:
+        childAge: Number(data.childAge) || 12,
+        childLanguage: data.childLanguage || Language.AZ,
+        // Kurs seçimi haqqında info JSON-a düşür
+        additionalInfo: isAdvice
+          ? { kind: "advice" }
+          : {
+              kind: "course",
+              courseId: data.courseId,
+              courseTitle: selectedCourseTitle,
+            },
+      };
+
+      await toast.promise(api.post("/requests", payload), {
+        loading: t("sending"),
+        success: () => {
+          reset({ childAge: 12, childLanguage: Language.AZ, courseId: ADVICE_VALUE });
+          setSuccess(true);
+          return t("messageSent");
+        },
+        error: (err) => {
+          if (axios.isAxiosError(err)) {
+            const ax = err as AxiosError<any>;
+            return ax.response?.data?.message || t("sendError");
+          }
+          return t("unexpectedError");
+        },
+        classNames: { icon: "text-jsyellow" },
+      });
+    } catch (err) {
+      console.error("Error sending message:", err);
+      toast.error(t("unexpectedError"));
+    }
   };
 
   return (
@@ -85,7 +160,7 @@ export default function ContactModal() {
               <button
                 className="self-end p-2 hover:bg-jsyellow/10 rounded-full"
                 onClick={() => {
-                  reset();
+                  reset({ childAge: 12, childLanguage: Language.AZ, courseId: ADVICE_VALUE });
                   toggle();
                   setSuccess(false);
                 }}
@@ -112,7 +187,7 @@ export default function ContactModal() {
             </motion.div>
           ) : (
             <motion.form
-              onSubmit={onSubmit}
+              onSubmit={handleSubmit(onSubmit)}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 20 }}
@@ -131,7 +206,7 @@ export default function ContactModal() {
                 <button
                   className="p-2 hover:bg-jsyellow/10 rounded-full"
                   onClick={() => {
-                    reset();
+                    reset({ childAge: 12, childLanguage: Language.AZ, courseId: ADVICE_VALUE });
                     toggle();
                   }}
                   type="button"
@@ -140,6 +215,7 @@ export default function ContactModal() {
                 </button>
               </div>
 
+              {/* Ad */}
               <div className="space-y-2">
                 <input
                   type="text"
@@ -161,6 +237,7 @@ export default function ContactModal() {
                 )}
               </div>
 
+              {/* Soyad */}
               <div className="space-y-2">
                 <input
                   type="text"
@@ -182,6 +259,7 @@ export default function ContactModal() {
                 )}
               </div>
 
+              {/* Telefon */}
               <div className="space-y-2">
                 <input
                   type="tel"
@@ -206,28 +284,20 @@ export default function ContactModal() {
                 )}
               </div>
 
+              {/* Kurs seçimi – ilk variant: “Məsləhət almaq istəyirəm” */}
               <Select
-                label={t("childAge.label")}
-                description={t("childAge.description")}
-                options={ageOptions}
-                error={errors.childAge}
-                placeholder={t("childAge.placeholder")}
-                {...register("childAge", {
-                  required: t("childAge.required"),
+                options={courseOptions}
+                error={errors.courseId as any}
+                placeholder={t("course.placeholder") ?? "Kurs seçin"}
+                {...register("courseId", {
+                  required: t("course.required") ?? "Kurs seçimi məcburidir",
                 })}
-                onChange={handleAgeChange}
+                onChange={handleCourseChange}
               />
 
-              <Select
-                label={t("childLanguage.label")}
-                options={languageOptions}
-                error={errors.childLanguage}
-                placeholder={t("childLanguage.placeholder")}
-                {...register("childLanguage", {
-                  required: t("childLanguage.required"),
-                })}
-                onChange={handleLanguageChange}
-              />
+              {/* Gizli sahələr (backend tələb edir) */}
+              <input type="hidden" {...register("childAge")} />
+              <input type="hidden" {...register("childLanguage")} />
 
               <motion.button
                 type="submit"
