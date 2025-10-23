@@ -29,11 +29,6 @@ export default function ContactInfo({
     default: address,
   };
 
-  const addressXText = {
-    az: "Bakı ş., Süleyman Vəzirov 17A (Xətai metro stansiyasının yaxınlığında)",
-    ru: "Баку, Сулейман Везиров 17A (около станции метро Хатаи)",
-    default: address2,
-  };
 
   const contactItems = [
     {
@@ -62,15 +57,7 @@ export default function ContactInfo({
         "JET Academy Genclik"
       )}`,
     },
-    {
-      icon: <MdLocationOn className="w-6 h-6 text-jsyellow" />,
-      title: t("contact.info.addressx"),
-      value: addressXText[locale as "az" | "ru"] || addressXText.default,
-      link: `https://maps.google.com/?q=${encodeURIComponent(
-        "JET Academy Xetai"
-      )}`,
-    },
-  ];
+      ];
 
   return (
     <div className="grid grid-cols-1 gap-6">
