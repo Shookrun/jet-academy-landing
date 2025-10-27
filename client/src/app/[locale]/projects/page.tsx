@@ -11,7 +11,6 @@ export async function generateMetadata({
   params: { locale: string };
 }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: "Metadata" });
-
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetschool.az";
   const canonicalUrl = `${baseUrl}/${locale}/projects`;
 
@@ -58,13 +57,29 @@ export async function generateMetadata({
   };
 }
 
+const getImageUrl = (imageUrl?: string) => {
+  if (!imageUrl) return "/default-project-image.jpg";
+  if (imageUrl.startsWith("http")) return imageUrl;
+  const base =
+    (process.env.NEXT_PUBLIC_CDN_URL || "").replace(/\/$/, "") ||
+    (process.env.NEXT_PUBLIC_API_URL || "").replace(/\/$/, "");
+  if (!base) {
+    if (imageUrl.startsWith("/uploads") || imageUrl.startsWith("/uploads-acad"))
+      return imageUrl;
+    return `/uploads-acad/projects/${imageUrl}`;
+  }
+  if (imageUrl.startsWith("/uploads") || imageUrl.startsWith("/uploads-acad")) {
+    return `${base}${imageUrl}`;
+  }
+  return `${base}/uploads-acad/projects/${imageUrl}`;
+};
+
 const fetchProjects = async () => {
   try {
     const response = await api.get("/student-projects?limit=1000&order=desc");
-    return response.data;
-  } catch (error) {
-    console.error("Failed to fetch projects:", error);
-    return { items: [] };
+    return response.data as { items: Project[] };
+  } catch {
+    return { items: [] as Project[] };
   }
 };
 
@@ -79,10 +94,7 @@ export default async function Projects({
       namespace: "projects",
     });
     const projects = await fetchProjects();
-
-    if (!projects) {
-      return null;
-    }
+    if (!projects) return null;
 
     return (
       <div id="media" className="container my-20 flex flex-col gap-8">
@@ -91,21 +103,20 @@ export default async function Projects({
           {projects.items.map((project: Project) => (
             <ProjectCard
               key={project.id}
-              imageUrl={project.imageUrl}
+              imageUrl={getImageUrl(project.imageUrl)}
               link={project.link}
-              title={project.title!}
-              description={project.description!}
-              category={project.category!}
+              title={project.title}
+              description={project.description}
+              category={project.category}
             />
           ))}
         </div>
       </div>
     );
-  } catch (error) {
-    console.error("Projects component error:", error);
+  } catch {
     return (
       <div className="container my-20 text-center">
-        <p>Ошибка при загрузке проектов. Пожалуйста, попробуйте позже.</p>
+        <p>Layihələr yüklənmədi. Bir az sonra yenidən yoxlayın.</p>
       </div>
     );
   }

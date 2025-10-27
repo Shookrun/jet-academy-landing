@@ -7,21 +7,15 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
-export default function EditProjectPage({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default function EditProjectPage({ params }: { params: { id: string } }) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
-  const [originalData, setOriginalData] = useState<ProjectFormInputs | null>(
-    null
-  );
 
   const {
     register,
     handleSubmit,
     reset,
+    control, // <<< lazım olacaq
     formState: { errors, isSubmitting },
   } = useForm<ProjectFormInputs>();
 
@@ -29,8 +23,7 @@ export default function EditProjectPage({
     const fetchProject = async () => {
       try {
         const { data } = await api.get(`/student-projects/${params.id}`);
-        setOriginalData(data);
-        reset(data);
+        reset(data); // formu burda doldururuq, ayrıca initialValues lazım deyil
       } catch (error) {
         console.error("Layihə məlumatlarını yükləmə xətası:", error);
         toast.error("Layihə məlumatları yüklənə bilmədi");
@@ -39,26 +32,48 @@ export default function EditProjectPage({
         setIsLoading(false);
       }
     };
-
     fetchProject();
   }, [params.id, reset, router]);
 
+  const getChangedFields = (original: any, updated: any): Partial<ProjectFormInputs> => {
+    if (!original) return updated;
+
+    const changes: Partial<ProjectFormInputs> = {};
+
+    if (original.title?.az !== updated.title?.az || original.title?.ru !== updated.title?.ru) {
+      changes.title = { ...updated.title };
+    }
+    if (original.description?.az !== updated.description?.az || original.description?.ru !== updated.description?.ru) {
+      changes.description = { ...updated.description };
+    }
+    if (original.link !== updated.link) {
+      changes.link = updated.link;
+    }
+    if (original.categoryId !== updated.categoryId) {
+      changes.categoryId = updated.categoryId;
+    }
+    if (original.imageUrl !== updated.imageUrl) {
+      changes.imageUrl = updated.imageUrl;
+    }
+
+    return changes;
+  };
+
   const onSubmit = async (formData: ProjectFormInputs) => {
     try {
-      const changedData = getChangedFields(originalData, formData);
+      // Backend-dən gələn orijinal dəyərləri almaq üçün bir daha GET etməkdənsə,
+      // reset-dən əvvəlki dəyərləri saxlamırsansa, sadəcə patch-i bütün formData ilə də ata bilərsən.
+      // Amma sənin mövcud məntiqinə toxunmadan davam:
+      const { data: original } = await api.get(`/student-projects/${params.id}`);
+      const changedData = getChangedFields(original, formData);
 
-   
       if (Object.keys(changedData).length === 0) {
         toast.info("Heç bir dəyişiklik edilmədi");
         router.push("/dashboard/student-projects");
         return;
       }
 
-      const response = await api.patch(
-        `/student-projects/${params.id}`,
-        changedData
-      );
-
+      const response = await api.patch(`/student-projects/${params.id}`, changedData);
       if (response.status === 200) {
         toast.success("Layihə uğurla yeniləndi");
         router.push("/dashboard/student-projects");
@@ -66,40 +81,8 @@ export default function EditProjectPage({
       }
     } catch (error: any) {
       console.error("Yeniləmə xətası:", error);
-      toast.error(
-        error.response?.data?.message || "Xəta baş verdi. Yenidən cəhd edin"
-      );
+      toast.error(error?.response?.data?.message || "Xəta baş verdi. Yenidən cəhd edin");
     }
-  };
-
-  const getChangedFields = (
-    original: any,
-    updated: any
-  ): Partial<ProjectFormInputs> => {
-    if (!original) return updated;
-
-    const changes: Partial<ProjectFormInputs> = {};
-
-    if (
-      original.title?.az !== updated.title?.az ||
-      original.title?.ru !== updated.title?.ru
-    ) {
-      changes.title = { ...updated.title };
-    }
-
-    if (
-      original.description?.az !== updated.description?.az ||
-      original.description?.ru !== updated.description?.ru
-    ) {
-      changes.description = { ...updated.description };
-    }
-
-    // Compare link
-    if (original.link !== updated.link) {
-      changes.link = updated.link;
-    }
-
-    return changes;
   };
 
   if (isLoading) {
@@ -113,13 +96,13 @@ export default function EditProjectPage({
   return (
     <ProjectForm
       mode="edit"
-      initialValues={originalData as ProjectFormInputs}
       onSubmit={onSubmit}
       register={register}
       errors={errors}
       isSubmitting={isSubmitting}
       handleSubmit={handleSubmit}
       router={router}
+      control={control}
     />
   );
 }

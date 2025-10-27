@@ -1,25 +1,25 @@
+export type LangBlock = {
+  az: string;
+  ru: string;
+};
+
 export interface ProjectFormInputs {
-  title: string;
-  description: string;
-  imageUrl: string;
+  title: LangBlock;
+  description: LangBlock;
+  categoryId: string;
   link: string;
+  imageUrl?: string;
 }
 
 export interface Project {
   id: string;
-  description: {
-    az: string;
-    ru: string;
-  };
-  imageUrl: string;
+  title: LangBlock;
+  description: LangBlock;
+  imageUrl?: string;
   link: string;
-  author: string;
-  title: {
-    az: string;
-    ru: string;
-  };
-  createdAt: Date;
-  updatedAt: Date;
+  author?: string;
+  createdAt: string | Date;
+  updatedAt?: string | Date;
   category: {
     id: string;
     name: string;
@@ -29,5 +29,10 @@ export interface Project {
 
 export interface ProjectResponse {
   items: Project[];
-  total: number;
+  total?: number;
+  meta?: {
+    total: number;
+    page: number;
+    limit: number;
+  };
 }
