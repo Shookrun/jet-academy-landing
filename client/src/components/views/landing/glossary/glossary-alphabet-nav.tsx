@@ -127,7 +127,7 @@ export default function GlossaryAlphabetNav({
           href="/glossary/terms"
           className={`px-3 py-2 rounded-full text-sm font-medium ${
             !currentLetter
-              ? "bg-jsyellow text-jsblack"
+              ? "bg-jsyellow text-white"
               : "bg-white text-jsblack hover:bg-jsyellow/10"
           } transition-colors duration-300`}
         >
@@ -140,7 +140,7 @@ export default function GlossaryAlphabetNav({
             href={`/glossary/terms?letter=${letter}`}
             className={`px-3 py-2 rounded-full text-sm font-medium ${
               currentLetter === letter
-                ? "bg-jsyellow text-jsblack"
+                ? "bg-jsyellow text-white"
                 : "bg-white text-jsblack hover:bg-jsyellow/10"
             } transition-colors duration-300`}
           >

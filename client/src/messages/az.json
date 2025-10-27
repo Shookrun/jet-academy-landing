@@ -17,15 +17,15 @@
   "hero": {
     "welcome": "Xoş Gəlmisiniz",
     "toJetAcademy": "JET Academy-ə",
-    "getConsult": "Tədris Sahələrinə Baxın",
+    "getConsult": "Tədris sahələri",
     "description": "Burada texnologiya təhsili real praktiki bilik və bacarıqlarla birləşir. Fəaliyyətə başladığımız gündən etibarən əsas məqsədimiz yüksək keyfiyyətli, praktiki və karyera yönümlü təlim proqramları vasitəsilə növbəti nəsil IT mütəxəssislərini yetişdirməkdir.\n\nJET Academy-də biz inanırıq ki, texnologiya gələcəyin dilidir — və hər kəsin onu öyrənmək imkanı olmalıdır. Missiyamız IT təhsilini bütün yaş və təhsil səviyyələrindən olan insanlar üçün əlçatan, səmərəli və ilhamverici etməkdir."
   },
   "courseInfo": {
     "title": "Tədris Sahələri",
-    "description": "JET Academy-də tədris sahələri müasir əmək bazarının tələblərinə uyğun formalaşdırılıb. Hər bir sahə üzrə proqramlar praktiki biliklərə, real layihələrə və peşəkar inkişaf imkanlarına əsaslanır."
+    "description": "JET Academy-də tədris sahələri müasir əmək bazarının tələblərinə uyğun formalaşdırılıb. Hər bir sahə üzrə proqramlar praktiki biliklərə, real layihələrə və peşəkar inkişaf imkanlarına əsaslanır"
   },
   "courseInfoCP": {
-    "title": "Bizim digər tədris sahələri"
+    "title": "Digər tədris sahələri"
   },
   
 
@@ -253,7 +253,7 @@
     "description": "Formu doldurun və sizinlə ən qısa zamanda əlaqə saxlayacağıq.",
     "form": {
       "title": "Zəng üçün formu doldurun",
-      "contactTitle":"IT Kurslarımız haqqında məlumat almaq üçün qeydiyyatdan keçin",
+      "contactTitle":"Tədris sahələrimiz haqqında məlumat almaq üçün qeydiyyatdan keçin",
       "description": "Formu doldurun və sizinlə ən qısa zamanda əlaqə saxlayacağıq.",
       "sending": "Göndərilir...",
       "adviceOption":"Məsləhət almaq istəyirəm",
@@ -322,13 +322,13 @@
     "teachers": "Təlimçi Heyəti",
     "teachersDescription": "JET Academy-nin bütün təlimçiləri öz sahəsində yüksək təcrübəyə malik, pedaqoji bacarıqları ilə seçilən peşəkar mütəxəssislərdir",
     "enroll": "Qeydiyyatdan keç",
-    "contactFormTitle":"Kurslarımız barədə məlumat almaq üçün qeydiyyatdan keçin"
+    "contactFormTitle":"Tədris sahələrimiz barədə məlumat almaq üçün qeydiyyatdan keçin"
   },
 "coursesPage": {
   "title": "Tədris Sahələri",
-  "description": "JET Academy-də tədris sahələri müasir əmək bazarının tələblərinə uyğun formalaşdırılıb. Hər bir sahə üzrə proqramlar praktiki biliklərə, real layihələrə və peşəkar inkişaf imkanlarına əsaslanır.",
+  "description": "JET Academy-də tədris sahələri müasir əmək bazarının tələblərinə uyğun formalaşdırılıb. Hər bir sahə üzrə proqramlar praktiki biliklərə, real layihələrə və peşəkar inkişaf imkanlarına əsaslanır",
   "metaTitle": "Tədris Sahələri | JET Academy",
-  "metaDescription": "JET Academy-də Front-End, Back-End, Full-Stack, Python, Java, Kibertəhlükəsizlik, IT HelpDesk, Data Analitika, Ofis Proqramları kursları ilə karyeranızı qurun.",
+  "metaDescription": "JET Academy-də tədris sahələri müasir əmək bazarının tələblərinə uyğun formalaşdırılıb. Hər bir sahə üzrə proqramlar praktiki biliklərə, real layihələrə və peşəkar",
   "searchPlaceholder": "Kurs axtarın...",
   "filters": "Filterlər",
   "level": "Səviyyə",

@@ -37,7 +37,7 @@ export default function PostGrid({
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 [@media(min-width:2500px)]:grid-cols-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 [@media(min-width:1500px)]:grid-cols-4 [@media(min-width:2500px)]:grid-cols-4">
         {posts.map((post: Post) => (
           <PostCard key={post.id} post={post} locale={locale} t={t} />
         ))}

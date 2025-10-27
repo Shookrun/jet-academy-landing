@@ -18,7 +18,8 @@ const STATIC_CATEGORIES: Category[] = [
   { id: "local-5", name: "Kibertəhlükəsizlik" },
   { id: "local-6", name: "Ofis Proqramları" },
   { id: "local-7", name: "Praktiki Kompüter Bilikləri" },
-  {id:"local-8",name:"AI Engineering Kursu"}
+  {id:"local-8",name:"AI Engineering"},
+  {id:"local-9",name:"Data Analitika"}
 ];
 
 const dedupeByName = (arr: Category[]) => {
