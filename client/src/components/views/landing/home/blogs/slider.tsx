@@ -21,11 +21,13 @@ export default function PostsSlider({ data }: SliderProps) {
     <div className="py-4 4xl:py-6">
       <Swiper
         modules={[Autoplay]}
-        autoplay={{ delay: 2000, disableOnInteraction: false }}
-        spaceBetween={24}
-        slidesPerView={3}     
+        autoplay={{ delay: 2500, disableOnInteraction: false }}
+        spaceBetween={20}
         breakpoints={{
-          1500: { slidesPerView: 4 },    // ≥ 1500px → 4 kart
+          0: { slidesPerView: 1, spaceBetween: 16 },
+          640: { slidesPerView: 2, spaceBetween: 20 },
+          1024: { slidesPerView: 3, spaceBetween: 24 },
+          1500: { slidesPerView: 4, spaceBetween: 28 },
         }}
         className="!pb-4 4xl:!pb-6"
         watchOverflow

@@ -1,29 +1,29 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Language, RequestFormInputs } from "@/types/request";
 import { motion, AnimatePresence } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import axios, { AxiosError } from "axios";
 import api from "@/utils/api/axios";
 import Select from "@/components/ui/select";
 import { MdClose, MdOutlineCheck } from "react-icons/md";
+import { Locale } from "@/i18n/request";
 
-const ageOptions = Array.from({ length: 30 }, (_, i) => ({
-  value: i + 17,
-  label: `${i + 17}`,
-}));
+type CourseItem = { id: string; title?: Record<string, string> };
+const ADVICE_VALUE = "__advice__";
+
 
 const ContactForm = () => {
   const t = useTranslations("contact.form");
+  const locale = useLocale() as Locale;
   const [success, setSuccess] = useState(false);
+  const [courseOptions, setCourseOptions] = useState<
+    { value: string; label: string }[]
+  >([]);
 
-  const languageOptions = [
-    { value: Language.AZ, label: t("childLanguage.options.az") },
-    { value: Language.RU, label: t("childLanguage.options.ru") },
-  ];
 
   const {
     register,
@@ -31,32 +31,87 @@ const ContactForm = () => {
     formState: { errors, isSubmitting },
     reset,
     setValue,
-  } = useForm<RequestFormInputs>();
+    watch,
+  } = useForm<RequestFormInputs>({
+    defaultValues: {
+      childAge: 17,
+      childLanguage: Language.AZ,
+      courseId: ADVICE_VALUE as any,
+    },
+  });
 
-const onSubmit: SubmitHandler<RequestFormInputs> = async (data) => {
-  try {
-    await api.post("/requests", data);
-    reset();
-    setSuccess(true);
-  } catch (err) {
-    console.error("Error sending message:", err);
-    if (axios.isAxiosError(err)) {
-      const error = err as AxiosError<any>;
-      toast.error(error.response?.data.message || t("sendError"));
-    } else {
-      toast.error(t("unexpectedError"));
+  const selectedCourseId = watch("courseId");
+
+  useEffect(() => {
+    let active = true;
+    (async () => {
+      try {
+        const res = await api.get("/courses", { params: { page: 1, limit: 100 } });
+        const items: CourseItem[] = res.data?.items ?? res.data ?? [];
+        const opts = items.map((c) => ({
+          value: String(c.id),
+          label:
+            (c.title?.[locale] ||
+              c.title?.az ||
+              c.title?.en ||
+              c.title?.ru ||
+              "Adsız kurs") as string,
+        }));
+        const withAdvice = [{ value: ADVICE_VALUE, label: "Məsləhət almaq istəyirəm" }, ...opts];
+        if (active) setCourseOptions(withAdvice);
+      } catch (e) {
+        console.error("Kurs siyahısı alınmadı:", e);
+        if (active)
+          setCourseOptions([{ value: ADVICE_VALUE, label: "Məsləhət almaq istəyirəm" }]);
+      }
+    })();
+    return () => {
+      active = false;
+    };
+  }, [locale]);
+
+  const selectedCourseTitle = useMemo(() => {
+    const hit = courseOptions.find((o) => o.value === selectedCourseId);
+    return hit?.label;
+  }, [courseOptions, selectedCourseId]);
+
+  const onSubmit: SubmitHandler<RequestFormInputs> = async (data) => {
+    try {
+      const isAdvice = !data.courseId || data.courseId === ADVICE_VALUE;
+
+      const payload = {
+        name: data.name?.trim(),
+        surname: data.surname?.trim(),
+        number: data.number?.trim(),
+        childAge: Number(data.childAge),
+        childLanguage: data.childLanguage || Language.AZ,
+        additionalInfo: isAdvice
+          ? { kind: "advice" }
+          : {
+              kind: "course",
+              courseId: data.courseId,
+              courseTitle: selectedCourseTitle,
+            },
+      };
+
+      await api.post("/requests", payload);
+      reset({ childAge: 17, childLanguage: Language.AZ, courseId: ADVICE_VALUE as any });
+      setSuccess(true);
+    } catch (err) {
+      console.error("Error sending message:", err);
+      if (axios.isAxiosError(err)) {
+        const error = err as AxiosError<any>;
+        toast.error(error.response?.data?.message || t("sendError"));
+      } else {
+        toast.error(t("unexpectedError"));
+      }
     }
-  }
-};
-
-
-  const handleAgeChange = (value: string | number) => {
-    setValue("childAge", Number(value));
   };
 
-  const handleLanguageChange = (value: string | number) => {
-    setValue("childLanguage", value as Language);
+  const handleCourseChange = (value: string | number) => {
+    setValue("courseId" as any, String(value), { shouldValidate: true });
   };
+
 
   return (
     <div className="relative">
@@ -67,54 +122,45 @@ const onSubmit: SubmitHandler<RequestFormInputs> = async (data) => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
       >
+        {/* Ad */}
         <div className="space-y-2">
           <input
             type="text"
             placeholder={t("name.placeholder")}
-            className="w-full p-4 rounded-[32px] border border-jsyellow bg-[#fef7eb] 
-              focus:outline-none focus:ring-2 focus:ring-jsyellow 
+            className="w-full p-4 rounded-[32px] border border-jsyellow bg-[#fef7eb]
+              focus:outline-none focus:ring-2 focus:ring-jsyellow
               shadow-sm transition-all duration-300 ease-in-out"
             {...register("name", {
               required: t("name.required"),
-              minLength: {
-                value: 2,
-                message: t("name.minLength"),
-              },
+              minLength: { value: 2, message: t("name.minLength") },
             })}
           />
-          {errors.name && (
-            <p className="text-red-500 text-sm pl-2">{errors.name.message}</p>
-          )}
+          {errors.name && <p className="text-red-500 text-sm pl-2">{errors.name.message}</p>}
         </div>
 
+        {/* Soyad */}
         <div className="space-y-2">
           <input
             type="text"
             placeholder={t("surname.placeholder")}
-            className="w-full p-4 rounded-[32px] border border-jsyellow bg-[#fef7eb] 
-              focus:outline-none focus:ring-2 focus:ring-jsyellow 
+            className="w-full p-4 rounded-[32px] border border-jsyellow bg-[#fef7eb]
+              focus:outline-none focus:ring-2 focus:ring-jsyellow
               shadow-sm transition-all duration-300 ease-in-out"
             {...register("surname", {
               required: t("surname.required"),
-              minLength: {
-                value: 2,
-                message: t("surname.minLength"),
-              },
+              minLength: { value: 2, message: t("surname.minLength") },
             })}
           />
-          {errors.surname && (
-            <p className="text-red-500 text-sm pl-2">
-              {errors.surname.message}
-            </p>
-          )}
+          {errors.surname && <p className="text-red-500 text-sm pl-2">{errors.surname.message}</p>}
         </div>
 
+        {/* Telefon */}
         <div className="space-y-2">
           <input
             type="tel"
             placeholder={t("number.placeholder")}
-            className="w-full p-4 rounded-[32px] border border-jsyellow bg-[#fef7eb] 
-              focus:outline-none focus:ring-2 focus:ring-jsyellow 
+            className="w-full p-4 rounded-[32px] border border-jsyellow bg-[#fef7eb]
+              focus:outline-none focus:ring-2 focus:ring-jsyellow
               shadow-sm transition-all duration-300 ease-in-out"
             {...register("number", {
               required: t("number.required"),
@@ -124,33 +170,18 @@ const onSubmit: SubmitHandler<RequestFormInputs> = async (data) => {
               },
             })}
           />
-          {errors.number && (
-            <p className="text-red-500 text-sm pl-2">
-              {errors.number.message}
-            </p>
-          )}
+          {errors.number && <p className="text-red-500 text-sm pl-2">{errors.number.message}</p>}
         </div>
 
+        {/* Kurs seçimi */}
         <Select
-          label={t("childAge.label")}
-          options={ageOptions}
-          error={errors.childAge}
-          placeholder={t("childAge.placeholder")}
-          {...register("childAge", {
-            required: t("childAge.required"),
+          options={courseOptions}
+          error={errors.courseId as any}
+          placeholder={t("course.placeholder") ?? "Kurs seçin"}
+          {...register("courseId" as any, {
+            required: t("course.required") ?? "Kurs seçimi məcburidir",
           })}
-          onChange={handleAgeChange}
-        />
-
-        <Select
-          label={t("childLanguage.label")}
-          options={languageOptions}
-          error={errors.childLanguage}
-          placeholder={t("childLanguage.placeholder")}
-          {...register("childLanguage", {
-            required: t("childLanguage.required"),
-          })}
-          onChange={handleLanguageChange}
+          onChange={handleCourseChange}
         />
 
         <motion.button
@@ -166,6 +197,7 @@ const onSubmit: SubmitHandler<RequestFormInputs> = async (data) => {
         </motion.button>
       </motion.form>
 
+      {/* Uğur modalı */}
       <AnimatePresence>
         {success && (
           <motion.div
@@ -198,12 +230,7 @@ const onSubmit: SubmitHandler<RequestFormInputs> = async (data) => {
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 260,
-                    damping: 20,
-                    delay: 0.2,
-                  }}
+                  transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.2 }}
                   className="bg-green-100 rounded-full p-3"
                 >
                   <MdOutlineCheck className="text-green-600 text-3xl" />

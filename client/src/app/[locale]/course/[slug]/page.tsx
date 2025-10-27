@@ -95,8 +95,9 @@ export async function generateMetadata({
 
     if (!data) {
       return {
-        title: "Not Found",
+        title: { absolute: "Not Found" },
         description: "The requested course was not found",
+        robots: { index: false },
       };
     }
 
@@ -109,9 +110,47 @@ export async function generateMetadata({
     const azSlug = data.slug?.az || params.slug;
     const ruSlug = data.slug?.ru || params.slug;
 
+    const rawTitle =
+      data.title?.[locale] ??
+      data.title?.az ??
+      data.title?.ru ??
+      "Kurs";
+
+    const fullTitle = `${rawTitle} | JET Academy`;
+
+    const rawDesc =
+      data.shortDescription?.[locale] ??
+      data.slogan?.[locale] ??
+      data.description?.[locale] ??
+      "";
+
+    const stripTags = (html: string) =>
+      html
+        .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, " ")
+        .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, " ")
+        .replace(/<\/?[^>]+(>|$)/g, " ");
+    const decodeEntities = (s: string) =>
+      s
+        .replace(/&nbsp;/g, " ")
+        .replace(/&amp;/g, "&")
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;|&apos;/g, "'")
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">");
+    const normalizeWS = (s: string) => s.replace(/\s+/g, " ").trim();
+    const toPlainText = (html: string) => normalizeWS(decodeEntities(stripTags(html)));
+    const truncate = (s: string, max = 160) => {
+      if (s.length <= max) return s;
+      const cut = s.slice(0, max);
+      const lastSpace = cut.lastIndexOf(" ");
+      return (lastSpace > 80 ? cut.slice(0, lastSpace) : cut).trim() + "…";
+    };
+
+    const cleanDesc = truncate(toPlainText(rawDesc || ""));
+
     return {
-      title: data.title[locale],
-      description: data.description[locale],
+      title: { absolute: fullTitle },
+      description: cleanDesc,
       alternates: {
         canonical: canonicalUrl,
         languages: {
@@ -123,17 +162,25 @@ export async function generateMetadata({
         },
       },
       openGraph: {
-        title: data.title[locale],
-        description: data.description[locale],
+        title: fullTitle,
+        description: cleanDesc,
         url: canonicalUrl,
         type: "website",
+        siteName: "JET Academy",
         locale: locale === "az" ? "az_AZ" : "ru_RU",
-        alternateLocale: locale === "az" ? "ru_RU" : "az_AZ",
+        images: [
+          {
+            url: "/og-image.jpg",
+            width: 1200,
+            height: 630,
+            alt: rawTitle,
+          },
+        ],
       },
       twitter: {
         card: "summary_large_image",
-        title: data.title[locale],
-        description: data.description[locale],
+        title: fullTitle,
+        description: cleanDesc,
       },
       robots: {
         index: true,
@@ -149,13 +196,13 @@ export async function generateMetadata({
   } catch (error) {
     console.error("Error generating metadata:", error);
     return {
-      title: "Error",
+      title: { absolute: "Error | JET Academy" },
       description: "Failed to load course details",
-      robots: {
-        index: false,
-      },
+      robots: { index: false },
     };
   }
 }
+
+
 
 export const revalidate = 60;

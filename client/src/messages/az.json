@@ -18,7 +18,7 @@
     "welcome": "Xoş Gəlmisiniz",
     "toJetAcademy": "JET Academy-ə",
     "getConsult": "Tədris Sahələrinə Baxın",
-    "description": "JET Academy, müasir texnologiyalar üzrə intensiv və praktika yönümlü təlimlər vasitəsilə tələbələri real iş mühitinə uyğun şəkildə yetişdirən tədris mərkəzidir."
+    "description": "Burada texnologiya təhsili real praktiki bilik və bacarıqlarla birləşir. Fəaliyyətə başladığımız gündən etibarən əsas məqsədimiz yüksək keyfiyyətli, praktiki və karyera yönümlü təlim proqramları vasitəsilə növbəti nəsil IT mütəxəssislərini yetişdirməkdir.\n\nJET Academy-də biz inanırıq ki, texnologiya gələcəyin dilidir — və hər kəsin onu öyrənmək imkanı olmalıdır. Missiyamız IT təhsilini bütün yaş və təhsil səviyyələrindən olan insanlar üçün əlçatan, səmərəli və ilhamverici etməkdir."
   },
   "courseInfo": {
     "title": "Tədris Sahələri",
@@ -29,6 +29,7 @@
   },
   
 
+  
   "about": {
     "title": "Fərqimiz Nədir?",
     "description": "Bizi digər kurslardan fərqləndirən əsas məqamlar ilə tanış ola bilərsiniz",
@@ -222,11 +223,11 @@
     "mission": {
       "sectionTitle": "Missiyamız və Vizyonumuz",
       "title": "Missiya",
-      "description": "Biz tələbələrə real cihazlar üzərində praktiki bacarıqlar qazandırır, sürətli və effektiv kurslarla onları iş dünyasına hazırlayırıq. Professional və yüksək təcrübəli təlimçilərimiz rəhbərliyi ilə, beynəlxalq standartlara uyğun metodologiya əsasında müasir tədris təqdim edir, məzunlarımızın karyera inkişafına aktiv dəstək oluruq."
+      "description": "Missiyamız müasir texnologiyalar, peşəkar təlimçilər və təcrübəyə əsaslanan tədris metodları ilə hər kəs üçün əlçatan, maraqlı və effektiv IT təhsili təqdim etmək, tənqidi düşüncə, yaradıcılıq və texniki bacarıqları inkişaf etdirməklə texnologiya sahəsində ixtisaslı mütəxəssislər yetişdirməkdir."
     },
     "vision": {
       "title": "Vizyon",
-      "description": "Vizyonumuz, texnologiya sahəsində peşəkar tədrisin aparıcı mərkəzi olmaq və tələbələrimizi gələcəyin rəqabətədavamlı IT mütəxəssisləri kimi yetişdirməkdir."
+      "description": "Vizyonumuz rəqəmsal dövrün gələcək liderlərini formalaşdıracaq, innovativ düşüncəli və problem həll etmə bacarıqlarına sahib bir nəsil yetişdirməyə dəstək olmaqdır. Bunun üçün beynəlxalq səviyyəli, texnologiya əsaslı təhsil təqdim edərək gənclərin bilik və bacarıqlarını inkişaf etdirməyi hədəfləyirik."
     },
     "stats": {
       "teachingArea":"Tədris sahəsi",
@@ -318,8 +319,8 @@
     "courseDescription": "Kurs Haqqında",
     "courseModules": "Kurs Modulları",
     "whoIsEligibleToEnroll": "Kursa kimlər qoşula bilər ?",
-    "teachers": "Kursun Müəllimləri",
-    "teachersDescription": "Peşəkar və təcrübəli müəllimlərimiz",
+    "teachers": "Təlimçi Heyəti",
+    "teachersDescription": "JET Academy-nin bütün təlimçiləri öz sahəsində yüksək təcrübəyə malik, pedaqoji bacarıqları ilə seçilən peşəkar mütəxəssislərdir",
     "enroll": "Qeydiyyatdan keç",
     "contactFormTitle":"Kurslarımız barədə məlumat almaq üçün qeydiyyatdan keçin"
   },
@@ -384,8 +385,8 @@
     "news": "Xəbərlər",
     "blog": "Bloq",
     "offers": "Kampaniyalar",
-    "metaTitle": "Bloq",
-    "metaDescription": "Texnologiya və təhsil haqqında maraqlı məqalələr",
+    "metaTitle": "Bloq | JET Academy",
+    "metaDescription": "Texnologiya və təhsil haqqında maraqlı məqalələr və yeniliklər",
     "readMore": "Daha çox oxu",
     "noPostsFound": "Post tapılmadı",
     "tryDifferentFilters": "Amma olacaqlar!"
