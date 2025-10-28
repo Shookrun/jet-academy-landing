@@ -4,10 +4,8 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
-      // ishi bitirende ashagidakileri ac
-      // allow: ["/", "/az", "/ru"],
-      // disallow: ["/dashboard/"],
-      disallow: ["/*"],
+      allow: ["/", "/az", "/ru","/en"],
+      disallow: ["/dashboard/"],
     },
     sitemap: "https://jetacademy.az/sitemap.xml",
   };
