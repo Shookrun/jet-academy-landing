@@ -10,27 +10,44 @@ import { ProjectFormInputs } from "@/types/student-projects";
 type Category = { id: string; name: string };
 
 const STATIC_CATEGORIES: Category[] = [
-  { id: "local-0", name: "Front-End" },
-  { id: "local-1", name: "Full Stack" },
-  { id: "local-2", name: "Python Back-End" },
-  { id: "local-3", name: "Java Back-End" },
-  { id: "local-4", name: "IT Help Desk" },
-  { id: "local-5", name: "Kibertəhlükəsizlik" },
-  { id: "local-6", name: "Ofis Proqramları" },
-  { id: "local-7", name: "Praktiki Kompüter Bilikləri" },
-  {id:"local-8",name:"AI Engineering"},
-  {id:"local-9",name:"Data Analitika"}
+  { id: "local-0", name: "Front-End Proqramlaşdırma Kursu" },
+  { id: "local-1", name: "Full Stack Proqramlaşdırma Kursu" },
+  { id: "local-2", name: "Python Back-End Proqramlaşdırma Kursu" },
+  { id: "local-3", name: "Java Back-End Proqramlaşdırma Kursu" },
+  { id: "local-4", name: "IT Help Desk Kursu" },
+  { id: "local-5", name: "Kibertəhlükəsizlik Kursu" },
+  { id: "local-6", name: "Ofis Proqramları Kursu" },
+  { id: "local-7", name: "Praktiki Kompüter Bilikləri Kursu" },
 ];
 
-const dedupeByName = (arr: Category[]) => {
-  const seen = new Set<string>();
-  return arr.filter((c) => {
-    const k = c.name.trim().toLowerCase();
-    if (seen.has(k)) return false;
-    seen.add(k);
-    return true;
+function normalizeName(s: string) {
+  return s.normalize("NFKC").trim().toLowerCase().replace(/\s+/g, " ");
+}
+
+function mergeCategories(staticCats: Category[], remoteCats: Category[]) {
+  const byNorm = new Map<string, Category>();
+  staticCats.forEach((c) => {
+    byNorm.set(normalizeName(c.name), c);
   });
-};
+  remoteCats.forEach((r) => {
+    const key = normalizeName(r.name);
+    if (!byNorm.has(key)) {
+      byNorm.set(key, { id: String(r.id), name: r.name });
+    } else {
+      const current = byNorm.get(key)!;
+      if (String(r.id).startsWith("local-")) return;
+      if (current.id.startsWith("local-")) byNorm.set(key, { id: String(r.id), name: current.name });
+    }
+  });
+  const list = Array.from(byNorm.values());
+  const order = new Map(staticCats.map((c, i) => [normalizeName(c.name), i]));
+  return list.sort((a, b) => {
+    const ai = order.has(normalizeName(a.name)) ? (order.get(normalizeName(a.name)) as number) : 9999;
+    const bi = order.has(normalizeName(b.name)) ? (order.get(normalizeName(b.name)) as number) : 9999;
+    if (ai !== bi) return ai - bi;
+    return a.name.localeCompare(b.name, "az");
+  });
+}
 
 type Props = {
   mode: "create" | "edit";
@@ -54,38 +71,29 @@ export default function ProjectForm({
   control,
 }: Props) {
   const [categories, setCategories] = useState<Category[]>(STATIC_CATEGORIES);
-  const fetchedOnce = useRef(false);
+  const fetched = useRef(false);
 
   useEffect(() => {
-    if (fetchedOnce.current) return;
-    fetchedOnce.current = true;
-
+    if (fetched.current) return;
+    fetched.current = true;
     let active = true;
     (async () => {
       try {
         const res = await api.get("/student-project-categories");
-        const items: Category[] = (res?.data?.items ?? []).map((x: any) => ({
-          id: String(x.id),
-          name: x.name,
-        }));
+        const items: Category[] = (res?.data?.items ?? []).map((x: any) => ({ id: String(x.id), name: String(x.name || "").trim() }));
         if (!active) return;
-        if (items.length > 0) {
-          setCategories(dedupeByName(items));
-        } else {
-          setCategories(STATIC_CATEGORIES);
-        }
+        setCategories(mergeCategories(STATIC_CATEGORIES, items));
       } catch {
         if (!active) return;
         setCategories(STATIC_CATEGORIES);
       }
     })();
-
     return () => {
       active = false;
     };
   }, []);
 
-  const selectedKeys = useMemo<Set<string>>(() => new Set(), []);
+  const emptySet = useMemo<Set<string>>(() => new Set(), []);
 
   return (
     <div className="p-6 min-h-screen w-full flex items-center justify-center">
@@ -105,10 +113,7 @@ export default function ProjectForm({
                 variant="bordered"
                 startContent={<MdTitle className="text-gray-400" />}
                 isDisabled={isSubmitting}
-                {...register("title.az", {
-                  required: "Başlıq tələb olunur",
-                  minLength: { value: 3, message: "Başlıq ən azı 3 simvol olmalıdır" },
-                })}
+                {...register("title.az", { required: "Başlıq tələb olunur", minLength: { value: 3, message: "Başlıq ən azı 3 simvol olmalıdır" } })}
                 isInvalid={!!errors.title?.az}
                 errorMessage={(errors.title?.az?.message as any) || undefined}
                 classNames={{ input: "bg-transparent", inputWrapper: "bg-white border-2 hover:border-primary focus:border-primary" }}
@@ -122,10 +127,7 @@ export default function ProjectForm({
                 variant="bordered"
                 startContent={<MdTitle className="text-gray-400" />}
                 isDisabled={isSubmitting}
-                {...register("title.ru", {
-                  required: "Заголовок обязателен",
-                  minLength: { value: 3, message: "Минимум 3 символа" },
-                })}
+                {...register("title.ru", { required: "Заголовок обязателен", minLength: { value: 3, message: "Минимум 3 символа" } })}
                 isInvalid={!!errors.title?.ru}
                 errorMessage={(errors.title?.ru?.message as any) || undefined}
                 classNames={{ input: "bg-transparent", inputWrapper: "bg-white border-2 hover:border-primary focus:border-primary" }}
@@ -170,16 +172,16 @@ export default function ProjectForm({
                     startContent={<MdCategory className="text-gray-400" />}
                     classNames={{ trigger: "bg-white border-2 hover:border-primary focus:border-primary", value: "bg-transparent" }}
                     selectionMode="single"
-                    selectedKeys={field.value ? new Set([String(field.value)]) : selectedKeys}
+                    selectedKeys={field.value ? new Set([String(field.value)]) : emptySet}
                     onSelectionChange={(keys) => {
                       const key = Array.from(keys as Set<React.Key>)[0];
                       field.onChange(key ? String(key) : "");
                     }}
+                    placeholder="Kateqoriya seçin"
                     isInvalid={!!errors.categoryId}
                     errorMessage={(errors.categoryId?.message as any) || undefined}
-                    placeholder="Kateqoriya seçin"
                   >
-                    {dedupeByName(categories).map((c) => (
+                    {categories.map((c) => (
                       <SelectItem key={c.id} textValue={c.name}>
                         {c.name}
                       </SelectItem>
@@ -198,10 +200,7 @@ export default function ProjectForm({
                 isDisabled={isSubmitting}
                 {...register("link", {
                   required: "Youtube linki tələb olunur",
-                  pattern: {
-                    value: /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+/i,
-                    message: "Düzgün Youtube linki daxil edin",
-                  },
+                  pattern: { value: /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+/i, message: "Düzgün Youtube linki daxil edin" },
                 })}
                 isInvalid={!!errors.link}
                 errorMessage={(errors.link?.message as any) || undefined}
