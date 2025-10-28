@@ -7,14 +7,13 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 const STATIC_CATEGORY_NAMES = [
-  "Front-End Proqramlaşdırma Kursu",
-  "Full Stack Proqramlaşdırma Kursu",
-  "Python Back-End Proqramlaşdırma Kursu",
-  "Java Back-End Proqramlaşdırma Kursu",
-  "IT Help Desk Kursu",
-  "Kibertəhlükəsizlik Kursu",
-  "Ofis Proqramları Kursu",
-  "Praktiki Kompüter Bilikləri Kursu",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
 ];
 
 async function ensureCategoryId(categoryId: string) {
