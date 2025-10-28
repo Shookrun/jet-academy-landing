@@ -129,7 +129,7 @@ export default function GlossaryForm({
     try {
       setIsLoadingTerms(true);
       const { data } = await api.get(
-        `https://api.jetschool.az/api/glossary/search?q=${encodeURIComponent(searchTerm)}`
+        `https://api.jetacademy.az/api/glossary/search?q=${encodeURIComponent(searchTerm)}`
       );
      
 

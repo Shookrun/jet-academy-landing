@@ -20,7 +20,7 @@ export async function generateMetadata({
 
   const t = await getTranslations({ locale, namespace: "Metadata" });
 
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetschool.az";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetacademy.az";
   const canonicalUrl = `${baseUrl}/${locale}`;
 
   return {
@@ -42,7 +42,7 @@ export async function generateMetadata({
       title: t("ogTitle"),
       description: t("ogDescription"),
       url: canonicalUrl,
-      siteName: "JET School",
+      siteName: "JET Academy",
       images: [
         {
           url: "/og-image.jpg",

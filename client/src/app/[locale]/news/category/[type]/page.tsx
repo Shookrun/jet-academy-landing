@@ -26,7 +26,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "postsPage" });
   const type = params.type?.toUpperCase() as PostType | undefined;
 
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetschool.az";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetacademy.az";
 
   const basePath =
     locale === "az"
@@ -35,30 +35,30 @@ export async function generateMetadata({
 
   const canonicalUrl = `${baseUrl}${basePath}`;
 
-  let title = t("metaTitle") || "Bloq | JET School";
+  let title = t("metaTitle") || "Bloq | JET Academy";
   let description =
     t("metaDescription") ||
-    "JET School-un ən son məqalələrini, xəbərlərini və tədbirlərini kəşf edin";
+    "JET Academy-nin ən son məqalələrini, xəbərlərini və tədbirlərini kəşf edin";
 
   if (type) {
     switch (type) {
       case PostType.BLOG:
-        title = t("blogMetaTitle") || "Bloq Məqalələri | JET School";
+        title = t("blogMetaTitle") || "Bloq Məqalələri | JET Academy";
         description =
           t("blogMetaDescription") ||
           "Ən son bloq məqalələrimizi və fikirlərimizi oxuyun";
         break;
       case PostType.NEWS:
-        title = t("newsMetaTitle") || "Xəbərlər | JET School";
+        title = t("newsMetaTitle") || "Xəbərlər | JET Academy";
         description =
           t("newsMetaDescription") ||
-          "JET School-un ən son xəbərləri ilə tanış olun";
+          "JET Academy-un ən son xəbərləri ilə tanış olun";
         break;
       case PostType.EVENT:
-        title = t("eventMetaTitle") || "Tədbirlər | JET School";
+        title = t("eventMetaTitle") || "Tədbirlər | JET Academy";
         description =
           t("eventMetaDescription") ||
-          "JET School-da keçirilən və gələcək tədbirləri kəşf edin";
+          "JET Academy-da keçirilən və gələcək tədbirləri kəşf edin";
         break;
     }
   }

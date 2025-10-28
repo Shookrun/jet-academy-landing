@@ -14,7 +14,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "Metadata" });
   const aboutT = await getTranslations({ locale, namespace: "aboutPage" });
 
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetschool.az";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetacademy.az";
   const canonicalUrl =
     locale === "az" ? `${baseUrl}/about-us` : `${baseUrl}/${locale}/about-us`;
 
@@ -22,7 +22,7 @@ export async function generateMetadata({
     title: t("aboutPageTitle") || "Haqqımızda",
     description:
       aboutT("introduction.description1") ||
-      "JET School olaraq, biz 2021-ci ildən etibarən uşaqlar və yeniyetmələr üçün texnologiya dünyasını əyləncəli və öyrədici hala gətirməyi qarşımıza məqsəd qoymuşuq.",
+      "2021-ci ildən etibarən JET Academy olaraq ölkənin texnologiya sahəsində aparıcı tədris mərkəzlərindən biri kimi özümüzü sübut etmişik və yüzlərlə yüksək ixtisaslı, uğurlu IT mütəxəssisi yetişdirmişik.",
     alternates: {
       canonical: canonicalUrl,
       languages: {
@@ -31,10 +31,10 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      title: t("aboutPageTitle") || "Haqqımızda | JET School",
+      title: t("aboutPageTitle") || "Haqqımızda | JET Academy",
       description:
         aboutT("introduction.description1") ||
-        "JET School olaraq, biz 2021-ci ildən etibarən uşaqlar və yeniyetmələr üçün texnologiya dünyasını əyləncəli və öyrədici hala gətirməyi qarşımıza məqsəd qoymuşuq.",
+        "2021-ci ildən etibarən JET Academy olaraq ölkənin texnologiya sahəsində aparıcı tədris mərkəzlərindən biri kimi özümüzü sübut etmişik və yüzlərlə yüksək ixtisaslı, uğurlu IT mütəxəssisi yetişdirmişik.",
       url: canonicalUrl,
       type: "website",
       locale: locale === "az" ? "az_AZ" : "ru_RU",
@@ -42,10 +42,10 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: t("aboutPageTitle") || "Haqqımızda | JET School",
+      title: t("aboutPageTitle") || "Haqqımızda | JET Academy",
       description:
         aboutT("introduction.description1") ||
-        "JET School olaraq, biz 2021-ci ildən etibarən uşaqlar və yeniyetmələr üçün texnologiya dünyasını əyləncəli və öyrədici hala gətirməyi qarşımıza məqsəd qoymuşuq.",
+        "2021-ci ildən etibarən JET Academy olaraq ölkənin texnologiya sahəsində aparıcı tədris mərkəzlərindən biri kimi özümüzü sübut etmişik və yüzlərlə yüksək ixtisaslı, uğurlu IT mütəxəssisi yetişdirmişik.",
     },
     robots: {
       index: true,

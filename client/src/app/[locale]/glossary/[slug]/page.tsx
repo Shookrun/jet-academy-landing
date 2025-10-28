@@ -25,7 +25,7 @@ export async function generateMetadata({
   } catch (error) {
     console.error("Error generating metadata:", error);
     return {
-      title: "Glossary Term | JET School",
+      title: "Glossary Term | JET Academy",
       description: "IT terminology glossary",
     };
   }

@@ -20,7 +20,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: "Metadata" });
 
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetschool.az";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetacademy.az";
 
   let categoryName = "";
   try {
@@ -36,8 +36,8 @@ export async function generateMetadata({
   }
 
   const pageTitle = categoryName
-    ? `${categoryName} | Glossariy | JET School`
-    : "Glossariy Kateqoriyası | JET School";
+    ? `${categoryName} | Glossariy | JET Academy`
+    : "Glossariy Kateqoriyası | JET Academy";
 
   const canonicalUrl =
     locale === "az"
@@ -48,7 +48,7 @@ export async function generateMetadata({
     title: pageTitle,
     description:
       t("glossaryCategoryDescription", { category: categoryName }) ||
-      `JET School glossariy lüğətində ${categoryName} kateqoriyasına aid terminlər`,
+      `JET Academy glossariy lüğətində ${categoryName} kateqoriyasına aid terminlər`,
     alternates: {
       canonical: canonicalUrl,
       languages: {
@@ -63,7 +63,7 @@ export async function generateMetadata({
       title: pageTitle,
       description:
         t("glossaryCategoryDescription", { category: categoryName }) ||
-        `JET School glossariy lüğətində ${categoryName} kateqoriyasına aid terminlər`,
+        `JET Academy glossariy lüğətində ${categoryName} kateqoriyasına aid terminlər`,
       url: canonicalUrl,
       type: "website",
       locale: locale === "az" ? "az_AZ" : "ru_RU",
@@ -74,7 +74,7 @@ export async function generateMetadata({
       title: pageTitle,
       description:
         t("glossaryCategoryDescription", { category: categoryName }) ||
-        `JET School glossariy lüğətində ${categoryName} kateqoriyasına aid terminlər`,
+        `JET Academy glossariy lüğətində ${categoryName} kateqoriyasına aid terminlər`,
     },
     robots: {
       index: true,

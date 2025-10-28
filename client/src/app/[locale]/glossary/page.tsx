@@ -11,13 +11,13 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "Metadata" });
   const glossaryT = await getTranslations({ locale, namespace: "glossary" });
 
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetschool.az";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetacademy.az";
 
   const canonicalUrl =
     locale === "az" ? `${baseUrl}/glossary` : `${baseUrl}/${locale}/glossary`;
 
   return {
-    title: t("glossaryPageTitle") || "Glossariy | JET School",
+    title: t("glossaryPageTitle") || "Glossariy | JET Academy",
     description:
       glossaryT("subtitle") || "IT və proqramlaşdırma terminləri lüğəti",
     alternates: {
@@ -28,7 +28,7 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      title: t("glossaryPageTitle") || "Glossariy | JET School",
+      title: t("glossaryPageTitle") || "Glossariy | JET Academy",
       description:
         glossaryT("subtitle") || "IT və proqramlaşdırma terminləri lüğəti",
       url: canonicalUrl,
@@ -38,7 +38,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: t("glossaryPageTitle") || "Glossariy | JET School",
+      title: t("glossaryPageTitle") || "Glossariy | JET Academy",
       description:
         glossaryT("subtitle") || "IT və proqramlaşdırma terminləri lüğəti",
     },

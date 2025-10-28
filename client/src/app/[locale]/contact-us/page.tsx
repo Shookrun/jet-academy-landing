@@ -11,7 +11,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "Metadata" });
   const contactT = await getTranslations({ locale, namespace: "contact" });
 
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetschool.az";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetacademy.az";
 
   const canonicalUrl =
     locale === "az"
@@ -34,7 +34,7 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      title: t("contactPageTitle") || "Əlaqə Məlumatları | JET School",
+      title: t("contactPageTitle") || "Əlaqə Məlumatları | JET Academy",
       description:
         contactT("hero.description") ||
         "Suallarınız və ya təklifləriniz varsa, bizimlə əlaqə saxlamaqdan çəkinməyin.",
@@ -45,7 +45,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: t("contactPageTitle") || "Əlaqə Məlumatları | JET School",
+      title: t("contactPageTitle") || "Əlaqə Məlumatları | JET Academy",
       description:
         contactT("hero.description") ||
         "Suallarınız və ya təklifləriniz varsa, bizimlə əlaqə saxlamaqdan çəkinməyin.",

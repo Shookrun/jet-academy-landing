@@ -18,7 +18,7 @@ export async function generateMetadata({
     namespace: "glossary.terms",
   });
 
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetschool.az";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetacademy.az";
 
   const queryString = searchParams.letter
     ? `?letter=${searchParams.letter}`
@@ -31,14 +31,14 @@ export async function generateMetadata({
 
   const pageTitle = searchParams.letter
     ? t("glossaryTermsLetterPageTitle", { letter: searchParams.letter }) ||
-      `"${searchParams.letter}" ilə başlayan terminlər | JET School`
-    : t("glossaryTermsPageTitle") || "Bütün Terminlər | JET School";
+      `"${searchParams.letter}" ilə başlayan terminlər | JET Academy`
+    : t("glossaryTermsPageTitle") || "Bütün Terminlər | JET Academy";
 
   return {
     title: pageTitle,
     description:
       glossaryT("description") ||
-      "JET School glossariy lüğətində bütün IT terminləri",
+      "JET Academy glossariy lüğətində bütün IT terminləri",
     alternates: {
       canonical: canonicalUrl,
       languages: {
@@ -53,7 +53,7 @@ export async function generateMetadata({
       title: pageTitle,
       description:
         glossaryT("description") ||
-        "JET School glossariy lüğətində bütün IT terminləri",
+        "JET Academy glossariy lüğətində bütün IT terminləri",
       url: canonicalUrl,
       type: "website",
       locale: locale === "az" ? "az_AZ" : "ru_RU",
@@ -64,7 +64,7 @@ export async function generateMetadata({
       title: pageTitle,
       description:
         glossaryT("description") ||
-        "JET School glossariy lüğətində bütün IT terminləri",
+        "JET Academy glossariy lüğətində bütün IT terminləri",
     },
     robots: {
       index: true,

@@ -57,7 +57,7 @@ fbq('track', 'PageView');
       <body
         className={`${manrope.className} scroll-smooth antialiased overflow-x-hidden`}
       >
-        <h1 className="hidden">JET School</h1>
+        <h1 className="hidden">JET Academy</h1>
         {children}
         <Toaster />
         <GoogleAnalytics gaId="G-Z9R55K1YB9" />

@@ -31,7 +31,7 @@ const CourseListingClient = ({ courses, locale = "az" }: ICoursesSlider) => {
       const cdnUrl =
         process.env.NEXT_PUBLIC_CDN_URL ||
         process.env.NEXT_PUBLIC_API_URL ||
-        "https://api.jetschool.az";
+        "https://api.jetacademy.az";
       return cdnUrl.replace(/\/uploads$/, "") + imageUrl;
     }
 

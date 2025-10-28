@@ -101,7 +101,7 @@ export async function generateMetadata({
       };
     }
 
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetschool.az";
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetacademy.az";
     const canonicalUrl =
       locale === "az"
         ? `${baseUrl}/course/${params.slug}`

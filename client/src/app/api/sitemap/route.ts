@@ -40,7 +40,7 @@ interface GlossaryTerm {
 async function getGlossaryCategories(): Promise<GlossaryCategory[]> {
   try {
     const response = await fetch(
-      "https://api.jetschool.az/api/glossary-categories?limit=10000",
+      "https://api.jetacademy.az/api/glossary-categories?limit=10000",
       {
         headers: {
           accept: "*/*",
@@ -65,7 +65,7 @@ async function getGlossaryCategories(): Promise<GlossaryCategory[]> {
 async function getGlossaryTerms(): Promise<GlossaryTerm[]> {
   try {
     const response = await fetch(
-      "https://api.jetschool.az/api/glossary/brief?limit=10000",
+      "https://api.jetacademy.az/api/glossary/brief?limit=10000",
       {
         headers: {
           accept: "*/*",
@@ -87,7 +87,7 @@ async function getGlossaryTerms(): Promise<GlossaryTerm[]> {
 
 export async function GET() {
   const languages = ["az", "en"];
-  const baseUrl = "https://jetschool.az";
+  const baseUrl = "https://jetacademy.az";
 
   const staticRoutes = [
     "/",

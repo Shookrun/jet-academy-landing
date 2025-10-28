@@ -6,7 +6,7 @@ import { getServerSession } from "next-auth";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "İdarə Paneli | JET School",
+  title: "İdarə Paneli | JET Academy",
   description: "JET Academy İdarə Paneli",
   robots: {
     index: false,

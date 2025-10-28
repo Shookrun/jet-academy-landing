@@ -121,7 +121,7 @@ export async function generateMetadata({
   try {
     const data = await getPostDetails(params.slug);
     const locale = params.locale as Locale;
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetschool.az";
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetacademy.az";
 
     if (!data || !data.title[locale] || !data.content[locale]) {
       console.warn(

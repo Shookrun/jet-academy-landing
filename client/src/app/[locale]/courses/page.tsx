@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("coursesPage");
   const locale = (await getLocale()) as Locale;
   
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetschool.az";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetacademy.az";
   const canonicalUrl = locale === "az" 
     ? `${baseUrl}/courses` 
     : `${baseUrl}/${locale}/courses`;

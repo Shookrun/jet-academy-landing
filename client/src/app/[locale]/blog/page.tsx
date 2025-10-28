@@ -24,7 +24,7 @@ export async function generateMetadata({
   const locale = params.locale;
   const t = await getTranslations({ locale, namespace: "blogPage" });
 
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetschool.az";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetacademy.az";
 
   let canonicalUrl =
     locale === "az" ? `${baseUrl}/blog` : `${baseUrl}/${locale}/blog`;
@@ -36,9 +36,9 @@ export async function generateMetadata({
 
   const isIndexable = !searchParams.page || searchParams.page === "1";
 
-  const title = t("metaTitle") || "Bloq | JET School";
+  const title = t("metaTitle") || "Bloq | JET Academy";
   const description =
-    t("metaDescription") || "JET School-un ən son bloq məqalələrini kəşf edin";
+    t("metaDescription") || "JET Academy-un ən son bloq məqalələrini kəşf edin";
 
   return {
     title,

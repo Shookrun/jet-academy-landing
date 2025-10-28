@@ -18,13 +18,13 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: "Metadata" });
 
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetschool.az";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetacademy.az";
   const query = searchParams.q || "";
 
   const pageTitle = query
     ? t("glossarySearchResultsTitle", { query }) ||
-      `"${query}" üçün axtarış nəticələri | JET School`
-    : t("glossarySearchPageTitle") || "Axtarış | JET School";
+      `"${query}" üçün axtarış nəticələri | JET Academy`
+    : t("glossarySearchPageTitle") || "Axtarış | JET Academy";
 
   const canonicalUrl =
     locale === "az"
@@ -35,7 +35,7 @@ export async function generateMetadata({
     title: pageTitle,
     description:
       t("glossarySearchDescription") ||
-      "JET School glossariy lüğətində axtarış edin",
+      "JET Academy glossariy lüğətində axtarış edin",
     alternates: {
       canonical: canonicalUrl,
       languages: {
@@ -50,7 +50,7 @@ export async function generateMetadata({
       title: pageTitle,
       description:
         t("glossarySearchDescription") ||
-        "JET School glossariy lüğətində axtarış edin",
+        "JET Academy glossariy lüğətində axtarış edin",
       url: canonicalUrl,
       type: "website",
       locale: locale === "az" ? "az_AZ" : "ru_RU",
@@ -61,7 +61,7 @@ export async function generateMetadata({
       title: pageTitle,
       description:
         t("glossarySearchDescription") ||
-        "JET School glossariy lüğətində axtarış edin",
+        "JET Academy glossariy lüğətində axtarış edin",
     },
     robots: {
       index: true,

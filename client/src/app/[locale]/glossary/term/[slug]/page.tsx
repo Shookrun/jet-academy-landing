@@ -18,7 +18,7 @@ export async function generateMetadata({
   const { locale, slug } = params;
   const t = await getTranslations({ locale, namespace: "Metadata" });
 
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetschool.az";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetacademy.az";
 
   let termName = "";
   let termDefinition = "";
@@ -37,7 +37,7 @@ export async function generateMetadata({
     console.error("Error fetching term:", error);
   }
 
-  const pageTitle = termName ? `${termName}` : "Glossariy Termini | JET School";
+  const pageTitle = termName ? `${termName}` : "Glossariy Termini | JET Academy";
 
   const canonicalUrl = `${baseUrl}/${locale}/glossary/term/${slug}`;
 

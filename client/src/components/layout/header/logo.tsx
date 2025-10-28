@@ -11,7 +11,7 @@ export default function Logo({ className = "" }: LogoProps) {
   return (
     <div className={`relative z-[52]${className}`}>
       <Image
-        alt="Logo of Jet School"
+        alt="Logo of Jet Academy"
         src="/logos/jetlogo.png"
         width={300}
         height={100}

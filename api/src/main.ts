@@ -19,9 +19,8 @@ async function bootstrap() {
   app.enableCors({
     origin: (origin, callback) => {
       const allowedOrigins = [
-        'https://jetschool.az',
-        'https://www.jetschool.az',
         'https://new.jetacademy.az',
+        'https://jetacademy.az',
         'https://www.new.jetacademy.az',
         'http://localhost:3000',
         'http://localhost:3001',
@@ -63,7 +62,7 @@ async function bootstrap() {
 
   // Swagger config...
   const config = new DocumentBuilder()
-    .setTitle('JET School API')
+    .setTitle('JET Academy API')
     .setDescription('API endpoints documentation')
     .setVersion('1.0')
     .addBearerAuth(

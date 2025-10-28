@@ -25,7 +25,7 @@ export default function Breadcrumbs({
   
   const isSinglePage = segments.length === 2;
   const lastIndex = segments.length - 1;
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetschool.az";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetacademy.az";
 
   useEffect(() => {
     if (isSinglePage && !finalDynamicTitle && segments[lastIndex]) {

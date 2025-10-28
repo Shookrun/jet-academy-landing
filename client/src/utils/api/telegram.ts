@@ -57,7 +57,7 @@ ${
     minute: "2-digit",
   })}</i>
 
-🌐 <code>jetschool.az</code>`;
+🌐 <code>jetacademy.az</code>`;
 
   try {
     const result = await bot.api.sendMessage(TELEGRAM_CHAT_ID, text, {

@@ -91,7 +91,7 @@ export default async function Projects({
   try {
     const t = await getTranslations({
       locale: params.locale,
-      namespace: "projects",
+      namespace: "feedbacks",
     });
     const projects = await fetchProjects();
     if (!projects) return null;

@@ -33,7 +33,7 @@ export async function generateMetadata({
     locale: params.locale,
     namespace: "Metadata",
   });
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL || "https://jetschool.az";
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || "https://jetacademy.az";
   const canonical = `${baseUrl}/${params.locale}`;
 
   return {
@@ -53,7 +53,7 @@ export async function generateMetadata({
       title: t("ogTitle"),
       description: t("ogDescription"),
       url: canonical,
-      siteName: "JET School",
+      siteName: "JET Academy",
       images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: t("ogImageAlt") }],
       locale: params.locale === "az" ? "az_AZ" : "ru_RU",
       alternateLocale: params.locale === "az" ? "ru_RU" : "az_AZ",
