@@ -1,35 +1,20 @@
 "use client";
 import ProjectForm from "@/components/views/dashboard/student-projects/project-form";
+import { STUDENT_PROJECT_CATEGORIES } from "@/constants/studentProjectCategories";
 import { ProjectFormInputs } from "@/types/student-projects";
 import api from "@/utils/api/axios";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
-const STATIC_CATEGORY_NAMES = [
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-];
-
 async function ensureCategoryId(categoryId: string) {
-  const isLocal = categoryId.startsWith("local-");
-  if (!isLocal) return categoryId;
+  if (!categoryId?.startsWith("local-")) return categoryId;
 
-  const idx = Number(categoryId.replace("local-", ""));
-  const name =
-    Number.isFinite(idx) && STATIC_CATEGORY_NAMES[idx]
-      ? STATIC_CATEGORY_NAMES[idx]
-      : undefined;
-
-  if (!name) throw new Error("Kateqoriya adı təyin edilə bilmədi");
+  const cat = STUDENT_PROJECT_CATEGORIES.find((c) => c.id === categoryId);
+  if (!cat?.name) throw new Error("Kateqoriya adı təyin edilə bilmədi");
 
   try {
-    const created = await api.post("/student-project-categories", { name });
+    const created = await api.post("/student-project-categories", { name: cat.name });
     const item = created?.data?.item || created?.data;
     if (item?.id) return String(item.id);
   } catch {}
@@ -38,8 +23,7 @@ async function ensureCategoryId(categoryId: string) {
     const res = await api.get("/student-project-categories");
     const items = res?.data?.items ?? [];
     const hit = items.find(
-      (x: any) =>
-        String(x?.name).trim().toLowerCase() === name.trim().toLowerCase()
+      (x: any) => String(x?.name || "").trim().toLowerCase() === cat.name.trim().toLowerCase()
     );
     if (hit?.id) return String(hit.id);
   } catch {}
@@ -49,6 +33,7 @@ async function ensureCategoryId(categoryId: string) {
 
 export default function CreateProjectPage() {
   const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -80,9 +65,7 @@ export default function CreateProjectPage() {
     } catch (error: any) {
       console.error("Yaradılma xətası:", error);
       toast.error(
-        error?.response?.data?.message ||
-          error?.message ||
-          "Xəta baş verdi. Yenidən cəhd edin"
+        error?.response?.data?.message || error?.message || "Xəta baş verdi. Yenidən cəhd edin"
       );
     }
   };

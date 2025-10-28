@@ -5,22 +5,7 @@ import { useMemo } from "react";
 import { MdCategory, MdDescription, MdLink, MdTitle } from "react-icons/md";
 import { Control, Controller, FieldErrors, UseFormHandleSubmit, UseFormRegister } from "react-hook-form";
 import { ProjectFormInputs } from "@/types/student-projects";
-
-type Category = { id: string; name: string };
-
-const STATIC_CATEGORIES: Category[] = [
-  { id: "local-0", name: "Front-End " },
-  { id: "local-1", name: "Full Stack " },
-  { id: "local-2", name: "Python Back-End " },
-  { id: "local-3", name: "Java Back-End " },
-  { id: "local-4", name: "IT Help Desk " },
-  { id: "local-5", name: "Kibertəhlükəsizlik " },
-  { id: "local-6", name: "Ofis Proqramları " },
-  { id: "local-7", name: "Praktiki Kompüter Bilikləri " },
-  { id: "local-8", name: "AI Engineering " },
-  { id: "local-9", name: "Data Analitika " },
-];
-
+import { STUDENT_PROJECT_CATEGORIES } from "@/constants/studentProjectCategories";
 type Props = {
   mode: "create" | "edit";
   onSubmit: (data: ProjectFormInputs) => void;
@@ -115,7 +100,7 @@ export default function ProjectForm({
                 name="categoryId"
                 rules={{ required: "Kateqoriya seçin" }}
                 render={({ field }) => (
-                  <Select
+                    <Select
                     label="Kateqoriya"
                     variant="bordered"
                     startContent={<MdCategory className="text-gray-400" />}
@@ -123,17 +108,17 @@ export default function ProjectForm({
                     selectionMode="single"
                     selectedKeys={field.value ? new Set([String(field.value)]) : emptySet}
                     onSelectionChange={(keys) => {
-                      const key = Array.from(keys as Set<React.Key>)[0];
-                      field.onChange(key ? String(key) : "");
+                      const selectedKey = Object.values(keys)[0];
+                      field.onChange(selectedKey ? String(selectedKey) : "");
                     }}
                     placeholder="Kateqoriya seçin"
-                  >
-                    {STATIC_CATEGORIES.map((c) => (
-                      <SelectItem key={c.id} textValue={c.name.trim()}>
-                        {c.name.trim()}
+                    >
+                    {STUDENT_PROJECT_CATEGORIES.map((c: { id: string; name: string }) => (
+                      <SelectItem key={c.id} textValue={c.name}>
+                      {c.name}
                       </SelectItem>
                     ))}
-                  </Select>
+                    </Select>
                 )}
               />
             </div>
