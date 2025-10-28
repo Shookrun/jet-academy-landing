@@ -15,11 +15,11 @@ export async function generateMetadata({
   const canonicalUrl = `${baseUrl}/${locale}/projects`;
 
   return {
-    title: t("projectsPageTitle") || "Layihələr",
+    title: t("title") || "Rəylər",
     description:
-      t("projectsPageDescription") ||
-      "Jet Schoolun tələbə layihələri, tələbələrimizin innovasiya və yaradıcılığı nümayiş etdirir",
-    keywords: ["tələbə layihələri", "jet school", "təhsil", "innovasiya"],
+      t("description") ||
+      "Tələbələrimizin rəyləri",
+    keywords: ["tələbə rəyləri", "jet academy", "təhsil", "innovasiya"],
     alternates: {
       canonical: canonicalUrl,
       languages: {
@@ -28,10 +28,10 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      title: t("projectsPageTitle") || "Layihələr - Jet School",
+      title: t("title") || "Rəylər - JET Academy",
       description:
-        t("projectsPageDescription") ||
-        "Jet Schoolun tələbə layihələri, tələbələrimizin innovasiya və yaradıcılığı nümayiş etdirir",
+        t("description") ||
+        "Tələbələrimizin rəyləri",
       type: "website",
       url: canonicalUrl,
       locale: locale === "az" ? "az_AZ" : "ru_RU",
@@ -39,10 +39,10 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: t("projectsPageTitle") || "Layihələr - Jet School",
+      title: t("title") || "Rəylər - JET Academy",
       description:
-        t("projectsPageDescription") ||
-        "Jet Schoolun tələbə layihələri, tələbələrimizin innovasiya və yaradıcılığı nümayiş etdirir",
+        t("description") ||
+        "Tələbələrimizin rəyləri",
     },
     robots: {
       index: true,
