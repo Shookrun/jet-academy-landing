@@ -15,9 +15,9 @@ export async function generateMetadata({
   const canonicalUrl = `${baseUrl}/${locale}/projects`;
 
   return {
-    title: t("title") || "Rəylər",
+    title: t("feedbacksPageTitle") || "Rəylər",
     description:
-      t("description") ||
+      t("feedbacksPageDescription") ||
       "Tələbələrimizin rəyləri",
     keywords: ["tələbə rəyləri", "jet academy", "təhsil", "innovasiya"],
     alternates: {
@@ -28,9 +28,9 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      title: t("title") || "Rəylər - JET Academy",
+      title: t("feedbacksPageTitle") || "Rəylər - JET Academy",
       description:
-        t("description") ||
+        t("feedbacksPageDescription") ||
         "Tələbələrimizin rəyləri",
       type: "website",
       url: canonicalUrl,
@@ -39,9 +39,9 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: t("title") || "Rəylər - JET Academy",
+      title: t("feedbacksPageTitle") || "Rəylər - JET Academy",
       description:
-        t("description") ||
+        t("feedbacksPageDescription") ||
         "Tələbələrimizin rəyləri",
     },
     robots: {
