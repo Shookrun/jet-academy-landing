@@ -1,8 +1,7 @@
 "use client";
-import api from "@/utils/api/axios";
 import { Button, Card, Input, Select, SelectItem, Textarea } from "@nextui-org/react";
 import { motion } from "framer-motion";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo } from "react";
 import { MdCategory, MdDescription, MdLink, MdTitle } from "react-icons/md";
 import { Control, Controller, FieldErrors, UseFormHandleSubmit, UseFormRegister } from "react-hook-form";
 import { ProjectFormInputs } from "@/types/student-projects";
@@ -21,35 +20,6 @@ const STATIC_CATEGORIES: Category[] = [
   { id: "local-8", name: "AI Engineering " },
   { id: "local-9", name: "Data Analitika " },
 ];
-
-function normalizeName(s: string) {
-  return s.normalize("NFKC").trim().toLowerCase().replace(/\s+/g, " ");
-}
-
-function mergeCategories(staticCats: Category[], remoteCats: Category[]) {
-  const byNorm = new Map<string, Category>();
-  staticCats.forEach((c) => {
-    byNorm.set(normalizeName(c.name), c);
-  });
-  remoteCats.forEach((r) => {
-    const key = normalizeName(r.name);
-    if (!byNorm.has(key)) {
-      byNorm.set(key, { id: String(r.id), name: r.name });
-    } else {
-      const current = byNorm.get(key)!;
-      if (String(r.id).startsWith("local-")) return;
-      if (current.id.startsWith("local-")) byNorm.set(key, { id: String(r.id), name: current.name });
-    }
-  });
-  const list = Array.from(byNorm.values());
-  const order = new Map(staticCats.map((c, i) => [normalizeName(c.name), i]));
-  return list.sort((a, b) => {
-    const ai = order.has(normalizeName(a.name)) ? (order.get(normalizeName(a.name)) as number) : 9999;
-    const bi = order.has(normalizeName(b.name)) ? (order.get(normalizeName(b.name)) as number) : 9999;
-    if (ai !== bi) return ai - bi;
-    return a.name.localeCompare(b.name, "az");
-  });
-}
 
 type Props = {
   mode: "create" | "edit";
@@ -72,29 +42,6 @@ export default function ProjectForm({
   router,
   control,
 }: Props) {
-  const [categories, setCategories] = useState<Category[]>(STATIC_CATEGORIES);
-  const fetched = useRef(false);
-
-  useEffect(() => {
-    if (fetched.current) return;
-    fetched.current = true;
-    let active = true;
-    (async () => {
-      try {
-        const res = await api.get("/student-project-categories");
-        const items: Category[] = (res?.data?.items ?? []).map((x: any) => ({ id: String(x.id), name: String(x.name || "").trim() }));
-        if (!active) return;
-        setCategories(mergeCategories(STATIC_CATEGORIES, items));
-      } catch {
-        if (!active) return;
-        setCategories(STATIC_CATEGORIES);
-      }
-    })();
-    return () => {
-      active = false;
-    };
-  }, []);
-
   const emptySet = useMemo<Set<string>>(() => new Set(), []);
 
   return (
@@ -180,12 +127,10 @@ export default function ProjectForm({
                       field.onChange(key ? String(key) : "");
                     }}
                     placeholder="Kateqoriya seçin"
-                    isInvalid={!!errors.categoryId}
-                    errorMessage={(errors.categoryId?.message as any) || undefined}
                   >
-                    {categories.map((c) => (
-                      <SelectItem key={c.id} textValue={c.name}>
-                        {c.name}
+                    {STATIC_CATEGORIES.map((c) => (
+                      <SelectItem key={c.id} textValue={c.name.trim()}>
+                        {c.name.trim()}
                       </SelectItem>
                     ))}
                   </Select>
