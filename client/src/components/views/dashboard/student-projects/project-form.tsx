@@ -10,14 +10,16 @@ import { ProjectFormInputs } from "@/types/student-projects";
 type Category = { id: string; name: string };
 
 const STATIC_CATEGORIES: Category[] = [
-  { id: "local-0", name: "Front-End Proqramlaşdırma Kursu" },
-  { id: "local-1", name: "Full Stack Proqramlaşdırma Kursu" },
-  { id: "local-2", name: "Python Back-End Proqramlaşdırma Kursu" },
-  { id: "local-3", name: "Java Back-End Proqramlaşdırma Kursu" },
-  { id: "local-4", name: "IT Help Desk Kursu" },
-  { id: "local-5", name: "Kibertəhlükəsizlik Kursu" },
-  { id: "local-6", name: "Ofis Proqramları Kursu" },
-  { id: "local-7", name: "Praktiki Kompüter Bilikləri Kursu" },
+  { id: "local-0", name: "Front-End " },
+  { id: "local-1", name: "Full Stack " },
+  { id: "local-2", name: "Python Back-End " },
+  { id: "local-3", name: "Java Back-End " },
+  { id: "local-4", name: "IT Help Desk " },
+  { id: "local-5", name: "Kibertəhlükəsizlik " },
+  { id: "local-6", name: "Ofis Proqramları " },
+  { id: "local-7", name: "Praktiki Kompüter Bilikləri " },
+  { id: "local-8", name: "AI Engineering " },
+  { id: "local-9", name: "Data Analitika " },
 ];
 
 function normalizeName(s: string) {
