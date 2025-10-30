@@ -67,7 +67,7 @@ export async function generateMetadata({
     },
     icons: {
       icon: [
-        { url: "/favicon.png" },
+        { url: "/favicon.ico" },
         { url: "/icon.png", sizes: "32x32", type: "image/png" },
       ],
       apple: [{ url: "/icon.png", sizes: "180x180", type: "image/png" }],
