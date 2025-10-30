@@ -45,10 +45,8 @@
             />
           </div>
           <h4 className="font-semibold [@media(min-width:2500px)]:!text-lg [@media(min-width:3500px)]:!text-3xl text-md text-jsblack">{fullName}</h4>
-          <p className="text-gray-600 [@media(min-width:2500px)]:!text-lg text-sm">{description}</p>
-          {isCoursePage && "position" in member && member.position && (
-            <p className="text-sm text-jsyellow mt-1">{member.position}</p>
-          )}
+         
+          <p className="text-sm text-black mt-1">{bio[locale]}</p>
         </div>
       );
     }
