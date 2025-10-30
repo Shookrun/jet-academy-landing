@@ -53,7 +53,7 @@ const getImageUrl = (imageUrl?: string) => {
 };
 
 const CoursesSlider = ({ courses, locale = "az" }: ICoursesSlider) => {
-  const t = useTranslations("courseInfo");
+  const t = useTranslations("courseInfoCP");
   const [isClient, setIsClient] = useState(false);
   const loc = normalizeLocale(locale);
 
