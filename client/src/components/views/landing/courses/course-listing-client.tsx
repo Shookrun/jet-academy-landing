@@ -40,7 +40,6 @@ const CourseListingClient = ({ courses, locale = "az" }: ICoursesSlider) => {
 
   return (
     <div className="container mx-auto my-20 px-0">
-      {/* Scroll animasiyası üçün style */}
       <style jsx>{`
         @keyframes scroll-tags {
           0% {
@@ -83,9 +82,7 @@ const CourseListingClient = ({ courses, locale = "az" }: ICoursesSlider) => {
                   : "Сделай первый шаг в мир технологий!");
               const tags =
                 course.newTags?.[normalizedLocale] ?? course.tag ?? [];
-              const level =
-                course.level?.[normalizedLocale] ||
-                (normalizedLocale === "az" ? "Başlanğıc" : "Начальный");
+
               const age = course.ageRange || "9-15";
               const duration = course.duration || "6";
 
@@ -125,12 +122,6 @@ const CourseListingClient = ({ courses, locale = "az" }: ICoursesSlider) => {
                         {normalizedLocale === "az" ? "Yaş:" : "Возраст:"}
                       </span>{" "}
                       {age}
-                    </p>
-                    <p>
-                      <span className="font-semibold">
-                        {normalizedLocale === "az" ? "Səviyyə:" : "Уровень:"}
-                      </span>{" "}
-                      {level}
                     </p>
                     <p>
                       <span className="font-semibold">

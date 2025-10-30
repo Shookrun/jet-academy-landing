@@ -9,9 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import TeamMemberCard from "../about/team-member-card";
 
 interface TeachersSectionProps {
-  data: {
-    teachers: CourseTeacherAsMember[];
-  };
+  data: { teachers: CourseTeacherAsMember[] };
   locale: "az" | "ru";
   title: string;
   description: string;
@@ -23,59 +21,36 @@ export default function TeachersSection({
   title,
   description,
 }: TeachersSectionProps) {
-
-  const activeTeachers = data.teachers?.filter(teacher => teacher.teacher?.isActive !== false) || [];
+  const activeTeachers =
+    data.teachers?.filter((t) => t.teacher?.isActive !== false) ?? [];
+  if (activeTeachers.length === 0) return null;
 
   return (
-    <>
-      {activeTeachers && activeTeachers.length > 0 && (
-        <section className="flex flex-col gap-8">
-          <SectionTitle title={title} description={description} />
-          <Swiper
-            modules={[Autoplay]}
-            navigation={false}
-            speed={800}
-            spaceBetween={24}
-            autoplay={{
-              delay: 1500,
-              disableOnInteraction: false,
-            }}
-            breakpoints={{
-              640: {
-                slidesPerView: 1,
-                spaceBetween: 20,
-              },
-              768: {
-                slidesPerView: 3,
-                spaceBetween: 24,
-              },
-              1024: {
-                slidesPerView: 6,
-                spaceBetween: 24,
-              },
-               2500: {
-                slidesPerView: 8,
-                spaceBetween: 24,
-              },
-             
-            }}
-            className="w-full py-10  relative"
-          >
-            {activeTeachers.map(
-              (teacher: CourseTeacherAsMember, index: number) => (
-                <SwiperSlide key={teacher.id}>
-                  <TeamMemberCard
-                    member={teacher}
-                    index={index}
-                    noHover
-                    locale={locale}
-                  />
-                </SwiperSlide>
-              )
-            )}
-          </Swiper>
-        </section>
-      )}
-    </>
+    <section className="flex flex-col gap-8">
+      <SectionTitle title={title} description={description} />
+
+      <Swiper
+        modules={[Autoplay]}
+        navigation={false}
+        speed={800}
+        spaceBetween={24}
+        autoplay={{ delay: 1800, disableOnInteraction: false }}
+        breakpoints={{
+          0: { slidesPerView: 1, spaceBetween: 16 },
+          768: { slidesPerView: 3, spaceBetween: 24 },
+          1024: { slidesPerView: 6, spaceBetween: 24 },
+          2500: { slidesPerView: 8, spaceBetween: 24 },
+        }}
+        className="w-full py-10"
+      >
+        {activeTeachers.map((teacher, index) => (
+          <SwiperSlide key={teacher.id} className="!h-auto">
+            <div className="h-full [&>*]:h-full">
+              <TeamMemberCard member={teacher} locale={locale} noHover index={index} />
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </section>
   );
 }
