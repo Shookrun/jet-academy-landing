@@ -8,7 +8,6 @@
       member,
       locale,
       noHover = false,
-      isCoursePage = false,
     }: {
       member: CourseTeacherAsMember | TeamMember;
       index: number;
@@ -21,10 +20,6 @@
       const bio = "teacher" in member ? member.teacher.bio : member.bio;
       const fullName =
         "teacher" in member ? member.teacher.fullName : member.fullName;
-      const description =
-        "teacher" in member
-          ? member.courseTeacher.description[locale]
-          : bio[locale];
       return (
         <div
           className={cn(

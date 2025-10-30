@@ -191,13 +191,12 @@ export default function ContactModal() {
                 </button>
               </div>
 
-              {/* Ad, Soyad, Telefon inputları */}
               {["name", "surname", "number"].map((field) => (
                 <div key={field} className="space-y-2">
                   <input
                     type={field === "number" ? "tel" : "text"}
                     placeholder={t(`${field}.placeholder`)}
-                    className="w-full min-h-[64px] text-base px-5 rounded-[32px] border border-jsyellow bg-[#fef7eb]
+                    className="w-full min-h-[58px] text-base px-5 rounded-[32px] border border-jsyellow bg-[#fef7eb]
                       focus:outline-none focus:ring-2 focus:ring-jsyellow transition-all duration-300 shadow-sm"
                     {...register(field as keyof FormValues, {
                       required: t(`${field}.required`),
