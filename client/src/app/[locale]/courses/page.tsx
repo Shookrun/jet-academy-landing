@@ -52,7 +52,7 @@ export default async function CoursesPage() {
   return (
     <main className="min-h-screen [@media(min-width:2500px)]:min-h-full  py-16">
       <div className="container mx-auto px-10">
-        <div className="text-center mb-12">
+        <div className="text-center mb-5">
           <h1 className="text-4xl font-bold [@media(min-width:2500px)]:!text-5xl [@media(min-width:3500px)]:!text-6xl text-jsblack mb-4">
             {t("title")}
           </h1>

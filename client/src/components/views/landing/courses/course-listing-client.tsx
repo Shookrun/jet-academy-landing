@@ -39,7 +39,7 @@ const CourseListingClient = ({ courses, locale = "az" }: ICoursesSlider) => {
   };
 
   return (
-    <div className="container mx-auto my-20 px-0">
+    <div className="container mx-auto px-0">
       <style jsx>{`
         @keyframes scroll-tags {
           0% {
