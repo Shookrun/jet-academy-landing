@@ -45,15 +45,15 @@ export default function Header() {
                 [@media(min-width:3500px)]:!px-52
         "
       >
-        <Link href="/" className="relative z-50 p-0 mb-[3px]">
-          <Logo
-            className="w-24  md:w-28 lg:w-32 xl:w-36 2xl:w-40 4xl:w-48 
-[@media(min-width:2500px)]:!w-[230px]
-[@media(min-width:2500px)]:!h-[60px]
-          
-          "
-          />
-        </Link>
+        <Link href="/" className="relative z-50 p-0 mb-[3px] shrink-0">
+ <Logo
+  className="
+    w-44 sm:w-24 md:w-28 lg:w-32 xl:w-36 2xl:w-44 4xl:w-52
+    aspect-[3/1]
+  "
+/>
+
+</Link>
 
         <div className="hidden lg:flex  items-center gap-6 xl:gap-8 2xl:gap-10 4xl:gap-12">
           <menu className="flex flex-nowrap whitespace-nowrap gap-4 md:gap-6 lg:gap-8 items-center">

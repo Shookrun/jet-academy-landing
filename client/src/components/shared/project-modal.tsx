@@ -1,4 +1,5 @@
 "use client";
+import { useEffect } from "react";
 import { useProjectModal } from "@/hooks/useProjectModal";
 import React from "react";
 import { MdClose } from "react-icons/md";
@@ -13,30 +14,55 @@ export default function ProjectModal() {
     return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
   };
 
+  // Səhifə skrolunu kilidlə (modal açıqkən)
+  useEffect(() => {
+    if (!isOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = prev; };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (
-    <div className="fixed h-full w-full z-[999] flex items-end md:items-center justify-center inset-0 bg-jsblack/20">
-      <div className="rounded-t-2xl rounded-b-none md:rounded-b-2xl flex flex-col gap-2 md:gap-4 max-w-[800px] w-full bg-white p-4 md:p-5">
-        <div className="flex items-center justify-end">
-          <Button
-            variant="primary"
-            className="px-3 md:px-3"
-            icon={<MdClose className="text-base md:text-xl" />}
-            onClick={() => toggle()}
-          />
-        </div>
+    <div
+      className="
+        fixed inset-0 z-[999] p-4
+        grid place-items-center
+        h-[100dvh] bg-jsblack/60 backdrop-blur-[2px]
+      "
+      onClick={(e) => toggle()} // backdrop-a klik → bağla
+      role="dialog"
+      aria-modal="true"
+      aria-label="Project video"
+    >
+      <div
+        className="relative w-[92vw] max-w-[900px] bg-white rounded-2xl overflow-hidden"
+        onClick={(e) => e.stopPropagation()} // içəri klik → bağlanmasın
+      >
+        {/* Close */}
+        <button
+          onClick={(e) => toggle()}
+          className="absolute top-2 right-2 md:top-3 md:right-3 z-10
+                     rounded-full bg-blue-600 text-white w-8 h-8
+                     grid place-items-center shadow-lg
+                     mt-[env(safe-area-inset-top)]"
+          aria-label="Close"
+        >
+          <MdClose className="text-xl" />
+        </button>
 
-        {link && (
-          <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+        {/* Video 16:9 */}
+        <div className="relative w-full aspect-video">
+          {link && (
             <iframe
               src={getEmbedUrl(link)}
-              className="absolute top-0 left-0 w-full h-full rounded-lg"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              className="absolute inset-0 w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             />
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );

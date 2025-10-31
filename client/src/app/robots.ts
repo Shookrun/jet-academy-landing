@@ -4,9 +4,10 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
-      allow: ["/", "/az", "/ru","/en"],
+      allow: ["/"],
       disallow: ["/dashboard/"],
     },
     sitemap: "https://jetacademy.az/sitemap.xml",
   };
 }
+
