@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useProjectModal } from "@/hooks/useProjectModal";
 import React from "react";
 import { MdClose } from "react-icons/md";
-import Button from "../ui/button";
 
 export default function ProjectModal() {
   const { isOpen, toggle, link } = useProjectModal();
@@ -31,7 +30,7 @@ export default function ProjectModal() {
         grid place-items-center
         h-[100dvh] bg-jsblack/60 backdrop-blur-[2px]
       "
-      onClick={(e) => toggle()} // backdrop-a klik → bağla
+      onClick={() => toggle()} // backdrop-a klik → bağla
       role="dialog"
       aria-modal="true"
       aria-label="Project video"
@@ -42,7 +41,7 @@ export default function ProjectModal() {
       >
         {/* Close */}
         <button
-          onClick={(e) => toggle()}
+          onClick={() => toggle()}
           className="absolute top-2 right-2 md:top-3 md:right-3 z-10
                      rounded-full bg-blue-600 text-white w-8 h-8
                      grid place-items-center shadow-lg
