@@ -102,6 +102,7 @@ export async function generateMetadata({
     }
 
     const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetacademy.az";
+
     const canonicalUrl =
       locale === "az"
         ? `${baseUrl}/course/${params.slug}`
@@ -109,7 +110,6 @@ export async function generateMetadata({
 
     const azSlug = data.slug?.az || params.slug;
     const ruSlug = data.slug?.ru || params.slug;
-
     const rawTitle =
       data.title?.[locale] ??
       data.title?.az ??
@@ -129,6 +129,7 @@ export async function generateMetadata({
         .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, " ")
         .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, " ")
         .replace(/<\/?[^>]+(>|$)/g, " ");
+    
     const decodeEntities = (s: string) =>
       s
         .replace(/&nbsp;/g, " ")
@@ -138,7 +139,9 @@ export async function generateMetadata({
         .replace(/&lt;/g, "<")
         .replace(/&gt;/g, ">");
     const normalizeWS = (s: string) => s.replace(/\s+/g, " ").trim();
+
     const toPlainText = (html: string) => normalizeWS(decodeEntities(stripTags(html)));
+    
     const truncate = (s: string, max = 160) => {
       if (s.length <= max) return s;
       const cut = s.slice(0, max);
@@ -147,7 +150,7 @@ export async function generateMetadata({
     };
 
     const cleanDesc = truncate(toPlainText(rawDesc || ""));
-
+    console.log(cleanDesc)
     return {
       title: { absolute: fullTitle },
       description: cleanDesc,
@@ -161,6 +164,7 @@ export async function generateMetadata({
           ru: `${baseUrl}/ru/course/${ruSlug}`,
         },
       },
+
       openGraph: {
         title: fullTitle,
         description: cleanDesc,

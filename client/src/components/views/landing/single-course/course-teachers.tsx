@@ -26,31 +26,42 @@ export default function TeachersSection({
   if (activeTeachers.length === 0) return null;
 
   return (
-    <section className="flex flex-col gap-8">
+    // mobil x-overflow-u kəs
+    <section className="flex flex-col gap-8 overflow-x-clip mt-20 sm:overflow-visible">
       <SectionTitle title={title} description={description} />
 
-      <Swiper
-        modules={[Autoplay]}
-        navigation={false}
-        speed={800}
-        spaceBetween={24}
-        autoplay={{ delay: 1800, disableOnInteraction: false }}
-        breakpoints={{
-          0: { slidesPerView: 1, spaceBetween: 16 },
-          768: { slidesPerView: 3, spaceBetween: 24 },
-          1024: { slidesPerView: 6, spaceBetween: 24 },
-          2500: { slidesPerView: 8, spaceBetween: 24 },
-        }}
-        className="w-full py-10"
-      >
-        {activeTeachers.map((teacher, index) => (
-          <SwiperSlide key={teacher.id} className="!h-auto">
-            <div className="h-full [&>*]:h-full">
-              <TeamMemberCard member={teacher} locale={locale} noHover index={index} />
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      {/* mobil gutter fix: container px-ini neytrallaşdırmaq üçün -mx */}
+      <div className="-mx-4 sm:mx-0">
+        <Swiper
+          modules={[Autoplay]}
+          navigation={false}
+          speed={800}
+          spaceBetween={24}
+          autoplay={{ delay: 1800, disableOnInteraction: false }}
+          breakpoints={{
+            0: { slidesPerView: 1, spaceBetween: 16 },
+            768: { slidesPerView: 3, spaceBetween: 24 },
+            1024: { slidesPerView: 6, spaceBetween: 24 },
+            2500: { slidesPerView: 8, spaceBetween: 24 },
+          }}
+          // daxildə yenidən padding ver: sağ/sol kəsilməsin
+          className="w-full py-10 px-4 sm:px-0 !overflow-visible"
+        >
+          {activeTeachers.map((teacher, index) => (
+            <SwiperSlide key={teacher.id} className="!h-auto">
+              {/* kartın kölgəsi varsa, slide içini tam hündürlükdə saxla */}
+              <div className="h-full [&>*]:h-full">
+                <TeamMemberCard
+                  member={teacher}
+                  locale={locale}
+                  noHover
+                  index={index}
+                />
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </section>
   );
 }

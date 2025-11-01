@@ -26,7 +26,7 @@ export default async function ContactPage() {
       </div>
 
       <div className="space-y-6 w-full">
-        <h1 className="text-4xl md:text-5xl font-bold text-jsblack leading-tight">
+        <h1 className="text-4xl md:text-5xl text-center font-bold text-jsblack leading-tight">
           {t("contact.title")}
         </h1>
         <p className="text-gray-600 text-lg">{t("contact.description")}</p>

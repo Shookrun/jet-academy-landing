@@ -1,9 +1,10 @@
-import GlossaryContact from "@/components/views/landing/glossary/glossary-contact";
 import GlossaryTermDetail from "@/components/views/landing/glossary/glossary-term-detail";
+import CoursesSlider from "@/components/views/landing/single-course/courses-slider";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
+import { getAllCourses } from "@/utils/api/course";
 
 interface PageProps {
   params: {
@@ -38,7 +39,6 @@ export async function generateMetadata({
   }
 
   const pageTitle = termName ? `${termName}` : "Glossariy Termini | JET Academy";
-
   const canonicalUrl = `${baseUrl}/${locale}/glossary/term/${slug}`;
 
   return {
@@ -89,9 +89,7 @@ async function getGlossaryTerm(slug: string) {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/glossary/slug/${slug}`,
-      {
-        cache: "no-store",
-      }
+      { cache: "no-store" }
     );
 
     if (!res.ok) {
@@ -120,17 +118,16 @@ export default async function GlossaryTermPage({ params }: PageProps) {
 
   const termContent = term.term[language];
   const definitionContent = term.definition[language];
-
   const categoryName = term.category?.name[language];
   const categorySlug = term.category?.slug[language];
 
-  const glossaryT = await getTranslations({
-    locale: language,
-    namespace: "glossary.term",
-  });
+  const [glossaryT, courses] = await Promise.all([
+    getTranslations({ locale: language, namespace: "glossary.term" }),
+    getAllCourses({}),
+  ]);
 
   return (
-    <div className="container flex flex-col gap-8 lg:gap-4 mx-auto px-4 py-12">
+    <div className="container flex  flex-col gap-8 lg:gap-4 mx-auto px-4 py-12">
       <GlossaryTermDetail
         term={termContent}
         definition={definitionContent}
@@ -143,7 +140,11 @@ export default async function GlossaryTermPage({ params }: PageProps) {
         relatedTermsText={glossaryT("relatedTermsText")}
         language={language}
       />
-      <GlossaryContact language={language} />
+
+      {/* GlossaryContact ləğv edildi — yerinə kurslar slideri */}
+      <CoursesSlider courses={courses} />
     </div>
   );
 }
+
+export const revalidate = 60;

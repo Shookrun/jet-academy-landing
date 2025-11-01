@@ -57,7 +57,7 @@ export default function GalleryClient({
           "container mx-auto " +
             "px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 " +
             "2xl:px-20 3xl:px-24 4xl:px-32 " +
-            "my-20 4xl:my-24"
+            "my-10 4xl:my-24"
       )}
     >
       <SectionTitle title={t("title")} description={t("description")} />

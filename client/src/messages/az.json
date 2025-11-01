@@ -25,7 +25,8 @@
     "description": "JET Academy-də tədris sahələri müasir əmək bazarının tələblərinə uyğun formalaşdırılıb. Hər bir sahə üzrə proqramlar praktiki biliklərə, real layihələrə və peşəkar inkişaf imkanlarına əsaslanır"
   },
   "courseInfoCP": {
-    "title": "Digər tədris sahələri"
+    "title": "Digər tədris sahələri",
+    "description": ""
   },
   
 
@@ -428,7 +429,7 @@
       "categoryText": "Kateqoriya",
       "relatedTermsText": "Əlaqəli terminlər",
       "ctaTitle": "Sizə tanış olmayan sözlə qarşılaşdınız?",
-      "ctaDescription": "IT sahəsini dərindən öyrənmək üçün kurslarımıza qoşulun. Ətraflı məlumat almaq üçün sorğu göndərin!"
+      "ctaDescription": "IT sahəsini dərindən öyrənmək istəyirsiniz? Kurslarımız haqqında ətraflı məlumat alın "
     },
     "search": {
       "title": "Axtarış",

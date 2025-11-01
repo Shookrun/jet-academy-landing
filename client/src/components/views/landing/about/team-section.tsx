@@ -3,6 +3,7 @@ import { TeamMember } from "@/types/team";
 import { getLocale } from "next-intl/server";
 import TeamMemberCard from "./team-member-card";
 import { Locale } from "@/i18n/request";
+import SectionTitleSingle from "@/components/shared/section-title-single";
 
 interface TeamSectionProps {
   title: string;
@@ -19,7 +20,7 @@ export default async function TeamSection({
   const locale = (await getLocale()) as Locale;
   return (
     <section className="container">
-      <SectionTitle title={title} description={description} />
+      <SectionTitleSingle title={title} description={description} />
 
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 [@media(min-width:2500px)]:grid-cols-8 gap-6 mt-12">

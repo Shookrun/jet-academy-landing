@@ -84,7 +84,7 @@ export default async function AboutPage({
   return (
     <div
       className="
-      container flex flex-col p-0 gap-16 4xl:gap-24 py-16 4xl:py-28
+      container flex flex-col p-0 gap-16 4xl:gap-24 py-5 4xl:py-28
       "
     >
       <IntroSection
