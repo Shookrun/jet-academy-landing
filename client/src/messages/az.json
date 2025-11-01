@@ -248,10 +248,10 @@
     "unexpectedError": "Gözlənilməz xəta baş verdi",
     "hero": {
       "title": "Bizimlə Əlaqə Saxlayın",
-      "description": "Suallarınız və ya təklifləriniz varsa, bizimlə əlaqə saxlamaqdan çəkinməyin."
+      "description": "Suallarınız və ya təklifləriniz varsa, bizimlə əlaqə saxlamaqdan çəkinməyin"
     },
-    "title": "Zəng üçün formu doldurun",
-    "description": "Formu doldurun və sizinlə ən qısa zamanda əlaqə saxlayacağıq.",
+    "title": "Qeydiyyatdan keçin",
+    "description": "Formu doldurun və sizinlə ən qısa zamanda əlaqə saxlayacağıq",
     "form": {
       "title": "Zəng üçün formu doldurun",
       "contactTitle":"Tədris sahələrimiz haqqında məlumat almaq üçün qeydiyyatdan keçin",
@@ -342,6 +342,7 @@
   "Metadata": {
   "title": "IT və Proqramlaşdırma Kursları | JET Academy",
   "titleTemplate": "%s",
+  "whats":"nədir?",
   "description": "IT və Proqramlaşdırma Kursları: Frontend proqlamlaşdırma kursu, Backend proqlamlaşdırma kursu, Fullstack proqlamlaşdırma kursu, Python kursu, Java kursu",
   "keywords": "IT kursları, IT kursu, proqramlaşdırma kursları, proqramlaşdırma kursu, Front-End kursu, Back-End kursu, Data Analitika kursu, Python kursu, Java kursu, JavaScript kursu, Next js kursu, React kursu, kibertəhlükəsizlik kursu, IT təhsili, IT kursları Bakı",
   "ogTitle": "IT və Proqramlaşdırma Kursları | JET Academy",

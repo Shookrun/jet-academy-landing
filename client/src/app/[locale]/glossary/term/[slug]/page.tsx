@@ -38,7 +38,7 @@ export async function generateMetadata({
     console.error("Error fetching term:", error);
   }
 
-  const pageTitle = termName ? `${termName}` : "Glossariy Termini | JET Academy";
+  const pageTitle = locale == "az" ? termName + " " + t("whats") : locale == "ru" ? t("whats") + " " + termName + "?" : locale == "en" ? t("whats") + " " + termName + "?" : "Glossariy Termini | JET Academy";
   const canonicalUrl = `${baseUrl}/${locale}/glossary/term/${slug}`;
 
   return {
@@ -141,7 +141,6 @@ export default async function GlossaryTermPage({ params }: PageProps) {
         language={language}
       />
 
-      {/* GlossaryContact ləğv edildi — yerinə kurslar slideri */}
       <CoursesSlider courses={courses} />
     </div>
   );

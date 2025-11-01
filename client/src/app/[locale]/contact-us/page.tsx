@@ -64,8 +64,9 @@ export async function generateMetadata({
 
 export default function ContactPage() {
   return (
-    <main className="flex flex-col gap-12 pt-10 md:gap-12 md:pt-10">
+    <main className="flex flex-col gap-8 pt-10 md:gap-12 md:pt-10">
       <ContactHero />
+      
       <ContactSection />
     </main>
   );

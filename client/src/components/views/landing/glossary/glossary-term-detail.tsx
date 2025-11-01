@@ -49,6 +49,7 @@ export default async function GlossaryTermDetail({
     }
   };
 
+  console.log(language)
   return (
     <div className="flex flex-col gap-6 items-start justify-start animate-fadeIn px-6 sm:px-10">
       <div className="flex flex-wrap items-center gap-4">
@@ -61,7 +62,6 @@ export default async function GlossaryTermDetail({
         )}
       </div>
 
-      {/* ⬇️ Mobil və ümumi sol hizalama */}
       <h1
         className="
           text-left text-4xl sm:text-5xl font-bold leading-[1.3] text-jsblack

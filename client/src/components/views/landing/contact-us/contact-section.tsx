@@ -10,7 +10,7 @@ export default async function ContactPage() {
   const contactData: ContactData = await getContact();
 
   return (
-    <section className="container py-12 flex flex-col  w-full gap-12 items-center">
+    <section className="container md:py-5 flex flex-col  w-full gap-12 items-center">
       <div className="w-full block md:hidden">
         <ContactInfo
           phone={contactData.phone}
@@ -24,16 +24,15 @@ export default async function ContactPage() {
           whatsapp={contactData.whatsapp}
         />
       </div>
-
-      <div className="space-y-6 w-full">
+      <div className="space-y-6 w-full block md:hidden">
+        <hr className="block md:hidden" style={{ border: 0, borderTop: "1px dashed black" }} />
         <h1 className="text-4xl md:text-5xl text-center font-bold text-jsblack leading-tight">
           {t("contact.title")}
         </h1>
-        <p className="text-gray-600 text-lg">{t("contact.description")}</p>
+        <p className="text-gray-600 text-center text-lg">{t("contact.description")}</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-12">
-        {/* Form – her cihazda sol/sıralı */}
         <div className="w-full">
           <ContactForm />
         </div>
