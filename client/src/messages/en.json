@@ -336,7 +336,7 @@
   "Metadata": {
     "title": "IT & Programming Courses | JET Academy",
     "titleTemplate": "%s",
-    "whats": "what is?",
+    "whats": "What is",
     "description": "IT & Programming Courses: Frontend programming course, Backend programming course, Fullstack programming course, Python course, Java course",
     "keywords": "IT courses, IT course, programming courses, programming course, Front-End course, Back-End course, Data Analytics course, Python course, Java course, JavaScript course, Next.js course, React course, cybersecurity course, IT education, IT courses Baku",
     "ogTitle": "IT & Programming Courses | JET Academy",
@@ -401,7 +401,7 @@
     "relatedPosts": "Related Posts"
   },
   "glossary": {
-    "whats": "what is?",
+    "whats": "What is",
     "title": "Technology Glossary",
     "subtitle": "Glossary of Technology Terms",
     "searchPlaceholder": "Search term...",
