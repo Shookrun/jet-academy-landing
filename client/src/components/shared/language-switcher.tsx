@@ -45,7 +45,7 @@ export default function LanguageSwitcher({
     className="[@media(min-width:3500px)]:!w-[40px]"
   /> :
    <Image
-    src="/flags/rus.png"
+    src="/flags/uk.webp"
     alt="Azerbaijan flag"
  
     width={25}
@@ -85,7 +85,7 @@ export default function LanguageSwitcher({
 
   /> :
    <Image
-    src="/flags/rus.png"
+    src="/flags/uk.webp"
     alt="Azerbaijan flag"
  
     width={25}
