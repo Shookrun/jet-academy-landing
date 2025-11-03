@@ -328,9 +328,12 @@ export default async function Footer() {
   } catch (err) {
     console.error("Footer error:", err);
     return (
-      <footer className="bg-jsyellow w-full text-white py-6 text-center">
+      <footer className="bg-jsyellow w-full flex items-center justify-between text-white py-6 text-center">
         <p className="text-sm sm:text-base [@media(min-width:3500px)]:!text-2xl">
           © {new Date().getFullYear()} Academy
+        </p>
+        <p className="text-sm sm:text-base [@media(min-width:3500px)]:!text-2xl">
+          Developed and designed by <a href="https://rufataliyev.com">Rufat Aliyev</a>
         </p>
       </footer>
     );
