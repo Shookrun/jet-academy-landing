@@ -32,15 +32,15 @@ interface GlossaryCategory {
   id: string;
   name: {
     az: string;
-    ru: string;
+    en: string;
   };
   description?: {
     az: string;
-    ru: string;
+    en: string;
   };
   slug: {
     az: string;
-    ru: string;
+    en: string;
   };
   order: number;
   createdAt: string;
@@ -134,7 +134,7 @@ export default function GlossaryCategoriesDashboardPage() {
         return (
           <div className="flex flex-col">
             <p className="text-bold text-small">{category.name.az}</p>
-            <p className="text-tiny text-default-400">{category.name.ru}</p>
+            <p className="text-tiny text-default-400">{category.name.en}</p>
           </div>
         );
       case "description":
@@ -147,11 +147,11 @@ export default function GlossaryCategoriesDashboardPage() {
                   : category.description.az
                 : ""}
             </p>
-            {category.description?.ru && (
+            {category.description?.en && (
               <p className="text-tiny text-default-400">
-                {category.description.ru.length > 50
-                  ? `${category.description.ru.substring(0, 50)}...`
-                  : category.description.ru}
+                {category.description.en.length > 50
+                  ? `${category.description.en.substring(0, 50)}...`
+                  : category.description.en}
               </p>
             )}
           </div>

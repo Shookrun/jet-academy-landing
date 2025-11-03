@@ -36,7 +36,7 @@ export class GalleryService {
           ...createGalleryDto,
           title: {
             az: createGalleryDto.title.az,
-            ru: createGalleryDto.title.ru,
+            en: createGalleryDto.title.en,
           },
           imageUrl,
           order: totalImages,

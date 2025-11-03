@@ -2,11 +2,11 @@ export interface ContactData {
   email: string;
   address: {
     az: string;
-    ru: string;
+    en: string;
   };
   address2: {
     az: string;
-    ru: string;
+    en: string;
   };
   whatsapp: string;
   phone: string;
@@ -15,7 +15,7 @@ export interface ContactData {
       weekdays: string;
       sunday: string;
     };
-    ru: {
+    en: {
       weekdays: string;
       sunday: string;
     };

@@ -5,7 +5,7 @@ export class CreateGalleryDto {
   @ApiProperty({
     example: {
       az: 'Mobil Tətbiq Layihəsi',
-      ru: 'Проект мобильного приложения',
+      en: 'Mobile application project',
     },
     description: 'Project title in multiple languages (Azerbaijani, Russian)',
     type: 'object',

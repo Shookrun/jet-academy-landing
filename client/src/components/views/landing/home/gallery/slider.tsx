@@ -37,7 +37,7 @@ export default function GallerySlider({ data, handleItemClick }: SliderProps) {
               <GalleryCard
                 key={gallery.id}
                 imageUrl={gallery.imageUrl}
-                title={gallery.title.ru}
+                title={gallery.title.en}
               />
             </motion.div>
           </SwiperSlide>

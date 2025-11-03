@@ -7,7 +7,7 @@ export enum RequestStatus {
 
 export enum Language {
   AZ = "AZ",
-  RU = "RU",
+  EN = "EN",
 }
 
 export interface Request {
@@ -52,5 +52,5 @@ export const statusLabels: Record<RequestStatus, string> = {
 
 export const languageLabels: Record<Language, string> = {
   AZ: "Azərbaycan dili",
-  RU: "Rus dili",
+  EN: "Ingilis dili",
 };

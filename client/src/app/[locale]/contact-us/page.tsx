@@ -30,7 +30,7 @@ export async function generateMetadata({
           locale === "az"
             ? `${baseUrl}/contact-us`
             : `${baseUrl}/az/contact-us`,
-        ru: `${baseUrl}/ru/contact-us`,
+        en: `${baseUrl}/en/contact-us`,
       },
     },
     openGraph: {
@@ -40,8 +40,8 @@ export async function generateMetadata({
         "Suallarınız və ya təklifləriniz varsa, bizimlə əlaqə saxlamaqdan çəkinməyin.",
       url: canonicalUrl,
       type: "website",
-      locale: locale === "az" ? "az_AZ" : "ru_RU",
-      alternateLocale: locale === "az" ? "ru_RU" : "az_AZ",
+      locale: locale === "az" ? "az_AZ" : "en_US",
+      alternateLocale: locale === "az" ? "en_US" : "az_AZ",
     },
     twitter: {
       card: "summary_large_image",

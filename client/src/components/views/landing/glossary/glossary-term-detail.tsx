@@ -12,17 +12,17 @@ interface GlossaryTermDetailProps {
     id: string;
     term: {
       az: string;
-      ru: string;
+      en: string;
     };
     slug: {
       az: string;
-      ru: string;
+      en: string;
     };
   }[];
   tagsText: string;
   categoryText: string;
   relatedTermsText: string;
-  language: string; // 'az' or 'ru'
+  language: string;
 }
 
 export default async function GlossaryTermDetail({
@@ -42,7 +42,7 @@ export default async function GlossaryTermDetail({
     switch (locale) {
       case "az":
         return `${term} ${t("whats")}`;
-      case "ru":
+      case "en":
         return `${t("whats")} ${term}?`;
       default:
         return term;

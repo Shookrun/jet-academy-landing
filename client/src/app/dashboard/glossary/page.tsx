@@ -27,15 +27,15 @@ interface GlossaryTerm {
   id: string;
   term: {
     az: string;
-    ru: string;
+    en: string;
   };
   definition: {
     az: string;
-    ru: string;
+    en: string;
   };
   slug: {
     az: string;
-    ru: string;
+    en: string;
   };
   categoryId?: string;
   published: boolean;
@@ -46,7 +46,7 @@ interface GlossaryTerm {
   category?: {
     name: {
       az: string;
-      ru: string;
+      en: string;
     };
   };
 }
@@ -145,7 +145,7 @@ export default function GlossaryDashboardPage() {
         return (
           <div className="flex flex-col">
             <p className="text-bold text-small">{term.term.az}</p>
-            <p className="text-tiny text-default-400">{term.term.ru}</p>
+            <p className="text-tiny text-default-400">{term.term.en}</p>
           </div>
         );
       case "definition":
@@ -163,7 +163,7 @@ export default function GlossaryDashboardPage() {
           <div className="flex flex-col">
             <p className="text-small">{term.category.name.az}</p>
             <p className="text-tiny text-default-400">
-              {term.category.name.ru}
+              {term.category.name.en}
             </p>
           </div>
         ) : (

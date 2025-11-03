@@ -15,4 +15,4 @@ export default getRequestConfig(async ({ requestLocale }) => {
   };
 });
 
-export type Locale = "az" | "ru";
+export type Locale = "az" | "en";

@@ -38,7 +38,7 @@ export async function generateMetadata({
     console.error("Error fetching term:", error);
   }
 
-  const pageTitle = locale == "az" ? termName + " " + t("whats") : locale == "ru" ? t("whats") + " " + termName + "?" : locale == "en" ? t("whats") + " " + termName + "?" : "Glossariy Termini | JET Academy";
+  const pageTitle = locale == "az" ? termName + " " + t("whats") : locale == "en" ? t("whats") + " " + termName + "?"  : "Glossariy Termini | JET Academy";
   const canonicalUrl = `${baseUrl}/${locale}/glossary/term/${slug}`;
 
   return {
@@ -51,7 +51,7 @@ export async function generateMetadata({
       canonical: canonicalUrl,
       languages: {
         az: `${baseUrl}/az/glossary/term/${slug}`,
-        ru: `${baseUrl}/ru/glossary/term/${slug}`,
+        en: `${baseUrl}/en/glossary/term/${slug}`,
       },
     },
     openGraph: {
@@ -62,8 +62,8 @@ export async function generateMetadata({
         "IT və proqramlaşdırma termini haqqında məlumat",
       url: canonicalUrl,
       type: "article",
-      locale: locale === "az" ? "az_AZ" : "ru_RU",
-      alternateLocale: locale === "az" ? "ru_RU" : "az_AZ",
+      locale: locale === "az" ? "az_AZ" : "en_US",
+      alternateLocale: locale === "az" ? "en_US" : "az_AZ",
     },
     twitter: {
       card: "summary",

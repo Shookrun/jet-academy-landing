@@ -15,14 +15,14 @@ export default function Breadcrumbs({
   const { dynamicTitle: contextDynamicTitle } = useBreadcrumbTitle();
   const finalDynamicTitle = propDynamicTitle ?? contextDynamicTitle ?? null;
 
-  const fullPathname = usePathname(); 
-  const locale = useLocale(); 
+  const fullPathname = usePathname();
+  const locale = useLocale();
 
   const [singleTitle, setSingleTitle] = useState<string | null>(null);
 
-  const pathname = fullPathname.replace(`/${locale}`, '') || '/'; 
+  const pathname = fullPathname.replace(`/${locale}`, "") || "/";
   const segments = pathname.split("/").filter(Boolean);
-  
+
   const isSinglePage = segments.length === 2;
   const lastIndex = segments.length - 1;
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://jetacademy.az";
@@ -30,29 +30,28 @@ export default function Breadcrumbs({
   useEffect(() => {
     if (isSinglePage && !finalDynamicTitle && segments[lastIndex]) {
       const slug = segments[lastIndex];
-      const parentSegment = segments[0]; 
-      
-      let apiEndpoint = '';
-      
+      const parentSegment = segments[0];
 
-      if (parentSegment === 'course') {
+      let apiEndpoint = "";
+
+      if (parentSegment === "course") {
         apiEndpoint = `${baseUrl}/api/course/${slug}`;
-      } else if (parentSegment === 'news') {
+      } else if (parentSegment === "news") {
         apiEndpoint = `${baseUrl}/api/news/${slug}`;
       } else {
-
         return;
       }
-      
+
       fetch(apiEndpoint)
         .then((res) => {
           if (!res.ok) throw new Error(`${parentSegment} not found`);
           return res.json();
         })
         .then((data) => {
-          console.log(`${parentSegment} API Response:`, data); 
-          const title = data?.title?.[locale] || data?.title?.az || data?.title || null;
-          console.log(`Selected ${parentSegment} title:`, title); 
+          console.log(`${parentSegment} API Response:`, data);
+          const title =
+            data?.title?.[locale] || data?.title?.az || data?.title || null;
+          console.log(`Selected ${parentSegment} title:`, title);
           setSingleTitle(title);
         })
         .catch((error) => {
@@ -68,7 +67,7 @@ export default function Breadcrumbs({
     az: {
       home: "Ana Səhifə",
       courses: "Kurslar",
-      course: "Kurs", 
+      course: "Kurs",
       "about-us": "Haqqımızda",
       offers: "Təkliflər",
       contact: "Əlaqə",
@@ -81,26 +80,26 @@ export default function Breadcrumbs({
       news: "Xəbərlər",
       terms: "Terminlər",
       projects: "Layihələr",
-      "contact-us": "Bizimlə əlaqə"
+      "contact-us": "Bizimlə əlaqə",
     },
-    ru: {
-      home: "Главная",
-      courses: "Курсы", 
-      course: "Курс",
-      "about-us": "О нас",
-      contact: "Контакты",
-      gallery: "Галерея",
-      glossary: "Глоссарий",
-      term: "Термин",
-      category: "Категория", 
-      search: "Поиск",
-      blog: "Блог",
-      news: "Новости",
-      terms: "Термины",
-      offers: "Предложения",
-      projects: "Проекты",
-      "contact-us": "Связаться с нами"
-    }
+    en: {
+      home: "Home",
+      courses: "Courses",
+      course: "Course",
+      "about-us": "About Us",
+      contact: "Contact Us",
+      gallery: "Gallery",
+      glossary: "Glossary",
+      term: "Term",
+      category: "Category",
+      search: "Search",
+      blog: "Blog",
+      news: "News",
+      terms: "Terms",
+      offers: "Offers",
+      projects: "Projects",
+      "contact-us": "Contact Us",
+    },
   };
 
   const capitalizeFirstWord = (text: string): string => {
@@ -109,13 +108,17 @@ export default function Breadcrumbs({
   };
 
   const getSegmentLabel = (segment: string, index: number): string => {
-    if (isSinglePage && index === lastIndex && (finalDynamicTitle || singleTitle)) {
+    if (
+      isSinglePage &&
+      index === lastIndex &&
+      (finalDynamicTitle || singleTitle)
+    ) {
       return finalDynamicTitle ?? singleTitle ?? "";
     }
 
-    const currentLang = locale as 'az' | 'ru';
+    const currentLang = locale as "az" | "en";
     const translation = translations[currentLang]?.[segment.toLowerCase()];
-    
+
     if (translation) {
       return translation;
     }
@@ -129,25 +132,28 @@ export default function Breadcrumbs({
         href="/"
         className="hover:text-jsyellow transition-colors [@media(min-width:3500px)]:text-2xl"
       >
-        {translations[locale as 'az' | 'ru']?.home || "Home"}
+        {translations[locale as "az" | "en"]?.home || "Home"}
       </Link>
-      
+
       {segments.map((segment, index) => {
         if (!segment) return null;
 
-        const href = `/${locale}` + "/" + segments.slice(0, index + 1).join("/");
+        const href =
+          `/${locale}` + "/" + segments.slice(0, index + 1).join("/");
         const label = getSegmentLabel(segment, index);
 
         return (
           <span key={`${href}-${index}`} className="flex items-center gap-1">
-            <span className="text-gray-400 [@media(min-width:3500px)]:text-2xl">&gt;</span>
+            <span className="text-gray-400 [@media(min-width:3500px)]:text-2xl">
+              &gt;
+            </span>
             {index === lastIndex ? (
               <span className="font-semibold text-jsblack [@media(min-width:3500px)]:text-2xl">
                 {label}
               </span>
             ) : (
-              <Link 
-                href={href} 
+              <Link
+                href={href}
                 className="hover:text-jsyellow transition-colors [@media(min-width:3500px)]:text-2xl"
               >
                 {label}

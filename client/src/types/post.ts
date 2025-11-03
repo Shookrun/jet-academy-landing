@@ -2,7 +2,7 @@ import { EventStatus, PostType } from "./enums";
 
 interface MultilingualText {
   az: string;
-  ru: string;
+  en: string;
 }
 
 export interface Post {

@@ -8,15 +8,15 @@ import { toast } from "sonner";
 interface GlossaryCategoryFormInputs {
   name: {
     az: string;
-    ru: string;
+    en: string;
   };
   description?: {
     az: string;
-    ru: string;
+    en: string;
   };
   slug: {
     az: string;
-    ru: string;
+    en: string;
   };
   order?: number;
 }
@@ -32,9 +32,9 @@ export default function CreateGlossaryCategoryPage() {
     formState: { errors, isSubmitting },
   } = useForm<GlossaryCategoryFormInputs>({
     defaultValues: {
-      name: { az: "", ru: "" },
-      description: { az: "", ru: "" },
-      slug: { az: "", ru: "" },
+      name: { az: "", en: "" },
+      description: { az: "", en: "" },
+      slug: { az: "", en: "" },
       order: 0,
     },
   });

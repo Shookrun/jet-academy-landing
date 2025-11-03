@@ -40,10 +40,10 @@ export default function EditProjectPage({ params }: { params: { id: string } }) 
 
     const changes: Partial<ProjectFormInputs> = {};
 
-    if (original.title?.az !== updated.title?.az || original.title?.ru !== updated.title?.ru) {
+    if (original.title?.az !== updated.title?.az || original.title?.en !== updated.title?.en) {
       changes.title = { ...updated.title };
     }
-    if (original.description?.az !== updated.description?.az || original.description?.ru !== updated.description?.ru) {
+    if (original.description?.az !== updated.description?.az || original.description?.en !== updated.description?.en) {
       changes.description = { ...updated.description };
     }
     if (original.link !== updated.link) {
@@ -61,9 +61,6 @@ export default function EditProjectPage({ params }: { params: { id: string } }) 
 
   const onSubmit = async (formData: ProjectFormInputs) => {
     try {
-      // Backend-dən gələn orijinal dəyərləri almaq üçün bir daha GET etməkdənsə,
-      // reset-dən əvvəlki dəyərləri saxlamırsansa, sadəcə patch-i bütün formData ilə də ata bilərsən.
-      // Amma sənin mövcud məntiqinə toxunmadan davam:
       const { data: original } = await api.get(`/student-projects/${params.id}`);
       const changedData = getChangedFields(original, formData);
 

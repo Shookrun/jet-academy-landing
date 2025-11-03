@@ -4,7 +4,7 @@ import { getIcon } from "@/utils/icon";
 interface IEligibilitySectionProps {
   eligibility: CourseEligibility[];
   title: string;
-  locale: "az" | "ru";
+  locale: "az" | "en";
 }
 
 export default function EligibilitySection({

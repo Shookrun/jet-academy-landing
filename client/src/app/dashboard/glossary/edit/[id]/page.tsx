@@ -9,15 +9,15 @@ import { toast } from "sonner";
 interface GlossaryFormInputs {
   term: {
     az: string;
-    ru: string;
+    en: string;
   };
   definition: {
     az: string;
-    ru: string;
+    en: string;
   };
   slug: {
     az: string;
-    ru: string;
+    en: string;
   };
   categoryId?: string;
   tags: string[];
@@ -50,7 +50,7 @@ export default function EditGlossaryTermPage({
     register("tags");
     register("relatedTerms");
     register("definition.az", { required: "Tərif (AZ) tələb olunur" });
-    register("definition.ru", { required: "Определение (RU) обязательно" });
+    register("definition.en", { required: "Definition (EN) is required" });
     register("published");
   }, [register]);
 
@@ -117,21 +117,21 @@ export default function EditGlossaryTermPage({
     // Compare term fields
     if (
       original.term?.az !== updated.term?.az ||
-      original.term?.ru !== updated.term?.ru
+      original.term?.en !== updated.term?.en
     ) {
       changes.term = { ...updated.term };
     }
 
     if (
       original.definition?.az !== updated.definition?.az ||
-      original.definition?.ru !== updated.definition?.ru
+      original.definition?.en !== updated.definition?.en
     ) {
       changes.definition = { ...updated.definition };
     }
 
     if (
       original.slug?.az !== updated.slug?.az ||
-      original.slug?.ru !== updated.slug?.ru
+      original.slug?.en !== updated.slug?.en
     ) {
       changes.slug = { ...updated.slug };
     }

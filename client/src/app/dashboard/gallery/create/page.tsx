@@ -21,7 +21,7 @@ export default function CreateGalleryItemPage() {
       const formData = new FormData();
       if (data.title) {
         formData.append("title[az]", data.title.az);
-        formData.append("title[ru]", data.title.ru);
+        formData.append("title[en]", data.title.en);
       }
       formData.append("image", data.image[0]);
 

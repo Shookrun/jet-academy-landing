@@ -56,7 +56,7 @@ export async function generateMetadata({
           locale === "az"
             ? `${baseUrl}/glossary/category/${slug}`
             : `${baseUrl}/az/glossary/category/${slug}`,
-        ru: `${baseUrl}/ru/glossary/category/${slug}`,
+        en: `${baseUrl}/en/glossary/category/${slug}`,
       },
     },
     openGraph: {
@@ -66,8 +66,8 @@ export async function generateMetadata({
         `JET Academy glossariy lüğətində ${categoryName} kateqoriyasına aid terminlər`,
       url: canonicalUrl,
       type: "website",
-      locale: locale === "az" ? "az_AZ" : "ru_RU",
-      alternateLocale: locale === "az" ? "ru_RU" : "az_AZ",
+      locale: locale === "az" ? "az_AZ" : "en_US",
+      alternateLocale: locale === "az" ? "en_US" : "az_AZ",
     },
     twitter: {
       card: "summary_large_image",
@@ -160,11 +160,11 @@ export default async function GlossaryCategoryPage({
       emptyText: "Bu kateqoriyada termin tapılmadı",
       searchPlaceholder: "Termin axtar...",
     },
-    ru: {
-      title: `Категория ${category.name[language]}`,
-      categoryText: "Категория",
-      emptyText: "В этой категории терминов не найдено",
-      searchPlaceholder: "Поиск термина...",
+    en: {
+      title: `Category ${category.name[language]}`,
+      categoryText: "Category",
+      emptyText: "No terms found in this category",
+      searchPlaceholder: "Search term...",
     },
   };
 

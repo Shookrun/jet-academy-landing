@@ -6,7 +6,7 @@ export interface TeamMember {
   imageUrl: string;
   bio: {
     az: string;
-    ru: string;
+    en: string;
   };
   order: number;
   createdAt: string;
@@ -20,7 +20,7 @@ export interface TeamMemberFormInputs {
   image: File[];
   bio: {
     az: string;
-    ru: string;
+    en: string;
   };
 }
 export interface CourseTeacherAssignment {
@@ -34,14 +34,14 @@ export interface CourseTeacherRole {
   title: string;
   description: {
     az: string;
-    ru: string;
+    en: string;
   };
   courses: {
     course: {
       id: string;
       title: {
         az: string;
-        ru: string;
+        en: string;
       };
     };
     teacher: {
@@ -50,7 +50,7 @@ export interface CourseTeacherRole {
       imageUrl: string;
       bio: {
         az: string;
-        ru: string;
+        en: string;
       };
     };
     position?: string;
@@ -72,7 +72,7 @@ export interface CourseTeacherAsMember {
   fullName: string;
   bio: {
     az: string;
-    ru: string;
+    en: string;
   };
 }
 
@@ -89,6 +89,6 @@ export interface CourseTeacherFormInputs {
   title: string;
   description: {
     az: string;
-    ru: string;
+    en: string;
   };
 }

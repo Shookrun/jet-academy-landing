@@ -14,11 +14,11 @@ interface ContactFormInputs {
   email: string;
   address: {
     az: string;
-    ru: string;
+    en: string;
   };
   address2: {
     az: string;
-    ru: string;
+    en: string;
   };
   whatsapp: string;
   phone: string;
@@ -27,7 +27,7 @@ interface ContactFormInputs {
       weekdays: string;
       sunday: string;
     };
-    ru: {
+    en: {
       weekdays: string;
       sunday: string;
     };
@@ -167,13 +167,13 @@ export default function EditContactPage() {
             <div className="space-y-2">
               <Input
                 type="text"
-                label="Адрес 1 (RU)"
+                label="Address 1 (EN)"
                 variant="bordered"
                 startContent={<MdLocationOn className="text-gray-400" />}
                 isDisabled={isSubmitting}
-                {...register("address.ru", { required: "Адрес обязателен" })}
-                isInvalid={!!errors.address?.ru}
-                errorMessage={errors.address?.ru?.message}
+                {...register("address.en", { required: "Address required" })}
+                isInvalid={!!errors.address?.en}
+                errorMessage={errors.address?.en?.message}
                 classNames={{
                   input: "bg-transparent",
                   inputWrapper: [
@@ -205,13 +205,13 @@ export default function EditContactPage() {
             <div className="space-y-2">
               <Input
                 type="text"
-                label="Адрес 2 (RU)"
+                label="Address 2 (EN)"
                 variant="bordered"
                 startContent={<MdLocationOn className="text-gray-400" />}
                 isDisabled={isSubmitting}
-                {...register("address2.ru", { required: "Адрес обязателен" })}
-                isInvalid={!!errors.address2?.ru}
-                errorMessage={errors.address2?.ru?.message}
+                {...register("address2.en", { required: "Address required" })}
+                isInvalid={!!errors.address2?.en}
+                errorMessage={errors.address2?.en?.message}
                 classNames={{
                   input: "bg-transparent",
                   inputWrapper: [
@@ -287,15 +287,15 @@ export default function EditContactPage() {
             <div className="space-y-2">
               <Input
                 type="text"
-                label="Рабочие часы - Будни (RU)"
+                label="Working Hours - Weekdays (EN)"
                 variant="bordered"
                 startContent={<MdAccessTime className="text-gray-400" />}
                 isDisabled={isSubmitting}
-                {...register("workingHours.ru.weekdays", {
+                {...register("workingHours.en.weekdays", {
                   required: "Рабочие часы обязательны",
                 })}
-                isInvalid={!!errors.workingHours?.ru?.weekdays}
-                errorMessage={errors.workingHours?.ru?.weekdays?.message}
+                isInvalid={!!errors.workingHours?.en?.weekdays}
+                errorMessage={errors.workingHours?.en?.weekdays?.message}
                 classNames={{
                   input: "bg-transparent",
                   inputWrapper: [
@@ -329,15 +329,15 @@ export default function EditContactPage() {
             <div className="space-y-2">
               <Input
                 type="text"
-                label="Рабочие часы - Воскресенье (RU)"
+                label="Working hours - Sunday (EN)"
                 variant="bordered"
                 startContent={<MdAccessTime className="text-gray-400" />}
                 isDisabled={isSubmitting}
-                {...register("workingHours.ru.sunday", {
+                {...register("workingHours.en.sunday", {
                   required: "Рабочие часы обязательны",
                 })}
-                isInvalid={!!errors.workingHours?.ru?.sunday}
-                errorMessage={errors.workingHours?.ru?.sunday?.message}
+                isInvalid={!!errors.workingHours?.en?.sunday}
+                errorMessage={errors.workingHours?.en?.sunday?.message}
                 classNames={{
                   input: "bg-transparent",
                   inputWrapper: [

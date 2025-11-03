@@ -23,7 +23,7 @@ export enum Role {
 
 export enum Language {
   AZ = "AZ",
-  RU = "RU",
+  EN = "EN",
 }
 
 export enum RequestStatus {

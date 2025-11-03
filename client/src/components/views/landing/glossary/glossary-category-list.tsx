@@ -4,15 +4,15 @@ interface GlossaryCategory {
   id: string;
   name: {
     az: string;
-    ru: string;
+    en: string;
   };
   description?: {
     az: string;
-    ru: string;
+    en: string;
   };
   slug: {
     az: string;
-    ru: string;
+    en: string;
   };
   _count?: {
     glossaryTerms: number;
@@ -23,7 +23,7 @@ interface GlossaryCategoryListProps {
   categories: GlossaryCategory[];
   title: string;
   termsText: string;
-  language: string; // 'az' or 'ru'
+  language: string;
   emptyText: string;
 }
 

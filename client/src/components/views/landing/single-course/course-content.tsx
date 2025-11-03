@@ -4,7 +4,7 @@ import { useState } from "react";
 
 interface CourseContentProps {
   modules: CourseModule[];
-  locale: "az" | "en"; // ru → en olaraq normallaşdırdım (lazımdırsa geri ru yaz)
+  locale: "az" | "en";
   title?: string;
 }
 
@@ -13,7 +13,6 @@ export default function CourseContent({ modules, locale }: CourseContentProps) {
 
   return (
     <div className="w-full max-w-3xl mx-auto sm:py-8 md:py-2">
-      {/* Sabit hündürlüyü çıxartdıq: lg:h-[500px] yoxdur */}
       <div className="flex flex-col space-y-4">
         {modules.map((module, index) => {
           const isOpen = openModule === index;
@@ -28,7 +27,6 @@ export default function CourseContent({ modules, locale }: CourseContentProps) {
             key={index}
             className="border border-jsyellow rounded-[24px] md:rounded-[32px] overflow-hidden bg-white"
           >
-            {/* Header */}
             <button
               type="button"
               className="w-full p-4 md:p-5 flex justify-between items-center bg-[#fef7eb] text-left"
@@ -52,8 +50,6 @@ export default function CourseContent({ modules, locale }: CourseContentProps) {
                 ↓
               </span>
             </button>
-
-            {/* Content: grid-rows trick = auto-height animasiya */}
             <div
               className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${
                 isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"

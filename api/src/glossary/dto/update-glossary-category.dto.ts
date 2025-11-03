@@ -10,7 +10,7 @@ export class UpdateGlossaryCategoryDto {
   @ApiProperty({ example: 'Веб', required: false })
   @IsOptional()
   @IsString()
-  'name[ru]'?: string;
+  'name[en]'?: string;
 
   @ApiProperty({
     example: 'Veb texnologiyaları və veb inkişafı ilə bağlı əsas anlayışlar',
@@ -21,22 +21,22 @@ export class UpdateGlossaryCategoryDto {
   'description[az]'?: string;
 
   @ApiProperty({
-    example: 'Ключевые концепции веб-технологий и веб-разработки',
+    example: 'Key concepts of web technologies and web development',
     required: false,
   })
   @IsOptional()
   @IsString()
-  'description[ru]'?: string;
+  'description[en]'?: string;
 
   @ApiProperty({ example: 'veb', required: false })
   @IsOptional()
   @IsString()
   'slug[az]'?: string;
 
-  @ApiProperty({ example: 'veb', required: false })
+  @ApiProperty({ example: 'web', required: false })
   @IsOptional()
   @IsString()
-  'slug[ru]'?: string;
+  'slug[en]'?: string;
 
   @ApiProperty({ example: 1, required: false })
   @IsOptional()

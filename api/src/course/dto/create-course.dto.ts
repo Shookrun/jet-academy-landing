@@ -7,17 +7,17 @@ export class CreateCourseDto {
   @IsString()
   'title[az]': string;
 
-  @ApiProperty({ example: 'ИТ и компьютерная инженерия' })
+  @ApiProperty({ example: 'IT and computer engineering' })
   @IsString()
-  'title[ru]': string;
+  'title[en]': string;
 
   @ApiProperty({ example: 'Tam stack veb proqramlaşdırma kursu' })
   @IsString()
   'description[az]': string;
 
-  @ApiProperty({ example: 'Курс веб-разработки полного стека' })
+  @ApiProperty({ example: 'Full Stack Web Development Course' })
   @IsString()
-  'description[ru]': string;
+  'description[en]': string;
 
   @ApiProperty({ example: 'computer-icon.png', required: false })
   @IsOptional()
@@ -28,9 +28,9 @@ export class CreateCourseDto {
   @IsString()
   'slug[az]': string;
 
-  @ApiProperty({ example: 'razrabotka-full-stack' })
+  @ApiProperty({ example: 'full-stack-development' })
   @IsString()
-  'slug[ru]': string;
+  'slug[en]': string;
 
   @ApiProperty({ example: 12, description: 'Duration in months' })
   @Type(() => Number)
@@ -41,9 +41,9 @@ export class CreateCourseDto {
   @IsString()
   'level[az]': string;
 
-  @ApiProperty({ example: 'Начальный' })
+  @ApiProperty({ example: 'Beginner' })
   @IsString()
-  'level[ru]': string;
+  'level[en]': string;
 
   @ApiProperty({ example: ['Scratch', 'HTML', 'JavaScript'], required: false })
   @IsOptional()
@@ -55,7 +55,7 @@ export class CreateCourseDto {
   @IsOptional()
   @IsArray()
   @IsString({ each: true })
-  'newTags[ru]'?: string[];
+  'newTags[en]'?: string[];
 
   @ApiProperty({ required: false, default: false })
   @IsOptional()

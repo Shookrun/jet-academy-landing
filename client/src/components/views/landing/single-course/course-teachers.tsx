@@ -10,7 +10,7 @@ import TeamMemberCard from "../about/team-member-card";
 
 interface TeachersSectionProps {
   data: { teachers: CourseTeacherAsMember[] };
-  locale: "az" | "ru";
+  locale: "az" | "en";
   title: string;
   description: string;
 }

@@ -65,7 +65,7 @@ export async function generateMetadata({
   const queryParam = type ? `?type=${type}` : "";
   const azPath =
     locale === "az" ? `/news${queryParam}` : `/az/news${queryParam}`;
-  const ruPath = `/ru/news${queryParam}`;
+  const enPath = `/en/news${queryParam}`;
 
   return {
     title,
@@ -74,7 +74,7 @@ export async function generateMetadata({
       canonical: canonicalUrl,
       languages: {
         az: `${baseUrl}${azPath}`,
-        ru: `${baseUrl}${ruPath}`,
+        en: `${baseUrl}${enPath}`,
       },
     },
     openGraph: {
@@ -82,8 +82,8 @@ export async function generateMetadata({
       description,
       url: canonicalUrl,
       type: "website",
-      locale: locale === "az" ? "az_AZ" : "ru_RU",
-      alternateLocale: locale === "az" ? "ru_RU" : "az_AZ",
+      locale: locale === "az" ? "az_AZ" : "en_US",
+      alternateLocale: locale === "az" ? "en_US" : "az_AZ",
     },
     twitter: {
       card: "summary_large_image",

@@ -44,7 +44,7 @@ export class TeamService {
           bio,
           fullName,
           order: totalMembers,
-          isActive: true, // ✅ default olarak aktif
+          isActive: true,
         },
       });
     } catch (error) {
@@ -76,7 +76,7 @@ export class TeamService {
             imageUrl: true,
             bio: true,
             order: true,
-            isActive: true, // ✅ eklendi
+            isActive: true,
           },
         }),
       ]);
@@ -135,7 +135,7 @@ export class TeamService {
         imageUrl: true,
         bio: true,
         order: true,
-        isActive: true, // ✅ eklendi
+        isActive: true,
       },
     });
 

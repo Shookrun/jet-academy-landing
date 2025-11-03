@@ -46,7 +46,7 @@ export async function generateMetadata({
           locale === "az"
             ? `${baseUrl}/glossary/terms${queryString}`
             : `${baseUrl}/az/glossary/terms${queryString}`,
-        ru: `${baseUrl}/ru/glossary/terms${queryString}`,
+        en: `${baseUrl}/en/glossary/terms${queryString}`,
       },
     },
     openGraph: {
@@ -56,8 +56,8 @@ export async function generateMetadata({
         "JET Academy glossariy lüğətində bütün IT terminləri",
       url: canonicalUrl,
       type: "website",
-      locale: locale === "az" ? "az_AZ" : "ru_RU",
-      alternateLocale: locale === "az" ? "ru_RU" : "az_AZ",
+      locale: locale === "az" ? "az_AZ" : "en_US",
+      alternateLocale: locale === "az" ? "en_US" : "az_AZ",
     },
     twitter: {
       card: "summary_large_image",

@@ -7,11 +7,11 @@ interface GlossaryCategory {
   id: string;
   name: {
     az: string;
-    ru: string;
+    en: string;
   };
   slug: {
     az: string;
-    ru: string;
+    en: string;
   };
   createdAt: string;
   updatedAt: string;
@@ -21,18 +21,18 @@ interface GlossaryTerm {
   id: string;
   term: {
     az: string;
-    ru: string;
+    en: string;
   };
   slug: {
     az: string;
-    ru: string;
+    en: string;
   };
   categoryId: string;
   published: boolean;
   category: {
     name: {
       az: string;
-      ru: string;
+      en: string;
     };
   };
 }

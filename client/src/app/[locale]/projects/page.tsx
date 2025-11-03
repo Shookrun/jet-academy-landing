@@ -24,7 +24,7 @@ export async function generateMetadata({
       canonical: canonicalUrl,
       languages: {
         az: `${baseUrl}/az/projects`,
-        ru: `${baseUrl}/ru/projects`,
+        en: `${baseUrl}/en/projects`,
       },
     },
     openGraph: {
@@ -34,8 +34,8 @@ export async function generateMetadata({
         "Tələbələrimizin rəyləri",
       type: "website",
       url: canonicalUrl,
-      locale: locale === "az" ? "az_AZ" : "ru_RU",
-      alternateLocale: locale === "az" ? "ru_RU" : "az_AZ",
+      locale: locale === "az" ? "az_AZ" : "en_US",
+      alternateLocale: locale === "az" ? "en_US" : "az_AZ",
     },
     twitter: {
       card: "summary_large_image",

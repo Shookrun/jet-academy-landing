@@ -35,7 +35,7 @@ export async function generateMetadata({
       canonical: canonicalUrl,
       languages: {
         az: `${baseUrl}/az`,
-        ru: `${baseUrl}/ru`,
+        en: `${baseUrl}/en`,
       },
     },
     openGraph: {
@@ -51,7 +51,7 @@ export async function generateMetadata({
           alt: t("ogImageAlt"),
         },
       ],
-      locale: locale === "az" ? "az_AZ" : locale === "ru" ? "ru_RU" : "en_US",
+      locale: locale === "az" ? "az_AZ" : locale === "en" ? "en_US" : "en_US",
       type: "website",
     },
     robots: {

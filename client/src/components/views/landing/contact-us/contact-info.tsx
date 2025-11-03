@@ -24,7 +24,7 @@ export default function ContactInfo({
 
   const addressGText = {
     az: "Bakı ş., Olimpiya küçəsi 6A (Gənclik metro stansiyası, İdman Nazirliyi yaxınlığında)",
-    ru: "Баку, ул. Олимпия 6А (около станции метро Гянджлик, рядом с Министерством Спорта)",
+    en: "Baku, Olympia Street 6A (near the Ganjlik metro station, next to the Ministry of Sports)",
     default: address,
   };
 
@@ -51,7 +51,7 @@ export default function ContactInfo({
     {
       icon: <MdLocationOn className="w-6 h-6 text-jsyellow" />,
       title: t("contact.info.addressg"),
-      value: addressGText[locale as "az" | "ru"] || addressGText.default,
+      value: addressGText[locale as "az" | "en"] || addressGText.default,
       link: `https://maps.google.com/?q=${encodeURIComponent(
         "JET Academy Genclik"
       )}`,

@@ -22,7 +22,7 @@ export default function LanguageSwitcher({
     router.replace(`/` + code + (path.length > 4 ? newPath : ""));
     router.refresh();
   };
-  const locales = ["az", "ru"];
+  const locales = ["az", "en"];
   return (
     <div
       onClick={() => {

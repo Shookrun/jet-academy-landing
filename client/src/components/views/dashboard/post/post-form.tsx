@@ -102,16 +102,16 @@ export default function PostForm({
   useEffect(() => {
     if (mode === "edit") {
       const watchedContentAz = watch("content.az");
-      const watchedContentRu = watch("content.ru");
+      const watchedContentEn = watch("content.en");
       const watchedTags = watch("tags");
       const watchedEventDate = watch("eventDate");
       const watchedOfferStartDate = watch("offerStartDate");
       const watchedOfferEndDate = watch("offerEndDate");
       const watchedSlugAz = watch("slug.az");
-      const watchedSlugRu = watch("slug.ru");
+      const watchedSlugEn = watch("slug.en");
 
       if (watchedContentAz) setContentAz(watchedContentAz);
-      if (watchedContentRu) setContentRu(watchedContentRu);
+      if (watchedContentEn) setContentRu(watchedContentEn);
       if (watchedTags) setTags(watchedTags);
 
       if (watchedEventDate) {
@@ -130,8 +130,8 @@ export default function PostForm({
         setValue("slug.az", slugifyText(watch("title.az")));
       }
 
-      if (!watchedSlugRu && watch("title.ru")) {
-        setValue("slug.ru", slugifyText(watch("title.ru")));
+      if (!watchedSlugEn && watch("title.en")) {
+        setValue("slug.en", slugifyText(watch("title.en")));
       }
     }
   }, [mode, watch, setValue]);
@@ -258,17 +258,17 @@ export default function PostForm({
               <div className="space-y-2">
                 <Input
                   type="text"
-                  label="Заголовок (RU)"
+                  label="Title (EN)"
                   variant="bordered"
                   startContent={<MdTitle className="text-gray-400" />}
                   isDisabled={isSubmitting}
-                  {...register("title.ru", {
-                    required: "Заголовок обязателен",
+                  {...register("title.en", {
+                    required: "Title is required",
                     onChange: (e: any) =>
-                      handleTitleChange("ru", e.target.value),
+                      handleTitleChange("en", e.target.value),
                   })}
-                  isInvalid={!!errors.title?.ru}
-                  errorMessage={errors.title?.ru?.message}
+                  isInvalid={!!errors.title?.en}
+                  errorMessage={errors.title?.en?.message}
                   classNames={{
                     input: "bg-transparent",
                     inputWrapper: [
@@ -279,11 +279,11 @@ export default function PostForm({
 
                 <Input
                   type="text"
-                  label="Slug (RU)"
+                  label="Slug (EN)"
                   variant="bordered"
                   startContent={<MdLink className="text-gray-400" />}
                   isDisabled={true}
-                  {...register("slug.ru")}
+                  {...register("slug.en")}
                   classNames={{
                     input: "bg-transparent",
                     inputWrapper: ["bg-white border-2"],
@@ -319,22 +319,22 @@ export default function PostForm({
               <div className="space-y-2">
                 <label className="text-sm font-medium flex items-center gap-2">
                   <MdDescription className="text-gray-400" />
-                  Содержание (RU)
+                  Content (EN)
                 </label>
                 <div className="h-64">
                   <ReactQuill
                     theme="snow"
                     value={contentRu}
-                    onChange={(value) => handleContentChange("ru", value)}
+                    onChange={(value) => handleContentChange("en", value)}
                     modules={modules}
                     formats={formats}
                     className="h-48 bg-white"
                     readOnly={isSubmitting}
                   />
                 </div>
-                {errors.content?.ru && (
+                {errors.content?.en && (
                   <p className="text-danger text-sm">
-                    {errors.content.ru.message}
+                    {errors.content.en.message}
                   </p>
                 )}
               </div>

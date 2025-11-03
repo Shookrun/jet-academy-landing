@@ -20,8 +20,8 @@ import api from "@/utils/api/axios";
 
 interface Course {
   id: string;
-  title: { az: string; ru: string };
-  slug: { az: string; ru: string };
+  title: { az: string; en: string };
+  slug: { az: string; en: string };
   createdAt: string;
 }
 interface CoursesResponse {
@@ -42,7 +42,7 @@ export default async function Footer() {
   try {
     const t = await getTranslations("footer");
     const localeRaw = await getLocale();
-    const lang = (localeRaw === "ru" ? "ru" : "az") as "az" | "ru";
+    const lang = (localeRaw === "en" ? "en" : "az") as "az" | "en";
     const contact: ContactData = await getContact();
     const coursesData = await fetchCourses();
     const currentYear = new Date().getFullYear();

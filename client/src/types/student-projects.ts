@@ -1,6 +1,6 @@
 export type LangBlock = {
   az: string;
-  ru: string;
+  en: string;
 };
 
 export interface ProjectFormInputs {

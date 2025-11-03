@@ -74,15 +74,15 @@ export default function ModuleForm({
             <div className="space-y-2">
               <Input
                 type="text"
-                label="Заголовок (RU)"
+                label="Title (EN)"
                 variant="bordered"
                 startContent={<MdTitle className="text-gray-400" />}
                 isDisabled={isSubmitting}
-                {...register("title.ru", {
-                  required: "Заголовок обязателен",
+                {...register("title.en", {
+                  required: "Title is required",
                 })}
-                isInvalid={!!errors.title?.ru}
-                errorMessage={errors.title?.ru?.message}
+                isInvalid={!!errors.title?.en}
+                errorMessage={errors.title?.en?.message}
                 classNames={{
                   input: "bg-transparent",
                   inputWrapper: [
@@ -112,13 +112,13 @@ export default function ModuleForm({
 
             <div className="space-y-2">
               <Textarea
-                label="Описание (RU)"
+                label="Description (EN)"
                 variant="bordered"
                 startContent={<MdDescription className="text-gray-400" />}
                 isDisabled={isSubmitting}
-                {...register("description.ru")}
-                isInvalid={!!errors.description?.ru}
-                errorMessage={errors.description?.ru?.message}
+                {...register("description.en")}
+                isInvalid={!!errors.description?.en}
+                errorMessage={errors.description?.en?.message}
                 classNames={{
                   input: "bg-transparent",
                   inputWrapper: [
@@ -150,10 +150,10 @@ export default function ModuleForm({
                       errorMessage={errors.content?.[index]?.az?.message}
                     />
                     <Input
-                      label="Название контента (RU)"
-                      {...register(`content.${index}.ru`)}
-                      isInvalid={!!errors.content?.[index]?.ru}
-                      errorMessage={errors.content?.[index]?.ru?.message}
+                      label="Content Title (EN)"
+                      {...register(`content.${index}.en`)}
+                      isInvalid={!!errors.content?.[index]?.en}
+                      errorMessage={errors.content?.[index]?.en?.message}
                     />
                     <Input
                       type="number"
@@ -170,7 +170,7 @@ export default function ModuleForm({
                 variant="bordered"
                 startContent={<MdAdd />}
                 onClick={() =>
-                  append({ az: "", ru: "", order: fields.length + 1 })
+                  append({ az: "", en: "", order: fields.length + 1 })
                 }
               >
                 Kontent əlavə et

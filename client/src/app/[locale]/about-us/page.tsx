@@ -27,7 +27,7 @@ export async function generateMetadata({
       canonical: canonicalUrl,
       languages: {
         az: locale === "az" ? `${baseUrl}/about-us` : `${baseUrl}/az/about-us`,
-        ru: `${baseUrl}/ru/about-us`,
+        en: `${baseUrl}/en/about-us`,
       },
     },
     openGraph: {
@@ -37,8 +37,8 @@ export async function generateMetadata({
         "2021-ci ildən etibarən JET Academy olaraq ölkənin texnologiya sahəsində aparıcı tədris mərkəzlərindən biri kimi özümüzü sübut etmişik və yüzlərlə yüksək ixtisaslı, uğurlu IT mütəxəssisi yetişdirmişik.",
       url: canonicalUrl,
       type: "website",
-      locale: locale === "az" ? "az_AZ" : "ru_RU",
-      alternateLocale: locale === "az" ? "ru_RU" : "az_AZ",
+      locale: locale === "az" ? "az_AZ" : "en_US",
+      alternateLocale: locale === "az" ? "en_US" : "az_AZ",
     },
     twitter: {
       card: "summary_large_image",

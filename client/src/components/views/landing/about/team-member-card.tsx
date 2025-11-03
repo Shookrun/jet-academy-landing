@@ -12,7 +12,7 @@
       member: CourseTeacherAsMember | TeamMember;
       index: number;
       noHover?: boolean;
-      locale: "az" | "ru";
+      locale: "az" | "en";
       isCoursePage?: boolean;
     }) => {
       const imageUrl =

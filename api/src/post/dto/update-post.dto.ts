@@ -22,13 +22,13 @@ class MultilingualFieldUpdate {
   az?: string;
 
   @ApiProperty({
-    description: 'Text in Russian',
-    example: 'Заголовок поста',
+    description: 'Text in English',
+    example: 'Post title',
     required: false,
   })
   @IsString()
   @IsOptional()
-  ru?: string;
+  en?: string;
 }
 
 export class UpdatePostDto {

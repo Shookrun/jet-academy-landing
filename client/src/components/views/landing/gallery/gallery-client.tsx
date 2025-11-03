@@ -15,7 +15,7 @@ import { cn } from "@/utils/cn";
 
 interface GalleryImage {
   id: string;
-  title: { az: string; ru: string };
+  title: { az: string; en: string };
   imageUrl: string;
   createdAt: string;
 }
@@ -46,7 +46,7 @@ export default function GalleryClient({
   }));
 
   const getLocalizedTitle = (image: GalleryImage) =>
-    locale === "ru" ? image.title.ru : image.title.az;
+    locale === "en" ? image.title.en : image.title.az;
 
   return (
     <div

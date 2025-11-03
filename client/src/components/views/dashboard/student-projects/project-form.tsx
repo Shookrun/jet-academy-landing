@@ -57,13 +57,13 @@ export default function ProjectForm({
             <div className="space-y-2">
               <Input
                 type="text"
-                label="Заголовок (RU)"
+                label="Title (EN)"
                 variant="bordered"
                 startContent={<MdTitle className="text-gray-400" />}
                 isDisabled={isSubmitting}
-                {...register("title.ru", { required: "Заголовок обязателен", minLength: { value: 3, message: "Минимум 3 символа" } })}
-                isInvalid={!!errors.title?.ru}
-                errorMessage={(errors.title?.ru?.message as any) || undefined}
+                {...register("title.en", { required: "Title is required", minLength: { value: 3, message: "Минимум 3 символа" } })}
+                isInvalid={!!errors.title?.en}
+                errorMessage={(errors.title?.en?.message as any) || undefined}
                 classNames={{ input: "bg-transparent", inputWrapper: "bg-white border-2 hover:border-primary focus:border-primary" }}
               />
             </div>
@@ -83,13 +83,13 @@ export default function ProjectForm({
 
             <div className="space-y-2">
               <Textarea
-                label="Описание (RU)"
+                label="Description (EN)"
                 variant="bordered"
                 startContent={<MdDescription className="text-gray-400" />}
                 isDisabled={isSubmitting}
-                {...register("description.ru", { required: "Описание обязательно" })}
-                isInvalid={!!errors.description?.ru}
-                errorMessage={(errors.description?.ru?.message as any) || undefined}
+                {...register("description.en", { required: "Description is required" })}
+                isInvalid={!!errors.description?.en}
+                errorMessage={(errors.description?.en?.message as any) || undefined}
                 classNames={{ input: "bg-transparent", inputWrapper: "bg-white border-2 hover:border-primary focus:border-primary" }}
               />
             </div>

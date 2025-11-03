@@ -8,15 +8,15 @@ import { toast } from "sonner";
 interface GlossaryFormInputs {
   term: {
     az: string;
-    ru: string;
+    en: string;
   };
   definition: {
     az: string;
-    ru: string;
+    en: string;
   };
   slug: {
     az: string;
-    ru: string;
+    en: string;
   };
   categoryId?: string;
   tags: string[];
@@ -40,7 +40,7 @@ export default function CreateGlossaryTermPage() {
       relatedTerms: [],
       definition: {
         az: "",
-        ru: "",
+        en: "",
       },
     },
   });
@@ -48,7 +48,7 @@ export default function CreateGlossaryTermPage() {
   register("tags");
   register("relatedTerms");
   register("definition.az", { required: "Tərif (AZ) tələb olunur" });
-  register("definition.ru", { required: "Определение (RU) обязательно" });
+  register("definition.en", { required: "Definition (EN) is required" });
   register("published");
 
   const onSubmit = async (data: GlossaryFormInputs) => {

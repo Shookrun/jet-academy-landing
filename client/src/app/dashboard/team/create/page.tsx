@@ -28,7 +28,7 @@ export default function CreateTeamMemberPage() {
         "bio",
         JSON.stringify({
           az: data.bio.az,
-          ru: data.bio.ru,
+          en: data.bio.en,
         })
       );
       formData.append("image", data.image[0]);

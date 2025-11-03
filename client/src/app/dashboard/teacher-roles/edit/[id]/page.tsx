@@ -28,7 +28,7 @@ export default function EditCourseTeacherPage({
           title: data.title,
           description: {
             az: data.description.az,
-            ru: data.description.ru,
+            en: data.description.en,
           },
         });
       } catch (error) {

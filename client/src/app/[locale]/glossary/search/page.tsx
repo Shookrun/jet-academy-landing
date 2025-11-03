@@ -43,7 +43,7 @@ export async function generateMetadata({
           locale === "az"
             ? `${baseUrl}/glossary/search`
             : `${baseUrl}/az/glossary/search`,
-        ru: `${baseUrl}/ru/glossary/search`,
+        en: `${baseUrl}/en/glossary/search`,
       },
     },
     openGraph: {
@@ -53,8 +53,8 @@ export async function generateMetadata({
         "JET Academy glossariy lüğətində axtarış edin",
       url: canonicalUrl,
       type: "website",
-      locale: locale === "az" ? "az_AZ" : "ru_RU",
-      alternateLocale: locale === "az" ? "ru_RU" : "az_AZ",
+      locale: locale === "az" ? "az_AZ" : "en_US",
+      alternateLocale: locale === "az" ? "en_US" : "az_AZ",
     },
     twitter: {
       card: "summary_large_image",
@@ -124,12 +124,12 @@ export default async function GlossarySearchPage({
       emptyText: "Axtarışınıza uyğun termin tapılmadı",
       searchPlaceholder: "Termin axtar...",
     },
-    ru: {
-      title: `Результаты поиска для "${query}"`,
-      noQueryTitle: "Поиск",
-      categoryText: "Категория",
-      emptyText: "По вашему запросу ничего не найдено",
-      searchPlaceholder: "Поиск термина...",
+    en: {
+      title: `Search results for "${query}"`,
+      noQueryTitle: "Search",
+      categoryText: "Category",
+      emptyText: "No terms found for your search",
+      searchPlaceholder: "Search term...",
     },
   };
 

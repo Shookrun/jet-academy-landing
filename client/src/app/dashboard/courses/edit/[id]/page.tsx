@@ -28,11 +28,11 @@ export default function EditCoursePage({ params }: { params: { id: string } }) {
       try {
         const { data } = await api.get(`/courses/${params.id}`);
         const formData = {
-          title: data.title || { az: "", ru: "" },
-          description: data.description || { az: "", ru: "" },
-          shortDescription: data.shortDescription || { az: "", ru: "" },
-          slug: data.slug || { az: "", ru: "" },
-          level: data.level || { az: "Başlanğıc", ru: "Начинающий" },
+          title: data.title || { az: "", en: "" },
+          description: data.description || { az: "", en: "" },
+          shortDescription: data.shortDescription || { az: "", en: "" },
+          slug: data.slug || { az: "", en: "" },
+          level: data.level || { az: "Başlanğıc", en: "Начинающий" },
           duration: data.duration || 0,
           published: data.published || false,
           icon: data.icon || "FaStar",
@@ -40,7 +40,7 @@ export default function EditCoursePage({ params }: { params: { id: string } }) {
           backgroundColor: data.backgroundColor || "#FEF3C7",
           borderColor: data.borderColor || "#F59E0B",
           textColor: data.textColor || "#1F2937",
-          newTags: data.newTags || { az: [], ru: [] },
+          newTags: data.newTags || { az: [], en: [] },
           imageUrl: data.imageUrl || "",
           tag: data.tag || [],
         };
@@ -65,19 +65,19 @@ export default function EditCoursePage({ params }: { params: { id: string } }) {
 
      
       formData.append("title[az]", data.title.az);
-      formData.append("title[ru]", data.title.ru);
+      formData.append("title[en]", data.title.en);
       formData.append("description[az]", data.description.az);
-      formData.append("description[ru]", data.description.ru);
+      formData.append("description[en]", data.description.en);
       formData.append("slug[az]", data.slug.az);
-      formData.append("slug[ru]", data.slug.ru);
+      formData.append("slug[en]", data.slug.en);
       formData.append("level[az]", data.level.az);
-      formData.append("level[ru]", data.level.ru);
+      formData.append("level[en]", data.level.en);
 
       if (data.shortDescription?.az) {
         formData.append("shortDescription[az]", data.shortDescription.az);
       }
-      if (data.shortDescription?.ru) {
-        formData.append("shortDescription[ru]", data.shortDescription.ru);
+      if (data.shortDescription?.en) {
+        formData.append("shortDescription[en]", data.shortDescription.en);
       }
 
       if (data.newTags?.az && data.newTags.az.length > 0) {
@@ -85,9 +85,9 @@ export default function EditCoursePage({ params }: { params: { id: string } }) {
           formData.append(`newTags[az][${index}]`, tag);
         });
       }
-      if (data.newTags?.ru && data.newTags.ru.length > 0) {
-        data.newTags.ru.forEach((tag, index) => {
-          formData.append(`newTags[ru][${index}]`, tag);
+      if (data.newTags?.en && data.newTags.en.length > 0) {
+        data.newTags.en.forEach((tag, index) => {
+          formData.append(`newTags[en][${index}]`, tag);
         });
       }
 
@@ -128,11 +128,11 @@ export default function EditCoursePage({ params }: { params: { id: string } }) {
         
 
         reset({
-          title: updatedCourse.title || { az: "", ru: "" },
-          description: updatedCourse.description || { az: "", ru: "" },
-          shortDescription: updatedCourse.shortDescription || { az: "", ru: "" },
-          slug: updatedCourse.slug || { az: "", ru: "" },
-          level: updatedCourse.level || { az: "Başlanğıc", ru: "Начинающий" },
+          title: updatedCourse.title || { az: "", en: "" },
+          description: updatedCourse.description || { az: "", en: "" },
+          shortDescription: updatedCourse.shortDescription || { az: "", en: "" },
+          slug: updatedCourse.slug || { az: "", en: "" },
+          level: updatedCourse.level || { az: "Başlanğıc", en: "Начинающий" },
           duration: updatedCourse.duration || 0,
           published: updatedCourse.published || false,
           icon: updatedCourse.icon || "FaStar",
@@ -140,7 +140,7 @@ export default function EditCoursePage({ params }: { params: { id: string } }) {
           backgroundColor: updatedCourse.backgroundColor || "#FEF3C7",
           borderColor: updatedCourse.borderColor || "#F59E0B",
           textColor: updatedCourse.textColor || "#1F2937",
-          newTags: updatedCourse.newTags || { az: [], ru: [] },
+          newTags: updatedCourse.newTags || { az: [], en: [] },
           imageUrl: updatedCourse.imageUrl || "",
           tag: updatedCourse.tag || [],
         });

@@ -16,15 +16,15 @@ export default function CreateCoursePage() {
     formState: { errors, isSubmitting },
   } = useForm<CourseFormInputs>({
     defaultValues: {
-      title: { az: "", ru: "" },
-      description: { az: "", ru: "" },
-      slug: { az: "", ru: "" },
-      level: { az: "Başlanğıc", ru: "Начинающий" },
+      title: { az: "", en: "" },
+      description: { az: "", en: "" },
+      slug: { az: "", en: "" },
+      level: { az: "Başlanğıc", en: "Начинающий" },
       duration: 0,
       published: false,
       ageRange: "",
       icon: "FaStar",
-      newTags: { az: [], ru: [] },
+      newTags: { az: [], en: [] },
     },
   });
 
@@ -33,13 +33,13 @@ export default function CreateCoursePage() {
       const formData = new FormData();
 
       formData.append("title[az]", data.title.az);
-      formData.append("title[ru]", data.title.ru);
+      formData.append("title[en]", data.title.en);
       formData.append("description[az]", data.description.az);
-      formData.append("description[ru]", data.description.ru);
+      formData.append("description[en]", data.description.en);
       formData.append("slug[az]", data.slug.az);
-      formData.append("slug[ru]", data.slug.ru);
+      formData.append("slug[en]", data.slug.en);
       formData.append("level[az]", data.level.az);
-      formData.append("level[ru]", data.level.ru);
+      formData.append("level[en]", data.level.en);
 
 
       if (data.newTags?.az && data.newTags.az.length > 0) {
@@ -47,9 +47,9 @@ export default function CreateCoursePage() {
           formData.append(`newTags[az][${index}]`, tag);
         });
       }
-      if (data.newTags?.ru && data.newTags.ru.length > 0) {
-        data.newTags.ru.forEach((tag, index) => {
-          formData.append(`newTags[ru][${index}]`, tag);
+      if (data.newTags?.en && data.newTags.en.length > 0) {
+        data.newTags.en.forEach((tag, index) => {
+          formData.append(`newTags[en][${index}]`, tag);
         });
       }
 

@@ -242,7 +242,7 @@ model CourseToEligibility {
 
 enum Language {
   AZ
-  RU
+  EN
 }
 
 enum Role {
@@ -275,7 +275,7 @@ enum EventStatus {
 
 type SlugI18n {
   az String
-  ru String
+  en String
 }
 
 model Glossary {
@@ -311,5 +311,5 @@ model GlossaryCategory {
 
 type MultilingualText {
   az String
-  ru String
+  en String
 }

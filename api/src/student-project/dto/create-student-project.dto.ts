@@ -12,7 +12,7 @@ export class CreateStudentProjectDto {
   @ApiProperty({
     example: {
       az: 'Mobil Tətbiq Layihəsi',
-      ru: 'Проект мобильного приложения',
+      en: 'Mobile application project',
     },
     description: 'Project title in multiple languages (Azerbaijani, Russian)',
     type: 'object',
@@ -27,7 +27,7 @@ export class CreateStudentProjectDto {
   @ApiProperty({
     example: {
       az: 'Tələbələrin davamiyyətini izləmək üçün mobil tətbiq',
-      ru: 'Мобильное приложение для отслеживания посещаемости студентов',
+      en: 'Mobile application for tracking student attendance',
     },
     description:
       'Project description in multiple languages (Azerbaijani, Russian)',

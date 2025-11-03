@@ -50,7 +50,7 @@ interface GlossaryCategory {
   id: string;
   name: {
     az: string;
-    ru: string;
+    en: string;
   };
 }
 
@@ -58,7 +58,7 @@ interface GlossaryTerm {
   id: string;
   name: {
     az: string;
-    ru: string;
+    en: string;
   };
 }
 
@@ -102,14 +102,14 @@ export default function GlossaryForm({
   const [filteredTerms, setFilteredTerms] = useState<GlossaryTerm[]>([]);
 
   const [definitionAz, setDefinitionAz] = useState("");
-  const [definitionRu, setDefinitionRu] = useState("");
+  const [definitionEn, setDefinitionEn] = useState("");
 
   useEffect(() => {
     if (mode === "edit") {
       const watchedDefAz = watch("definition.az");
-      const watchedDefRu = watch("definition.ru");
+      const watchedDefRu = watch("definition.en");
       if (watchedDefAz) setDefinitionAz(watchedDefAz);
-      if (watchedDefRu) setDefinitionRu(watchedDefRu);
+      if (watchedDefRu) setDefinitionEn(watchedDefRu);
     }
   }, [mode, watch]);
 
@@ -139,7 +139,7 @@ export default function GlossaryForm({
             id: item.id,
             name: {
               az: item.term?.az || "", 
-              ru: item.term?.ru || "",
+              en: item.term?.en || "",
             },
           }))
         : [];
@@ -247,7 +247,7 @@ export default function GlossaryForm({
     if (lang === "az") {
       setDefinitionAz(value);
     } else {
-      setDefinitionRu(value);
+      setDefinitionEn(value);
     }
   };
 
@@ -308,21 +308,21 @@ export default function GlossaryForm({
               <div className="space-y-2">
                 <Input
                   type="text"
-                  label="Термин (RU)"
+                  label="Term (EN)"
                   variant="bordered"
                   startContent={<MdTitle className="text-gray-400" />}
                   isDisabled={isSubmitting}
-                  {...register("term.ru", {
-                    required: "Термин обязателен",
+                  {...register("term.en", {
+                    required: "Term is required",
                     minLength: {
                       value: 2,
-                      message: "Минимум 2 символа",
+                      message: "Term must be at least 2 characters",
                     },
                     onChange: (e: any) =>
-                      handleTermChange("ru", e.target.value),
+                      handleTermChange("en", e.target.value),
                   })}
-                  isInvalid={!!errors.term?.ru}
-                  errorMessage={errors.term?.ru?.message}
+                  isInvalid={!!errors.term?.en}
+                  errorMessage={errors.term?.en?.message}
                   classNames={{
                     input: "bg-transparent",
                     inputWrapper: [
@@ -354,13 +354,13 @@ export default function GlossaryForm({
               <div className="space-y-2">
                 <Input
                   type="text"
-                  label="Slug (RU)"
+                  label="Slug (EN)"
                   variant="bordered"
                   startContent={<MdTitle className="text-gray-400" />}
                   isDisabled={true}
-                  {...register("slug.ru")}
-                  isInvalid={!!errors.slug?.ru}
-                  errorMessage={errors.slug?.ru?.message}
+                  {...register("slug.en")}
+                  isInvalid={!!errors.slug?.en}
+                  errorMessage={errors.slug?.en?.message}
                   classNames={{
                     input: "bg-transparent",
                     inputWrapper: [
@@ -437,22 +437,22 @@ export default function GlossaryForm({
               <div className="space-y-2">
                 <label className="text-sm font-medium flex items-center gap-2">
                   <MdDescription className="text-gray-400" />
-                  Определение (RU)
+                  Definition (EN)
                 </label>
                 <div className="h-64">
                   <ReactQuill
                     theme="snow"
-                    value={definitionRu}
-                    onChange={(value) => handleDefinitionChange(value, "ru")}
+                    value={definitionEn}
+                    onChange={(value) => handleDefinitionChange(value, "en")}
                     modules={modules}
                     formats={formats}
                     className="h-48 bg-white"
                     readOnly={isSubmitting}
                   />
                 </div>
-                {errors.definition?.ru && (
+                {errors.definition?.en && (
                   <p className="text-danger text-sm">
-                    {errors.definition.ru.message}
+                    {errors.definition.en.message}
                   </p>
                 )}
               </div>
@@ -533,7 +533,7 @@ export default function GlossaryForm({
                       >
                         <span className="text-sm">{term.name.az}</span>
                         <span className="text-xs text-gray-400 block">
-                          {term.name.ru}
+                          {term.name.en}
                         </span>
                       </Checkbox>
                     </div>

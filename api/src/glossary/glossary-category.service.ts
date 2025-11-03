@@ -14,13 +14,13 @@ export class GlossaryCategoryService {
     const result: any = {};
 
     multilingualFields.forEach((field) => {
-      if (dto[`${field}[az]`] || dto[`${field}[ru]`]) {
+      if (dto[`${field}[az]`] || dto[`${field}[en]`]) {
         result[field] = {
           az: dto[`${field}[az]`],
-          ru: dto[`${field}[ru]`],
+          en: dto[`${field}[en]`],
         };
         delete processedData[`${field}[az]`];
-        delete processedData[`${field}[ru]`];
+        delete processedData[`${field}[en]`];
       }
     });
 
@@ -156,7 +156,7 @@ export class GlossaryCategoryService {
             {
               slug: {
                 is: {
-                  ru: {
+                  en: {
                     equals: slug,
                   },
                 },

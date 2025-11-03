@@ -89,20 +89,20 @@ export default function GlossaryCategoryForm({
             <div className="space-y-2">
               <Input
                 type="text"
-                label="Название (RU)"
+                label="Name (EN)"
                 variant="bordered"
                 startContent={<MdTitle className="text-gray-400" />}
                 isDisabled={isSubmitting}
-                {...register("name.ru", {
-                  required: "Название категории обязательно",
+                {...register("name.en", {
+                  required: "Category name is required",
                   minLength: {
                     value: 2,
-                    message: "Минимум 2 символа",
+                    message: "Name must be at least 2 characters",
                   },
-                  onChange: (e: any) => handleNameChange("ru", e.target.value),
+                  onChange: (e: any) => handleNameChange("en", e.target.value),
                 })}
-                isInvalid={!!errors.name?.ru}
-                errorMessage={errors.name?.ru?.message}
+                isInvalid={!!errors.name?.en}
+                errorMessage={errors.name?.en?.message}
                 classNames={{
                   input: "bg-transparent",
                   inputWrapper: [
@@ -132,13 +132,13 @@ export default function GlossaryCategoryForm({
 
             <div className="space-y-2">
               <Textarea
-                label="Описание (RU)"
+                label="Description (EN)"
                 variant="bordered"
                 startContent={<MdDescription className="text-gray-400" />}
                 isDisabled={isSubmitting}
-                {...register("description.ru")}
-                isInvalid={!!errors.description?.ru}
-                errorMessage={errors.description?.ru?.message}
+                {...register("description.en")}
+                isInvalid={!!errors.description?.en}
+                errorMessage={errors.description?.en?.message}
                 classNames={{
                   input: "bg-transparent",
                   inputWrapper: [
@@ -170,11 +170,11 @@ export default function GlossaryCategoryForm({
             <div className="space-y-2">
               <Input
                 type="text"
-                label="Slug (RU)"
+                label="Slug (EN)"
                 variant="bordered"
                 startContent={<MdTitle className="text-gray-400" />}
                 isDisabled={true}
-                {...register("slug.ru")}
+                {...register("slug.en")}
                 classNames={{
                   input: "bg-transparent",
                   inputWrapper: [

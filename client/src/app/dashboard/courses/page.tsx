@@ -51,7 +51,6 @@ export default function CoursesPage() {
   const [selectedCourseForEligibility, setSelectedCourseForEligibility] = useState<Course | null>(null);
   const [selectedCourseForModules, setSelectedCourseForModules] = useState<Course | null>(null);
 
-  // server page indexing auto-detect (false: 1-index, true: 0-index)
   const [serverZeroIndexed, setServerZeroIndexed] = useState<boolean | null>(null);
   const firstDetectDoneRef = useRef(false);
 
@@ -82,14 +81,13 @@ export default function CoursesPage() {
   };
 
   const effectiveApiPage = (uiPage: number) => {
-    if (serverZeroIndexed === null) return uiPage; // ilk sorğu – bilmədiyimiz üçün elə göndəririk
+    if (serverZeroIndexed === null) return uiPage; 
     return serverZeroIndexed ? uiPage - 1 : uiPage;
   };
 
   const detectIndexing = (uiPage: number, metaPageFromServer?: number) => {
     if (firstDetectDoneRef.current) return;
     if (typeof metaPageFromServer !== "number") return;
-    // meta.page 0-dırsa və ya (meta.page === uiPage-1) isə 0-index kimi qəbul et
     const zero = metaPageFromServer === 0 || metaPageFromServer === uiPage - 1;
     setServerZeroIndexed(zero);
     firstDetectDoneRef.current = true;
@@ -109,14 +107,11 @@ export default function CoursesPage() {
         )
       );
 
-      // indexing auto-detect (yalnız ilk uğurlu cavabda)
       detectIndexing(uiPage, data?.meta?.page);
 
       setCourses(data?.items || []);
       setTotalCourses(data?.meta?.total || 0);
       setTotalPages(data?.meta?.totalPages ?? null);
-
-      // əgər boş səhifəyə düşmüşüksə (məs: total azalıb), son səhifəyə geri çək
       const last = Math.max(1, Math.ceil((data?.meta?.total || 0) / rowsPerPage));
       if (uiPage > 1 && (data?.items?.length ?? 0) === 0 && last < uiPage) {
         setPage(last);
@@ -190,7 +185,7 @@ export default function CoursesPage() {
         return (
           <div className="flex flex-col">
             <p className="text-bold text-small">{course.title.az}</p>
-            <p className="text-tiny text-default-400">{course.title.ru}</p>
+            <p className="text-tiny text-default-400">{course.title.en}</p>
           </div>
         );
       case "description":

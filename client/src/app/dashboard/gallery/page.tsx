@@ -28,8 +28,7 @@ interface GalleryImage {
   id: string;
   title: {
     az: string;
-    en?: string;
-    ru: string;
+    en: string;
   };
   imageUrl: string;
   createdAt: string;

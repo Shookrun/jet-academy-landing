@@ -54,7 +54,7 @@ const ContactForm = () => {
             (c.title?.[locale] ||
               c.title?.az ||
               c.title?.en ||
-              c.title?.ru ||
+              c.title?.en ||
               "Adsız kurs") as string,
         }));
         const withAdvice = [{ value: ADVICE_VALUE, label: "Məsləhət almaq istəyirəm" }, ...opts];

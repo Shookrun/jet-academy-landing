@@ -1,7 +1,7 @@
 export interface GalleryFormInputs {
   title?: {
     az: string;
-    ru: string;
+    en: string;
   };
   image: FileList;
 }
@@ -10,7 +10,7 @@ export interface GalleryImage {
   id: string;
   title: {
     az: string;
-    ru: string;
+    en: string;
   };
   imageUrl: string;
   createdAt: string;

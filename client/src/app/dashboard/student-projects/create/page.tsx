@@ -42,8 +42,8 @@ export default function CreateProjectPage() {
     reset,
   } = useForm<ProjectFormInputs>({
     defaultValues: {
-      title: { az: "", ru: "" },
-      description: { az: "", ru: "" },
+      title: { az: "", en: "" },
+      description: { az: "", en: "" },
       categoryId: "",
       link: "",
       imageUrl: "",

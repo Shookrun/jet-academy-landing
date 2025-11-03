@@ -4,17 +4,17 @@ interface GlossaryTerm {
   id: string;
   term: {
     az: string;
-    ru: string;
+    en: string;
   };
   slug: {
     az: string;
-    ru: string;
+    en: string;
   };
   categoryId?: string;
   category?: {
     name: {
       az: string;
-      ru: string;
+      en: string;
     };
   };
 }
@@ -24,7 +24,7 @@ interface GlossaryTermListProps {
   categoryName?: string;
   title: string;
   categoryText: string;
-  language: string; // 'az' or 'ru'
+  language: string; 
   emptyText: string;
 }
 

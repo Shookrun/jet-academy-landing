@@ -10,11 +10,11 @@ interface ProjectCardProps {
   link: string;
   title: {
     az: string;
-    ru: string;
+    en: string;
   };
   description: {
     az: string;
-    ru: string;
+    en: string;
   };
   category: {
     id: string;
@@ -40,12 +40,11 @@ export default function ProjectCard({
       className="relative w-full h-[327px] cursor-pointer overflow-hidden rounded-3xl group"
       onClick={handleClick}
     >
-      {/* Image */}
       <div className="relative w-full h-full transition-transform duration-300 md:group-hover:scale-105">
         <Image
           src={imageUrl}
           unoptimized
-          alt={locale === "az" ? title.az : title.ru}
+          alt={locale === "az" ? title.az : title.en}
           fill
           className="object-cover rounded-3xl"
         />
@@ -53,14 +52,13 @@ export default function ProjectCard({
       <div className="absolute top-2 right-2 z-[1] bg-jsyellow/50 text-white px-3 py-1 rounded-full text-sm font-medium">
         {category.name}
       </div>
-      {/* Play button */}
+
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="bg-black/50 p-4 rounded-full transition-all duration-300 md:group-hover:scale-110 md:group-hover:bg-jsyellow/90">
           <MdPlayCircle className="w-8 h-8 text-white" />
         </div>
       </div>
 
-      {/* Info section */}
       <div
         className="absolute inset-x-0 bottom-0 h-[30%] bg-gradient-to-t from-black/90 to-black/70 
                     flex flex-col justify-center px-6 backdrop-blur-sm
@@ -72,14 +70,14 @@ export default function ProjectCard({
                      transition-all duration-300 delay-100
                      md:translate-y-5 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100"
         >
-          {locale === "az" ? title.az : title.ru}
+          {locale === "az" ? title.az : title.en}
         </h3>
         <p
           className="text-gray-200 text-sm line-clamp-2
                     transition-all duration-300 delay-150
                     md:translate-y-5 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100"
         >
-          {locale === "az" ? description.az : description.ru}
+          {locale === "az" ? description.az : description.en}
         </p>
       </div>
     </div>

@@ -109,11 +109,11 @@ export async function generateMetadata({
         : `${baseUrl}/${locale}/course/${params.slug}`;
 
     const azSlug = data.slug?.az || params.slug;
-    const ruSlug = data.slug?.ru || params.slug;
+    const enSlug = data.slug?.en || params.slug;
     const rawTitle =
       data.title?.[locale] ??
       data.title?.az ??
-      data.title?.ru ??
+      data.title?.en ??
       "Kurs";
 
     const fullTitle = `${rawTitle} | JET Academy`;
@@ -161,7 +161,7 @@ export async function generateMetadata({
             locale === "az"
               ? `${baseUrl}/course/${azSlug}`
               : `${baseUrl}/az/course/${azSlug}`,
-          ru: `${baseUrl}/ru/course/${ruSlug}`,
+          en: `${baseUrl}/en/course/${enSlug}`,
         },
       },
 
@@ -171,7 +171,7 @@ export async function generateMetadata({
         url: canonicalUrl,
         type: "website",
         siteName: "JET Academy",
-        locale: locale === "az" ? "az_AZ" : "ru_RU",
+        locale: locale === "az" ? "az_AZ" : "en_US",
         images: [
           {
             url: "/og-image.jpg",

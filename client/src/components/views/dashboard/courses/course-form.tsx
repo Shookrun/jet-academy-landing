@@ -70,16 +70,16 @@ export default function CourseForm({
   const [tagsAz, setTagsAz] = useState<string[]>(
     initialValues?.newTags?.az || []
   );
-  const [tagsRu, setTagsRu] = useState<string[]>(
-    initialValues?.newTags?.ru || []
+  const [tagsEn, setTagsEn] = useState<string[]>(
+    initialValues?.newTags?.en || []
   );
   const [tagInputAz, setTagInputAz] = useState("");
-  const [tagInputRu, setTagInputRu] = useState("");
+  const [tagInputEn, setTagInputEn] = useState("");
 
   const [descriptionAz, setDescriptionAz] = useState("");
-  const [descriptionRu, setDescriptionRu] = useState("");
+  const [descriptionEn, setDescriptionEn] = useState("");
   const [shortDescriptionAz, setShortDescriptionAz] = useState("");
-  const [shortDescriptionRu, setShortDescriptionRu] = useState("");
+  const [shortDescriptionEn, setShortDescriptionEn] = useState("");
   
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string>("");
@@ -88,14 +88,14 @@ export default function CourseForm({
   useEffect(() => {
     if (mode === "edit" && initialValues) {
       const watchedDescAz = watch("description.az");
-      const watchedDescRu = watch("description.ru");
+      const watchedDescEn = watch("description.en");
       const watchedShortDescAz = watch("shortDescription.az");
-      const watchedShortDescRu = watch("shortDescription.ru");
+      const watchedShortDescEn = watch("shortDescription.en");
       
       if (watchedDescAz) setDescriptionAz(watchedDescAz);
-      if (watchedDescRu) setDescriptionRu(watchedDescRu);
+      if (watchedDescEn) setDescriptionEn(watchedDescEn);
       if (watchedShortDescAz) setShortDescriptionAz(watchedShortDescAz);
-      if (watchedShortDescRu) setShortDescriptionRu(watchedShortDescRu);
+      if (watchedShortDescEn) setShortDescriptionEn(watchedShortDescEn);
 
       if (initialValues?.imageUrl) {
         setImagePreview(initialValues.imageUrl);
@@ -107,7 +107,7 @@ export default function CourseForm({
   useEffect(() => {
     if (initialValues) {
       if (initialValues.newTags?.az) setTagsAz(initialValues.newTags.az);
-      if (initialValues.newTags?.ru) setTagsRu(initialValues.newTags.ru);
+      if (initialValues.newTags?.en) setTagsEn(initialValues.newTags.en);
     }
   }, [initialValues]);
 
@@ -115,19 +115,19 @@ export default function CourseForm({
     {
       value: {
         az: "Başlanğıc",
-        ru: "Начинающий",
+        en: "Beginner",
       },
     },
     {
       value: {
         az: "Orta",
-        ru: "Средний",
+        en: "Middle",
       },
     },
     {
       value: {
         az: "Qabaqcıl",
-        ru: "Продвинутый",
+        en: "Advanced",
       },
     },
   ];
@@ -144,7 +144,7 @@ export default function CourseForm({
     if (lang === "az") {
       setDescriptionAz(value);
     } else {
-      setDescriptionRu(value);
+      setDescriptionEn(value);
     }
   };
 
@@ -153,7 +153,7 @@ export default function CourseForm({
     if (lang === "az") {
       setShortDescriptionAz(value);
     } else {
-      setShortDescriptionRu(value);
+      setShortDescriptionEn(value);
     }
   };
 
@@ -207,12 +207,12 @@ export default function CourseForm({
     }
   };
 
-  const handleAddTagRu = () => {
-    if (tagInputRu.trim() && !tagsRu.includes(tagInputRu.trim())) {
-      const newTags = [...tagsRu, tagInputRu.trim()];
-      setTagsRu(newTags);
-      setValue("newTags.ru", newTags);
-      setTagInputRu("");
+  const handleAddTagEn = () => {
+    if (tagInputEn.trim() && !tagsEn.includes(tagInputEn.trim())) {
+      const newTags = [...tagsEn, tagInputEn.trim()];
+      setTagsEn(newTags);
+      setValue("newTags.en", newTags);
+      setTagInputEn("");
     }
   };
 
@@ -222,10 +222,10 @@ export default function CourseForm({
     setValue("newTags.az", newTags);
   };
 
-  const handleRemoveTagRu = (tagToRemove: string) => {
-    const newTags = tagsRu.filter((tag) => tag !== tagToRemove);
-    setTagsRu(newTags);
-    setValue("newTags.ru", newTags);
+  const handleRemoveTagEn = (tagToRemove: string) => {
+    const newTags = tagsEn.filter((tag) => tag !== tagToRemove);
+    setTagsEn(newTags);
+    setValue("newTags.en", newTags);
   };
 
   const handleKeyDownAz = (e: React.KeyboardEvent) => {
@@ -235,10 +235,10 @@ export default function CourseForm({
     }
   };
 
-  const handleKeyDownRu = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && tagInputRu.trim()) {
+  const handleKeyDownEn = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && tagInputEn.trim()) {
       e.preventDefault();
-      handleAddTagRu();
+      handleAddTagEn();
     }
   };
 
@@ -286,14 +286,14 @@ export default function CourseForm({
               <div className="space-y-2">
                 <label className="text-sm font-medium flex items-center gap-2">
                   <MdDescription className="text-gray-400" />
-                  Краткое описание (RU)
+                  Brief description (EN)
                 </label>
                 <Input
                   type="text"
                   variant="bordered"
                   placeholder="Сделай первый шаг в мир технологий!"
-                  value={shortDescriptionRu}
-                  onChange={(e) => handleShortDescriptionChange("ru", e.target.value)}
+                  value={shortDescriptionEn}
+                  onChange={(e) => handleShortDescriptionChange("en", e.target.value)}
                   isDisabled={isSubmitting}
                   classNames={{
                     input: "bg-transparent",
@@ -467,17 +467,17 @@ export default function CourseForm({
               <div className="space-y-2">
                 <Input
                   type="text"
-                  label="Заголовок (RU)"
+                  label="Heading (EN)"
                   variant="bordered"
                   startContent={<MdTitle className="text-gray-400" />}
                   isDisabled={isSubmitting}
-                  {...register("title.ru", {
-                    required: "Заголовок обязателен",
+                  {...register("title.en", {
+                    required: "Title is required",
                     onChange: (e: any) =>
-                      handleTitleChange("ru", e.target.value),
+                      handleTitleChange("en", e.target.value),
                   })}
-                  isInvalid={!!errors.title?.ru}
-                  errorMessage={errors.title?.ru?.message}
+                  isInvalid={!!errors.title?.en}
+                  errorMessage={errors.title?.en?.message}
                   classNames={{
                     input: "bg-transparent",
                     inputWrapper: [
@@ -488,11 +488,11 @@ export default function CourseForm({
 
                 <Input
                   type="text"
-                  label="Slug (RU)"
+                  label="Slug (EN)"
                   variant="bordered"
                   startContent={<MdLink className="text-gray-400" />}
                   isDisabled={true}
-                  {...register("slug.ru")}
+                  {...register("slug.en")}
                   classNames={{
                     input: "bg-transparent",
                     inputWrapper: ["bg-white border-2"],
@@ -529,22 +529,22 @@ export default function CourseForm({
               <div className="space-y-2">
                 <label className="text-sm font-medium flex items-center gap-2">
                   <MdDescription className="text-gray-400" />
-                  Описание (RU)
+                  Description (EN)
                 </label>
                 <div className="h-64">
                   <ReactQuill
                     theme="snow"
-                    value={descriptionRu}
-                    onChange={(value) => handleDescriptionChange("ru", value)}
+                    value={descriptionEn}
+                    onChange={(value) => handleDescriptionChange("en", value)}
                     modules={modules}
                     formats={formats}
                     className="h-48 bg-white"
                     readOnly={isSubmitting}
                   />
                 </div>
-                {errors.description?.ru && (
+                {errors.description?.en && (
                   <p className="text-danger text-sm">
-                    {errors.description.ru.message}
+                    {errors.description.en.message}
                   </p>
                 )}
               </div>
@@ -626,18 +626,18 @@ export default function CourseForm({
 
               <div className="space-y-2">
                 <Select
-                  label="Уровень (RU)"
+                  label="Level (EN)"
                   variant="bordered"
                   startContent={
                     <MdSignalCellular4Bar className="text-gray-400" />
                   }
                   isDisabled={isSubmitting}
-                  defaultSelectedKeys={[watch("level.ru") || "Начинающий"]}
-                  {...register("level.ru", {
-                    required: "Уровень обязателен",
+                  defaultSelectedKeys={[watch("level.en") || "Beginner"]}
+                  {...register("level.en", {
+                    required: "Level required",
                   })}
-                  isInvalid={!!errors.level?.ru}
-                  errorMessage={errors.level?.ru?.message}
+                  isInvalid={!!errors.level?.en}
+                  errorMessage={errors.level?.en?.message}
                   classNames={{
                     trigger:
                       "bg-white border-2 hover:border-primary focus:border-primary",
@@ -645,8 +645,8 @@ export default function CourseForm({
                   }}
                 >
                   {levels.map((level) => (
-                    <SelectItem key={level.value.ru} value={level.value.ru}>
-                      {level.value.ru}
+                    <SelectItem key={level.value.en} value={level.value.en}>
+                      {level.value.en}
                     </SelectItem>
                   ))}
                 </Select>
@@ -725,12 +725,12 @@ export default function CourseForm({
               <div className="flex flex-wrap items-center gap-2">
                 <Input
                   type="text"
-                  label="Добавить тег (RU)"
+                  label="Add tag (EN)"
                   variant="bordered"
                   startContent={<MdTag className="text-gray-400" />}
-                  value={tagInputRu}
-                  onChange={(e) => setTagInputRu(e.target.value)}
-                  onKeyDown={handleKeyDownRu}
+                  value={tagInputEn}
+                  onChange={(e) => setTagInputEn(e.target.value)}
+                  onKeyDown={handleKeyDownEn}
                   className="flex-grow"
                   classNames={{
                     input: "bg-transparent",
@@ -740,29 +740,29 @@ export default function CourseForm({
                   }}
                 />
                 <Button
-                  onClick={handleAddTagRu}
+                  onClick={handleAddTagEn}
                   type="button"
                   className="bg-jsyellow text-white"
-                  isDisabled={!tagInputRu.trim()}
+                  isDisabled={!tagInputEn.trim()}
                 >
-                  Добавить
+                  Add
                 </Button>
               </div>
 
               <div className="flex flex-wrap gap-2 min-h-[50px]">
-                {tagsRu.map((tag, index) => (
+                {tagsEn.map((tag, index) => (
                   <Chip
                     key={index}
-                    onClose={() => handleRemoveTagRu(tag)}
+                    onClose={() => handleRemoveTagEn(tag)}
                     color={getTagColor(tag)}
                     variant="flat"
                   >
                     {tag}
                   </Chip>
                 ))}
-                {tagsRu.length === 0 && (
+                {tagsEn.length === 0 && (
                   <span className="text-gray-400 text-sm">
-                    Добавьте теги (RU)
+                    Add tag (EN)
                   </span>
                 )}
               </div>

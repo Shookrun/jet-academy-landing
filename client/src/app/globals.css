@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* this site is created by https://rufataliyev.com */
 @layer base {
   @keyframes fade-up {
     from {

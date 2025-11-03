@@ -9,15 +9,15 @@ import { toast } from "sonner";
 interface GlossaryCategoryFormInputs {
   name: {
     az: string;
-    ru: string;
+    en: string;
   };
   description?: {
     az: string;
-    ru: string;
+    en: string;
   };
   slug: {
     az: string;
-    ru: string;
+    en: string;
   };
   order?: number;
 }
@@ -50,7 +50,7 @@ export default function EditGlossaryCategoryPage({
 
         reset({
           name: data.name,
-          description: data.description || { az: "", ru: "" },
+          description: data.description || { az: "", en: "" },
           slug: data.slug,
           order: data.order || 0,
         });
@@ -106,21 +106,21 @@ export default function EditGlossaryCategoryPage({
 
     if (
       original.name?.az !== updated.name?.az ||
-      original.name?.ru !== updated.name?.ru
+      original.name?.en !== updated.name?.en
     ) {
       changes.name = { ...updated.name };
     }
 
     if (
       original.description?.az !== updated.description?.az ||
-      original.description?.ru !== updated.description?.ru
+      original.description?.en !== updated.description?.en
     ) {
       changes.description = { ...updated.description };
     }
 
     if (
       original.slug?.az !== updated.slug?.az ||
-      original.slug?.ru !== updated.slug?.ru
+      original.slug?.en !== updated.slug?.en
     ) {
       changes.slug = { ...updated.slug };
     }

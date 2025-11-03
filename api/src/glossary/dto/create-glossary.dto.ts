@@ -13,9 +13,9 @@ export class CreateGlossaryDto {
   @IsString()
   'term[az]': string;
 
-  @ApiProperty({ example: 'Веб-сайт' })
+  @ApiProperty({ example: 'Website' })
   @IsString()
-  'term[ru]': string;
+  'term[en]': string;
 
   @ApiProperty({
     example:
@@ -25,18 +25,18 @@ export class CreateGlossaryDto {
   'definition[az]': string;
 
   @ApiProperty({
-    example: 'Набор связанных веб-страниц, размещенных в интернете.',
+    example: 'A collection of related web pages hosted on the Internet.',
   })
   @IsString()
-  'definition[ru]': string;
+  'definition[en]': string;
 
   @ApiProperty({ example: 'veb-sayt' })
   @IsString()
   'slug[az]': string;
 
-  @ApiProperty({ example: 'veb-sayt' })
+  @ApiProperty({ example: 'website' })
   @IsString()
-  'slug[ru]': string;
+  'slug[en]': string;
 
   @ApiProperty({ example: '60d21b4667d0d8992e610c01', required: false })
   @IsOptional()

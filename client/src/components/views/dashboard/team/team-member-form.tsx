@@ -151,11 +151,11 @@ export default function TeamMemberForm({
             </div>
             <div className="space-y-2">
               <Textarea
-                label="Bio[RU]"
+                label="Bio[EN]"
                 variant="bordered"
                 startContent={<MdDescription className="text-gray-400" />}
                 isDisabled={isSubmitting}
-                {...register("bio.ru", {
+                {...register("bio.en", {
                   required: "Bio tələb olunur",
                 })}
                 isInvalid={!!errors.bio}

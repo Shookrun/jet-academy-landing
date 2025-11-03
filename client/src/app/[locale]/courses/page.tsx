@@ -22,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
       canonical: canonicalUrl,
       languages: {
         az: `${baseUrl}/courses`,
-        ru: `${baseUrl}/ru/courses`,
+        en: `${baseUrl}/en/courses`,
       },
     },
     openGraph: {
@@ -30,8 +30,8 @@ export async function generateMetadata(): Promise<Metadata> {
       description: t("metaDescription"),
       url: canonicalUrl,
       type: "website",
-      locale: locale === "az" ? "az_AZ" : "ru_RU",
-      alternateLocale: locale === "az" ? "ru_RU" : "az_AZ",
+      locale: locale === "az" ? "az_AZ" : "en_US",
+      alternateLocale: locale === "az" ? "en_US" : "az_AZ",
     },
     twitter: {
       card: "summary_large_image",

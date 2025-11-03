@@ -71,19 +71,19 @@ export default function EligibilityForm({
             <div className="space-y-2">
               <Input
                 type="text"
-                label="Заголовок (RU)"
+                label="Title (EN)"
                 variant="bordered"
                 startContent={<MdTitle className="text-gray-400" />}
                 isDisabled={isSubmitting}
-                {...register("title.ru", {
-                  required: "Заголовок обязателен",
+                {...register("title.en", {
+                  required: "Title is required",
                   minLength: {
                     value: 3,
-                    message: "Минимум 3 символа",
+                    message: "Title must be at least 3 characters",
                   },
                 })}
-                isInvalid={!!errors.title?.ru}
-                errorMessage={errors.title?.ru?.message}
+                isInvalid={!!errors.title?.en}
+                errorMessage={errors.title?.en?.message}
                 classNames={{
                   input: "bg-transparent",
                   inputWrapper: [
@@ -115,15 +115,15 @@ export default function EligibilityForm({
 
             <div className="space-y-2">
               <Textarea
-                label="Описание (RU)"
+                label="Description (EN)"
                 variant="bordered"
                 startContent={<MdDescription className="text-gray-400" />}
                 isDisabled={isSubmitting}
-                {...register("description.ru", {
-                  required: "Описание обязательно",
+                {...register("description.en", {
+                  required: "Description required",
                 })}
-                isInvalid={!!errors.description?.ru}
-                errorMessage={errors.description?.ru?.message}
+                isInvalid={!!errors.description?.en}
+                errorMessage={errors.description?.en?.message}
                 classNames={{
                   input: "bg-transparent",
                   inputWrapper: [
