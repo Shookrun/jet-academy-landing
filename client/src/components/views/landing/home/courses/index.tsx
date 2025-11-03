@@ -35,7 +35,6 @@ const CoursesSlider = ({ courses, locale = "az" }: ICoursesSlider) => {
     <div className="container mx-auto my-12 sm:my-16 lg:my-20 px-0">
       <SectionTitle title={t("title")} description={t("description")} />
 
-      {/* tag animasiya stilləri */}
       <style jsx>{`
         @keyframes scroll-tags {
           0% {
@@ -74,12 +73,12 @@ const CoursesSlider = ({ courses, locale = "az" }: ICoursesSlider) => {
                 course.shortDescription?.[normalizedLocale] ||
                 (normalizedLocale === "az"
                   ? "Texnologiya dünyasına ilk addımını at!"
-                  : "Сделай первый шаг в мир технологий!");
+                  : "Take your first step into the world of technology!");
               const tags =
                 course.newTags?.[normalizedLocale] ?? course.tag ?? [];
               const level =
                 course.level?.[normalizedLocale] ||
-                (normalizedLocale === "az" ? "Başlanğıc" : "Начальный");
+                (normalizedLocale === "az" ? "Başlanğıc" : "Elementary");
               const duration = course.duration || "6";
 
               return (
@@ -101,7 +100,6 @@ const CoursesSlider = ({ courses, locale = "az" }: ICoursesSlider) => {
                     border: `2px solid ${cardStyle.borderColor}`,
                   }}
                 >
-                  {/* Başlıq və slogan */}
                   <div className="z-10">
                     <h2 className="text-2xl sm:text-2xl font-bold mb-3 leading-tight text-gray-900">
                       {title}
@@ -111,12 +109,11 @@ const CoursesSlider = ({ courses, locale = "az" }: ICoursesSlider) => {
                     </p>
                   </div>
 
-                  {/* Əlavə məlumatlar */}
                   <div className="flex flex-col gap-1 text-sm sm:text-base mt-5 opacity-90">
             
                     <p>
                       <span className="font-semibold">
-                        {normalizedLocale === "az" ? "Səviyyə:" : "Уровень:"}
+                        {normalizedLocale === "az" ? "Səviyyə:" : "Level:"}
                       </span>{" "}
                       {level}
                     </p>
@@ -124,13 +121,12 @@ const CoursesSlider = ({ courses, locale = "az" }: ICoursesSlider) => {
                       <span className="font-semibold">
                         {normalizedLocale === "az"
                           ? "Müddət:"
-                          : "Длительность:"}
+                          : "Duration:"}
                       </span>{" "}
-                      {duration} {normalizedLocale === "az" ? "ay" : "мес."}
+                      {duration} {normalizedLocale === "az" ? "ay" : "month"}
                     </p>
                   </div>
 
-                  {/* Slider kimi tag-lar */}
                   {tags.length > 0 && (
                     <div className="relative overflow-hidden mt-6 -mx-8 px-8">
                       <div className="scrolling-tags flex gap-2 w-max">
@@ -154,7 +150,6 @@ const CoursesSlider = ({ courses, locale = "az" }: ICoursesSlider) => {
                     </div>
                   )}
 
-                  {/* Şəkil */}
                   <div className="absolute bottom-5 right-5 sm:bottom-8 sm:right-8 w-[120px] h-[120px] sm:w-[160px] sm:h-[160px] drop-shadow-lg">
                     <Image
                       src={getImageUrl(course.imageUrl)}
@@ -165,7 +160,6 @@ const CoursesSlider = ({ courses, locale = "az" }: ICoursesSlider) => {
                     />
                   </div>
 
-                  {/* Dekorativ dairə */}
                   <div
                     className="absolute w-[160px] h-[160px] rounded-full opacity-30 -bottom-10 -right-10 blur-2xl"
                     style={{ backgroundColor: cardStyle.borderColor }}
